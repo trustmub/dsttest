@@ -1,4 +1,7 @@
-<p>
-  note-detail works! {{ notificationObj.id }}
-  <button class="btn btn-outline-primary" [routerLink]="['/notification' ,50]">Reload</button>
-</p>
+<p>note-detail works! {{ notificationObj.id }}</p>
+
+<p>{{notificationObj.taskName}}</p>
+<p>{{notificationObj.taskLocation}}</p>
+<p>{{notificationObj.taskTime}}</p>
+<p>{{notificationObj.id}}</p>
+<button class="btn btn-outline-primary" [routerLink]="['/notification' ,3]">Reload</button>

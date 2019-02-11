@@ -32,7 +32,8 @@
               "node_modules/sbadmin/vendor/jquery/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/sbadmin/vendor/jquery-easing/jquery.easing.min.js",
-              "node_modules/sbadmin/js/sb-admin-2.js"
+              "node_modules/sbadmin/js/sb-admin-2.js",
+              "node_modules/sbadmin/vendor/chart.js/chart.min.js"
             ],
             "es5BrowserSupport": true
           },

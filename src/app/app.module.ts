@@ -9,20 +9,23 @@ import {FooterComponent} from './contents/footer/footer.component';
 import {DashboardComponent} from './contents/dashboard/dashboard.component';
 import {ComingTaskComponent} from './contents/dashboard/coming-task/coming-task.component';
 import {OverdueTaskComponent} from './contents/dashboard/overdue-task/overdue-task.component';
-import {RouterModule, Routes} from '@angular/router';
 import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
-import { NoteDetailComponent } from './contents/notification/note-detail/note-detail.component';
-
-const appRoutes: Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'inbox', component: InboxComponent},
-  {path: 'calender', component: CalenderComponent},
-  {path: 'notification', component: NotificationComponent},
-  {path: 'notification/:id', component: NoteDetailComponent}
-];
+import {NoteDetailComponent} from './contents/notification/note-detail/note-detail.component';
+import {TasksService} from './contents/tasks.service';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthService} from './auth.service';
+import {AuthGuardService} from './auth-guard.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {SummaryComponent} from './contents/dashboard/summary/summary.component';
+import {AuthenticationComponent} from './authentication/authentication.component';
+import {UserLoginComponent} from './authentication/user-login/user-login.component';
+import {UserRegisterComponent} from './authentication/user-register/user-register.component';
+import {UserResetComponent} from './authentication/user-reset/user-reset.component';
+import {AuthenticationService} from './authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -37,13 +40,21 @@ const appRoutes: Routes = [
     InboxComponent,
     CalenderComponent,
     NotificationComponent,
-    NoteDetailComponent
+    NoteDetailComponent,
+    PageNotFoundComponent,
+    SummaryComponent,
+    AuthenticationComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
+    UserResetComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [TasksService, AuthService, AuthGuardService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
