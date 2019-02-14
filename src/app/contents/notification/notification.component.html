@@ -1,21 +1,36 @@
 <div class="row">
   <div class="col-xl-4 col-md-4" *ngFor="let meeting of activeTask">
-    <div class="card border-left-primary shadow mh-100 p-1">
+
+    <div class="card border-left-primary shadow mh-100 mb-3 p-1">
       <!--<div class="card-header card-head">header</div>-->
       <div class="card-body m-1 p-1">
         <div class="row no-gutters align-items-center">
-          <div class="col-md-4 m-0 p-0">
-            <p class="text-xs font-weight-bold text-primary text-uppercase mb-1">UpComing</p>
-            <p>June</p>
-            <p>23</p>
+
+          <div class="col-md-4 col-xl-4 m-0 p-0">
+            <p class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">UpComing</p>
+
+            <div class="card">
+              <div class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
+                <h6 class="text-xs text-center">{{ currentDate | date:'MMMM' }}</h6>
+              </div>
+
+              <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
+                <h6 class="h3 text-center">{{ currentDate | date:'dd'}}</h6>
+                <h6 class="text-sm text-center text-primary">{{ currentDate | date:'EEEE' }}</h6>
+              </div>
+            </div>
             <div class="col-auto">
               <i class="fa fa-calender fa-2x text-black-300"></i>
             </div>
           </div>
-          <div class="col-md-8 m-0 p-0">
+          <div class="col-md-8 col-xl-8 pl-2">
             <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.taskName}}</p>
-            <p class="">{{ meeting.taskTime }}</p>
-            <p class="">{{ meeting.taskLocation}}</p>
+            <hr class="m-0 p-0">
+            <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.taskTime }}</span>
+            <hr class="m-0 p-0">
+            <p class="fas fa-fw fa-location-arrow m-0"></p><span> {{ meeting.taskLocation }}</span>
+            <!--<p class="">{{ meeting.taskLocation }}</p>-->
+            <hr class="m-1">
             <button class="btn btn-outline-primary" [routerLink]="['/notification', meeting.id]">Full Meeting Details
             </button>
           </div>

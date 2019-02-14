@@ -4,7 +4,6 @@ import {EventEmitter} from '@angular/core';
 
 export class AuthenticationService {
 
-
   isAuthenticated = new EventEmitter<boolean>();
 
   // authenticationObserver: Observer<boolean>;

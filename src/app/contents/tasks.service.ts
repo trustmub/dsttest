@@ -14,6 +14,7 @@ export class TasksService {
     new UpComingTask(6, 'Budget Meeting', '09:00 - 12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom'),
     new UpComingTask(7, 'Review Meeting', '09:00 - 12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom')
   ];
+  private currentDate = Date.now();
 
   constructor(private http: HttpClient) {
   }
@@ -24,6 +25,10 @@ export class TasksService {
 
   getTask(id: number) {
     return this.upcoming[id];
+  }
+
+  getsystemDate() {
+    return this.currentDate;
   }
 
   getBackendTasks() {

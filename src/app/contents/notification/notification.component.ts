@@ -11,6 +11,8 @@ import {UpComingTask} from '../dashboard/dashboard.model';
 export class NotificationComponent implements OnInit {
 
   activeTask: UpComingTask[];
+  currentDate = Date.now();
+
 
   constructor(private tasksService: TasksService) {
     this.activeTask = this.tasksService.getAllTasks();

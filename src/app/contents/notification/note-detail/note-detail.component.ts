@@ -13,8 +13,10 @@ import {UpComingTask} from '../../dashboard/dashboard.model';
 export class NoteDetailComponent implements OnInit, OnDestroy {
   notificationObj: UpComingTask;
   paramSubscription: Subscription;
+  currentDate: number;
 
   constructor(private route: ActivatedRoute, private tasksService: TasksService) {
+    this.currentDate = this.tasksService.getsystemDate();
   }
 
   ngOnInit() {

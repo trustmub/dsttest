@@ -1,7 +1,126 @@
-<p>note-detail works! {{ notificationObj.id }}</p>
+<div class="row">
+  <div class="col-lg-9 col-md-9">
 
-<p>{{notificationObj.taskName}}</p>
-<p>{{notificationObj.taskLocation}}</p>
-<p>{{notificationObj.taskTime}}</p>
-<p>{{notificationObj.id}}</p>
-<button class="btn btn-outline-primary" [routerLink]="['/notification' ,3]">Reload</button>
+    <!-- Nav tab content for Meeting details, attendees and Discussion -->
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-meeting" role="tabpanel" aria-labelledby="list-home-list">
+
+        <!-- Meetings Details card -->
+        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
+          <div class="card-body m-1 p-1">
+            <div class="row no-gutters align-items-center">
+              <div class="col-md-4 col-xl-4 m-0 p-0">
+                <div class="card">
+                  <div
+                    class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="text-xs text-center">{{ currentDate | date:'MMMM' }}</h6>
+                  </div>
+
+                  <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="h3 text-center">{{ currentDate | date:'dd'}}</h6>
+                    <h6 class="text-sm text-center text-primary">{{ currentDate | date:'EEEE' }}</h6>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fa fa-calender fa-2x text-black-300"></i>
+                </div>
+              </div>
+              <div class="col-md-8 col-xl-8 pl-2">
+                <p
+                  class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ notificationObj.taskName}}</p>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ notificationObj.taskTime }}</span>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-map-marker-alt"></p><span> {{ notificationObj.taskLocation }}</span>
+                <!--<p class="">{{ meeting.taskLocation }}</p>-->
+                <hr class="m-5">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of Meetings details card -->
+
+        <!-- Nav Tabs for Agenda, Meeting Minutes and Attending register -->
+        <ul class="nav nav-tabs border-info" id="meeting-detail-tab-list" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="agenda-tab" data-toggle="tab" href="#agenda" role="tab"
+               aria-controls="agenda-tab" aria-selected="true">Agenda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="meeting-minutes-tab" data-toggle="tab" href="#minutes" role="tab"
+               aria-controls="meeting-minutes-tab" aria-selected="true">Meeting Minutes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="attending-register-tab" data-toggle="tab" href="#attending-register" role="tab"
+               aria-controls="attending-register-tab" aria-selected="true">Attending Register</a>
+          </li>
+        </ul>
+        <!-- End of Nav Tabs for Agenda, Meeting Minutes and Attending register -->
+
+        <!-- Nav tab contents for Agenda, Meeting Minutes and Attending register -->
+        <div class="tab-content" id="meeting-detail-content">
+          <div class="tab-pane fade show active" id="agenda" role="tabpanel" aria-labelledby="agenda-tab">upload
+            agenda
+          </div>
+          <div class="tab-pane fade" id="minutes" role="tabpanel" aria-labelledby="meeting-minutes-tab">Upload Meeting
+            minutes
+          </div>
+          <div class="tab-pane fade" id="attending-register" role="tabpanel" aria-labelledby="attending-register-tab">
+            upload register
+          </div>
+        </div>
+        <!-- Nav tab contents for Agenda, Meeting Minutes and Attending register-->
+      </div>
+
+      <div class="tab-pane fade" id="list-attendee" role="tabpanel" aria-labelledby="list-attendee-list">
+        <h1>attendees</h1>
+      </div>
+
+      <!-- Discussion tab details -->
+      <div class="tab-pane fade" id="list-discussion" role="tabpanel" aria-labelledby="list-discussion-list">
+
+        <ul class="nav nav-tabs" id="discussionTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="actions-tab" data-toggle="tab" href="#actions" role="tab"
+               aria-controls="actions"
+               aria-selected="true">Actions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="non-actions-tab" data-toggle="tab" href="#non-actions" role="tab"
+               aria-controls="non-actions"
+               aria-selected="false">Non-Actions</a>
+          </li>
+        </ul>
+
+        <!-- Discussion tabs Contents Action and Non-Action item-->
+        <div class="tab-content" id="discussionTabContent">
+          <div class="tab-pane fade show active" id="actions" role="tabpanel" aria-labelledby="action-tab">Actions
+            List
+          </div>
+          <div class="tab-pane fade" id="non-actions" role="tabpanel" aria-labelledby="non-actions-tab">Non Actions
+            List
+          </div>
+        </div>
+        <!-- End of Discussion tabs Contents Action and Non Action item-->
+
+      </div>
+      <!-- Discussion tab details -->
+
+    </div>
+  </div>
+  <!--End of Nav tab content for Meeting details, attendees and Discussion -->
+
+  <!-- Side Nav tabs for Meeting details, attendees and Discussion-->
+  <div class="col-lg-3 col-md-3">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-meeting-list" data-toggle="list"
+         href="#list-meeting"
+         role="tab" aria-controls="home">Meeting</a>
+      <a class="list-group-item list-group-item-action" id="list-attendee-list" data-toggle="list" href="#list-attendee"
+         role="tab" aria-controls="profile">Attendees</a>
+      <a class="list-group-item list-group-item-action" id="list-discussion-list" data-toggle="list"
+         href="#list-discussion">Discussions</a>
+    </div>
+  </div>
+  <!-- End of Side Nav tabs for Meeting details, attendees and Discussion-->
+</div>

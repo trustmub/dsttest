@@ -1,5 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './navigation/navigation.component';
@@ -16,16 +18,20 @@ import {NoteDetailComponent} from './contents/notification/note-detail/note-deta
 import {TasksService} from './contents/tasks.service';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
-import {AuthService} from './auth.service';
-import {AuthGuardService} from './auth-guard.service';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {AuthService} from './authentication/auth.service';
+import {AuthGuardService} from './authentication/auth-guard.service';
 import {SummaryComponent} from './contents/dashboard/summary/summary.component';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {UserLoginComponent} from './authentication/user-login/user-login.component';
 import {UserRegisterComponent} from './authentication/user-register/user-register.component';
 import {UserResetComponent} from './authentication/user-reset/user-reset.component';
 import {AuthenticationService} from './authentication/authentication.service';
+import { MeetingsComponent } from './contents/meetings/meetings.component';
+import { ExcoMeetingComponent } from './contents/meetings/exco-meeting/exco-meeting.component';
+import { DgMeetingComponent } from './contents/meetings/dg-meeting/dg-meeting.component';
+import { CabinetMeetingComponent } from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
+import { MembersComponent } from './contents/members/members.component';
+import {UserService} from './shared/user.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,12 @@ import {AuthenticationService} from './authentication/authentication.service';
     AuthenticationComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    UserResetComponent
+    UserResetComponent,
+    MeetingsComponent,
+    ExcoMeetingComponent,
+    DgMeetingComponent,
+    CabinetMeetingComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,7 @@ import {AuthenticationService} from './authentication/authentication.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [TasksService, AuthService, AuthGuardService, AuthenticationService],
+  providers: [TasksService, AuthService, AuthGuardService, AuthenticationService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
