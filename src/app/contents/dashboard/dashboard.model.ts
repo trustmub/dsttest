@@ -42,18 +42,4 @@ export class LatestDiscussion {
 }
 
 
-export class UpComingTask {
-  public id: number;
-  public taskName: string;
-  public taskTime: string;
-  public taskLocation: string;
-
-  constructor(id: number, taskName: string, taskTime: string, taskLocation: string) {
-    this.id = id;
-    this.taskName = taskName;
-    this.taskTime = taskTime;
-    this.taskLocation = taskLocation;
-  }
-}
-
 

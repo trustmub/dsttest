@@ -13,12 +13,12 @@
                 <div class="card">
                   <div
                     class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
-                    <h6 class="text-xs text-center">{{ currentDate | date:'MMMM' }}</h6>
+                    <h6 class="text-xs text-center">{{ notificationObj.meetingStartDate | date:'MMMM' }}</h6>
                   </div>
 
                   <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
-                    <h6 class="h3 text-center">{{ currentDate | date:'dd'}}</h6>
-                    <h6 class="text-sm text-center text-primary">{{ currentDate | date:'EEEE' }}</h6>
+                    <h6 class="h3 text-center">{{ notificationObj.meetingStartDate | date:'dd'}}</h6>
+                    <h6 class="text-sm text-center text-primary">{{ notificationObj.meetingStartDate | date:'EEEE' }}</h6>
                   </div>
                 </div>
                 <div class="col-auto">
@@ -27,12 +27,12 @@
               </div>
               <div class="col-md-8 col-xl-8 pl-2">
                 <p
-                  class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ notificationObj.taskName}}</p>
+                  class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ notificationObj.meetingName}}</p>
                 <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ notificationObj.taskTime }}</span>
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ notificationObj.meetingStartTime }}</span>
                 <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-map-marker-alt"></p><span> {{ notificationObj.taskLocation }}</span>
-                <!--<p class="">{{ meeting.taskLocation }}</p>-->
+                <p class="fas fa-fw fa-map-marker-alt"></p><span> {{ notificationObj.meetingLocation }}</span>
+                <!--<p class="">{{ meeting.meetingLocation }}</p>-->
                 <hr class="m-5">
               </div>
             </div>
@@ -94,11 +94,11 @@
 
         <!-- Discussion tabs Contents Action and Non-Action item-->
         <div class="tab-content" id="discussionTabContent">
-          <div class="tab-pane fade show active" id="actions" role="tabpanel" aria-labelledby="action-tab">Actions
-            List
+          <div class="tab-pane fade show active" id="actions" role="tabpanel" aria-labelledby="action-tab">
+            <app-meeting-action-list></app-meeting-action-list>
           </div>
-          <div class="tab-pane fade" id="non-actions" role="tabpanel" aria-labelledby="non-actions-tab">Non Actions
-            List
+          <div class="tab-pane fade" id="non-actions" role="tabpanel" aria-labelledby="non-actions-tab">
+            <app-meeting-non-action-list></app-meeting-non-action-list>
           </div>
         </div>
         <!-- End of Discussion tabs Contents Action and Non Action item-->

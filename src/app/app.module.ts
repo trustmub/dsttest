@@ -15,7 +15,7 @@ import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
 import {NoteDetailComponent} from './contents/notification/note-detail/note-detail.component';
-import {TasksService} from './contents/tasks.service';
+import {MeetingsService} from './contents/meetings.service';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthService} from './authentication/auth.service';
@@ -26,12 +26,14 @@ import {UserLoginComponent} from './authentication/user-login/user-login.compone
 import {UserRegisterComponent} from './authentication/user-register/user-register.component';
 import {UserResetComponent} from './authentication/user-reset/user-reset.component';
 import {AuthenticationService} from './authentication/authentication.service';
-import { MeetingsComponent } from './contents/meetings/meetings.component';
-import { ExcoMeetingComponent } from './contents/meetings/exco-meeting/exco-meeting.component';
-import { DgMeetingComponent } from './contents/meetings/dg-meeting/dg-meeting.component';
-import { CabinetMeetingComponent } from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
-import { MembersComponent } from './contents/members/members.component';
+import {MeetingsComponent} from './contents/meetings/meetings.component';
+import {ExcoMeetingComponent} from './contents/exco-meeting/exco-meeting.component';
+import {DgMeetingComponent} from './contents/meetings/dg-meeting/dg-meeting.component';
+import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
+import {MembersComponent} from './contents/members/members.component';
 import {UserService} from './shared/user.service';
+import {MeetingActionListComponent} from './contents/notification/note-detail/meeting-action-list/meeting-action-list.component';
+import { MeetingNonActionListComponent } from './contents/notification/note-detail/meeting-non-action-list/meeting-non-action-list.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import {UserService} from './shared/user.service';
     ExcoMeetingComponent,
     DgMeetingComponent,
     CabinetMeetingComponent,
-    MembersComponent
+    MembersComponent,
+    MeetingActionListComponent,
+    MeetingNonActionListComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,7 @@ import {UserService} from './shared/user.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [TasksService, AuthService, AuthGuardService, AuthenticationService, UserService],
+  providers: [MeetingsService, AuthService, AuthGuardService, AuthenticationService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

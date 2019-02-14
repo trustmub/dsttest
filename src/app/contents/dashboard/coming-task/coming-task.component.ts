@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UpComingTask} from '../dashboard.model';
-import {TasksService} from '../../tasks.service';
+import {MeetingsService} from '../../meetings.service';
+import {MeetingModel} from '../../../shared/meetings.model';
 
 @Component({
   selector: 'app-coming-task',
@@ -9,11 +9,10 @@ import {TasksService} from '../../tasks.service';
 })
 export class ComingTaskComponent implements OnInit {
 
-  upcoming: UpComingTask[] = [];
-  currentDate = Date.now();
+  upcoming: MeetingModel[] = [];
 
-  constructor(private tasksService: TasksService) {
-    this.upcoming = tasksService.getAllTasks().filter((item, index) => index < 2);
+  constructor(private tasksService: MeetingsService) {
+    this.upcoming = tasksService.getAllMeetings().filter((item, index) => index < 2);
   }
 
   ngOnInit() {

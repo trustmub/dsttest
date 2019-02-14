@@ -1,21 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {TasksService} from '../tasks.service';
-import {UpComingTask} from '../dashboard/dashboard.model';
+import {MeetingsService} from '../meetings.service';
+import {MeetingModel} from '../../shared/meetings.model';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css'],
-  providers: [TasksService]
 })
 export class NotificationComponent implements OnInit {
 
-  activeTask: UpComingTask[];
-  currentDate = Date.now();
+  activeMeetings: MeetingModel[];
 
-
-  constructor(private tasksService: TasksService) {
-    this.activeTask = this.tasksService.getAllTasks();
+  constructor(private meetingService: MeetingsService) {
+    this.activeMeetings = this.meetingService.getAllMeetings();
   }
 
   ngOnInit() {

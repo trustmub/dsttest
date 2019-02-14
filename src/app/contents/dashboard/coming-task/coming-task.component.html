@@ -8,12 +8,12 @@
 
         <div class="card">
           <div class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
-            <h6 class="text-xs text-center">{{ currentDate | date:'MMMM' }}</h6>
+            <h6 class="text-xs text-center">{{ meeting.meetingStartDate | date:'MMMM' }}</h6>
           </div>
 
           <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
-            <h6 class="h3 text-center">{{ currentDate | date:'dd'}}</h6>
-            <h6 class="text-md text-center text-primary">{{ currentDate | date:'EEEE' }}</h6>
+            <h6 class="h3 text-center">{{ meeting.meetingStartDate | date:'dd'}}</h6>
+            <h6 class="text-md text-center text-primary">{{ meeting.meetingStartDate | date:'EEEE' }}</h6>
           </div>
         </div>
         <div class="col-auto">
@@ -21,12 +21,12 @@
         </div>
       </div>
       <div class="col-md-8 col-xl-8 pl-2">
-        <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.taskName}}</p>
+        <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.meetingName}}</p>
         <hr class="m-0 p-0">
-        <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.taskTime }}</span>
+        <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.meetingStartTime }} - {{ meeting.meetingEndTime }}</span>
         <hr class="m-0 p-0">
-        <p class="fas fa-fw fa-location-arrow m-0"></p><span> {{ meeting.taskLocation }}</span>
-        <!--<p class="">{{ meeting.taskLocation }}</p>-->
+        <p class="fas fa-fw fa-location-arrow m-0"></p><span> {{ meeting.meetingLocation }}</span>
+        <!--<p class="">{{ meeting.meetingLocation }}</p>-->
         <hr class="m-1">
         <button class="btn btn-outline-primary" [routerLink]="['/notification', meeting.id]">Full Meeting Details
         </button>
