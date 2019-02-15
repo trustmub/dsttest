@@ -33,7 +33,8 @@ import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabin
 import {MembersComponent} from './contents/members/members.component';
 import {UserService} from './shared/user.service';
 import {MeetingActionListComponent} from './contents/notification/meeting-detail/meeting-action-list/meeting-action-list.component';
-import { MeetingNonActionListComponent } from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
+import {MeetingNonActionListComponent} from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
+import {MembersService} from './shared/members.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { MeetingNonActionListComponent } from './contents/notification/meeting-d
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [MeetingsService, AuthService, AuthGuardService, AuthenticationService, UserService],
+  providers: [MeetingsService, AuthService, AuthGuardService, AuthenticationService, UserService, MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

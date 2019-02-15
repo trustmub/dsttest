@@ -22,13 +22,13 @@
                   <div class="col-lg-3 col-md-3">
                     <div class="form-group">
                       <label for="actionReferenceNumber">Ref No.</label>
-                      <input type="text" class="form-control" id="actionReferenceNumber" placeholder="">
+                      <input type="text" class="form-control" id="actionReferenceNumber" required>
                     </div>
                   </div>
                   <div class="col-lg-9 col-md-9">
                     <div class="form-group">
                       <label for="actionItem">Item.</label>
-                      <input type="text" class="form-control" id="actionItem" placeholder="">
+                      <input type="text" class="form-control" id="actionItem" required>
                     </div>
                   </div>
                 </div>
@@ -37,7 +37,7 @@
                   <div class="col-lg-12 col-md-12">
                     <div class="form-group">
                       <label for="ActionDescription">Description</label>
-                      <textarea  class="form-control" id="ActionDescription" rows="3"></textarea>
+                      <textarea class="form-control" id="ActionDescription" rows="3" required></textarea>
                     </div>
                   </div>
                 </div>
@@ -46,19 +46,29 @@
                   <div class="col-lg-4 col-md-4">
                     <div class="form-group">
                       <label for="actionAssignTo">Assign To.</label>
-                      <input type="text" class="form-control" id="actionAssignTo" placeholder="">
+                      <select type="text" class="form-control" id="actionAssignTo">
+                        <option *ngFor="let member of members" required>{{ member.fullname }}</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4">
                     <div class="form-group">
                       <label for="actionReturnDate">Return Date.</label>
-                      <input type="text" class="form-control" id="actionReturnDate" placeholder="">
+                      <input type="date" class="form-control" id="actionReturnDate" required>
+                      <div class="invalid-feedback">
+                        Please choose a date.
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4">
                     <div class="form-group">
                       <label for="actionStatus">Status.</label>
-                      <input type="text" class="form-control" id="actionStatus" placeholder="">
+                      <select class="form-control" id="actionStatus">
+                        <option *ngFor="let status of actionStatus" required>{{ status }}</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please choose a status.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -71,7 +81,7 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary text-white"> save</button>
+                <button class="btn btn-primary text-white" type="submit"> save</button>
               </form>
             </div>
           </div>
