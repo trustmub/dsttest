@@ -5,7 +5,7 @@ import {DashboardComponent} from './contents/dashboard/dashboard.component';
 import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
-import {NoteDetailComponent} from './contents/notification/note-detail/note-detail.component';
+import {NoteDetailComponent} from './contents/notification/meeting-detail/note-detail.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './authentication/auth-guard.service';
 import {AuthenticationComponent} from './authentication/authentication.component';

@@ -14,7 +14,7 @@ import {OverdueTaskComponent} from './contents/dashboard/overdue-task/overdue-ta
 import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
-import {NoteDetailComponent} from './contents/notification/note-detail/note-detail.component';
+import {NoteDetailComponent} from './contents/notification/meeting-detail/note-detail.component';
 import {MeetingsService} from './contents/meetings.service';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -32,8 +32,8 @@ import {DgMeetingComponent} from './contents/meetings/dg-meeting/dg-meeting.comp
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
 import {MembersComponent} from './contents/members/members.component';
 import {UserService} from './shared/user.service';
-import {MeetingActionListComponent} from './contents/notification/note-detail/meeting-action-list/meeting-action-list.component';
-import { MeetingNonActionListComponent } from './contents/notification/note-detail/meeting-non-action-list/meeting-non-action-list.component';
+import {MeetingActionListComponent} from './contents/notification/meeting-detail/meeting-action-list/meeting-action-list.component';
+import { MeetingNonActionListComponent } from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
 
 @NgModule({
   declarations: [

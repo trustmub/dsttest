@@ -2,48 +2,57 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Exco Meetings</h1>
   <button class="d-none d-sm-inline-block btn btn-md btn-primary btn- shadow-sm text-white">
-  <i class="fas fa-plus fa-sm text-white-50"></i>
-     Add New
+    <i class="fas fa-plus fa-sm text-white-50"></i>
+    Add New
   </button>
 </div>
 
 <div class="row">
   <div class="col-lg-9 col-md-9">
-    <div class="card shadow mb-4">
-      <!-- Card Header - Dropdown -->
-      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary p-0">Meeting List</h6>
-      </div>
-      <!-- Card Body -->
-      <div class="card-body pr-1 pl-1 pt-0">
-        <table class="table table-bordered table-sm">
-          <thead>
-          <tr class="text-sm-center">
-            <th>Ref No.</th>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Assigned to</th>
-            <th>Due Date</th>
-            <th>status</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <!--<tr class="text-xs o-hidden" *ngFor="let item of decisionItems">-->
-            <!--<td>{{ item.ref }}</td>-->
-            <!--<td>{{ item.item }}</td>-->
-            <!--<td>{{ item.description }}</td>-->
-            <!--<td>{{ item.assignedTo }}</td>-->
-            <!--<td>{{ item.dueDate | date:"dd MMMM yyyy" }}</td>-->
-            <!--<td>{{ item.status }}</td>-->
-            <!--<td>-->
-              <!--<button class="btn btn-primary"><i class="fas fa-arrow"></i></button>-->
-            <!--</td>-->
-          <!--</tr>-->
-          </tbody>
-        </table>
+    <div class="row">
+      <div class="col-xl-6 col-md-6" *ngFor="let meeting of meetingList">
+
+        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
+          <!--<div class="card-header card-head">header</div>-->
+          <div class="card-body m-1 p-1">
+            <div class="row no-gutters align-items-center">
+
+              <div class="col-md-4 col-xl-4 m-0 p-0">
+                <p class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">UpComing</p>
+
+                <div class="card">
+                  <div
+                    class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="text-xs text-center">{{ meeting.meetingStartDate | date:'MMMM' }}</h6>
+                  </div>
+
+                  <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="h3 text-center">{{ meeting.meetingStartDate | date:'dd'}}</h6>
+                    <h6 class="text-sm text-center text-primary">{{ meeting.meetingStartDate | date:'EEEE' }}</h6>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fa fa-calender fa-2x text-black-300"></i>
+                </div>
+              </div>
+              <div class="col-md-8 col-xl-8 pl-2">
+                <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.meetingName}}</p>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.meetingStartTime }}</span>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-location-arrow m-0"></p><span> {{ meeting.meetingLocation }}</span>
+                <!--<p class="">{{ meeting.meetingLocation }}</p>-->
+                <hr class="m-1">
+                <button class="btn btn-outline-primary" [routerLink]="['/notification', meeting.id]">Full Meeting
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
   <div class="col-lg-3 col-md-3">
     <app-members></app-members>

@@ -9,10 +9,10 @@ import {MeetingModel} from '../../shared/meetings.model';
 })
 export class NotificationComponent implements OnInit {
 
-  activeMeetings: MeetingModel[];
+  meetingList: MeetingModel[];
 
   constructor(private meetingService: MeetingsService) {
-    this.activeMeetings = this.meetingService.getAllMeetings();
+    this.meetingList = this.meetingService.getAllMeetings();
   }
 
   ngOnInit() {

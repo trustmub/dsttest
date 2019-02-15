@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {MeetingsService} from '../meetings.service';
+import {MeetingModel} from '../../shared/meetings.model';
 
 @Component({
   selector: 'app-exco-meeting',
@@ -6,40 +8,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./exco-meeting.component.css']
 })
 export class ExcoMeetingComponent implements OnInit {
-  /**
-   decisionItems: DecisionModel[] = [
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   new DecisionModel('AI123', '2019 skills development strategy for ICT',
-   'Develop skills develop strategy and road map. develop skills include budget forcast, invoide Direcor and ICT Develop Skills ',
-   'Prog 1: DDG CS',
-   Date.now().toString(), 'In Progress'),
-   ];
-   **/
 
-  constructor() {
+  meetingList: MeetingModel[];
+
+  constructor(private meetingService: MeetingsService) {
+    this.meetingList = this.meetingService.getAllMeetings()
   }
 
   ngOnInit() {
