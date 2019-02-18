@@ -38,6 +38,7 @@ import {MembersService} from './shared/members.service';
 import {ActionItemFormComponent} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pip';
 import {NonActionItemFormComponent} from './contents/notification/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
+import { ExcoMeetingFormComponent } from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {NonActionItemFormComponent} from './contents/notification/meeting-detail
     MeetingNonActionListComponent,
     ActionItemFormComponent,
     RemoveWhiteSpace,
-    NonActionItemFormComponent
+    NonActionItemFormComponent,
+    ExcoMeetingFormComponent
   ],
   imports: [
     BrowserModule,

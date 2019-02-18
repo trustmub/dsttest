@@ -1,10 +1,24 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Exco Meetings</h1>
-  <button class="d-none d-sm-inline-block btn btn-md btn-primary btn- shadow-sm text-white">
+  <button class="d-none d-sm-inline-block btn btn-md btn-primary btn- shadow-sm text-white"
+          data-toggle="modal" data-target=".addNewMeetingModal">
     <i class="fas fa-plus fa-sm text-white-50"></i>
     Add New
   </button>
+</div>
+
+<!-- Extra large modal for adding New Meeting-->
+<div class="modal fade addNewMeetingModal" tabindex="-1" role="dialog" aria-labelledby="addNewMeetingForm"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">Add Meeting</div>
+      <div class="modal-body">
+        <app-exco-meeting-form></app-exco-meeting-form>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -44,7 +58,7 @@
               <div class="col-md-8 col-xl-8 pl-2">
                 <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.meetingName}}</p>
                 <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.meetingStartTime }}</span>
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meeting.meetingStartTime }} - {{ meeting.meetingEndTime }}</span>
                 <hr class="m-0 p-0">
                 <p class="fas fa-fw fa-location-arrow m-0"></p><span> {{ meeting.meetingLocation }}</span>
                 <!--<p class="">{{ meeting.meetingLocation }}</p>-->

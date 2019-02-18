@@ -65,8 +65,9 @@
             <td colspan="8">
               <div class="collapse" [attr.id]="'action' + i">
                 <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  <p>Date Created: {{ item.createdDate | date:"dd MMMM yyyy HH:mm:ss"}}</p>
+                  <p>Created By: {{ item.createdBy}}</p>
+                  <p>Description: {{ item.description}}</p>
                 </div>
               </div>
             </td>
