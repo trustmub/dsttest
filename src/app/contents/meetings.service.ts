@@ -38,13 +38,19 @@ export class MeetingsService {
     this.decisions = new DecisionModel(this.actionItems, this.nonActionItems);
     this.upcoming = [
       new MeetingModel(1, 'Exco Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, [], new DecisionModel([], [])),
+      new MeetingModel(2, 'DG Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, [], new DecisionModel([], [])),
+      new MeetingModel(3, 'Exco Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, this.attendees, new DecisionModel([], [])),
+      new MeetingModel(4, 'DG Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, this.attendees, new DecisionModel([], [])),
+      new MeetingModel(5, 'DG Meeting', '09:00', '12:00',
         '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, this.attendees, this.decisions),
-      new MeetingModel(2, 'DG Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname),
-      new MeetingModel(3, 'Exco Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname),
-      new MeetingModel(4, 'DG Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname),
-      new MeetingModel(5, 'DG Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname),
-      new MeetingModel(6, 'Budget Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname),
-      new MeetingModel(7, 'Review Meeting', '09:00', '12:00', '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname)
+      new MeetingModel(6, 'Budget Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, this.attendees, this.decisions),
+      new MeetingModel(7, 'Review Meeting', '09:00', '12:00',
+        '33 Baker street, Rosebank 1st floor, Impala Boardroom', this.user.surname, this.attendees, this.decisions)
     ];
   }
 
