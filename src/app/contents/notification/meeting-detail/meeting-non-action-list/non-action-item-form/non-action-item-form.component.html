@@ -1,0 +1,49 @@
+<form [formGroup]="nonActionItemForm" (ngSubmit)="onSubmitActionItem()">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="nonActionReferenceNumber">Ref No.</label>
+        <input type="text"
+               class="form-control"
+               id="nonActionReferenceNumber"
+               name="nonActionReferenceNumber">
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9">
+      <div class="form-group">
+        <label for="nonActionItem">Item.</label>
+        <input type="text"
+               class="form-control"
+               id="nonActionItem"
+               name="nonActionItem"
+               formControlName="nonActionItem">
+        <span *ngIf="!nonActionItemForm.get('nonActionItem').valid && nonActionItemForm.get('nonActionItem').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="nonActionDescription">Description</label>
+        <textarea class="form-control"
+                  id="nonActionDescription"
+                  rows="3"
+                  name="nonActionDescription"
+                  formControlName="nonActionDescription"></textarea>
+        <span
+          *ngIf="!nonActionItemForm.get('nonActionDescription').valid && nonActionItemForm.get('nonActionDescription').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary text-white" [disabled]="!nonActionItemForm.valid" type="submit"> Save</button>
+  <button class="btn btn-dark text-white ml-3" data-dismiss="modal"> Cancel</button>
+
+</form>

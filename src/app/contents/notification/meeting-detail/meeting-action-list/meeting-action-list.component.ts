@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {NgForm} from '@angular/forms';
+
 import {ActionItemModel, MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
-import {ActivatedRoute} from '@angular/router';
 import {MembersService} from '../../../../shared/members.service';
 import {MembersModel} from '../../../members/members.model';
 
@@ -11,8 +13,9 @@ import {MembersModel} from '../../../members/members.model';
   styleUrls: ['./meeting-action-list.component.css']
 })
 export class MeetingActionListComponent implements OnInit {
+  // @ViewChild('f') actionItemForm: NgForm;
+
   meetingItemRecord: MeetingModel;
-  actionStatus = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
   members: MembersModel[];
   id: number;
 
@@ -20,10 +23,19 @@ export class MeetingActionListComponent implements OnInit {
     this.id = this.router.snapshot.params['id'];
     this.meetingItemRecord = meetingService.getMeeting(this.id);
     this.members = this.membersService.getMembers();
-    console.log(this.meetingItemRecord);
+    console.log(JSON.stringify(this.meetingItemRecord));
   }
 
   ngOnInit() {
   }
+
+  // onSubmitNewActionItem() {
+  //   console.log(this.actionItemForm);
+  //   const newItem = new ActionItemModel(
+  //     'EM 002',
+  //     this.actionItemForm.value.actionItem, '',
+  //     '', this.actionItemForm.value.actionReturnDate, '', '', '', '', Date.now());
+  //   console.log(newItem);
+  // }
 
 }

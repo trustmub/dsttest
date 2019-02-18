@@ -17,72 +17,7 @@
           <div class="modal-content">
             <div class="modal-header">Add new action item for {{ meetingItemRecord.meetingName }}</div>
             <div class="modal-body">
-              <form>
-                <div class="row">
-                  <div class="col-lg-3 col-md-3">
-                    <div class="form-group">
-                      <label for="actionReferenceNumber">Ref No.</label>
-                      <input type="text" class="form-control" id="actionReferenceNumber" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-9 col-md-9">
-                    <div class="form-group">
-                      <label for="actionItem">Item.</label>
-                      <input type="text" class="form-control" id="actionItem" required>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                      <label for="ActionDescription">Description</label>
-                      <textarea class="form-control" id="ActionDescription" rows="3" required></textarea>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-4 col-md-4">
-                    <div class="form-group">
-                      <label for="actionAssignTo">Assign To.</label>
-                      <select type="text" class="form-control" id="actionAssignTo">
-                        <option *ngFor="let member of members" required>{{ member.fullname }}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4">
-                    <div class="form-group">
-                      <label for="actionReturnDate">Return Date.</label>
-                      <input type="date" class="form-control" id="actionReturnDate" required>
-                      <div class="invalid-feedback">
-                        Please choose a date.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4">
-                    <div class="form-group">
-                      <label for="actionStatus">Status.</label>
-                      <select class="form-control" id="actionStatus">
-                        <option *ngFor="let status of actionStatus" required>{{ status }}</option>
-                      </select>
-                      <div class="invalid-feedback">
-                        Please choose a status.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                      <label for="actionFeedback">Feedback</label>
-                      <textarea class="form-control" id="actionFeedback" rows="4"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn btn-primary text-white" type="submit"> save</button>
-              </form>
+              <app-action-item-form></app-action-item-form>
             </div>
           </div>
         </div>
@@ -103,14 +38,18 @@
             <th>view</th>
           </tr>
           </thead>
-          <tbody>
-          <tr class="text-xs o-hidden" *ngFor="let item of meetingItemRecord.decisions.actionItems">
-            <td>{{ item.reference }}</td>
+          <tbody class="" *ngFor="let item of meetingItemRecord.decisions.actionItems; let i = index">
+          <tr class="text-xs o-hidden m-0 p-0"
+              data-toggle="collapse"
+              [attr.data-target]="'#action' + i"
+              aria-expanded="false"
+              [attr.aria-controls]="'action' + i">
+
+            <td>{{ item.reference | removeWhiteSpace }}</td>
             <td>{{ item.item }}</td>
             <td>{{ item.assignedTo }}</td>
             <td>{{ item.returnDate | date:"dd MMMM yyyy"}}</td>
             <td>{{ item.status }}</td>
-            <!--<td>{{ item.health }}</td>-->
             <td>
               <a class="btn btn-success btn-circle btn-sm text-white font-weight-bold align-content-center">
                 <i class="fab ">G</i>
@@ -120,6 +59,16 @@
             <td><span class="text-md"><i class="fas fa-angle-double-down  text-center"></i></span></td>
             <td>
               <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+            </td>
+          </tr>
+          <tr class="text-xs">
+            <td colspan="8">
+              <div class="collapse" [attr.id]="'action' + i">
+                <div class="card card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </div>
             </td>
           </tr>
           </tbody>

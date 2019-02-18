@@ -1,0 +1,109 @@
+<form [formGroup]="actionItemForm" (ngSubmit)="onSubmitActionItem()">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="actionReferenceNumber">Ref No.</label>
+        <input type="text"
+               class="form-control"
+               id="actionReferenceNumber"
+               name="actionReferenceNumber">
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9">
+      <div class="form-group">
+        <label for="actionItem">Item.</label>
+        <input type="text"
+               class="form-control"
+               id="actionItem"
+               name="actionItem"
+               formControlName="actionItem">
+        <span *ngIf="!actionItemForm.get('actionItem').valid && actionItemForm.get('actionItem').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="actionDescription">Description</label>
+        <textarea class="form-control"
+                  id="actionDescription"
+                  rows="3"
+                  name="actionDescription"
+                  formControlName="actionDescription"></textarea>
+        <span *ngIf="!actionItemForm.get('actionDescription').valid && actionItemForm.get('actionDescription').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="actionAssignTo">Assign To.</label>
+        <select type="text"
+                class="form-control"
+                id="actionAssignTo"
+                name="actionAssignTo"
+                formControlName="actionAssignTo">
+          <option *ngFor="let member of members" required>{{ member.fullname }}</option>
+        </select>
+        <span *ngIf="!actionItemForm.get('actionAssignTo').valid && actionItemForm.get('actionAssignTo').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="actionReturnDate">Return Date.</label>
+        <input type="date"
+               class="form-control"
+               id="actionReturnDate"
+               name="actionReturnDate"
+               formControlName="actionReturnDate">
+        <span *ngIf="!actionItemForm.get('actionReturnDate').valid && actionItemForm.get('actionReturnDate').touched"
+              class="invalid-feedback">
+          PDate is required.
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="actionStatus">Status.</label>
+        <select class="form-control"
+                id="actionStatus"
+                formControlName="actionStatus"
+                name="actionStatus">
+          <option *ngFor="let status of actionStatus" required>{{ status }}</option>
+        </select>
+        <span *ngIf="!actionItemForm.get('actionStatus').valid && actionItemForm.get('actionStatus').touched"
+              class="invalid-feedback">
+          Please choose a status.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="actionFeedback">Feedback</label>
+        <textarea class="form-control"
+                  id="actionFeedback"
+                  rows="4"
+                  formControlName="actionFeedback"
+                  name="actionFeedback"></textarea>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary text-white" [disabled]="!actionItemForm.valid" type="submit"> Save</button>
+  <button class="btn btn-dark text-white ml-3" data-dismiss="modal"> Cancel</button>
+</form>
+
+<!--(click)="onSubmitActionItem()"-->

@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
@@ -35,6 +35,9 @@ import {UserService} from './shared/user.service';
 import {MeetingActionListComponent} from './contents/notification/meeting-detail/meeting-action-list/meeting-action-list.component';
 import {MeetingNonActionListComponent} from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
 import {MembersService} from './shared/members.service';
+import {ActionItemFormComponent} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
+import {RemoveWhiteSpace} from './shared/whitespace.pip';
+import {NonActionItemFormComponent} from './contents/notification/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
 
 @NgModule({
   declarations: [
@@ -62,11 +65,15 @@ import {MembersService} from './shared/members.service';
     CabinetMeetingComponent,
     MembersComponent,
     MeetingActionListComponent,
-    MeetingNonActionListComponent
+    MeetingNonActionListComponent,
+    ActionItemFormComponent,
+    RemoveWhiteSpace,
+    NonActionItemFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
