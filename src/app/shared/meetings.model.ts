@@ -1,7 +1,7 @@
 import {MembersModel} from '../contents/members/members.model';
 
 export class MeetingModel {
-  public id: number;
+  public id?: number;
   public meetingName: string;
   public meetingStartTime: string;
   public meetingEndTime: string;

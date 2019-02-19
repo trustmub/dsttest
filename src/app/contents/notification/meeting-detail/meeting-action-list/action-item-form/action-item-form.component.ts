@@ -29,7 +29,7 @@ export class ActionItemFormComponent implements OnInit {
               private route: ActivatedRoute) {
 
     this.members = membersService.getMembers();
-    this.meetingId = +this.route.snapshot.params['id'];
+    this.meetingId = +this.route.snapshot.params.id;
   }
 
   ngOnInit() {
@@ -48,12 +48,18 @@ export class ActionItemFormComponent implements OnInit {
     console.log(this.actionItemForm);
     const newItem = new ActionItemModel(
       'EM 002',
-      this.actionItemForm.value.actionItem, this.actionItemForm.value.actionDescription,
-      this.actionItemForm.value.actionAssignTo, this.actionItemForm.value.actionReturnDate, this.actionItemForm.value.actionStatus,
-      'G', this.actionItemForm.value.actionFeedback, this.userService.getUser().surname, Date.now());
+      this.actionItemForm.value.actionItem,
+      this.actionItemForm.value.actionDescription,
+      this.actionItemForm.value.actionAssignTo,
+      new Date(this.actionItemForm.value.actionReturnDate).getTime(),
+      this.actionItemForm.value.actionStatus,
+      'G',
+      this.actionItemForm.value.actionFeedback,
+      this.userService.getUser().surname, Date.now());
     console.log(newItem);
 
     this.meetingService.getMeeting(this.meetingId).decisions.actionItems.push(newItem);
+
     console.log(this.meetingService.getMeeting(this.meetingId));
 
     this.actionItemForm.reset();
