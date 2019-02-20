@@ -39,7 +39,8 @@
                class="form-control"
                id="meetingStartDate"
                name="meetingStartDate"
-               formControlName="meetingStartDate">
+               formControlName="meetingStartDate"
+               placeholder="yyyy/mm/dd">
         <span *ngIf="!excoMeetingForm.get('meetingStartDate').valid && excoMeetingForm.get('meetingStartDate').touched"
               class="invalid-feedback">
           This field is required.
@@ -53,7 +54,8 @@
                class="form-control"
                id="meetingEndDate"
                name="meetingEndDate"
-               formControlName="meetingEndDate">
+               formControlName="meetingEndDate"
+               placeholder="yyyy/mm/dd">
         <span *ngIf="!excoMeetingForm.get('meetingEndDate').valid && excoMeetingForm.get('meetingEndDate').touched"
               class="invalid-feedback">
           This field is required.
@@ -70,7 +72,8 @@
                class="form-control"
                id="meetingStartTime"
                name="meetingStartTime"
-               formControlName="meetingStartTime">
+               formControlName="meetingStartTime"
+               placeholder="hh:mm">
         <span *ngIf="!excoMeetingForm.get('meetingStartTime').valid && excoMeetingForm.get('meetingStartTime').touched"
               class="invalid-feedback">
           This field is required.
@@ -84,7 +87,8 @@
                class="form-control"
                id="meetingEndTime"
                name="meetingEndTime"
-               formControlName="meetingEndTime">
+               formControlName="meetingEndTime"
+               placeholder="hh:mm">
         <span *ngIf="!excoMeetingForm.get('meetingEndTime').valid && excoMeetingForm.get('meetingEndTime').touched"
               class="invalid-feedback">
           This field is required.

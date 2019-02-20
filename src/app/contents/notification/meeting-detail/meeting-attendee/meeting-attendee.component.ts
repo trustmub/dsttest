@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+
 import {MembersModel} from '../../../members/members.model';
 import {MembersService} from '../../../../shared/members.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
 import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
 
@@ -26,16 +27,48 @@ export class MeetingAttendeeComponent implements OnInit {
 
   ngOnInit() {
     this.attendeeForm = new FormGroup({
-      attendeeStatus: new FormControl(null, Validators.required),
-      attendeeComment: new FormControl(null)
+      attendeeStatus0: new FormControl(null, Validators.required),
+      attendeeComment0: new FormControl(null),
+
+      attendeeStatus1: new FormControl(null, Validators.required),
+      attendeeComment1: new FormControl(null),
+
+      attendeeStatus2: new FormControl(null, Validators.required),
+      attendeeComment2: new FormControl(null),
+
+      attendeeStatus3: new FormControl(null, Validators.required),
+      attendeeComment3: new FormControl(null),
+
+      attendeeStatus4: new FormControl(null, Validators.required),
+      attendeeComment4: new FormControl(null),
+
+      attendeeStatus5: new FormControl(null, Validators.required),
+      attendeeComment5: new FormControl(null),
+
+      attendeeStatus6: new FormControl(null, Validators.required),
+      attendeeComment6: new FormControl(null)
     });
   }
 
   onSaveAttendanceClicked() {
     // const control = new FormControl(null);
-    // (this.attendeeForm.get('arrayForm') as FormArray).push(control);
-    // console.log('Number of Items : ' + this.attendeeForm);
+    // const att = (this.attendeeForm.get('attendee') as FormArray).push(control);
+    // for (let i = 0; i < this.members.length; i++) {
+    //   const status = 'attendeeStatus' + i;
+    //   att.controls.push(this.attendeeForm.value);
+    //   console.log('Number of Items : ' + this.attendeeForm);
+    // }
 
+    for (let i = 0; i < this.members.length; i++) {
+      const statusField = 'attendeeStatus' + i;
+      const commentFirl = 'attendeeComment' + i;
+
+      console.log(this.attendeeForm.value);
+    }
+  }
+
+  get identifiers() {
+    return this.attendeeForm.get('attendee') as FormArray;
   }
 
 }

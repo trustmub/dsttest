@@ -67,7 +67,8 @@
                class="form-control"
                id="actionReturnDate"
                name="actionReturnDate"
-               formControlName="actionReturnDate">
+               formControlName="actionReturnDate"
+               placeholder="yyyy/mm/dd">
         <span *ngIf="!actionItemForm.get('actionReturnDate').valid && actionItemForm.get('actionReturnDate').touched"
               class="invalid-feedback">
           PDate is required.

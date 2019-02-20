@@ -22,31 +22,31 @@
             <th>Comments</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody > <!-- formArrayName="attendee" -->
           <tr *ngFor="let member of members; let i = index">
-            <td>{{ member.fullname }}</td>
+            <td>{{ member.fullname}}</td>
             <td>{{ member.title }}</td>
             <td>Prg 1A</td>
             <td>
-              <div class="form-group">
-                <select class="form-control"
-                        [formControlName]="'attendeeStatus'"
-                        [name]="'attendeeStatus'">
-                  <option></option>
-                  <option *ngFor="let status of attendeeStatusList" required>{{ status }}</option>
-                </select>
+              <div>
+                <div class="form-group mb-0">
+                  <select class="form-control form-control-sm" [formControlName]="'attendeeStatus'+i" [name]="i">
+                    <option></option>
+                    <option *ngFor="let status of attendeeStatusList" required>{{ status }}</option>
+                  </select>
+                </div>
               </div>
             </td>
             <td>
-              <div class="form-group">
-                <input type="text"
-                       class="form-control"
-                       [name]="'attendeeComment'"
-                       [formControlName]="'attendeeComment'">
+              <div>
+                <div class="form-group mb-0">
+                  <input type="text" class="form-control form-control-sm" [formControlName]="'attendeeComment'+ i"
+                         [name]="'attendeeComment'+i">
+                </div>
               </div>
-
             </td>
           </tr>
+
           </tbody>
           <button class="btn btn-primary text-white" [disabled]="!attendeeForm.valid" type="submit"> Save</button>
         </table>
