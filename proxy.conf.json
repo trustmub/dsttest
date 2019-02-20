@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://etracking-dst.herokuapp.com/api",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

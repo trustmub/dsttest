@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpEvent, HttpResponse} from '@angular/common/http';
+
 import {AuthenticationService} from './authentication.service';
-import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-authentication',
@@ -9,6 +11,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class AuthenticationComponent implements OnInit {
   loginForm: FormGroup;
+  loginError = false;
 
   constructor(private authenticationService: AuthenticationService) {
   }
@@ -16,14 +19,26 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit() {
 
     this.loginForm = new FormGroup({
-      userEmail: new FormControl(null),
-      userPassword: new FormControl(null)
+      userEmail: new FormControl(null, [Validators.required, Validators.email]),
+      userPassword: new FormControl(null, Validators.required)
     });
   }
 
   onLoginClicked() {
-    console.log(this.loginForm);
-    this.authenticationService.setAuthentication(true);
+    if (this.loginForm.valid) {
+      this.authenticationService.loginUser({email: this.loginForm.value.userEmail, password: this.loginForm.value.userPassword})
+        .subscribe(
+          (response: HttpResponse<object>) => {
+            console.log(response);
+            this.authenticationService.setAuthentication(true);
+          },
+          (error) => {
+            console.log(error);
+            this.loginError = true;
+          }
+        );
+    }
+    // this.authenticationService.setAuthentication(true);
   }
 
 }

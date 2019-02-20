@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './navigation/navigation.component';
@@ -38,8 +38,9 @@ import {MembersService} from './shared/members.service';
 import {ActionItemFormComponent} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pip';
 import {NonActionItemFormComponent} from './contents/notification/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
-import { ExcoMeetingFormComponent } from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
+import {ExcoMeetingFormComponent} from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
 import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/meeting-attendee/meeting-attendee.component';
+import {AuthInterceptor} from './shared/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -79,9 +80,16 @@ import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/m
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [MeetingsService, AuthService, AuthGuardService, AuthenticationService, UserService, MembersService],
+  providers: [MeetingsService,
+    AuthService,
+    AuthGuardService,
+    AuthenticationService,
+    UserService,
+    MembersService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

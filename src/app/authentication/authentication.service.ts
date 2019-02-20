@@ -1,6 +1,8 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs';
+import {UserModel} from '../shared/user.model';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
@@ -14,7 +16,6 @@ export class AuthenticationService {
   }
 
   getAuthenticationStatus() {
-    this.loginUser();
     return this.isAuthenticated;
   }
 
@@ -28,16 +29,9 @@ export class AuthenticationService {
    *
    **/
 
-  loginUser() {
-    this.httpClient.get(this.baseUrl + 'api/user/login', {
-      observe: 'response',
-      // body: {email: 'trustmub@gmail.com', password: 'password'}
-    }).subscribe(
-      (response) => {
-        console.log(response);
-        return '';
-      }
-    );
+  loginUser(credentials: { email: string, password: string }) {
+    return this.httpClient.post('api/user/login',
+      credentials, {observe: 'body'});
   }
 
   setAuthentication(auth: boolean) {
