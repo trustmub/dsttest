@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from './authentication.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {log} from 'util';
 
 @Component({
   selector: 'app-authentication',
@@ -23,7 +22,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onLoginClicked() {
-    log(this.loginForm);
+    console.log(this.loginForm);
     this.authenticationService.setAuthentication(true);
   }
 

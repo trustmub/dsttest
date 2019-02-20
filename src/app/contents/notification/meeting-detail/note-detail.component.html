@@ -18,7 +18,8 @@
 
                   <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
                     <h6 class="h3 text-center">{{ notificationObj.meetingStartDate | date:'dd'}}</h6>
-                    <h6 class="text-sm text-center text-primary">{{ notificationObj.meetingStartDate | date:'EEEE' }}</h6>
+                    <h6
+                      class="text-sm text-center text-primary">{{ notificationObj.meetingStartDate | date:'EEEE' }}</h6>
                   </div>
                 </div>
                 <div class="col-auto">
@@ -29,7 +30,8 @@
                 <p
                   class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ notificationObj.meetingName}}</p>
                 <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ notificationObj.meetingStartTime }}</span>
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ notificationObj.meetingStartTime }}
+                - {{ notificationObj.meetingEndTime }}</span>
                 <hr class="m-0 p-0">
                 <p class="fas fa-fw fa-map-marker-alt"></p><span> {{ notificationObj.meetingLocation }}</span>
                 <!--<p class="">{{ meeting.meetingLocation }}</p>-->
@@ -69,11 +71,11 @@
             upload register
           </div>
         </div>
-        <!-- Nav tab contents for Agenda, Meeting Minutes and Attending register-->
+        <!-- End Nav tab contents for Agenda, Meeting Minutes and Attending register-->
       </div>
-
+      <!-- -->
       <div class="tab-pane fade" id="list-attendee" role="tabpanel" aria-labelledby="list-attendee-list">
-        <h1>attendees</h1>
+        <app-meeting-attendee></app-meeting-attendee>
       </div>
 
       <!-- Discussion tab details -->

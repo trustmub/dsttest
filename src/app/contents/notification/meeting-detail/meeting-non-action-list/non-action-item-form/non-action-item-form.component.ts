@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MeetingsService} from '../../../../meetings.service';
 import {MeetingModel, NonActionItemModel} from '../../../../../shared/meetings.model';
 import {ActivatedRoute} from '@angular/router';
@@ -23,8 +23,8 @@ export class NonActionItemFormComponent implements OnInit {
 
   ngOnInit() {
     this.nonActionItemForm = new FormGroup({
-      nonActionItem: new FormControl(null),
-      nonActionDescription: new FormControl(null)
+      nonActionItem: new FormControl(null, Validators.required),
+      nonActionDescription: new FormControl(null, Validators.required)
     });
   }
 
@@ -33,7 +33,10 @@ export class NonActionItemFormComponent implements OnInit {
     const nonActionRecord = new NonActionItemModel(
       'EM 200',
       this.nonActionItemForm.value.nonActionItem,
-      this.nonActionItemForm.value.nonActionDescription, fullname, Date.now());
+      this.nonActionItemForm.value.nonActionDescription,
+      fullname,
+      Date.now());
+    this.nonActionItemForm.reset();
 
     this.meetingRecord.decisions.nonActionItems.push(nonActionRecord);
   }

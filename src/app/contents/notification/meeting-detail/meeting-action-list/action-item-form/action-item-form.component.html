@@ -51,6 +51,7 @@
                 id="actionAssignTo"
                 name="actionAssignTo"
                 formControlName="actionAssignTo">
+          <option></option>
           <option *ngFor="let member of members" required>{{ member.fullname }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionAssignTo').valid && actionItemForm.get('actionAssignTo').touched"
@@ -80,6 +81,7 @@
                 id="actionStatus"
                 formControlName="actionStatus"
                 name="actionStatus">
+          <option></option>
           <option *ngFor="let status of actionStatus" required>{{ status }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionStatus').valid && actionItemForm.get('actionStatus').touched"

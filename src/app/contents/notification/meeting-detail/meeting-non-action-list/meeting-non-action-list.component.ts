@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
 import {ActivatedRoute} from '@angular/router';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-meeting-non-action-list',
@@ -10,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MeetingNonActionListComponent implements OnInit {
   meetingItemRecord: MeetingModel;
-  private meetingId: number;
+  private readonly meetingId: number;
 
 
   constructor(private route: ActivatedRoute, private  meetingService: MeetingsService) {

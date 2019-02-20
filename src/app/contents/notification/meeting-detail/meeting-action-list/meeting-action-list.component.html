@@ -75,6 +75,12 @@
           </tbody>
         </table>
       </div>
+      <div class="card-footer">
+        <button class="btn btn-outline-primary"
+                [disabled]="(meetingItemRecord.decisions.actionItems == undefined || meetingItemRecord.decisions.actionItems.length < 1 )">
+          Send
+        </button>
+      </div>
     </div>
   </div>
 </div>

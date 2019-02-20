@@ -29,6 +29,10 @@ export class MeetingActionListComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitActionItems() {
+
+  }
+
   // onSubmitNewActionItem() {
   //   console.log(this.actionItemForm);
   //   const newItem = new ActionItemModel(

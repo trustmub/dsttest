@@ -39,15 +39,17 @@ export class MeetingModel {
 }
 
 export class AttendeesModel {
-  public member: MembersModel;
-  public attending: boolean;
-  public apologies: boolean;
+  public member: string;
+  public designation: string;
+  public programme: string;
+  public status: string;
   public comments: string;
 
-  constructor(member: MembersModel, attending: boolean, apologies: boolean, comments: string) {
+  constructor(member: string, designation: string, programme: string, status: string, comments: string) {
     this.member = member;
-    this.attending = attending;
-    this.apologies = apologies;
+    this.designation = designation;
+    this.programme = programme;
+    this.status = status;
     this.comments = comments;
   }
 }
