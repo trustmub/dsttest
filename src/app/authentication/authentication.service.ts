@@ -30,7 +30,7 @@ export class AuthenticationService {
    */
 
   loginUser(credentials: { email: string, password: string }) {
-    return this.httpClient.post(this.baseUrl + 'api/user/login',
+    return this.httpClient.post('api/user/login',
       credentials, {observe: 'response', responseType: 'json'});
   }
 
