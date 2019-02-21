@@ -1,15 +1,16 @@
 import {MembersModel} from '../contents/members/members.model';
 
+
 export class MeetingModel {
   public id?: string;
   public meetingName: string;
   public meetingStartTime: string;
   public meetingEndTime: string;
   public meetingLocation: string;
-  public meetingStartDate: number;
-  public meetingEndDate: number;
+  public meetingStartDate: string;
+  public meetingEndDate: string;
   public createdBy: string;
-  public createdDate: number;
+  public createdDate: string;
   public attendees?: AttendeesModel[];
   public decisions?: DecisionModel;
 
@@ -19,11 +20,11 @@ export class MeetingModel {
               meetingEndTime: string,
               taskLocation: string,
               createdBy: string,
+              meetingStartDate: string,
+              meetingEndDate: string,
               attendees?: AttendeesModel[],
               decisions?: DecisionModel,
-              meetingStartDate: number = Date.now(),
-              meetingEndDate: number = Date.now(),
-              createdDate: number = Date.now()) {
+              createdDate: string = (new Date().toISOString())) {
     this.id = id;
     this.meetingName = meetingName;
     this.meetingStartTime = meetingStartTime;
@@ -89,23 +90,23 @@ export class ActionItemModel {
   public item: string;
   public description: string;
   public assignedTo: string;
-  public returnDate: number;
+  public returnDate: string;
   public status: string;
   public health: string;
   public feedback: string;
   public createdBy: string;
-  public createdDate: number;
+  public createdDate: string;
 
   constructor(reference: string,
               item: string,
               description: string,
               assignedTo: string,
-              returnDate: number,
+              returnDate: string,
               status: string,
               health: string,
               feedback: string,
               createdBy: string,
-              createdDate: number = Date.now()) {
+              createdDate: string = new Date().toISOString()) {
     this.reference = reference;
     this.item = item;
     this.description = description;

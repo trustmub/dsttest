@@ -46,21 +46,33 @@ export class ActionItemFormComponent implements OnInit {
 
   onSubmitActionItem() {
     console.log(this.actionItemForm);
+    const returnDate = new Date(this.actionItemForm.value.actionReturnDate);
+    console.log('return date: ', returnDate.toISOString());
     const newItem = new ActionItemModel(
       'EM 002',
       this.actionItemForm.value.actionItem,
       this.actionItemForm.value.actionDescription,
       this.actionItemForm.value.actionAssignTo,
-      new Date(this.actionItemForm.value.actionReturnDate).getTime(),
+      returnDate.toISOString(),
       this.actionItemForm.value.actionStatus,
       'G',
       this.actionItemForm.value.actionFeedback,
-      this.userService.getUser().surname, Date.now());
+      this.userService.getUser().surname,
+      new Date().toISOString());
     console.log(newItem);
 
     this.meetingService.getMeeting(this.meetingId).decisions.actionItems.push(newItem);
 
     console.log(this.meetingService.getMeeting(this.meetingId));
+
+    this.meetingService.updateMeeting(this.meetingService.getMeeting(this.meetingId)).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
     this.actionItemForm.reset();
 

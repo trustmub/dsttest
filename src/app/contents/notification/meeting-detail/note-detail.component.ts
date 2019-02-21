@@ -10,11 +10,11 @@ import {MeetingModel} from '../../../shared/meetings.model';
   styleUrls: ['./note-detail.component.css'],
 })
 export class NoteDetailComponent implements OnInit, OnDestroy {
-  notificationObj: MeetingModel;
+  meetingRecord: MeetingModel;
   paramSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private tasksService: MeetingsService) {
-    this.notificationObj = this.tasksService.getMeeting(this.route.snapshot.params['id']);
+  constructor(private route: ActivatedRoute, private meetingService: MeetingsService) {
+    this.meetingRecord = this.meetingService.getMeeting(this.route.snapshot.params['id']);
     console.log('id from snapshot', this.route.snapshot.params['id']);
   }
 
@@ -24,8 +24,8 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
       .subscribe(
         (params: Params) => {
           console.log('Param from the observer' + params['id']);
-          this.notificationObj = this.tasksService.getMeeting(params['id']);
-          console.log('The Meeting object' + this.notificationObj);
+          this.meetingRecord = this.meetingService.getMeeting(params['id']);
+          console.log('The Meeting object' + this.meetingRecord);
 
         }
       );

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MeetingsService} from '../../meetings.service';
-import {DecisionModel, MeetingModel} from '../../../shared/meetings.model';
 import {UserService} from '../../../shared/user.service';
 
 @Component({
@@ -30,20 +29,19 @@ export class ExcoMeetingFormComponent implements OnInit {
 
   onSubmitMeeting() {
     const makeid = this.meetingService.getAllMeetings().length;
-    const newMeeting: MeetingModel = new MeetingModel(
-      '',
-      this.excoMeetingForm.value.meetingName,
-      this.excoMeetingForm.value.meetingStartTime,
-      this.excoMeetingForm.value.meetingEndTime,
-      this.excoMeetingForm.value.meetingVenue,
-      this.user,
-      [],
-      new DecisionModel([], []),
-      new Date(this.excoMeetingForm.value.meetingStartDate).getTime(),
-      new Date(this.excoMeetingForm.value.meetingStartDate).getTime(),
-      Date.now());
-
-    this.meetingService.addMeeting(newMeeting);
+    const obj = {
+      meetingName: this.excoMeetingForm.value.meetingName,
+      meetingStartTime: this.excoMeetingForm.value.meetingStartTime,
+      meetingEndTime: this.excoMeetingForm.value.meetingEndTime,
+      meetingLocation: this.excoMeetingForm.value.meetingVenue,
+      meetingStartDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),
+      meetingEndDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),
+      createdBy: this.user,
+      createdDate: (new Date().toISOString()),
+      attendees: [],
+      decisions: {actionItems: [], nonActionItems: []}
+    };
+    this.meetingService.addMeeting(obj);
 
     this.excoMeetingForm.reset();
     console.log(this.meetingService.getAllMeetings());

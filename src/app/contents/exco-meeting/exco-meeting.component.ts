@@ -13,9 +13,17 @@ export class ExcoMeetingComponent implements OnInit {
 
   constructor(private meetingService: MeetingsService) {
     this.meetingList = this.meetingService.getAllMeetings();
+
   }
 
   ngOnInit() {
+    this.meetingService.fetchMeetings().subscribe(
+      (response) => {
+        this.meetingList = response.body;
+      },
+      () => {
+      }
+    );
   }
 
 }

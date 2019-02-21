@@ -41,8 +41,23 @@ export class MeetingsService {
     return this.upcoming.filter(x => x.id === id)[0];
   }
 
-  addMeeting(meeting: MeetingModel) {
-    this.upcoming.push(meeting);
+  addMeeting(meeting) {
+    this.http.post('api/meeting', meeting, {observe: 'response'}).subscribe(
+      () => {
+        this.fetchMeetings().subscribe(
+          (response) => {
+            this.upcoming = response.body;
+          });
+      },
+      (error) => {
+
+        console.log(error);
+      }
+    );
+  }
+
+  updateMeeting(meeting: MeetingModel) {
+    return this.http.put('api/meeting', meeting, {observe: 'response'});
   }
 
   getAllMeetings() {
