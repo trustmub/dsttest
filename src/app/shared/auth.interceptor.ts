@@ -13,9 +13,11 @@ export class AuthInterceptor implements HttpInterceptor {
     if (this.userService.getUserToken() !== undefined) {
       const tk = this.userService.getUserToken().token;
       const copiedReq = req.clone({headers: req.headers.append('Authorization', tk)});
+      console.log('Auth Log', copiedReq)
       return next.handle(copiedReq);
     }
     // const copiedReq = req.clone({headers: req.headers.set('Access-Control-Allow-Credentials', '*')});
+    console.log(req);
     return next.handle(req);
   }
 }
