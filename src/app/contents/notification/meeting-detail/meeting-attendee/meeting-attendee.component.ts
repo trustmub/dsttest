@@ -15,12 +15,12 @@ import {MeetingsService} from '../../../meetings.service';
 export class MeetingAttendeeComponent implements OnInit {
   members: MembersModel[];
   meetingRecord: MeetingModel;
-  meetingId: number;
+  meetingId: string;
   attendeeStatusList = ['Present', 'Absent', 'Somewhere Else', 'Apology'];
   attendeeForm: FormGroup;
 
   constructor(private memberService: MembersService, private route: ActivatedRoute, private meetingService: MeetingsService) {
-    this.meetingId = +this.route.snapshot.params['id'];
+    this.meetingId = this.route.snapshot.params['id'];
     this.meetingRecord = this.meetingService.getMeeting(this.meetingId);
     this.members = this.memberService.getMembers();
   }

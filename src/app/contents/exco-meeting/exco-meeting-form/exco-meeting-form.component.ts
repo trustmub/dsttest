@@ -31,7 +31,7 @@ export class ExcoMeetingFormComponent implements OnInit {
   onSubmitMeeting() {
     const makeid = this.meetingService.getAllMeetings().length;
     const newMeeting: MeetingModel = new MeetingModel(
-      makeid + 1,
+      '',
       this.excoMeetingForm.value.meetingName,
       this.excoMeetingForm.value.meetingStartTime,
       this.excoMeetingForm.value.meetingEndTime,

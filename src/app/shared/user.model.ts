@@ -11,3 +11,11 @@ export class UserModel {
     this.imageString = imageString;
   }
 }
+
+export class AuthTokenModel {
+  public token?: string;
+
+  constructor(token: string) {
+    this.token = token;
+  }
+}

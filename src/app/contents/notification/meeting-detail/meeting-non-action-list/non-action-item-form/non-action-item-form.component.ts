@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+
 import {MeetingsService} from '../../../../meetings.service';
 import {MeetingModel, NonActionItemModel} from '../../../../../shared/meetings.model';
-import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../../../shared/user.service';
 
 @Component({
@@ -14,10 +15,10 @@ export class NonActionItemFormComponent implements OnInit {
 
   nonActionItemForm: FormGroup;
   meetingRecord: MeetingModel;
-  meetingId: number;
+  meetingId: string;
 
   constructor(private meetingService: MeetingsService, private route: ActivatedRoute, private userService: UserService) {
-    this.meetingId = +this.route.snapshot.params['id'];
+    this.meetingId = this.route.snapshot.params['id'];
     this.meetingRecord = meetingService.getMeeting(this.meetingId);
   }
 

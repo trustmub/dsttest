@@ -31,7 +31,7 @@ export class AuthenticationService {
 
   loginUser(credentials: { email: string, password: string }) {
     return this.httpClient.post('api/user/login',
-      credentials, {observe: 'body'});
+      credentials, {observe: 'response', responseType: 'json'});
   }
 
   setAuthentication(auth: boolean) {

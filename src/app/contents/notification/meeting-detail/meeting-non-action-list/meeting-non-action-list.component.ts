@@ -11,7 +11,7 @@ import {FormGroup} from '@angular/forms';
 })
 export class MeetingNonActionListComponent implements OnInit {
   meetingItemRecord: MeetingModel;
-  private readonly meetingId: number;
+  private readonly meetingId: string;
 
 
   constructor(private route: ActivatedRoute, private  meetingService: MeetingsService) {

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpEvent, HttpResponse} from '@angular/common/http';
 
 import {AuthenticationService} from './authentication.service';
+import {UserService} from '../shared/user.service';
 
 @Component({
   selector: 'app-authentication',
@@ -13,7 +14,7 @@ export class AuthenticationComponent implements OnInit {
   loginForm: FormGroup;
   loginError = false;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -28,8 +29,9 @@ export class AuthenticationComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authenticationService.loginUser({email: this.loginForm.value.userEmail, password: this.loginForm.value.userPassword})
         .subscribe(
-          (response: HttpResponse<object>) => {
-            console.log(response);
+          (response) => {
+            console.log(response.headers.get('Authorization'));
+            this.userService.setUserToken(response.headers.get('Authorization'));
             this.authenticationService.setAuthentication(true);
           },
           (error) => {

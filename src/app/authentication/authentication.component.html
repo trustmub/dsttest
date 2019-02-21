@@ -16,7 +16,7 @@
                   <h1 class="h4 text-gray-900 mb-4">Please login!</h1>
                 </div>
                 <form class="user" [formGroup]="loginForm" (ngSubmit)="onLoginClicked()">
-                  <div class="card card-body bg-danger" *ngIf="loginError">
+                  <div class="alert alert-danger" *ngIf="loginError">
                     <p class="text-white text-sm-center">Something went wrong. please check username and password</p>
                   </div>
                   <div class="form-group align-center">

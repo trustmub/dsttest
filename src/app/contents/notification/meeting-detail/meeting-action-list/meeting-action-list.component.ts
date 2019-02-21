@@ -17,7 +17,7 @@ export class MeetingActionListComponent implements OnInit {
 
   meetingItemRecord: MeetingModel;
   members: MembersModel[];
-  id: number;
+  id: string;
 
   constructor(private router: ActivatedRoute, private meetingService: MeetingsService, private membersService: MembersService) {
     this.id = this.router.snapshot.params['id'];
@@ -28,18 +28,5 @@ export class MeetingActionListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  submitActionItems() {
-
-  }
-
-  // onSubmitNewActionItem() {
-  //   console.log(this.actionItemForm);
-  //   const newItem = new ActionItemModel(
-  //     'EM 002',
-  //     this.actionItemForm.value.actionItem, '',
-  //     '', this.actionItemForm.value.actionReturnDate, '', '', '', '', Date.now());
-  //   console.log(newItem);
-  // }
 
 }

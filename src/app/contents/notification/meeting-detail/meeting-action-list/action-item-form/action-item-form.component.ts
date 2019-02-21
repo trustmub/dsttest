@@ -16,7 +16,7 @@ import {UserService} from '../../../../../shared/user.service';
 export class ActionItemFormComponent implements OnInit {
   // @ViewChild('f') actionItemForm: NgForm;
   actionItemForm: FormGroup;
-  meetingId: number;
+  meetingId: string;
 
   actionStatus = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
   members: MembersModel[];
@@ -29,7 +29,7 @@ export class ActionItemFormComponent implements OnInit {
               private route: ActivatedRoute) {
 
     this.members = membersService.getMembers();
-    this.meetingId = +this.route.snapshot.params.id;
+    this.meetingId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {

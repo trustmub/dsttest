@@ -1,7 +1,7 @@
 import {MembersModel} from '../contents/members/members.model';
 
 export class MeetingModel {
-  public id?: number;
+  public id?: string;
   public meetingName: string;
   public meetingStartTime: string;
   public meetingEndTime: string;
@@ -13,7 +13,7 @@ export class MeetingModel {
   public attendees?: AttendeesModel[];
   public decisions?: DecisionModel;
 
-  constructor(id: number,
+  constructor(id: string,
               meetingName: string,
               meetingStartTime: string,
               meetingEndTime: string,

@@ -36,7 +36,7 @@ import {MeetingActionListComponent} from './contents/notification/meeting-detail
 import {MeetingNonActionListComponent} from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
 import {MembersService} from './shared/members.service';
 import {ActionItemFormComponent} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
-import {RemoveWhiteSpace} from './shared/whitespace.pip';
+import {RemoveWhiteSpace} from './shared/whitespace.pipe';
 import {NonActionItemFormComponent} from './contents/notification/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
 import {ExcoMeetingFormComponent} from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
 import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/meeting-attendee/meeting-attendee.component';
