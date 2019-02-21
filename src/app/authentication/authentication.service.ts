@@ -27,7 +27,7 @@ export class AuthenticationService {
    *    "password": "password"
    * }
    *
-   **/
+   */
 
   loginUser(credentials: { email: string, password: string }) {
     return this.httpClient.post('api/user/login',

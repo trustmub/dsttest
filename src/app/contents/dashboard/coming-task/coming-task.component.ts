@@ -19,11 +19,11 @@ export class ComingTaskComponent implements OnInit, OnDestroy {
       (response) => {
         console.log(response);
         const recordNumber = response.body.length;
-
+        this.meetingService.clearMeetingList();
         for (let i = 0; i < recordNumber; i++) {
-          // this.meetingService.addTask(response.body[i]);
+          // this.meetingService.updateMeetingList(response.body[i]);
           const record = response.body[i];
-          const r = this.meetingService.addTask(record);
+          const r = this.meetingService.updateMeetingList(record);
           console.log(response.body[i]);
         }
         this.upcoming = this.meetingService.getAllMeetings().filter((item, index) => index < 2);

@@ -25,8 +25,12 @@ export class MeetingsService {
 
   }
 
-  addTask(record: MeetingModel) {
+  updateMeetingList(record: MeetingModel) {
     this.upcoming.push(record);
+  }
+
+  clearMeetingList() {
+    this.upcoming = [];
   }
 
   setMeetings(meetings: MeetingModel[]) {
