@@ -29,6 +29,7 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
 
         }
       );
+    this.meetingService.getAllMeetings();
   }
 
   ngOnDestroy(): void {

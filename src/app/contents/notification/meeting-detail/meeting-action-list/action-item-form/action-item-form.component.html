@@ -82,8 +82,8 @@
                 id="actionStatus"
                 formControlName="actionStatus"
                 name="actionStatus">
-          <option></option>
-          <option *ngFor="let status of actionStatus" required>{{ status }}</option>
+          <option value="Created"></option>
+          <option *ngFor="let status of actionStatus">{{ status }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionStatus').valid && actionItemForm.get('actionStatus').touched"
               class="invalid-feedback">

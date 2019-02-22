@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
 import {ActivatedRoute} from '@angular/router';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-meeting-non-action-list',

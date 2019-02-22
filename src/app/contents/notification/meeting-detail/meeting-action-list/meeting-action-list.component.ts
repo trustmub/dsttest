@@ -1,8 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {NgForm} from '@angular/forms';
 
-import {ActionItemModel, MeetingModel} from '../../../../shared/meetings.model';
+import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
 import {MembersService} from '../../../../shared/members.service';
 import {MembersModel} from '../../../members/members.model';
@@ -13,7 +12,6 @@ import {MembersModel} from '../../../members/members.model';
   styleUrls: ['./meeting-action-list.component.css']
 })
 export class MeetingActionListComponent implements OnInit {
-  // @ViewChild('f') actionItemForm: NgForm;
 
   meetingItemRecord: MeetingModel;
   members: MembersModel[];

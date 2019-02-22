@@ -31,15 +31,39 @@ export class NonActionItemFormComponent implements OnInit {
 
   onSubmitActionItem() {
     const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().surname;
-    const nonActionRecord = new NonActionItemModel(
-      'EM 200',
-      this.nonActionItemForm.value.nonActionItem,
-      this.nonActionItemForm.value.nonActionDescription,
-      fullname,
-      Date.now());
+    const obj = {
+      reference: 'EM 200',
+      item: this.nonActionItemForm.value.nonActionItem,
+      description: this.nonActionItemForm.value.nonActionDescription,
+      createdBy: fullname,
+      createDate: (new Date().toISOString())
+    };
+
+    console.log(JSON.stringify(obj));
+
+    this.meetingService.getMeeting(this.meetingId).decisions.nonActionItems.push(obj);
+
+    this.meetingService.updateMeeting(this.meetingService.getMeeting(this.meetingId)).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
     this.nonActionItemForm.reset();
 
-    this.meetingRecord.decisions.nonActionItems.push(nonActionRecord);
+
+    // const nonActionRecord = new NonActionItemModel(
+    //   'EM 200',
+    //   this.nonActionItemForm.value.nonActionItem,
+    //   this.nonActionItemForm.value.nonActionDescription,
+    //   fullname,
+    //   new Date().toISOString());
+    // this.nonActionItemForm.reset();
+
+    // this.meetingRecord.decisions.nonActionItems.push(nonActionRecord);
   }
 
 }

@@ -61,10 +61,44 @@ export class MeetingsService {
   }
 
   getAllMeetings() {
+    if (this.upcoming === undefined || this.upcoming === []) {
+      this.fetchMeetings().subscribe(
+        (response) => {
+          this.upcoming = response.body;
+          return this.upcoming;
+        },
+        (error) => {
+        }
+      );
+    }
     return this.upcoming;
   }
 
   fetchMeetings() {
     return this.http.get<MeetingModel[]>('api/meeting/list', {observe: 'response', responseType: 'json'});
   }
+
+  createM() {
+
+  }
+
+  readM() {
+  }
+
+  UpdateM() {
+  }
+
+
+  deleteM(id: string) {
+    this.http.delete('api/meeting' + id, {observe: 'response'})
+      .subscribe(
+        (response) => {
+          return {result: response.body, message: 'Created', status: response.status,};
+        },
+        (error) => {
+          return {result: '', message: error, status: error.status};
+        }
+      );
+  }
+
 }

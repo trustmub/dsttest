@@ -74,9 +74,9 @@ export class NonActionItemModel {
   public item: string;
   public description: string;
   public createdBy: string;
-  public createDate: number;
+  public createDate: string;
 
-  constructor(reference: string, item: string, description: string, createdBy: string, createDate: number = Date.now()) {
+  constructor(reference: string, item: string, description: string, createdBy: string, createDate: string) {
     this.reference = reference;
     this.item = item;
     this.description = description;
