@@ -39,6 +39,20 @@
               </div>
             </div>
           </div>
+          <div class="card-footer d-sm-flex align-items-center justify-content-between">
+            <div>
+              <small *ngIf="!loading">...</small>
+              <div *ngIf="loading">
+                <small>Deleting Meeting...</small>
+                <div class="spinner-grow" role="status" >
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <a (click)="onDeleteMeetingClicked()">delete meeting</a>
+            </div>
+          </div>
         </div>
         <!-- end of Meetings details card -->
 

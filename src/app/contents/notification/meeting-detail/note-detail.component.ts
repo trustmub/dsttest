@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {MeetingsService} from '../../meetings.service';
 import {MeetingModel} from '../../../shared/meetings.model';
@@ -12,10 +12,13 @@ import {MeetingModel} from '../../../shared/meetings.model';
 export class NoteDetailComponent implements OnInit, OnDestroy {
   meetingRecord: MeetingModel;
   paramSubscription: Subscription;
+  id: string;
+  loading = false;
+  result: any;
 
-  constructor(private route: ActivatedRoute, private meetingService: MeetingsService) {
-    this.meetingRecord = this.meetingService.getMeeting(this.route.snapshot.params['id']);
-    console.log('id from snapshot', this.route.snapshot.params['id']);
+  constructor(private route: ActivatedRoute, private meetingService: MeetingsService, private router: Router) {
+    this.id = this.route.snapshot.params['id'];
+    this.meetingRecord = this.meetingService.getMeeting(this.id);
   }
 
   ngOnInit() {
@@ -30,6 +33,26 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
         }
       );
     this.meetingService.getAllMeetings();
+  }
+
+  onDeleteMeetingClicked() {
+    this.loading = true;
+
+    this.meetingService.deleteM(this.id).then(
+      (outcome: any) => {
+        this.result = outcome;
+        console.log(this.result);
+        if (this.result.status === 200) {
+          this.loading = false;
+          this.router.navigate(['meetings/exco']);
+        }
+      }
+    );
+
+    // if (result === 200) {
+    //   this.loading = false;
+    //   this.router.navigate(['meetings/exco']);
+    // }
   }
 
   ngOnDestroy(): void {

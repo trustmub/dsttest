@@ -45,9 +45,7 @@ export class ActionItemFormComponent implements OnInit {
   }
 
   onSubmitActionItem() {
-    console.log(this.actionItemForm);
     const returnDate = new Date(this.actionItemForm.value.actionReturnDate);
-    console.log('return date: ', returnDate.toISOString());
     const newItem = new ActionItemModel(
       'EM 002',
       this.actionItemForm.value.actionItem,
@@ -59,13 +57,18 @@ export class ActionItemFormComponent implements OnInit {
       this.actionItemForm.value.actionFeedback,
       this.userService.getUser().surname,
       new Date().toISOString());
-    console.log(newItem);
+    console.log(JSON.stringify(newItem));
 
-    this.meetingService.getMeeting(this.meetingId).decisions.actionItems.push(newItem);
+    // get meeting record
+    const meetingRec = this.meetingService.getMeeting(this.meetingId);
+
+    // push the new action item
+    meetingRec.decisions.actionItems.push(newItem);
 
     console.log(this.meetingService.getMeeting(this.meetingId));
 
-    this.meetingService.updateMeeting(this.meetingService.getMeeting(this.meetingId)).subscribe(
+    // update to back end
+    this.meetingService.updateMeeting(meetingRec).subscribe(
       (response) => {
         console.log(response);
       },
@@ -73,7 +76,7 @@ export class ActionItemFormComponent implements OnInit {
         console.log(error);
       }
     );
-
+    // reset form
     this.actionItemForm.reset();
 
   }

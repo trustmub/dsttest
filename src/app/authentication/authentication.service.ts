@@ -6,7 +6,8 @@ import 'rxjs';
 export class AuthenticationService {
 
   isAuthenticated = new EventEmitter<boolean>();
-  private baseUrl = 'https://etracking-dst.herokuapp.com/';
+
+  // private baseUrl = 'https://etracking-dst.herokuapp.com/';
 
   // authenticationObserver: Observer<boolean>;
 

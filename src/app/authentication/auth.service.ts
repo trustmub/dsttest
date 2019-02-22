@@ -4,7 +4,6 @@ import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class AuthService {
-  loggedin = false;
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
   }
@@ -18,18 +17,5 @@ export class AuthService {
       }
     );
 
-  }
-
-  login() {
-    this.loggedin = true;
-  }
-
-  backendLogin(credentials: any) {
-    const header = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:5001/api/v1/login/', credentials, {headers: header});
-  }
-
-  logout() {
-    this.loggedin = false;
   }
 }

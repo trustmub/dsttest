@@ -13,6 +13,7 @@ import {UserService} from '../shared/user.service';
 export class AuthenticationComponent implements OnInit {
   loginForm: FormGroup;
   loginError = false;
+  loading = false;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService) {
   }
@@ -26,21 +27,23 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onLoginClicked() {
+    this.loading = true;
+
     if (this.loginForm.valid) {
       this.authenticationService.loginUser({email: this.loginForm.value.userEmail, password: this.loginForm.value.userPassword})
         .subscribe(
           (response) => {
-            console.log(response.headers.get('Authorization'));
             this.userService.setUserToken(response.headers.get('Authorization'));
             this.authenticationService.setAuthentication(true);
+            this.loading = false;
           },
           (error) => {
             console.log(error);
             this.loginError = true;
+            this.loading = false;
           }
         );
     }
-    // this.authenticationService.setAuthentication(true);
   }
 
 }

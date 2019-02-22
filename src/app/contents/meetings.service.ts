@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActionItemModel, AttendeesModel, DecisionModel, MeetingModel, NonActionItemModel} from '../shared/meetings.model';
 import {UserService} from '../shared/user.service';
 import {UserModel} from '../shared/user.model';
+import {reject} from 'q';
 
 @Injectable()
 export class MeetingsService {
@@ -90,15 +91,27 @@ export class MeetingsService {
 
 
   deleteM(id: string) {
-    this.http.delete('api/meeting' + id, {observe: 'response'})
-      .subscribe(
-        (response) => {
-          return {result: response.body, message: 'Created', status: response.status,};
-        },
-        (error) => {
-          return {result: '', message: error, status: error.status};
-        }
-      );
+    return new Promise(
+      (resolve) => {
+        this.http.delete('api/meeting/' + id, {observe: 'response'})
+          .subscribe(
+            (response) => {
+              resolve({result: response.body, message: 'Created', status: response.status});
+            }
+          );
+      }
+    );
+    // (resolve, reject) = {
+    //   resolve(this.http.delete('api/meeting/' + id, {observe: 'response'})
+    //     .subscribe(
+    //       (response) => {
+    //         return {result: response.body, message: 'Created', status: response.status};
+    //       },
+    //       (error) => {
+    //         return {result: '', message: error.toString(), status: error.status};
+    //       }
+    //     )
+    // });
   }
 
 }

@@ -21,15 +21,4 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onReportClicked() {
-    this.authService.backendLogin(this.credentials).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
 }
