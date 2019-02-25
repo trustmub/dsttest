@@ -35,6 +35,9 @@
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
+            <div *ngIf="loadingError">
+              <button class="btn btn-outline-primary btn-sm" (click)="onMeetingReloadPageClicked()">Reload</button>
+            </div>
           </div>
         </div>
       </div>

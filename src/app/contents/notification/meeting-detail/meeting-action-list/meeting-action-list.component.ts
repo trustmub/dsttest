@@ -16,6 +16,7 @@ export class MeetingActionListComponent implements OnInit {
   meetingItemRecord: MeetingModel;
   members: MembersModel[];
   id: string;
+  actionUpdateStatus: boolean;
 
   constructor(private router: ActivatedRoute, private meetingService: MeetingsService, private membersService: MembersService) {
     this.id = this.router.snapshot.params['id'];
@@ -25,6 +26,11 @@ export class MeetingActionListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.meetingService.actionItemSavedObserver.subscribe(
+      (status: { recordName: string, updated: boolean }) => {
+        this.actionUpdateStatus = status.updated;
+      }
+    );
   }
 
 }

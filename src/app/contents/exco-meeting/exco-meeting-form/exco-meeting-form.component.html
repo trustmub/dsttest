@@ -52,8 +52,8 @@
         <label for="meetingEndDate">Meeting End Date.</label>
         <input type="date"
                class="form-control"
-               id="meetingEndDate"
                name="meetingEndDate"
+               id="meetingEndDate"
                formControlName="meetingEndDate"
                placeholder="yyyy/mm/dd">
         <span *ngIf="!excoMeetingForm.get('meetingEndDate').valid && excoMeetingForm.get('meetingEndDate').touched"
@@ -67,6 +67,7 @@
   <div class="row">
     <div class="col-6">
       <div class="form-group">
+
         <label for="meetingStartTime">Meeting Start Date.</label>
         <input type="time"
                class="form-control"
@@ -99,5 +100,7 @@
 
   <button class="btn btn-primary text-white" [disabled]="!excoMeetingForm.valid" type="submit"> Save</button>
   <button class="btn btn-dark text-white ml-3" data-dismiss="modal" routerLink="/meetings/exco"> Cancel</button>
+
 </form>
+
 

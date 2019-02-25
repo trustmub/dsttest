@@ -3,7 +3,9 @@
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary m-0 p-0"></h6>
+        <!--<h6 class="m-0 font-weight-bold text-primary m-0 p-0"></h6>-->
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="actionUpdateStatus">Saved to database</h6>
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="!actionUpdateStatus">Record Not Saved</h6>
         <button class="d-none d-sm-inline-block btn btn-sm btn-primary btn-shadow-sm text-white m-0"
                 data-toggle="modal" data-target=".bd-example-modal-lg">
           <i class="fas fa-plus fa-sm text-white-50"></i>
@@ -15,7 +17,10 @@
            aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Add new action item for {{ meetingItemRecord.meetingName }}</div>
+            <div class="modal-header" *ngIf="!actionUpdateStatus">failed to update</div>
+            <div class="modal-header" *ngIf="actionUpdateStatus">Add new action item
+              for {{ meetingItemRecord.meetingName }}</div>
+
             <div class="modal-body">
               <app-action-item-form></app-action-item-form>
             </div>
@@ -34,7 +39,6 @@
             <th>Return Date</th>
             <th>status</th>
             <th>health</th>
-            <th>details</th>
             <th>view</th>
           </tr>
           </thead>
@@ -56,7 +60,6 @@
               </a>
             </td>
 
-            <td><span class="text-md"><i class="fas fa-angle-double-down  text-center"></i></span></td>
             <td>
               <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
             </td>

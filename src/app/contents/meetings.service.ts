@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Subject} from 'rxjs';
 
 import {ActionItemModel, AttendeesModel, DecisionModel, MeetingModel, NonActionItemModel} from '../shared/meetings.model';
 import {UserService} from '../shared/user.service';
 import {UserModel} from '../shared/user.model';
-import {reject} from 'q';
 
 @Injectable()
 export class MeetingsService {
+  refreshObserver = new Subject();
+  actionItemSavedObserver = new Subject();
+  // newMeetingDataObserver = new Subject();
+
   private user: UserModel;
-  private todayDate = Date.now();
   private actionItems: ActionItemModel[];
   private nonActionItems: NonActionItemModel[];
   private decisions: DecisionModel;
@@ -48,6 +51,8 @@ export class MeetingsService {
         this.fetchMeetings().subscribe(
           (response) => {
             this.upcoming = response.body;
+            this.refreshObserver.next(true);
+
           });
       },
       (error) => {
@@ -69,10 +74,25 @@ export class MeetingsService {
           return this.upcoming;
         },
         (error) => {
+          return this.upcoming;
         }
       );
     }
+
     return this.upcoming;
+
+  }
+
+  async getdb() {
+    return this.fetchMeetings().subscribe(
+      (response) => {
+        this.upcoming = response.body;
+        return this.upcoming;
+      },
+      (error) => {
+        return this.upcoming;
+      }
+    );
   }
 
   fetchMeetings() {
@@ -96,22 +116,13 @@ export class MeetingsService {
         this.http.delete('api/meeting/' + id, {observe: 'response'})
           .subscribe(
             (response) => {
-              resolve({result: response.body, message: 'Created', status: response.status});
+              resolve({result: response.body, message: 'created', status: response.status});
+            },
+            (error) => {
+              resolve({result: error.body, message: 'failed', status: error.status});
             }
           );
       }
     );
-    // (resolve, reject) = {
-    //   resolve(this.http.delete('api/meeting/' + id, {observe: 'response'})
-    //     .subscribe(
-    //       (response) => {
-    //         return {result: response.body, message: 'Created', status: response.status};
-    //       },
-    //       (error) => {
-    //         return {result: '', message: error.toString(), status: error.status};
-    //       }
-    //     )
-    // });
   }
-
 }

@@ -15,10 +15,11 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Please login!</h1>
                 </div>
+                <div class="alert alert-danger" *ngIf="loginError">
+                  <p class="text-white text-sm-center">Something went wrong. please check username and password</p>
+                </div>
                 <form class="user" [formGroup]="loginForm" (ngSubmit)="onLoginClicked()">
-                  <div class="alert alert-danger" *ngIf="loginError">
-                    <p class="text-white text-sm-center">Something went wrong. please check username and password</p>
-                  </div>
+
                   <div class="form-group align-center">
                     <input type="email" class="form-control form-control-user" formControlName="userEmail"
                            id="userEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
@@ -38,17 +39,18 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button class="btn btn-primary btn-user btn-block text-white" type="submit" [disabled]="loading" >
-                    Login
+                  <button class="btn btn-primary btn-user btn-block text-white" type="submit" [disabled]="loading">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                    <div *ngIf="!loading">Login</div>
                   </button>
                   <hr>
                 </form>
                 <hr>
+                <!--<div class="text-center">-->
+                  <!--<a class="small" href="forgot-password.html">Forgot Password?</a>-->
+                <!--</div>-->
                 <div class="text-center">
-                  <a class="small" href="forgot-password.html">Forgot Password?</a>
-                </div>
-                <div class="text-center">
-                  <a class="small" href="register.html">Create an Account!</a>
+                  <a class="small" routerLink="/">Create an Account!</a>
                 </div>
               </div>
             </div>

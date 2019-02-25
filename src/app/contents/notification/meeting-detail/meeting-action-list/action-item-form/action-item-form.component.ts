@@ -17,6 +17,7 @@ export class ActionItemFormComponent implements OnInit {
   // @ViewChild('f') actionItemForm: NgForm;
   actionItemForm: FormGroup;
   meetingId: string;
+  recordUpdated: { recordName: string, updated: boolean };
 
   actionStatus = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
   members: MembersModel[];
@@ -38,7 +39,7 @@ export class ActionItemFormComponent implements OnInit {
       actionDescription: new FormControl(null, [Validators.required]),
       actionAssignTo: new FormControl(null, [Validators.required]),
       actionReturnDate: new FormControl(null, [Validators.required]),
-      actionStatus: new FormControl(null, [Validators.required]),
+      actionStatus: new FormControl('Created'),
       actionFeedback: new FormControl(null)
     });
 
@@ -46,6 +47,20 @@ export class ActionItemFormComponent implements OnInit {
 
   onSubmitActionItem() {
     const returnDate = new Date(this.actionItemForm.value.actionReturnDate);
+    // TODO: to use this object for new action item @ newItemObject
+    const newItemObject = {
+      reference: '',
+      item: '',
+      description: '',
+      assignedTo: '',
+      returnDate: '',
+      status: '',
+      health: '',
+      feedback: '',
+      createdBy: '',
+      createDate: ''
+    };
+
     const newItem = new ActionItemModel(
       'EM 002',
       this.actionItemForm.value.actionItem,
@@ -57,6 +72,7 @@ export class ActionItemFormComponent implements OnInit {
       this.actionItemForm.value.actionFeedback,
       this.userService.getUser().surname,
       new Date().toISOString());
+
     console.log(JSON.stringify(newItem));
 
     // get meeting record
@@ -68,17 +84,29 @@ export class ActionItemFormComponent implements OnInit {
     console.log(this.meetingService.getMeeting(this.meetingId));
 
     // update to back end
+    this.updateToBackend(meetingRec);
+
+    // reset form
+    this.actionItemForm.reset({actionStatus: 'Created'});
+
+  }
+
+  updateToBackend(meetingRec) {
     this.meetingService.updateMeeting(meetingRec).subscribe(
       (response) => {
         console.log(response);
+        this.recordUpdated = {recordName: 'actionItem', updated: true};
+        // emits a status object to be subscribed to by the action item list
+        this.meetingService.actionItemSavedObserver.next(this.recordUpdated);
       },
       (error) => {
         console.log(error);
+        this.recordUpdated = {recordName: 'actionItem', updated: false};
+        // emits a status object to be subscribed to by the action item list
+        this.meetingService.actionItemSavedObserver.next(this.recordUpdated);
+
       }
     );
-    // reset form
-    this.actionItemForm.reset();
-
   }
 }
 

@@ -28,7 +28,6 @@ export class ExcoMeetingFormComponent implements OnInit {
   }
 
   onSubmitMeeting() {
-    const makeid = this.meetingService.getAllMeetings().length;
     const obj = {
       meetingName: this.excoMeetingForm.value.meetingName,
       meetingStartTime: this.excoMeetingForm.value.meetingStartTime,
@@ -45,6 +44,8 @@ export class ExcoMeetingFormComponent implements OnInit {
 
     this.excoMeetingForm.reset();
     console.log(this.meetingService.getAllMeetings());
+
+    this.meetingService.refreshObserver.next(true);
   }
 
 }

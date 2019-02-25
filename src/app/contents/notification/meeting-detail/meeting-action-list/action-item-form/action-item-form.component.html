@@ -6,7 +6,7 @@
         <input type="text"
                class="form-control"
                id="actionReferenceNumber"
-               name="actionReferenceNumber">
+               name="actionReferenceNumber" disabled>
       </div>
     </div>
     <div class="col-lg-9 col-md-9">
@@ -52,7 +52,7 @@
                 name="actionAssignTo"
                 formControlName="actionAssignTo">
           <option></option>
-          <option *ngFor="let member of members" required>{{ member.fullname }}</option>
+          <option *ngFor="let member of members">{{ member.fullname }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionAssignTo').valid && actionItemForm.get('actionAssignTo').touched"
               class="invalid-feedback">
@@ -68,7 +68,8 @@
                id="actionReturnDate"
                name="actionReturnDate"
                formControlName="actionReturnDate"
-               placeholder="yyyy/mm/dd">
+               placeholder="yyyy/mm/dd"
+               ngbDatepicker>
         <span *ngIf="!actionItemForm.get('actionReturnDate').valid && actionItemForm.get('actionReturnDate').touched"
               class="invalid-feedback">
           PDate is required.
@@ -81,8 +82,7 @@
         <select class="form-control"
                 id="actionStatus"
                 formControlName="actionStatus"
-                name="actionStatus">
-          <option value="Created"></option>
+                name="actionStatus" disabled>
           <option *ngFor="let status of actionStatus">{{ status }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionStatus').valid && actionItemForm.get('actionStatus').touched"

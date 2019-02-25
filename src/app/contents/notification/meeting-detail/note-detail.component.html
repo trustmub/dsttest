@@ -41,12 +41,16 @@
           </div>
           <div class="card-footer d-sm-flex align-items-center justify-content-between">
             <div>
-              <small *ngIf="!loading">...</small>
+              <small *ngIf="!loading && deleteResult.status === 0 ">...</small>
               <div *ngIf="loading">
                 <small>Deleting Meeting...</small>
                 <div class="spinner-grow" role="status" >
                   <span class="sr-only">Loading...</span>
                 </div>
+              </div>
+
+              <div *ngIf="!loading && deleteResult.status !== 0 && deleteResult.status !== 200">
+                <small>Deletion status: {{ deleteResult.message }}</small>
               </div>
             </div>
             <div class="">

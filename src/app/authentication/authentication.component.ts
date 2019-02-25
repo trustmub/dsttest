@@ -27,9 +27,13 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onLoginClicked() {
-    this.loading = true;
+    // TODO Remove the line directly below, it was only for testing failed
+    //  connection handlers @ this.authenticationService.setAuthentication(true)
+    // this.authenticationService.setAuthentication(true);
 
     if (this.loginForm.valid) {
+      this.loading = true;
+      this.loginError = false;
       this.authenticationService.loginUser({email: this.loginForm.value.userEmail, password: this.loginForm.value.userPassword})
         .subscribe(
           (response) => {

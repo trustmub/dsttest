@@ -14,7 +14,7 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
   paramSubscription: Subscription;
   id: string;
   loading = false;
-  result: any;
+  deleteResult: any = {result: '', message: '', status: 0};
 
   constructor(private route: ActivatedRoute, private meetingService: MeetingsService, private router: Router) {
     this.id = this.route.snapshot.params['id'];
@@ -40,19 +40,17 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
 
     this.meetingService.deleteM(this.id).then(
       (outcome: any) => {
-        this.result = outcome;
-        console.log(this.result);
-        if (this.result.status === 200) {
+        this.deleteResult = outcome;
+        console.log(this.deleteResult);
+        if (this.deleteResult.status === 200) {
+
           this.loading = false;
           this.router.navigate(['meetings/exco']);
+        } else {
+          this.loading = false;
         }
       }
     );
-
-    // if (result === 200) {
-    //   this.loading = false;
-    //   this.router.navigate(['meetings/exco']);
-    // }
   }
 
   ngOnDestroy(): void {
