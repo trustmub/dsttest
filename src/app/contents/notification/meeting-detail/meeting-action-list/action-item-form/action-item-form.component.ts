@@ -15,6 +15,7 @@ import {UserService} from '../../../../../shared/user.service';
 })
 export class ActionItemFormComponent implements OnInit {
   // @ViewChild('f') actionItemForm: NgForm;
+  todayDate = new Date()
   actionItemForm: FormGroup;
   meetingId: string;
   recordUpdated: { recordName: string, updated: boolean };

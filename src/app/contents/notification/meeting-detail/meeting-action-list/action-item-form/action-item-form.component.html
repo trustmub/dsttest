@@ -69,7 +69,8 @@
                name="actionReturnDate"
                formControlName="actionReturnDate"
                placeholder="yyyy/mm/dd"
-               ngbDatepicker>
+               appDateSelector>
+
         <span *ngIf="!actionItemForm.get('actionReturnDate').valid && actionItemForm.get('actionReturnDate').touched"
               class="invalid-feedback">
           PDate is required.

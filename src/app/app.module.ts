@@ -41,6 +41,9 @@ import {NonActionItemFormComponent} from './contents/notification/meeting-detail
 import {ExcoMeetingFormComponent} from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
 import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/meeting-attendee/meeting-attendee.component';
 import {AuthInterceptor} from './shared/auth.interceptor';
+import {DateSelectorDirective} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
+import { DgMeetingFormComponent } from './contents/meetings/dg-meeting/dg-meeting-form/dg-meeting-form.component';
+import {MemoService} from './contents/meetings/dg-meeting/memo.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +76,9 @@ import {AuthInterceptor} from './shared/auth.interceptor';
     RemoveWhiteSpace,
     NonActionItemFormComponent,
     ExcoMeetingFormComponent,
-    MeetingAttendeeComponent
+    MeetingAttendeeComponent,
+    DateSelectorDirective,
+    DgMeetingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +93,7 @@ import {AuthInterceptor} from './shared/auth.interceptor';
     AuthenticationService,
     UserService,
     MembersService,
+    MemoService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

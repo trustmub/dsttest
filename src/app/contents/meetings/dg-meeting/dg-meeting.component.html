@@ -1,3 +1,89 @@
-<p>
-  dg-meeting works!
-</p>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Director General Memo</h1>
+  <button class="d-none d-sm-inline-block btn btn-md btn-primary btn-shadow-sm text-white"
+          data-toggle="modal" data-target=".addNewDGMeetingModal">
+    <i class="fas fa-plus fa-sm text-white-50"></i>
+    Add New
+  </button>
+</div>
+
+<!-- Extra large modal for adding New DG Meeting-->
+<div class="modal fade addNewDGMeetingModal" tabindex="-1" role="dialog" aria-labelledby="addNewDGMeetingForm"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">DG Memo Form</div>
+      <div class="modal-body">
+        <app-dg-meeting-form></app-dg-meeting-form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-9 col-md-9">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header bg-white d-sm-flex align-items-center justify-content-between">
+            There are a total of {{ memoList.length }} Memos
+            <div *ngIf="loading">
+              <strong>Loading...  </strong>
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <div *ngIf="loadingError">
+              <button class="btn btn-outline-primary btn-sm" (click)="onMemoReloadPageClicked()">Reload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-md-6" *ngFor="let meeting of memoList">
+
+        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
+          <!--<div class="card-header card-head">header</div>-->
+          <div class="card-body m-1 p-1">
+            <div class="row no-gutters align-items-center">
+
+              <div class="col-md-4 col-xl-4 m-0 p-0">
+                <p class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">UpComing</p>
+
+                <div class="card">
+                  <div
+                    class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="text-xs text-center">{{ meeting.returnDate | date:'MMMM' }}</h6>
+                  </div>
+
+                  <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
+                    <h6 class="h3 text-center">{{ meeting.returnDate | date:'dd'}}</h6>
+                    <h6 class="text-sm text-center text-primary">{{ meeting.returnDate | date:'EEEE' }}</h6>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fa fa-calender fa-2x text-black-300"></i>
+                </div>
+              </div>
+              <div class="col-md-8 col-xl-8 pl-2">
+                <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.subject}}</p>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> place holder
+                - place holder</span>
+                <hr class="m-0 p-0">
+                <p class="fas fa-fw fa-location-arrow m-0"></p><span> place holder</span>
+                <!--<p class="">{{ meeting.meetingLocation }}</p>-->
+                <hr class="m-1">
+                <button class="btn btn-outline-primary" [routerLink]="['/notification', meeting.dgMemoNumber]">Full Meeting
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
