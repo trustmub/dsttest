@@ -44,16 +44,16 @@ export class DgMeetingFormComponent implements OnInit {
   onSaveMemoClicked() {
     const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
     const newMemo = new DgMemoModel(
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
+      this.memoForm.value.category,
+      this.memoForm.value.dgMemoNumber,
+      this.memoForm.value.asMemoNumber,
+      this.memoForm.value.classification,
+      this.memoForm.value.subject,
+      this.memoForm.value.description,
+      this.memoForm.value.assignedTo,
+      this.memoForm.value.returnDate,
+      this.memoForm.value.memoStatus,
+      this.memoForm.value.comment,
       fullname
     );
     this.memoService.addNewMemo(newMemo);

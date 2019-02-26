@@ -44,6 +44,8 @@ import {AuthInterceptor} from './shared/auth.interceptor';
 import {DateSelectorDirective} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
 import { DgMeetingFormComponent } from './contents/meetings/dg-meeting/dg-meeting-form/dg-meeting-form.component';
 import {MemoService} from './contents/meetings/dg-meeting/memo.service';
+import { DgMeetingDetailsComponent } from './contents/meetings/dg-meeting/dg-meeting-details/dg-meeting-details.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import {MemoService} from './contents/meetings/dg-meeting/memo.service';
     ExcoMeetingFormComponent,
     MeetingAttendeeComponent,
     DateSelectorDirective,
-    DgMeetingFormComponent
+    DgMeetingFormComponent,
+    DgMeetingDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,7 @@ import {MemoService} from './contents/meetings/dg-meeting/memo.service';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    ChartsModule,
   ],
   providers: [MeetingsService,
     AuthService,

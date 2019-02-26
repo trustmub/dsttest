@@ -3,6 +3,8 @@ import {AuthenticationService} from '../../authentication/authentication.service
 import {UserService} from '../../shared/user.service';
 import {UserModel} from '../../shared/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
+import {MembersService} from '../../shared/members.service';
+import {MembersModel} from '../members/members.model';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +14,11 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class HeaderComponent implements OnInit {
   userDetails: UserModel;
   searchForm: FormGroup;
+  members: MembersModel[]
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+  constructor(private authenticationService: AuthenticationService, private userService: UserService, private membersService: MembersService) {
     this.userDetails = userService.getUser();
+    this.members = this.membersService.getMembers()
   }
 
   ngOnInit() {
@@ -25,6 +29,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogoutClicked() {
+    localStorage.setItem('authenticated', '');
+    localStorage.setItem('token', '');
     this.authenticationService.isAuthenticated.emit(false);
   }
 

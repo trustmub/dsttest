@@ -34,6 +34,7 @@ export class AuthenticationService {
   }
 
   setAuthentication(auth: boolean) {
+    localStorage.setItem('authenticated', auth + '');
     this.isAuthenticated.emit(auth);
   }
 

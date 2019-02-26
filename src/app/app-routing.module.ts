@@ -13,6 +13,7 @@ import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {ExcoMeetingComponent} from './contents/exco-meeting/exco-meeting.component';
 import {DgMeetingComponent} from './contents/meetings/dg-meeting/dg-meeting.component';
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
+import {DgMeetingDetailsComponent} from './contents/meetings/dg-meeting/dg-meeting-details/dg-meeting-details.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   {path: 'meetings', component: MeetingsComponent},
   {path: 'meetings/exco', component: ExcoMeetingComponent},
   {path: 'meetings/dg', component: DgMeetingComponent},
+  {path: 'meetings/dg/:id', component: DgMeetingDetailsComponent},
   {path: 'meetings/cabinet', component: CabinetMeetingComponent},
 
   {path: 'not-found', component: PageNotFoundComponent, canActivate: [AuthGuardService]},

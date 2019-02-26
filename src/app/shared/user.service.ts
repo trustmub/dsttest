@@ -12,10 +12,14 @@ export class UserService {
   }
 
   setUserToken(token: string) {
+    localStorage.setItem('token', token);
     this.token = new AuthTokenModel(token);
   }
 
   getUserToken() {
+    if (localStorage.getItem('token') !== null) {
+      return {token: localStorage.getItem('token')};
+    }
     return this.token;
   }
 

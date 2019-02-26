@@ -7,15 +7,19 @@ import {AuthenticationService} from './authentication/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  isLoggedIn = false;
+  isLoggedIn: boolean;
 
   constructor(private authenticationService: AuthenticationService) {
-    this.authenticationService.getAuthenticationStatus().subscribe((status: boolean) => {
-      this.isLoggedIn = status;
-    });
+    this.authenticationService.getAuthenticationStatus().subscribe(
+      (status: boolean) => {
+        this.isLoggedIn = status;
+      });
   }
 
   ngOnInit() {
+    if (localStorage.getItem('authenticated') === 'true') {
+      this.isLoggedIn = true;
+    }
   }
 
   ngOnDestroy(): void {

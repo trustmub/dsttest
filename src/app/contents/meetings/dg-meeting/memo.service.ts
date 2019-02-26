@@ -5,6 +5,7 @@ export class MemoService {
 
   refreshMemoObserver = new Subject();
   memoList: DgMemoModel[] = [];
+  memoRecord: DgMemoModel;
   categories: Category[] = [
     new Category('Briefing Notes'),
     new Category('Parliamentary Questions'),
@@ -35,4 +36,8 @@ export class MemoService {
   }
 
 
+  getMemo(param: string) {
+    this.memoRecord = this.memoList.filter(x => x.dgMemoNumber === param)[0];
+    return this.memoRecord;
+  }
 }
