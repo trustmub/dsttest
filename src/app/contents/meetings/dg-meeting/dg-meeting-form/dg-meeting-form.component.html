@@ -138,7 +138,6 @@
                 id="memoStatus"
                 formControlName="memoStatus"
                 name="actionStatus">
-          <option></option>
           <option *ngFor="let status of statusList">{{ status }}</option>
         </select>
         <span *ngIf="!memoForm.get('memoStatus').valid && memoForm.get('memoStatus').touched"

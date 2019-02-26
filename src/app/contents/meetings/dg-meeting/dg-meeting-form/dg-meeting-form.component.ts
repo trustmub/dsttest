@@ -39,7 +39,7 @@ export class DgMeetingFormComponent implements OnInit {
       description: new FormControl(null),
       assignedTo: new FormControl(null, [Validators.required]),
       returnDate: new FormControl(null, [Validators.required]),
-      memoStatus: new FormControl(null, [Validators.required]),
+      memoStatus: new FormControl({value: this.statusList[0], disabled: true}),
       comment: new FormControl(null)
     });
 
@@ -58,7 +58,7 @@ export class DgMeetingFormComponent implements OnInit {
       this.memoForm.value.description,
       this.memoForm.value.assignedTo,
       this.memoForm.value.returnDate,
-      this.memoForm.value.memoStatus,
+      this.statusList[0],
       this.memoForm.value.comment,
       fullname
     );
@@ -67,7 +67,7 @@ export class DgMeetingFormComponent implements OnInit {
 
     this.memoService.addNewMemo(newMemo);
 
-    this.memoForm.reset({dgMemoNumber: this.randomNumber});
+    this.memoForm.reset({dgMemoNumber: this.randomNumber, memoStatus: this.statusList[0]});
     this.memoService.refreshMemoObserver.next(true);
   }
 
