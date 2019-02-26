@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MemoService} from '../memo.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category, DgMemoModel} from '../memo.model';
 import {UserService} from '../../../../shared/user.service';
 import {MembersModel} from '../../../members/members.model';
@@ -16,25 +16,28 @@ export class DgMeetingFormComponent implements OnInit {
   categories: Category[];
   members: MembersModel[];
   statusList = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
+  private randomNumber: string;
 
 
   constructor(private memoService: MemoService, private user: UserService, private membersService: MembersService) {
     this.categories = memoService.getCategories();
     this.members = this.membersService.getMembers();
+    this.randomNumber = 'DG' + Math.floor(Math.random() * 999) + 1;
+
 
   }
 
   ngOnInit() {
     this.memoForm = new FormGroup({
-      category: new FormControl(null),
-      dgMemoNumber: new FormControl(null),
+      category: new FormControl(null, [Validators.required]),
+      dgMemoNumber: new FormControl({value: this.randomNumber, disabled: true}),
       asMemoNumber: new FormControl(null),
-      classification: new FormControl(null),
-      subject: new FormControl(null),
+      classification: new FormControl(null, [Validators.required]),
+      subject: new FormControl(null, [Validators.required]),
       description: new FormControl(null),
-      assignedTo: new FormControl(null),
-      returnDate: new FormControl(null),
-      memoStatus: new FormControl(null),
+      assignedTo: new FormControl(null, [Validators.required]),
+      returnDate: new FormControl(null, [Validators.required]),
+      memoStatus: new FormControl(null, [Validators.required]),
       comment: new FormControl(null)
     });
 
@@ -42,10 +45,11 @@ export class DgMeetingFormComponent implements OnInit {
   }
 
   onSaveMemoClicked() {
+
     const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
     const newMemo = new DgMemoModel(
       this.memoForm.value.category,
-      this.memoForm.value.dgMemoNumber,
+      this.randomNumber,
       this.memoForm.value.asMemoNumber,
       this.memoForm.value.classification,
       this.memoForm.value.subject,
@@ -56,9 +60,12 @@ export class DgMeetingFormComponent implements OnInit {
       this.memoForm.value.comment,
       fullname
     );
+
+    this.randomNumber = 'DG' + Math.floor(Math.random() * 3) + 100;
+
     this.memoService.addNewMemo(newMemo);
 
-    this.memoForm.reset();
+    this.memoForm.reset({dgMemoNumber: this.randomNumber});
     this.memoService.refreshMemoObserver.next(true);
   }
 

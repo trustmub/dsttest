@@ -1,5 +1,113 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Dg Meeting Details</h1>
   <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
-    <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+  <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="card pr-1 pl-1">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6>{{ memoRecord.subject }}</h6>
+
+        <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="true">Actions
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+               aria-labelledby="dropdownMenuLink" x-placement="top-end"
+               style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-156px, -155px, 0px);">
+            <a class="dropdown-item" >Edit</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" aria-disabled="true">Delete</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Category
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.category }}</div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            DG Memo Reference
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.dgMemoNumber }}</div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            AS Memo Number
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.asMemoNumber }}</div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Classification
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.classification }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Subject
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.subject }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Description
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.description }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Assigned To.
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.assignedTo }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Return Date.
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.returnDate }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            status
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.status }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Comments
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.comment }}</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

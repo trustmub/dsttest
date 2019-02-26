@@ -46,6 +46,8 @@ import { DgMeetingFormComponent } from './contents/meetings/dg-meeting/dg-meetin
 import {MemoService} from './contents/meetings/dg-meeting/memo.service';
 import { DgMeetingDetailsComponent } from './contents/meetings/dg-meeting/dg-meeting-details/dg-meeting-details.component';
 import {ChartsModule} from 'ng2-charts';
+import { RequireSubmissionListComponent } from './contents/meetings/dg-meeting/require-submission-list/require-submission-list.component';
+import { ForInformationListComponent } from './contents/meetings/dg-meeting/for-information-list/for-information-list.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import {ChartsModule} from 'ng2-charts';
     MeetingAttendeeComponent,
     DateSelectorDirective,
     DgMeetingFormComponent,
-    DgMeetingDetailsComponent
+    DgMeetingDetailsComponent,
+    RequireSubmissionListComponent,
+    ForInformationListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Director General Memo</h1>
-  <button class="d-none d-sm-inline-block btn btn-md btn-primary btn-shadow-sm text-white"
-          data-toggle="modal" data-target=".addNewDGMeetingModal">
-    <i class="fas fa-plus fa-sm text-white-50"></i>
-    Add New
-  </button>
+  <!--<button class="d-none d-sm-inline-block btn btn-md btn-primary btn-shadow-sm text-white"-->
+          <!--data-toggle="modal" data-target=".addNewDGMeetingModal">-->
+    <!--<i class="fas fa-plus fa-sm text-white-50"></i>-->
+    <!--Add New-->
+  <!--</button>-->
 </div>
 
 <!-- Extra large modal for adding New DG Meeting-->
@@ -41,48 +41,90 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-md-6" *ngFor="let meeting of memoList">
+    </div>
+    <div class="row">
 
-        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
-          <!--<div class="card-header card-head">header</div>-->
-          <div class="card-body m-1 p-1">
-            <div class="row no-gutters align-items-center">
+      <div class="col-lg-12 col-md-12">
 
-              <div class="col-md-4 col-xl-4 m-0 p-0">
-                <p class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">UpComing</p>
-
-                <div class="card">
-                  <div
-                    class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
-                    <h6 class="text-xs text-center">{{ meeting.returnDate | date:'MMMM' }}</h6>
-                  </div>
-
-                  <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
-                    <h6 class="h3 text-center">{{ meeting.returnDate | date:'dd'}}</h6>
-                    <h6 class="text-sm text-center text-primary">{{ meeting.returnDate | date:'EEEE' }}</h6>
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <i class="fa fa-calender fa-2x text-black-300"></i>
-                </div>
-              </div>
-              <div class="col-md-8 col-xl-8 pl-2">
-                <p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.subject}}</p>
-                <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-clock p-0 m-0"></p><span> place holder
-                - place holder</span>
-                <hr class="m-0 p-0">
-                <p class="fas fa-fw fa-location-arrow m-0"></p><span> place holder</span>
-                <!--<p class="">{{ meeting.meetingLocation }}</p>-->
-                <hr class="m-1">
-                <button class="btn btn-outline-primary" [routerLink]="['/meetings','dg', meeting.dgMemoNumber]">Full
-                  Meeting Details
-                </button>
-              </div>
-            </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="requiresSubmission-tab" data-toggle="tab" href="#requiresSubmission"
+               role="tab"
+               aria-controls="requiresSubmission"
+               aria-selected="true">Requires Submission</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="forInformation-tab" data-toggle="tab" href="#forInformation" role="tab"
+               aria-controls="forInformation"
+               aria-selected="false">For Information</a>
+          </li>
+        </ul>
+        <!-- tab content -->
+        <div class="tab-content" id="myTabContent">
+          <!-- Submission Content-->
+          <div class="tab-pane fade show active" id="requiresSubmission" role="tabpanel"
+               aria-labelledby="requiresSubmission-tab">
+            <app-require-submission-list></app-require-submission-list>
           </div>
+          <!-- End of Submission Content-->
+
+          <!-- For information Content -->
+          <div class="tab-pane fade" id="forInformation" role="tabpanel" aria-labelledby="forInformation-tab">
+            <app-for-information-list></app-for-information-list>
+          </div>
+          <!-- End of For information Content -->
         </div>
+        <!-- End of tab content-->
       </div>
     </div>
   </div>
+
+  <div class="col-lg-3 col-md-3">
+    <p>Generate DG Memo</p>
+    <p>Upload Document</p>
+  </div>
 </div>
+<!--<div class="col-xl-6 col-md-6" *ngFor="let meeting of memoList">-->
+
+
+<!--<div class="card border-left-primary shadow mh-100 mb-3 p-1">-->
+<!--&lt;!&ndash;<div class="card-header card-head">header</div>&ndash;&gt;-->
+<!--<div class="card-body m-1 p-1">-->
+<!--<div class="row no-gutters align-items-center">-->
+
+<!--<div class="col-md-4 col-xl-4 m-0 p-0">-->
+<!--<p class="text-xs text-center font-weight-bold text-primary text-uppercase mb-1">UpComing</p>-->
+
+<!--<div class="card">-->
+<!--<div-->
+<!--class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">-->
+<!--<h6 class="text-xs text-center">{{ meeting.returnDate | date:'MMMM' }}</h6>-->
+<!--</div>-->
+
+<!--<div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">-->
+<!--<h6 class="h3 text-center">{{ meeting.returnDate | date:'dd'}}</h6>-->
+<!--<h6 class="text-sm text-center text-primary">{{ meeting.returnDate | date:'EEEE' }}</h6>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-auto">-->
+<!--<i class="fa fa-calender fa-2x text-black-300"></i>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-8 col-xl-8 pl-2">-->
+<!--<p class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meeting.subject}}</p>-->
+<!--<hr class="m-0 p-0">-->
+<!--<p class="fas fa-fw fa-clock p-0 m-0"></p><span> place holder-->
+<!-- - place holder</span>-->
+<!--<hr class="m-0 p-0">-->
+<!--<p class="fas fa-fw fa-location-arrow m-0"></p><span> place holder</span>-->
+<!--&lt;!&ndash;<p class="">{{ meeting.meetingLocation }}</p>&ndash;&gt;-->
+<!--<hr class="m-1">-->
+<!--<button class="btn btn-outline-primary" [routerLink]="['/meetings','dg', meeting.dgMemoNumber]">Full-->
+<!--Meeting Details-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div> &ndash;&gt;-->
+<!--</div>-->
+
