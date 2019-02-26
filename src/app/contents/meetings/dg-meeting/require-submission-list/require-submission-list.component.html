@@ -39,6 +39,7 @@
             <th>Assigned To</th>
             <th>Return Date</th>
             <th>Status</th>
+            <th>health</th>
           </tr>
           </thead>
           <tbody *ngFor="let meeting of memoList; let i = index">
@@ -49,9 +50,10 @@
             <td>{{ meeting.assignedTo }}</td>
             <td>{{ meeting.returnDate }}</td>
             <td>{{ meeting.status }}</td>
+            <td>{{ meeting.health }}</td>
           </tr>
           <tr>
-            <td colspan="5">
+            <td colspan="6">
               <div class="collapse" [attr.id]="'submission' + i">
                 <div class="card card-body pt-1">
                   <div class="row">

@@ -15,7 +15,9 @@ export class DgMeetingFormComponent implements OnInit {
   memoForm: FormGroup;
   categories: Category[];
   members: MembersModel[];
-  statusList = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
+  statusList = ['Created', 'Review', 'Cancelled', 'Assigned', 'In Progress', 'Submission In-route', 'Rejected', 'Rework', 'Completed'];
+  classificationList = ['Confidential', 'Secret', 'Top Secret', 'Urgent', 'Official'];
+
   private randomNumber: string;
 
 

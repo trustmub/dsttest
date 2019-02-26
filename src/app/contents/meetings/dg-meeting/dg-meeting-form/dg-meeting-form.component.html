@@ -54,9 +54,8 @@
                 id="classification"
                 formControlName="classification"
                 name="classification">
-          <option>Class 1</option>
-          <option>Class 2</option>
-          <option>Class 3</option>
+          <option></option>
+          <option *ngFor="let classification of classificationList">{{ classification}}</option>
         </select>
         <span *ngIf="!memoForm.get('classification').valid && memoForm.get('classification').touched"
               class="invalid-feedback">

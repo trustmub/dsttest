@@ -23,6 +23,7 @@ export class DgMemoModel {
   assignedTo: string;
   returnDate: string;
   status: string;
+  health: string;
   comment: string;
   createDate: string;
   createdBy: string;
@@ -39,6 +40,7 @@ export class DgMemoModel {
     status: string,
     comment: string,
     createdBy: string,
+    health: string = 'green',
     createDate: string = new Date().toISOString()
   ) {
     this.category = category;
@@ -50,6 +52,7 @@ export class DgMemoModel {
     this.assignedTo = assignedTo;
     this.returnDate = returnDate;
     this.status = status;
+    this.health = health;
     this.comment = comment;
     this.createdBy = createdBy;
     this.createDate = createDate;

@@ -24,6 +24,9 @@ export class MemoService {
   }
 
   getMemoList() {
+    for (const memo of this.memoList) {
+      console.log(memo);
+    }
     return this.memoList;
   }
 
