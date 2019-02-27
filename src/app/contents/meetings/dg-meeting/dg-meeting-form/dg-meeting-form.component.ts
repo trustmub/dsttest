@@ -15,15 +15,19 @@ export class DgMeetingFormComponent implements OnInit {
   memoForm: FormGroup;
   categories: Category[];
   members: MembersModel[];
-  statusList = ['Created', 'Review', 'Cancelled', 'Assigned', 'In Progress', 'Submission In-route', 'Rejected', 'Rework', 'Completed'];
-  classificationList = ['Confidential', 'Secret', 'Top Secret', 'Urgent', 'Official'];
+  statusList: string[];
+  classificationList: string[];
 
   private randomNumber: string;
 
 
   constructor(private memoService: MemoService, private user: UserService, private membersService: MembersService) {
+    this.statusList = this.memoService.getStatusList();
+    this.classificationList = this.memoService.getClassificationList();
+
     this.categories = memoService.getCategories();
     this.members = this.membersService.getMembers();
+
     this.randomNumber = 'DG' + Math.floor(Math.random() * 999) + 1;
 
 
@@ -57,7 +61,7 @@ export class DgMeetingFormComponent implements OnInit {
       this.memoForm.value.subject,
       this.memoForm.value.description,
       this.memoForm.value.assignedTo,
-      this.memoForm.value.returnDate,
+      new Date(this.memoForm.value.returnDate).toISOString(),
       this.statusList[0],
       this.memoForm.value.comment,
       fullname

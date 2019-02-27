@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DgMemoModel, InfoModel} from '../memo.model';
+import {MemoService} from '../memo.service';
 
 @Component({
   selector: 'app-for-information-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForInformationListComponent implements OnInit {
 
-  constructor() { }
+  actionUpdateStatus = false;
+  infoList: InfoModel[];
+
+  constructor(private memoService: MemoService) {
+    this.infoList = this.memoService.getInfoList();
+  }
 
   ngOnInit() {
+    this.memoService.refreshMemoObserver.subscribe(
+      (result) => {
+        if (result) {
+          this.infoList = this.memoService.getInfoList();
+          console.log(this.infoList);
+        }
+      },
+      () => {
+        // TODO make refresh handlers on ths block
+      }
+    );
   }
 
 }

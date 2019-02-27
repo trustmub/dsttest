@@ -1,0 +1,109 @@
+<form [formGroup]="infoForm" (ngSubmit)="onSaveInfoClicked()">
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="dgMemoNumber">DG Memo Ref Number.</label>
+        <input type="text"
+               class="form-control"
+               id="dgMemoNumber"
+               name="dgMemoNumber"
+               formControlName="dgMemoNumber">
+        <span *ngIf="!infoForm.get('dgMemoNumber').valid && infoForm.get('dgMemoNumber').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="classification">Classification.</label>
+        <select class="form-control"
+                id="classification"
+                formControlName="classification"
+                name="Classification">
+          <option></option>
+          <option *ngFor="let classification of classifications; let i = index">{{ classification }}</option>
+        </select>
+        <span *ngIf="!infoForm.get('classification').valid && infoForm.get('classification').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="assignedTo">Assign To.</label>
+        <select class="form-control"
+                id="assignedTo"
+                formControlName="assignedTo"
+                name="assignedTo">
+          <option></option>
+          <option *ngFor="let member of members; let i = index">{{ member.fullname }}</option>
+        </select>
+        <span *ngIf="!infoForm.get('assignedTo').valid && infoForm.get('assignedTo').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="subject">Subject.</label>
+        <input type="text"
+               class="form-control"
+               id="subject"
+               name="subject"
+               formControlName="subject">
+        <span *ngIf="!infoForm.get('subject').valid && infoForm.get('subject').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="description">Description.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  formControlName="description"></textarea>
+        <span *ngIf="!infoForm.get('description').valid && infoForm.get('description').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!infoForm.get('comments').valid && infoForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary text-white" type="submit" [disabled]="!infoForm.valid">Submit</button>
+  <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="button">Cancel</button>
+
+</form>

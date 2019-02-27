@@ -1,3 +1,88 @@
-<p>
-  for-information-list works!
-</p>
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="actionUpdateStatus">Saved to database</h6>
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="!actionUpdateStatus">Record Not Saved</h6>
+
+        <button class="d-none d-sm-inline-block btn btn-sm btn-primary btn-shadow-sm text-white m-0"
+                data-toggle="modal" data-target=".bd-info-modal-lg">
+          <i class="fas fa-plus fa-sm text-white-50"></i>
+          Add New
+        </button>
+
+      </div>
+      <!-- Extra large modal for adding submission-->
+      <div class="modal fade bd-info-modal-lg" tabindex="-1" role="dialog" aria-labelledby="infoItemForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header" *ngIf="!actionUpdateStatus">failed to update</div>
+            <div class="modal-header" *ngIf="actionUpdateStatus">Add new information item</div>
+            <div class="modal-body">
+              <app-for-info-form></app-for-info-form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Of Extra large modal for adding submission-->
+
+      <!-- card body for Submission table -->
+      <div class="card-body pr-1 pl-1 pt-0">
+        <table class="table table-bordered table-sm">
+          <thead>
+          <tr class="text-sm-center">
+            <th>Memo Ref</th>
+            <th>Classification</th>
+            <th>Subject</th>
+            <th>Assigned To</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let meeting of infoList; let i = index">
+          <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#information' + i"
+              aria-expanded="false" [attr.aria-controls]="'information' + i">
+            <td>{{ meeting.dgMemoNumber }}</td>
+            <td>{{ meeting.classification }}</td>
+            <td>{{ meeting.subject }}</td>
+            <td>{{ meeting.assignedTo }}</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <div class="collapse" [attr.id]="'information' + i">
+                <div class="card card-body pt-1">
+                  <div class="row">
+                    <div class="col-lg-10 col-md-10">
+
+                      <div class="media">
+                        <p class="align-self-start mr-3">Description : </p>
+                        <div class="media-body">
+                          <p>{{ meeting.description }}</p>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <p class="align-self-start mr-3">Comments : </p>
+                        <div class="media-body">
+                          <p>{{ meeting.comment }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                      <button class="btn btn-outline-primary btn-block"
+                              type="button"
+                              [routerLink]="['/meetings','dg', meeting.dgMemoNumber]">More</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End of card body for Submission table -->
+    </div>
+  </div>
+</div>

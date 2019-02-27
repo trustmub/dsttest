@@ -13,6 +13,36 @@ interface Memo {
 }
 
 
+export class InfoModel {
+  dgMemoNumber: string;
+  classification: string;
+  subject: string;
+  description: string;
+  comment: string;
+  assignedTo: string;
+  createdBy: string;
+  createDate: string;
+
+  constructor(dgMemoNumber: string,
+              classification: string,
+              subject: string,
+              description: string,
+              comment: string,
+              assignedTo: string,
+              createdBy: string,
+              createDate: string = new Date().toISOString()) {
+    this.dgMemoNumber = dgMemoNumber;
+    this.classification = classification;
+    this.subject = subject;
+    this.description = description;
+    this.comment = comment;
+    this.assignedTo = assignedTo;
+    this.createdBy = createdBy;
+    this.createDate = createDate;
+  }
+
+}
+
 export class DgMemoModel {
   category: string;
   dgMemoNumber: string;

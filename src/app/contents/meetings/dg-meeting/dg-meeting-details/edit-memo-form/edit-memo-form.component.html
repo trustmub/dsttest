@@ -1,4 +1,4 @@
-<form [formGroup]="memoForm" (ngSubmit)="onSaveMemoClicked()">
+<form [formGroup]="editMemoForm" (ngSubmit)="onUpdateMemoClicked()">
   <div class="row">
     <div class="col-lg-6 col-md-6">
       <div class="form-group">
@@ -10,7 +10,7 @@
           <option></option>
           <option *ngFor="let category of categories; let i = index">{{ category.name }}</option>
         </select>
-        <span *ngIf="!memoForm.get('category').valid && memoForm.get('category').touched"
+        <span *ngIf="!editMemoForm.get('category').valid && editMemoForm.get('category').touched"
               class="invalid-feedback">
           Please choose a Category.
         </span>
@@ -24,7 +24,7 @@
                id="dgMemoNumber"
                name="dgMemoNumber"
                formControlName="dgMemoNumber">
-        <span *ngIf="!memoForm.get('dgMemoNumber').valid && memoForm.get('dgMemoNumber').touched"
+        <span *ngIf="!editMemoForm.get('dgMemoNumber').valid && editMemoForm.get('dgMemoNumber').touched"
               class="invalid-feedback">
           This field is required.
         </span>
@@ -41,7 +41,7 @@
                id="asMemoNumber"
                name="asMemoNumber"
                formControlName="asMemoNumber">
-        <span *ngIf="!memoForm.get('asMemoNumber').valid && memoForm.get('asMemoNumber').touched"
+        <span *ngIf="!editMemoForm.get('asMemoNumber').valid && editMemoForm.get('asMemoNumber').touched"
               class="invalid-feedback">
           This field is required.
         </span>
@@ -57,7 +57,7 @@
           <option></option>
           <option *ngFor="let classification of classificationList">{{ classification}}</option>
         </select>
-        <span *ngIf="!memoForm.get('classification').valid && memoForm.get('classification').touched"
+        <span *ngIf="!editMemoForm.get('classification').valid && editMemoForm.get('classification').touched"
               class="invalid-feedback">
           This field is required.
         </span>
@@ -74,7 +74,7 @@
                id="subject"
                name="subject"
                formControlName="subject">
-        <span *ngIf="!memoForm.get('subject').valid && memoForm.get('subject').touched"
+        <span *ngIf="!editMemoForm.get('subject').valid && editMemoForm.get('subject').touched"
               class="invalid-feedback">
           This field is required.
         </span>
@@ -108,7 +108,7 @@
           <option></option>
           <option *ngFor="let member of members">{{ member.fullname }}</option>
         </select>
-        <span *ngIf="!memoForm.get('assignedTo').valid && memoForm.get('assignedTo').touched"
+        <span *ngIf="!editMemoForm.get('assignedTo').valid && editMemoForm.get('assignedTo').touched"
               class="invalid-feedback">
           This field is required.
         </span>
@@ -124,7 +124,7 @@
                name="returnDate"
                formControlName="returnDate"
                placeholder="yyyy/mm/dd">
-        <span *ngIf=" !memoForm.get('returnDate').valid && memoForm.get('returnDate').touched"
+        <span *ngIf=" !editMemoForm.get('returnDate').valid && editMemoForm.get('returnDate').touched"
               class="invalid-feedback">
         This field is required.
         </span>
@@ -138,9 +138,10 @@
                 id="memoStatus"
                 formControlName="memoStatus"
                 name="actionStatus">
+          <option></option>
           <option *ngFor="let status of statusList">{{ status }}</option>
         </select>
-        <span *ngIf="!memoForm.get('memoStatus').valid && memoForm.get('memoStatus').touched"
+        <span *ngIf="!editMemoForm.get('memoStatus').valid && editMemoForm.get('memoStatus').touched"
               class="invalid-feedback">
           Please choose a status.
         </span>
@@ -161,7 +162,8 @@
     </div>
   </div>
 
-  <button class="btn btn-primary text-white" type="submit" [disabled]="!memoForm.valid">Save</button>
-  <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="button">Cancel</button>
+  <button class="btn btn-primary text-white" type="submit" [disabled]="!editMemoForm.valid">Save</button>
+  <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="submit">Cancel</button>
 
 </form>
+
