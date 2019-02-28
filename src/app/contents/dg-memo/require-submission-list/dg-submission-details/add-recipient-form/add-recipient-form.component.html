@@ -1,0 +1,28 @@
+<form [formGroup]="addRecipientForm" (ngSubmit)="onAddRecipient()">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div formArrayName="recipients">
+        <div class="form-group"
+             *ngFor="let recipient of addRecipientForm.get('recipients').value; let i = index">
+          <label [attr.for]="i">Recipient.</label>
+          <select class="form-control"
+                  [attr.id]="i"
+                  [formControlName]="i"
+                  [attr.name]="i">
+            <option></option>
+            <option *ngFor="let member of members; let i = index">{{ member.fullname }}</option>
+          </select>
+          <span *ngIf="!addRecipientForm.get('recipients').valid && addRecipientForm.get('recipients').touched"
+                class="invalid-feedback">
+          Please choose a Category.
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary text-white" type="submit" [disabled]="!addRecipientForm.valid">Add Recipient</button>
+  <button class="btn btn-primary text-white" data-dismiss="modal" type="button" (click)="onSubmitRecipients()">
+    Submit
+  </button>
+
+</form>

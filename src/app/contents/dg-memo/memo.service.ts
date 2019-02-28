@@ -31,9 +31,39 @@ export class MemoService {
 
   getMemoList() {
     for (const memo of this.memoList) {
-      console.log(memo);
+       this.memoList.map(
+        (record) => {
+          record.health = this.changeHealthStatus(new Date(record.returnDate));
+        }
+      );
+      // console.log('After Transformation', this.memoList);
     }
     return this.memoList;
+  }
+
+  /**
+   *
+   * if returnDate - today > 8 green
+   * if returnDate - today < 7 > 0 amber
+   * if returnDate - today < 0 red
+   *
+   * @param returnDate
+   */
+  private changeHealthStatus(returnDate: Date) {
+
+    const today = new Date();
+    const daysBetween = Math.round((returnDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    if (daysBetween > 8) {
+      return 'green';
+    }
+    if (daysBetween <= 8 && daysBetween > 0) {
+      return 'amber';
+    }
+
+    if (daysBetween <= 0) {
+      return 'red';
+    }
   }
 
   addNewMemo(memo: DgMemoModel) {

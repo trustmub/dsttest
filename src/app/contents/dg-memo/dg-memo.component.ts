@@ -4,10 +4,10 @@ import {MemoService} from './memo.service';
 
 @Component({
   selector: 'app-dg-meeting',
-  templateUrl: './dg-meeting.component.html',
-  styleUrls: ['./dg-meeting.component.css']
+  templateUrl: './dg-memo.component.html',
+  styleUrls: ['./dg-memo.component.css']
 })
-export class DgMeetingComponent implements OnInit {
+export class DgMemoComponent implements OnInit {
   memoList: DgMemoModel[];
   infoList: InfoModel[];
   loading = false;

@@ -21,12 +21,12 @@
                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-156px, -155px, 0px);">
             <a class="dropdown-item " data-toggle="modal" data-target=".bd-editMemo-modal-lg">Edit</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" aria-disabled="true">Delete</a>
+            <a class="dropdown-item" data-toggle="modal" data-target=".bd-addRecipient-modal-lg">Add Recipients</a>
           </div>
         </div>
       </div>
 
-      <!-- Extra large modal for adding Action Item-->
+      <!-- Extra large modal for editing Action Item-->
       <div class="modal fade bd-editMemo-modal-lg" tabindex="-1" role="dialog" aria-labelledby="editSubmissionForm"
            aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -34,6 +34,19 @@
             <div class="modal-header">Edit Record</div>
             <div class="modal-body">
               <app-edit-memo-form></app-edit-memo-form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra large modal for adding Recipients Action Item-->
+      <div class="modal fade bd-addRecipient-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addRecipientForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">Add Recipients</div>
+            <div class="modal-body">
+              <app-add-recipient-form></app-add-recipient-form>
             </div>
           </div>
         </div>
@@ -124,7 +137,33 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-3">
-    <p>Generate DG Memo</p>
-    <p>Upload Document</p>
+
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action" id="list-meeting-list" data-toggle="list"
+         href=""
+         role="tab" aria-controls="home">Generate DG Memo</a>
+      <a class="list-group-item list-group-item-action" id="list-attendee-list" data-toggle="list" href=""
+         role="tab" aria-controls="profile">Upload Document</a>
+    </div>
+
+
+
+
+
+
+    <br>
+    <div class="card border-left-primary">
+      <div class="card-header text-primary font-weight-bold">Attached Documents</div>
+      <div class="card-body">
+        list attached documents
+      </div>
+    </div>
+    <br>
+    <div class="card border-left-info">
+      <div class="card-header text-primary font-weight-bold">Other Receivers</div>
+      <div class="card-body">
+        list of users added
+      </div>
+    </div>
   </div>
 </div>

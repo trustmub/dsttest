@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DgMeetingComponent } from './dg-meeting.component';
+import { AddRecipientFormComponent } from './add-recipient-form.component';
 
-describe('DgMeetingComponent', () => {
-  let component: DgMeetingComponent;
-  let fixture: ComponentFixture<DgMeetingComponent>;
+describe('AddRecipientFormComponent', () => {
+  let component: AddRecipientFormComponent;
+  let fixture: ComponentFixture<AddRecipientFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DgMeetingComponent ]
+      declarations: [ AddRecipientFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DgMeetingComponent);
+    fixture = TestBed.createComponent(AddRecipientFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

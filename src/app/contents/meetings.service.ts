@@ -42,7 +42,14 @@ export class MeetingsService {
   }
 
   getMeeting(id: string) {
-    return this.upcoming.filter(x => x.id === id)[0];
+    const record = this.upcoming.filter(x => x.id === id)[0];
+    record.decisions.actionItems.map(
+      (action) => {
+        action.health = this.changeHealthStatus(new Date(action.returnDate));
+      }
+    );
+
+    return record;
   }
 
   addMeeting(meeting) {
@@ -71,6 +78,17 @@ export class MeetingsService {
       this.fetchMeetings().subscribe(
         (response) => {
           this.upcoming = response.body;
+          for (const meeting of this.upcoming) {
+            this.upcoming.map(
+              (rec) => {
+                rec.decisions.actionItems.map(
+                  (act) => {
+                    act.health = this.changeHealthStatus(new Date(act.returnDate));
+                  }
+                );
+              }
+            );
+          }
           return this.upcoming;
         },
         (error) => {
@@ -80,19 +98,23 @@ export class MeetingsService {
     }
 
     return this.upcoming;
-
   }
 
-  async getdb() {
-    return this.fetchMeetings().subscribe(
-      (response) => {
-        this.upcoming = response.body;
-        return this.upcoming;
-      },
-      (error) => {
-        return this.upcoming;
-      }
-    );
+  private changeHealthStatus(returnDate: Date) {
+
+    const today = new Date();
+    const daysBetween = Math.round((returnDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    if (daysBetween > 8) {
+      return 'green';
+    }
+    if (daysBetween <= 8 && daysBetween > 0) {
+      return 'amber';
+    }
+
+    if (daysBetween <= 0) {
+      return 'red';
+    }
   }
 
   fetchMeetings() {

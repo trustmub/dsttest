@@ -11,9 +11,10 @@ import {AuthGuardService} from './authentication/auth-guard.service';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {ExcoMeetingComponent} from './contents/exco-meeting/exco-meeting.component';
-import {DgMeetingComponent} from './contents/meetings/dg-meeting/dg-meeting.component';
+import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
-import {DgMeetingDetailsComponent} from './contents/meetings/dg-meeting/dg-meeting-details/dg-meeting-details.component';
+import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
+import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -26,8 +27,10 @@ const appRoutes: Routes = [
 
   {path: 'meetings', component: MeetingsComponent},
   {path: 'meetings/exco', component: ExcoMeetingComponent},
-  {path: 'meetings/dg', component: DgMeetingComponent},
-  {path: 'meetings/dg/:id', component: DgMeetingDetailsComponent},
+
+  {path: 'dg-memo', component: DgMemoComponent},
+  {path: 'dg-memo/submission', component: RequireSubmissionListComponent},
+  {path: 'dg-memo/submission/:id', component: DgSubmissionDetailsComponent},
   {path: 'meetings/cabinet', component: CabinetMeetingComponent},
 
   {path: 'not-found', component: PageNotFoundComponent, canActivate: [AuthGuardService]},

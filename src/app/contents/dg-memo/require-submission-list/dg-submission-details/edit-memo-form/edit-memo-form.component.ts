@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category, DgMemoModel} from '../../memo.model';
+import {Category, DgMemoModel} from '../../../memo.model';
 import {MembersModel} from '../../../../members/members.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MembersService} from '../../../../../shared/members.service';
-import {MemoService} from '../../memo.service';
+import {MemoService} from '../../../memo.service';
 
 @Component({
   selector: 'app-edit-memo-form',
@@ -60,7 +60,8 @@ export class EditMemoFormComponent implements OnInit {
   }
 
   onUpdateMemoClicked() {
-    this.memoService.addNewMemo(this.editMemoForm.value);
+    // this.memoService.addNewMemo(this.editMemoForm.value);
+    this.memoService.updateMemo(this.editMemoForm.value);
     this.memoRecord = this.memoService.getMemo(this.recordId);
     console.log('updated form on submit', this.editMemoForm.value);
   }

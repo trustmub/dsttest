@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MemoService} from '../memo.service';
-import {DgMemoModel} from '../memo.model';
-import {onErrorResumeNext} from 'rxjs';
+import {MemoService} from '../../memo.service';
+import {DgMemoModel} from '../../memo.model';
 
 @Component({
   selector: 'app-dg-meeting-details',
-  templateUrl: './dg-meeting-details.component.html',
-  styleUrls: ['./dg-meeting-details.component.css']
+  templateUrl: './dg-submission-details.component.html',
+  styleUrls: ['./dg-submission-details.component.css']
 })
-export class DgMeetingDetailsComponent implements OnInit {
+export class DgSubmissionDetailsComponent implements OnInit {
 
   memoRecord: DgMemoModel;
   memoId: string;

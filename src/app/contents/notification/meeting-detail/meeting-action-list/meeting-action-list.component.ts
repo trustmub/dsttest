@@ -33,4 +33,13 @@ export class MeetingActionListComponent implements OnInit {
     );
   }
 
+  // TODO source this method from a helper class in shared module
+  getStatusClasses(status: string) {
+    return {
+      'btn-success': status === 'green',
+      'btn-danger': status === 'red',
+      'btn-warning': status === 'amber'
+    };
+  }
+
 }

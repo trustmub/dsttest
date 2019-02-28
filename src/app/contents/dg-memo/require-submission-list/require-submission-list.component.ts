@@ -19,4 +19,13 @@ export class RequireSubmissionListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // TODO outsource this from a helper class
+  getStatusClasses(status: string) {
+    return {
+      'btn-success': status === 'green',
+      'btn-danger': status === 'red',
+      'btn-warning': status === 'amber'
+    };
+  }
+
 }

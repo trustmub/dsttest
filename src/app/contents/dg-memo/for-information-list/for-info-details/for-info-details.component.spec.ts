@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DgMeetingFormComponent } from './dg-meeting-form.component';
+import { ForInfoDetailsComponent } from './for-info-details.component';
 
-describe('DgMeetingFormComponent', () => {
-  let component: DgMeetingFormComponent;
-  let fixture: ComponentFixture<DgMeetingFormComponent>;
+describe('ForInfoDetailsComponent', () => {
+  let component: ForInfoDetailsComponent;
+  let fixture: ComponentFixture<ForInfoDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DgMeetingFormComponent ]
+      declarations: [ ForInfoDetailsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DgMeetingFormComponent);
+    fixture = TestBed.createComponent(ForInfoDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {MemoService} from '../memo.service';
+import {MemoService} from '../../memo.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category, DgMemoModel} from '../memo.model';
+import {Category, DgMemoModel} from '../../memo.model';
 import {UserService} from '../../../../shared/user.service';
 import {MembersModel} from '../../../members/members.model';
 import {MembersService} from '../../../../shared/members.service';
 
 @Component({
   selector: 'app-dg-meeting-form',
-  templateUrl: './dg-meeting-form.component.html',
-  styleUrls: ['./dg-meeting-form.component.css']
+  templateUrl: './dg-submission-form.component.html',
+  styleUrls: ['./dg-submission-form.component.css']
 })
-export class DgMeetingFormComponent implements OnInit {
+export class DgSubmissionFormComponent implements OnInit {
   memoForm: FormGroup;
   categories: Category[];
   members: MembersModel[];
@@ -28,7 +28,7 @@ export class DgMeetingFormComponent implements OnInit {
     this.categories = memoService.getCategories();
     this.members = this.membersService.getMembers();
 
-    this.randomNumber = 'DG' + Math.floor(Math.random() * 999) + 1;
+    this.randomNumber = this.generateReference();
 
 
   }
@@ -67,12 +67,18 @@ export class DgMeetingFormComponent implements OnInit {
       fullname
     );
 
-    this.randomNumber = 'DG' + Math.floor(Math.random() * 3) + 100;
+    // this.randomNumber = 'DG' + Math.floor(Math.random() * 3) + 100;
+    this.randomNumber = this.generateReference();
 
     this.memoService.addNewMemo(newMemo);
 
     this.memoForm.reset({dgMemoNumber: this.randomNumber, memoStatus: this.statusList[0]});
     this.memoService.refreshMemoObserver.next(true);
+  }
+
+  private generateReference(): string {
+    const year = new Date().getFullYear();
+    return 'RS-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
   }
 
 }

@@ -50,7 +50,12 @@
             <td>{{ meeting.assignedTo }}</td>
             <td>{{ meeting.returnDate }}</td>
             <td>{{ meeting.status }}</td>
-            <td>{{ meeting.health }}</td>
+            <td>
+              <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"
+                 [ngClass]="getStatusClasses(meeting.health)">
+                <i class="fab ">{{ meeting.health| slice :0:1 | uppercase }}</i>
+              </a>
+            </td>
           </tr>
           <tr>
             <td colspan="6">
@@ -76,7 +81,8 @@
                     <div class="col-lg-2 col-md-2">
                       <button class="btn btn-outline-primary btn-block"
                               type="button"
-                              [routerLink]="['/meetings','dg', meeting.dgMemoNumber]">More</button>
+                              [routerLink]="['/dg-memo','submission', meeting.dgMemoNumber]">More
+                      </button>
                     </div>
                   </div>
 

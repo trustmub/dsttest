@@ -54,8 +54,9 @@
             <td>{{ item.returnDate | date:"dd MMMM yyyy"}}</td>
             <td>{{ item.status }}</td>
             <td>
-              <a class="btn btn-success btn-circle btn-sm text-white font-weight-bold align-content-center">
-                <i class="fab ">G</i>
+              <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"
+              [ngClass]="getStatusClasses(item.health)">
+                <i class="fab ">{{ item.health | slice :0:1 | uppercase }}</i>
               </a>
             </td>
 

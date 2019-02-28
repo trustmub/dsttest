@@ -28,7 +28,7 @@ import {UserResetComponent} from './authentication/user-reset/user-reset.compone
 import {AuthenticationService} from './authentication/authentication.service';
 import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {ExcoMeetingComponent} from './contents/exco-meeting/exco-meeting.component';
-import {DgMeetingComponent} from './contents/meetings/dg-meeting/dg-meeting.component';
+import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
 import {MembersComponent} from './contents/members/members.component';
 import {UserService} from './shared/user.service';
@@ -42,14 +42,17 @@ import {ExcoMeetingFormComponent} from './contents/exco-meeting/exco-meeting-for
 import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/meeting-attendee/meeting-attendee.component';
 import {AuthInterceptor} from './shared/auth.interceptor';
 import {DateSelectorDirective} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
-import { DgMeetingFormComponent } from './contents/meetings/dg-meeting/dg-meeting-form/dg-meeting-form.component';
-import {MemoService} from './contents/meetings/dg-meeting/memo.service';
-import { DgMeetingDetailsComponent } from './contents/meetings/dg-meeting/dg-meeting-details/dg-meeting-details.component';
+import {DgSubmissionFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-form/dg-submission-form.component';
+import {MemoService} from './contents/dg-memo/memo.service';
+import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {ChartsModule} from 'ng2-charts';
-import { RequireSubmissionListComponent } from './contents/meetings/dg-meeting/require-submission-list/require-submission-list.component';
-import { ForInformationListComponent } from './contents/meetings/dg-meeting/for-information-list/for-information-list.component';
-import { EditMemoFormComponent } from './contents/meetings/dg-meeting/dg-meeting-details/edit-memo-form/edit-memo-form.component';
-import { ForInfoFormComponent } from './contents/meetings/dg-meeting/for-information-list/for-info-form/for-info-form.component';
+import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
+import {ForInformationListComponent} from './contents/dg-memo/for-information-list/for-information-list.component';
+import {EditMemoFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/edit-memo-form/edit-memo-form.component';
+import {ForInfoFormComponent} from './contents/dg-memo/for-information-list/for-info-form/for-info-form.component';
+import { SubmissionRecordsComponent } from './contents/meetings/submission-records/submission-records.component';
+import { ForInfoDetailsComponent } from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
+import { AddRecipientFormComponent } from './contents/dg-memo/require-submission-list/dg-submission-details/add-recipient-form/add-recipient-form.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +76,7 @@ import { ForInfoFormComponent } from './contents/meetings/dg-meeting/for-informa
     UserResetComponent,
     MeetingsComponent,
     ExcoMeetingComponent,
-    DgMeetingComponent,
+    DgMemoComponent,
     CabinetMeetingComponent,
     MembersComponent,
     MeetingActionListComponent,
@@ -84,12 +87,15 @@ import { ForInfoFormComponent } from './contents/meetings/dg-meeting/for-informa
     ExcoMeetingFormComponent,
     MeetingAttendeeComponent,
     DateSelectorDirective,
-    DgMeetingFormComponent,
-    DgMeetingDetailsComponent,
+    DgSubmissionFormComponent,
+    DgSubmissionDetailsComponent,
     RequireSubmissionListComponent,
     ForInformationListComponent,
     EditMemoFormComponent,
-    ForInfoFormComponent
+    ForInfoFormComponent,
+    SubmissionRecordsComponent,
+    ForInfoDetailsComponent,
+    AddRecipientFormComponent
   ],
   imports: [
     BrowserModule,
