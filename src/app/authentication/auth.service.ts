@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {

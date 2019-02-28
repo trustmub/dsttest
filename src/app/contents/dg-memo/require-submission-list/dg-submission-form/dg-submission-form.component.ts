@@ -76,6 +76,7 @@ export class DgSubmissionFormComponent implements OnInit {
     this.memoService.refreshMemoObserver.next(true);
   }
 
+  // TODO outsource this from a helper class
   private generateReference(): string {
     const year = new Date().getFullYear();
     return 'RS-' + Math.floor(Math.random() * 999) + 1 + '-' + year;

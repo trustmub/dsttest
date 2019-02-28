@@ -1,0 +1,244 @@
+<form [formGroup]="subRecordForm" (ngSubmit)="onSaveSubmissionClicked()">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="submissionRef">Submission Record Ref.</label>
+        <input type="text"
+               class="form-control"
+               id="submissionRef"
+               name="submissionRef"
+               formControlName="submissionRef">
+        <span *ngIf="!subRecordForm.get('submissionRef').valid && subRecordForm.get('submissionRef').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="submissionType">Submission Type.</label>
+        <select class="form-control"
+                id="submissionType"
+                formControlName="submissionType"
+                name="submissionType">
+          <option></option>
+          <option *ngFor="let type of ['DG Submission', 'Minister AS Submission']; let i = index">{{ type }}</option>
+        </select>
+        <span *ngIf="!subRecordForm.get('submissionType').valid && subRecordForm.get('submissionType').touched"
+              class="invalid-feedback">
+          This field is Required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="submissionType">Mode Of Submission.</label>
+        <select class="form-control"
+                id="submissionMode"
+                formControlName="submissionMode"
+                name="submissionMode">
+          <option></option>
+          <option *ngFor="let type of ['Afresco', 'Other']; let i = index">{{ type }}</option>
+        </select>
+        <span *ngIf="!subRecordForm.get('submissionMode').valid && subRecordForm.get('submissionMode').touched"
+              class="invalid-feedback">
+          this field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="incomingDate">Incoming Date.</label>
+        <input type="date"
+               class="form-control"
+               id="incomingDate"
+               name="incomingDate"
+               placeholder="YYYY/MM/DD"
+               formControlName="incomingDate">
+        <span *ngIf="!subRecordForm.get('incomingDate').valid && subRecordForm.get('incomingDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-8">
+      <div class="form-group">
+        <label for="submittedBy">Submitted By.</label>
+        <input type="text"
+               class="form-control"
+               id="submittedBy"
+               name="submittedBy"
+               formControlName="submittedBy">
+        <span *ngIf="!subRecordForm.get('submittedBy').valid && subRecordForm.get('submittedBy').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="description">Description.</label>
+        <input type="text"
+               class="form-control"
+               id="description"
+               name="description"
+               formControlName="description">
+        <span *ngIf="!subRecordForm.get('description').valid && subRecordForm.get('description').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="linkedToMemo">Linked To Memo.</label>
+        <select class="form-control"
+                id="linkedToMemo"
+                formControlName="linkedToMemo"
+                name="linkedToMemo">
+          <option></option>
+          <option *ngFor="let response of ['Yes', 'No']; let i = index">{{ response }}</option>
+        </select>
+        <span *ngIf="!subRecordForm.get('linkedToMemo').valid && subRecordForm.get('linkedToMemo').touched"
+              class="invalid-feedback">
+          this field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="memoRef">Memo Ref.</label>
+        <input type="text"
+               class="form-control"
+               id="memoRef"
+               name="memoRef"
+               formControlName="memoRef">
+        <span *ngIf="!subRecordForm.get('memoRef').valid && subRecordForm.get('memoRef').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="status">Status.</label>
+        <select class="form-control"
+                id="status"
+                formControlName="status"
+                name="status">
+          <option></option>
+          <option
+            *ngFor="let status of ['Created', 'Approved','Rejected','Rework']; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!subRecordForm.get('status').valid && subRecordForm.get('status').touched"
+              class="invalid-feedback">
+          this field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="sentToDGDate">Date Send to DG.</label>
+        <input type="date"
+               class="form-control"
+               id="sentToDGDate"
+               name="sentToDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="sentToDGDate">
+        <span *ngIf="!subRecordForm.get('sentToDGDate').valid && subRecordForm.get('sentToDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="fromDGDate">Date Received From DG.</label>
+        <input type="date"
+               class="form-control"
+               id="fromDGDate"
+               name="fromDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="fromDGDate">
+        <span *ngIf="!subRecordForm.get('fromDGDate').valid && subRecordForm.get('fromDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="approvedDGDate">Date Approved by DG.</label>
+        <input type="date"
+               class="form-control"
+               id="approvedDGDate"
+               name="approvedDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="approvedDGDate">
+        <span *ngIf="!subRecordForm.get('approvedDGDate').valid && subRecordForm.get('approvedDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-9 col-md-9">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!subRecordForm.get('comments').valid && subRecordForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="sentToProgramDate">Date Send To Program.</label>
+        <input type="date"
+               class="form-control"
+               id="sentToProgramDate"
+               name="sentToProgramDate"
+               placeholder="YYY/MM/DD"
+               formControlName="sentToProgramDate">
+        <span *ngIf="!subRecordForm.get('sentToProgramDate').valid && subRecordForm.get('sentToProgramDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary text-white" type="submit" [disabled]="!subRecordForm.valid">Save</button>
+  <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="button">Cancel</button>
+
+</form>

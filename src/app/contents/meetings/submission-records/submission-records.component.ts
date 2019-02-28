@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SubmissionRecordService} from './submission-record.service';
 
 @Component({
   selector: 'app-submission-records',
@@ -8,11 +9,19 @@ import {Component, OnInit} from '@angular/core';
 export class SubmissionRecordsComponent implements OnInit {
   loading = false;
   loadingError = false;
+  recordCount: number;
 
-  constructor() {
+  constructor(private submissionService: SubmissionRecordService) {
+    this.recordCount = this.submissionService.getSubmissions().length;
   }
 
   ngOnInit() {
+
+    this.submissionService.refreshObserver.subscribe(
+      (result: boolean) => {
+        this.recordCount = this.submissionService.getSubmissions().length;
+      }
+    );
   }
 
   onSubmissionReloadPageClicked() {

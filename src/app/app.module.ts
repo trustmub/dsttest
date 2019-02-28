@@ -14,7 +14,7 @@ import {OverdueTaskComponent} from './contents/dashboard/overdue-task/overdue-ta
 import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
-import {NoteDetailComponent} from './contents/notification/meeting-detail/note-detail.component';
+import {NoteDetailComponent} from './contents/exco-meeting/meeting-detail/note-detail.component';
 import {MeetingsService} from './contents/meetings.service';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -32,16 +32,15 @@ import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
 import {MembersComponent} from './contents/members/members.component';
 import {UserService} from './shared/user.service';
-import {MeetingActionListComponent} from './contents/notification/meeting-detail/meeting-action-list/meeting-action-list.component';
-import {MeetingNonActionListComponent} from './contents/notification/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
-import {MembersService} from './shared/members.service';
-import {ActionItemFormComponent} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
+import {MeetingActionListComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/meeting-action-list.component';
+import {MeetingNonActionListComponent} from './contents/exco-meeting/meeting-detail/meeting-non-action-list/meeting-non-action-list.component';
+import {ActionItemFormComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pipe';
-import {NonActionItemFormComponent} from './contents/notification/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
+import {NonActionItemFormComponent} from './contents/exco-meeting/meeting-detail/meeting-non-action-list/non-action-item-form/non-action-item-form.component';
 import {ExcoMeetingFormComponent} from './contents/exco-meeting/exco-meeting-form/exco-meeting-form.component';
-import {MeetingAttendeeComponent} from './contents/notification/meeting-detail/meeting-attendee/meeting-attendee.component';
+import {MeetingAttendeeComponent} from './contents/exco-meeting/meeting-detail/meeting-attendee/meeting-attendee.component';
 import {AuthInterceptor} from './shared/auth.interceptor';
-import {DateSelectorDirective} from './contents/notification/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
+import {DateSelectorDirective} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
 import {DgSubmissionFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-form/dg-submission-form.component';
 import {MemoService} from './contents/dg-memo/memo.service';
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
@@ -55,6 +54,7 @@ import { ForInfoDetailsComponent } from './contents/dg-memo/for-information-list
 import { AddRecipientFormComponent } from './contents/dg-memo/require-submission-list/dg-submission-details/add-recipient-form/add-recipient-form.component';
 import { SubByProgramComponent } from './contents/meetings/submission-records/sub-by-program/sub-by-program.component';
 import { SubByDgMemoComponent } from './contents/meetings/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
+import { SubmissionRecordFormComponent } from './contents/meetings/submission-records/submission-record-form/submission-record-form.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +99,8 @@ import { SubByDgMemoComponent } from './contents/meetings/submission-records/sub
     ForInfoDetailsComponent,
     AddRecipientFormComponent,
     SubByProgramComponent,
-    SubByDgMemoComponent
+    SubByDgMemoComponent,
+    SubmissionRecordFormComponent
   ],
   imports: [
     BrowserModule,
@@ -109,13 +110,7 @@ import { SubByDgMemoComponent } from './contents/meetings/submission-records/sub
     AppRoutingModule,
     ChartsModule,
   ],
-  providers: [MeetingsService,
-    AuthService,
-    AuthGuardService,
-    AuthenticationService,
-    UserService,
-    MembersService,
-    MemoService,
+  providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

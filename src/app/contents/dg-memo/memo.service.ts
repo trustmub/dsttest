@@ -1,6 +1,10 @@
 import {Category, DgMemoModel, InfoModel} from './memo.model';
 import {Subject} from 'rxjs';
+import {Injectable} from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class MemoService {
 
   refreshMemoObserver = new Subject();
@@ -36,7 +40,6 @@ export class MemoService {
           record.health = this.changeHealthStatus(new Date(record.returnDate));
         }
       );
-      // console.log('After Transformation', this.memoList);
     }
     return this.memoList;
   }
@@ -94,7 +97,6 @@ export class MemoService {
   }
 
   getClassificationList() {
-    console.log(this.classificationList);
     return this.classificationList;
   }
 

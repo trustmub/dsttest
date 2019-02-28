@@ -16,7 +16,7 @@ export class MeetingAttendeeComponent implements OnInit {
   members: MembersModel[];
   meetingRecord: MeetingModel;
   meetingId: string;
-  attendeeStatusList = ['Present', 'Absent', 'Somewhere Else', 'Apology'];
+  attendeeStatusList = ['Present', 'Absent', 'Someone Else', 'Apology'];
   attendeeForm: FormGroup;
 
   constructor(private memberService: MembersService, private route: ActivatedRoute, private meetingService: MeetingsService) {

@@ -5,7 +5,7 @@ import {DashboardComponent} from './contents/dashboard/dashboard.component';
 import {InboxComponent} from './contents/inbox/inbox.component';
 import {CalenderComponent} from './contents/calender/calender.component';
 import {NotificationComponent} from './contents/notification/notification.component';
-import {NoteDetailComponent} from './contents/notification/meeting-detail/note-detail.component';
+import {NoteDetailComponent} from './contents/exco-meeting/meeting-detail/note-detail.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './authentication/auth-guard.service';
 import {AuthenticationComponent} from './authentication/authentication.component';
@@ -24,10 +24,11 @@ const appRoutes: Routes = [
   {path: 'inbox', canActivate: [AuthGuardService], component: InboxComponent},
   {path: 'calender', canActivate: [AuthGuardService], component: CalenderComponent},
   {path: 'notification', component: NotificationComponent, canActivate: [AuthGuardService]},
-  {path: 'notification/:id', component: NoteDetailComponent, canActivate: [AuthGuardService]},
+
 
   {path: 'meetings', component: MeetingsComponent},
   {path: 'meetings/exco', component: ExcoMeetingComponent},
+  {path: 'meetings/exco/:id', component: NoteDetailComponent, canActivate: [AuthGuardService]},
 
   {path: 'dg-memo', component: DgMemoComponent},
   {path: 'dg-memo/submission', component: RequireSubmissionListComponent},

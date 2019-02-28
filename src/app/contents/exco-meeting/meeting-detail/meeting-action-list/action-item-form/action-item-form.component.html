@@ -68,8 +68,7 @@
                id="actionReturnDate"
                name="actionReturnDate"
                formControlName="actionReturnDate"
-               placeholder="yyyy/mm/dd"
-               appDateSelector>
+               placeholder="yyyy/mm/dd">
 
         <span *ngIf="!actionItemForm.get('actionReturnDate').valid && actionItemForm.get('actionReturnDate').touched"
               class="invalid-feedback">
@@ -83,7 +82,7 @@
         <select class="form-control"
                 id="actionStatus"
                 formControlName="actionStatus"
-                name="actionStatus" disabled>
+                name="actionStatus">
           <option *ngFor="let status of actionStatus">{{ status }}</option>
         </select>
         <span *ngIf="!actionItemForm.get('actionStatus').valid && actionItemForm.get('actionStatus').touched"

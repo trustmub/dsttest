@@ -1,5 +1,9 @@
 import {MembersModel} from '../contents/members/members.model';
+import {Injectable} from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class MembersService {
 
   private members = [

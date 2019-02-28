@@ -2,7 +2,9 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthenticationService {
 
   isAuthenticated = new EventEmitter<boolean>();

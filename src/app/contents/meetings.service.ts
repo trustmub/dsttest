@@ -6,7 +6,9 @@ import {ActionItemModel, AttendeesModel, DecisionModel, MeetingModel, NonActionI
 import {UserService} from '../shared/user.service';
 import {UserModel} from '../shared/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class MeetingsService {
   refreshObserver = new Subject();
   actionItemSavedObserver = new Subject();

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LinkStatus, SubmissionRecordService} from '../submission-record.service';
+import {SubmissionRecordModel} from '../submission-record.model';
 
 @Component({
   selector: 'app-sub-by-program',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubByProgramComponent implements OnInit {
 
-  constructor() { }
+  updateStatus = false;
+  submissionsByProgram: SubmissionRecordModel[];
+
+  constructor(private submissionService: SubmissionRecordService) {
+    this.submissionsByProgram = this.submissionService.getSubmissions(LinkStatus.PROGRAM);
+  }
 
   ngOnInit() {
+    this.submissionService.refreshObserver.subscribe(
+      (result: boolean) => {
+        if (result) {
+          this.submissionsByProgram = this.submissionService.getSubmissions(LinkStatus.PROGRAM);
+        }
+      }
+    );
   }
 
 }
