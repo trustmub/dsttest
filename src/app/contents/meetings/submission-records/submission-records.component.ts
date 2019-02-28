@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-submission-records',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./submission-records.component.css']
 })
 export class SubmissionRecordsComponent implements OnInit {
+  loading = false;
+  loadingError = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  onSubmissionReloadPageClicked() {
+
+  }
 }

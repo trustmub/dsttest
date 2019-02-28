@@ -53,6 +53,8 @@ import {ForInfoFormComponent} from './contents/dg-memo/for-information-list/for-
 import { SubmissionRecordsComponent } from './contents/meetings/submission-records/submission-records.component';
 import { ForInfoDetailsComponent } from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
 import { AddRecipientFormComponent } from './contents/dg-memo/require-submission-list/dg-submission-details/add-recipient-form/add-recipient-form.component';
+import { SubByProgramComponent } from './contents/meetings/submission-records/sub-by-program/sub-by-program.component';
+import { SubByDgMemoComponent } from './contents/meetings/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { AddRecipientFormComponent } from './contents/dg-memo/require-submission
     ForInfoFormComponent,
     SubmissionRecordsComponent,
     ForInfoDetailsComponent,
-    AddRecipientFormComponent
+    AddRecipientFormComponent,
+    SubByProgramComponent,
+    SubByDgMemoComponent
   ],
   imports: [
     BrowserModule,

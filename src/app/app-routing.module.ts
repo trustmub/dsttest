@@ -15,6 +15,7 @@ import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
 import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
+import {SubmissionRecordsComponent} from './contents/meetings/submission-records/submission-records.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -31,6 +32,9 @@ const appRoutes: Routes = [
   {path: 'dg-memo', component: DgMemoComponent},
   {path: 'dg-memo/submission', component: RequireSubmissionListComponent},
   {path: 'dg-memo/submission/:id', component: DgSubmissionDetailsComponent},
+
+  {path: 'submission-records', component: SubmissionRecordsComponent},
+
   {path: 'meetings/cabinet', component: CabinetMeetingComponent},
 
   {path: 'not-found', component: PageNotFoundComponent, canActivate: [AuthGuardService]},
