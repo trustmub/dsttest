@@ -21,9 +21,9 @@ export class SubmissionRecordService {
   getSubmissions(status?: LinkStatus) {
     if (!(this.submissionRecord === [])) {
       if (status === LinkStatus.DG_MEMO) {
-        return this.submissionRecord.filter(x => x.linkedToMemo === 'Yes');
+        return this.submissionRecord.filter(x => x.memoRef !== null);
       } else if (status === LinkStatus.PROGRAM) {
-        return this.submissionRecord.filter(x => x.linkedToMemo === 'No');
+        return this.submissionRecord.filter(x => x.memoRef === null);
       } else {
         return this.submissionRecord;
       }
@@ -31,7 +31,6 @@ export class SubmissionRecordService {
       return this.submissionRecord;
     }
   }
-
 }
 
 export enum LinkStatus {

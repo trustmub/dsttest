@@ -34,10 +34,12 @@
           <thead>
           <tr class="text-sm-center">
             <th>Ref No.</th>
-            <th>type</th>
-            <th>Mode</th>
+            <th>Subject</th>
             <th>Incoming Date</th>
-            <th>Status</th>
+            <th>Submitted By</th>
+            <th>Date to DG</th>
+            <th>Date from DG</th>
+            <th>status</th>
           </tr>
           </thead>
           <tbody class="" *ngFor="let submission of submissionsByMemo; let i = index">
@@ -48,19 +50,29 @@
               [attr.aria-controls]="'submissionItem' + i">
 
             <td>{{ submission.submissionRef }}</td>
-            <td>{{ submission.submissionType }}</td>
             <td>{{ submission.submissionMode }}</td>
             <td>{{ submission.incomingDate }}</td>
+            <td>{{ submission.submittedBy }}</td>
+            <td>{{ submission.sentToDGDate }}</td>
+            <td>{{ submission.fromDGDate }}</td>
             <td>{{ submission.status }}</td>
           </tr>
           <tr class="text-xs">
-            <td colspan="5">
+            <td colspan="7">
               <div class="collapse" [attr.id]="'submissionItem' + i">
                 <div class="card card-body">
-                  <p>Description {{ submission.description}}</p>
-                  <p>memRef: {{ submission.memoRef}}</p>
-                  <p>Created Date{{ submission.createDate}}</p>
-                  <p>Comments : {{ submission.comments}}</p>
+
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                      <p>Description {{ submission.description }}</p>
+                      <p>memRef: {{ submission.memoRef }}</p>
+                      <p>Created Date{{ submission.createDate }}</p>
+                      <p>Comments : {{ submission.comments }}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+
+                    </div>
+                  </div>
                 </div>
               </div>
             </td>

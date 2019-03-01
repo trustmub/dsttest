@@ -14,15 +14,14 @@
 
       </div>
       <!-- Extra large modal for adding submission-->
-      <div class="modal fade bd-sub-program-modal-lg" tabindex="-1" role="dialog" aria-labelledby="submissionProgramRecordForm"
+      <div class="modal fade bd-sub-program-modal-lg" tabindex="-1" role="dialog"
+           aria-labelledby="submissionProgramRecordForm"
            aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header" *ngIf="!updateStatus">failed to update</div>
-            <div class="modal-header" *ngIf="updateStatus">Add new submission item</div>
-
+            <div class="modal-header">Add Self Initiated Submission</div>
             <div class="modal-body">
-              <app-submission-record-form></app-submission-record-form>
+              <app-self-initiated-form></app-self-initiated-form>
             </div>
           </div>
         </div>
@@ -34,10 +33,12 @@
           <thead>
           <tr class="text-sm-center">
             <th>Ref No.</th>
-            <th>type</th>
-            <th>Mode</th>
+            <th>Subject</th>
             <th>Incoming Date</th>
-            <th>Status</th>
+            <th>Submitted By</th>
+            <th>Date Sent to DG</th>
+            <th>Date Received from DG</th>
+            <th>status</th>
           </tr>
           </thead>
           <tbody class="" *ngFor="let submission of submissionsByProgram; let i = index">
@@ -48,13 +49,15 @@
               [attr.aria-controls]="'submissionItem' + i">
 
             <td>{{ submission.submissionRef }}</td>
-            <td>{{ submission.submissionType }}</td>
             <td>{{ submission.submissionMode }}</td>
             <td>{{ submission.incomingDate }}</td>
+            <td>{{ submission.submittedBy }}</td>
+            <td>{{ submission.sentToDGDate }}</td>
+            <td>{{ submission.fromDGDate }}</td>
             <td>{{ submission.status }}</td>
           </tr>
           <tr class="text-xs">
-            <td colspan="5">
+            <td colspan="7">
               <div class="collapse" [attr.id]="'submissionItem' + i">
                 <div class="card card-body">
                   <p>Description {{ submission.description}}</p>
