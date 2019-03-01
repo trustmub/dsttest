@@ -21,15 +21,19 @@ export class SubmissionRecordService {
   getSubmissions(status?: LinkStatus) {
     if (!(this.submissionRecord === [])) {
       if (status === LinkStatus.DG_MEMO) {
-        return this.submissionRecord.filter(x => x.memoRef !== null);
+        return this.submissionRecord.filter(x => x.submissionRef.slice(0, 1) === 'D');
       } else if (status === LinkStatus.PROGRAM) {
-        return this.submissionRecord.filter(x => x.memoRef === null);
+        return this.submissionRecord.filter(x => x.submissionRef.slice(0, 1) === 'S');
       } else {
         return this.submissionRecord;
       }
     } else {
       return this.submissionRecord;
     }
+  }
+
+  getSubmissionRecord(id: string) {
+    return this.submissionRecord.filter(x => x.submissionRef === id)[0];
   }
 }
 

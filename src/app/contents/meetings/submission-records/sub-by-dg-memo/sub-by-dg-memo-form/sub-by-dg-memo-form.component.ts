@@ -21,15 +21,15 @@ export class SubByDgMemoFormComponent implements OnInit {
     this.subRecordForm = new FormGroup({
       submissionType: new FormControl(null),
       submissionRef: new FormControl({value: this.reference, disabled: true}, [Validators.required]),
-      memoRef: new FormControl(null),
-      submissionMode: new FormControl(null),
+      memoRef: new FormControl(null, [Validators.required]),
+      submissionMode: new FormControl(null, [Validators.required]),
       afrescoRef: new FormControl(null),
-      subject: new FormControl(null),
-      incomingDate: new FormControl(null),
-      submittedBy: new FormControl(null),
+      subject: new FormControl(null, [Validators.required]),
+      incomingDate: new FormControl(null, [Validators.required]),
+      submittedBy: new FormControl(null,[Validators.required]),
       sentToDGDate: new FormControl(null),
       fromDGDate: new FormControl(null),
-      status: new FormControl(null),
+      status: new FormControl(null,[Validators.required]),
       approvedDGDate: new FormControl(null),
       comments: new FormControl(null),
       sentToProgramDate: new FormControl(null),
@@ -67,7 +67,7 @@ export class SubByDgMemoFormComponent implements OnInit {
   // TODO outsource this from a helper class
   private generateReference(): string {
     const year = new Date().getFullYear();
-    return 'SR-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
+    return 'D-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
   }
 
 }

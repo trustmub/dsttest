@@ -1,0 +1,162 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Submissions Details</h1>
+  <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
+  <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+</div>
+
+<div class="row">
+  <div class="col-lg-9 col-md-9">
+
+    <div class="card pr-1 pl-1">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6>{{ submissionRecord.subject }}</h6>
+
+        <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="true">Actions
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+               aria-labelledby="dropdownMenuLink" x-placement="top-end"
+               style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-156px, -155px, 0px);">
+            <a class="dropdown-item " data-toggle="modal" data-target=".bd-editMemo-modal-lg">Edit</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-toggle="modal" data-target=".bd-addRecipient-modal-lg">Add Recipients</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra large modal for editing Action Item-->
+      <div class="modal fade bd-editMemo-modal-lg" tabindex="-1" role="dialog" aria-labelledby="editSubmissionForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">Edit Record</div>
+            <div class="modal-body">
+              <app-self-initiated-form *ngIf="submissionRecord.submissionRef.slice(0, 1) === 'S'"></app-self-initiated-form>
+              <app-submission-record-form *ngIf="submissionRecord.submissionRef.slice(0, 1) === 'D'"></app-submission-record-form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra large modal for adding Recipients Action Item-->
+      <div class="modal fade bd-addRecipient-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addRecipientForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">Add Recipients</div>
+            <div class="modal-body">
+              <app-add-recipient-form></app-add-recipient-form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Category
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.submissionType }}</div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            DG Memo Reference
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.memoRef }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            AS Memo Number
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.createdBy }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Classification
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.comments }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Subject
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.subject }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Assigned To.
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.submissionType }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Return Date.
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.approvedDGDate }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            status
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.status }}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Comments
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9">{{ submissionRecord.comments }}</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3">
+
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action" id="list-meeting-list" data-toggle="list"
+         href=""
+         role="tab" aria-controls="home">Generate DG Memo</a>
+      <a class="list-group-item list-group-item-action" id="list-attendee-list" data-toggle="list" href=""
+         role="tab" aria-controls="profile">Upload Document</a>
+    </div>
+
+
+
+
+
+
+    <br>
+    <div class="card border-left-primary">
+      <div class="card-header text-primary font-weight-bold">Attached Documents</div>
+      <div class="card-body">
+        list attached documents
+      </div>
+    </div>
+    <br>
+    <div class="card border-left-info">
+      <div class="card-header text-primary font-weight-bold">Other Receivers</div>
+      <div class="card-body">
+        list of users added
+      </div>
+    </div>
+  </div>
+</div>

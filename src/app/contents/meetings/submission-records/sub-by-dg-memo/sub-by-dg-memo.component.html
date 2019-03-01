@@ -61,16 +61,27 @@
             <td colspan="7">
               <div class="collapse" [attr.id]="'submissionItem' + i">
                 <div class="card card-body">
-
                   <div class="row">
                     <div class="col-lg-9 col-md-9">
-                      <p>Description {{ submission.description }}</p>
-                      <p>memRef: {{ submission.memoRef }}</p>
-                      <p>Created Date{{ submission.createDate }}</p>
-                      <p>Comments : {{ submission.comments }}</p>
+                      <div class="media">
+                        <p class="align-self-start mr-3">Description : </p>
+                        <div class="media-body">
+                          <p>{{ submission.submissionType }}</p>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <p class="align-self-start mr-3">Comments : </p>
+                        <div class="media-body">
+                          <p>{{ submission.comments }}</p>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-lg-3 col-md-3">
-
+                      <button class="btn btn-outline-primary btn-block"
+                              type="button"
+                              [routerLink]="['/submission-records', submission.submissionRef]">More
+                      </button>
                     </div>
                   </div>
                 </div>

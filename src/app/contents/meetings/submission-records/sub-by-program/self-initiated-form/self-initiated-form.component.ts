@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 import {SubmissionRecordService} from '../../submission-record.service';
 import {SubmissionRecordModel} from '../../submission-record.model';
 import {UserService} from '../../../../../shared/user.service';
@@ -21,7 +22,7 @@ export class SelfInitiatedFormComponent implements OnInit {
   ngOnInit() {
     this.selfInitForm = new FormGroup({
       submissionType: new FormControl(null),
-      submissionRef: new FormControl(null),
+      submissionRef: new FormControl({value: this.reference, disabled: true}, [Validators.required]),
       submissionMode: new FormControl(null),
       afrescoRef: new FormControl(null),
       subject: new FormControl(null),
@@ -41,7 +42,7 @@ export class SelfInitiatedFormComponent implements OnInit {
 
     const selfInitiated: SubmissionRecordModel = {
       submissionType: this.selfInitForm.value.submissionType,
-      submissionRef: this.selfInitForm.value.submissionRef,
+      submissionRef: this.reference,
       submissionMode: this.selfInitForm.value.submissionMode,
       afrescoRef: this.selfInitForm.value.afrescoRef,
       subject: this.selfInitForm.value.subject,
@@ -56,18 +57,19 @@ export class SelfInitiatedFormComponent implements OnInit {
       createdBy: fullname
     };
 
+
     this.submissionService.addSubmissionRecord(selfInitiated);
-
+    this.reference = this.generateReference();
+    this.submissionService.refreshObserver.next(true);
     console.log(selfInitiated);
-
-    this.selfInitForm.reset();
+    this.selfInitForm.reset({submissionRef: this.reference});
 
   }
 
   // TODO outsource this from a helper class
   private generateReference(): string {
     const year = new Date().getFullYear();
-    return 'SR-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
+    return 'S-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
   }
 
 }

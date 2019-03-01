@@ -16,6 +16,7 @@ import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabin
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
 import {SubmissionRecordsComponent} from './contents/meetings/submission-records/submission-records.component';
+import {SubmissionDetailsComponent} from './contents/meetings/submission-records/submission-details/submission-details.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   {path: 'dg-memo/submission/:id', component: DgSubmissionDetailsComponent},
 
   {path: 'submission-records', component: SubmissionRecordsComponent},
+  {path: 'submission-records/:id', component: SubmissionDetailsComponent},
 
   {path: 'meetings/cabinet', component: CabinetMeetingComponent},
 
