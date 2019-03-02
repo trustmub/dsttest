@@ -8,6 +8,7 @@ import {Subject} from 'rxjs';
 export class SubmissionRecordService {
 
   refreshObserver = new Subject();
+  recipientsObserver = new Subject();
   submissionRecord: SubmissionRecordModel[] = [];
 
   constructor() {

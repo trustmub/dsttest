@@ -44,7 +44,7 @@
               <small *ngIf="!loading && deleteResult.status === 0 ">...</small>
               <div *ngIf="loading">
                 <small>Deleting Meeting...</small>
-                <div class="spinner-grow" role="status" >
+                <div class="spinner-grow" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
@@ -81,9 +81,12 @@
         <div class="tab-content" id="meeting-detail-content">
           <div class="tab-pane fade show active" id="agenda" role="tabpanel" aria-labelledby="agenda-tab">upload
             agenda
+            <editor apiKey="7vv6nyeeh35obk4gt8uww8w7zh6cjwuvlg05xkf8f4ipwwv0" [init]="{plugins: 'link'}"></editor>
+
           </div>
           <div class="tab-pane fade" id="minutes" role="tabpanel" aria-labelledby="meeting-minutes-tab">Upload Meeting
             minutes
+            <editor apiKey="7vv6nyeeh35obk4gt8uww8w7zh6cjwuvlg05xkf8f4ipwwv0" [init]="{plugins: 'link'}"></editor>
           </div>
           <div class="tab-pane fade" id="attending-register" role="tabpanel" aria-labelledby="attending-register-tab">
             upload register

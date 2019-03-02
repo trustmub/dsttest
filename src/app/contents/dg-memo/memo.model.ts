@@ -57,6 +57,7 @@ export class DgMemoModel {
   comment: string;
   createDate: string;
   createdBy: string;
+  recipient?: RecipientsModel[];
 
   constructor(
     category: string,
@@ -71,7 +72,8 @@ export class DgMemoModel {
     comment: string,
     createdBy: string,
     health: string = 'green',
-    createDate: string = new Date().toISOString()
+    createDate: string = new Date().toISOString(),
+    recipient: RecipientsModel[] = [],
   ) {
     this.category = category;
     this.dgMemoNumber = dgMemoNumber;
@@ -86,6 +88,15 @@ export class DgMemoModel {
     this.comment = comment;
     this.createdBy = createdBy;
     this.createDate = createDate;
+    this.recipient = recipient;
+  }
+}
+
+export class RecipientsModel {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
   }
 }
 

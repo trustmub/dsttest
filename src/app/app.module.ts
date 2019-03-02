@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { EditorModule } from '@tinymce/tinymce-angular'
 
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './navigation/navigation.component';
@@ -109,6 +110,7 @@ import {ActionListDetailsComponent} from './contents/exco-meeting/meeting-detail
     HttpClientModule,
     AppRoutingModule,
     ChartsModule,
+    EditorModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

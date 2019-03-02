@@ -26,13 +26,13 @@ export class SubByDgMemoFormComponent implements OnInit {
       afrescoRef: new FormControl(null),
       subject: new FormControl(null, [Validators.required]),
       incomingDate: new FormControl(null, [Validators.required]),
-      submittedBy: new FormControl(null,[Validators.required]),
-      sentToDGDate: new FormControl(null),
-      fromDGDate: new FormControl(null),
-      status: new FormControl(null,[Validators.required]),
-      approvedDGDate: new FormControl(null),
-      comments: new FormControl(null),
-      sentToProgramDate: new FormControl(null),
+      submittedBy: new FormControl(null, [Validators.required]),
+      sentToDGDate: new FormControl({value: null, disabled: true}),
+      fromDGDate: new FormControl({value: null, disabled: true}),
+      status: new FormControl(null, [Validators.required]),
+      approvedDGDate: new FormControl({value: null, disabled: true}),
+      comments: new FormControl({value: null, disabled: true}),
+      sentToProgramDate: new FormControl({value: null, disabled: true}),
     });
   }
 
