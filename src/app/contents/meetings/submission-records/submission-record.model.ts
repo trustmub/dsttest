@@ -1,3 +1,5 @@
+import {RecipientsModel} from '../../dg-memo/memo.model';
+
 export class SubmissionRecordModel {
 
   submissionType: string; // 1
@@ -16,6 +18,7 @@ export class SubmissionRecordModel {
   sentToProgramDate: string; // 13
   createdBy: string;
   createDate?: string;
+  recipients?: RecipientsModel[];
 
   constructor(
     submissionType: string,
@@ -34,7 +37,8 @@ export class SubmissionRecordModel {
     comments: string,
     sentToProgramDate: string,
     createdBy: string,
-    createDate: string = new Date().toISOString()) {
+    createDate: string = new Date().toISOString(),
+    recipients: RecipientsModel[] = []) {
 
     this.submissionRef = submissionRef;
     this.submissionType = submissionType;
@@ -51,5 +55,6 @@ export class SubmissionRecordModel {
     this.sentToProgramDate = sentToProgramDate;
     this.createdBy = createdBy;
     this.createDate = createDate;
+    this.recipients = recipients;
   }
 }
