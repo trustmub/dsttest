@@ -17,29 +17,3 @@ export class OverDueTask {
 
 }
 
-export class TotalNumberOFTask {
-  public totalTask = '23';
-  public taskType: string[] = ['DG Memo', 'DG Referrals'];
-
-  constructor(totalTask: string, taskType: string[]) {
-    this.totalTask = totalTask;
-    this.taskType = taskType;
-  }
-}
-
-export class LatestDiscussion {
-
-  public title: string;
-  public byName: string;
-  public onDate: string;
-
-  constructor(title: string, byName: string, onDate: string) {
-    this.title = title;
-    this.byName = byName;
-    this.onDate = onDate;
-
-  }
-}
-
-
-

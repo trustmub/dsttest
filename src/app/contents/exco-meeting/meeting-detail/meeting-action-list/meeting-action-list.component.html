@@ -55,7 +55,7 @@
             <td>{{ item.status }}</td>
             <td>
               <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"
-              [ngClass]="getStatusClasses(item.health)">
+                 [ngClass]="getStatusClasses(item.health)">
                 <i class="fab ">{{ item.health | slice :0:1 | uppercase }}</i>
               </a>
             </td>
@@ -68,10 +68,19 @@
             <td colspan="8">
               <div class="collapse" [attr.id]="'action' + i">
                 <div class="card card-body">
-
-                  <p>Date Created: {{ item.createdDate | date:"dd MMMM yyyy HH:mm:ss"}}</p>
-                  <p>Created By: {{ item.createdBy}}</p>
-                  <p>Description: {{ item.description}}</p>
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                      <p>Date Created: {{ item.createdDate | date:"dd MMMM yyyy HH:mm:ss"}}</p>
+                      <p>Created By: {{ item.createdBy}}</p>
+                      <p>Description: {{ item.description}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                      <button class="btn btn-outline-primary btn-block"
+                              type="button"
+                              [routerLink]="['/meetings','exco', this.id, item.reference]">More
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </td>

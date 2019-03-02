@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     'rgba(255, 159, 64, 0.2)'
   ];
   public doughnutChartOptions = {
-    backgroundColor : this.doughnutChartColors
+    backgroundColor: this.doughnutChartColors
   };
 
   constructor(private authService: AuthService, userService: UserService) {

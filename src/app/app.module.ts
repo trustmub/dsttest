@@ -50,7 +50,8 @@ import {SubByProgramComponent} from './contents/meetings/submission-records/sub-
 import {SubByDgMemoComponent} from './contents/meetings/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
 import {SubByDgMemoFormComponent} from './contents/meetings/submission-records/sub-by-dg-memo/sub-by-dg-memo-form/sub-by-dg-memo-form.component';
 import {SelfInitiatedFormComponent} from './contents/meetings/submission-records/sub-by-program/self-initiated-form/self-initiated-form.component';
-import { SubmissionDetailsComponent } from './contents/meetings/submission-records/submission-details/submission-details.component';
+import {SubmissionDetailsComponent} from './contents/meetings/submission-records/submission-details/submission-details.component';
+import {ActionListDetailsComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-list-details/action-list-details.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { SubmissionDetailsComponent } from './contents/meetings/submission-recor
     SubByDgMemoComponent,
     SubByDgMemoFormComponent,
     SelfInitiatedFormComponent,
-    SubmissionDetailsComponent
+    SubmissionDetailsComponent,
+    ActionListDetailsComponent
   ],
   imports: [
     BrowserModule,
