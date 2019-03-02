@@ -35,16 +35,9 @@ export class DgSubmissionDetailsComponent implements OnInit {
         this.recipients = [];
         results.forEach(
           (item) => {
-            this.memoRecord.recipient.push(new RecipientsModel(
-              item
-            ));
+            this.memoRecord.recipient.push(new RecipientsModel(item));
           }
         );
-        console.log('Recipients observed', results);
-      },
-      () => {
-      },
-      () => {
         this.recipients = this.memoRecord.recipient;
       }
     );
