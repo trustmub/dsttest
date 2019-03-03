@@ -50,7 +50,7 @@ export class SubByDgMemoFormComponent implements OnInit {
       submittedBy: this.subRecordForm.value.submittedBy,
       sentToDGDate: this.subRecordForm.value.sentToDGDate,
       fromDGDate: this.subRecordForm.value.fromDGDate,
-      status: this.subRecordForm.value.status,
+      status: 'Created',
       approvedDGDate: this.subRecordForm.value.approvedDGDate,
       comments: this.subRecordForm.value.comments,
       sentToProgramDate: this.subRecordForm.value.sentToProgramDate,
