@@ -29,7 +29,7 @@ export class SubByDgMemoFormComponent implements OnInit {
       submittedBy: new FormControl(null, [Validators.required]),
       sentToDGDate: new FormControl({value: null, disabled: true}),
       fromDGDate: new FormControl({value: null, disabled: true}),
-      status: new FormControl(null, [Validators.required]),
+      status: new FormControl({value: 'Created', disabled: true}, [Validators.required]),
       approvedDGDate: new FormControl({value: null, disabled: true}),
       comments: new FormControl({value: null, disabled: true}),
       sentToProgramDate: new FormControl({value: null, disabled: true}),
@@ -61,7 +61,7 @@ export class SubByDgMemoFormComponent implements OnInit {
     this.submissionService.addSubmissionRecord(promptedByDgMemo);
     this.submissionService.refreshObserver.next(true);
     this.reference = this.generateReference();
-    this.subRecordForm.reset({submissionRef: this.reference});
+    this.subRecordForm.reset({submissionRef: this.reference, status: 'Created'});
   }
 
   // TODO outsource this from a helper class
