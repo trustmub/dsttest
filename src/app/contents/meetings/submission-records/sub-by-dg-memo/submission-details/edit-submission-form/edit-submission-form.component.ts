@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SubmissionRecordModel} from '../../submission-record.model';
-import {SubmissionRecordService} from '../../submission-record.service';
-import {UserService} from '../../../../../shared/user.service';
+import {SubmissionRecordModel} from '../../../submission-record.model';
+import {SubmissionRecordService} from '../../../submission-record.service';
+import {UserService} from '../../../../../../shared/user.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

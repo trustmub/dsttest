@@ -16,7 +16,7 @@ import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabin
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
 import {SubmissionRecordsComponent} from './contents/meetings/submission-records/submission-records.component';
-import {SubmissionDetailsComponent} from './contents/meetings/submission-records/submission-details/submission-details.component';
+import {SubmissionDetailsComponent} from './contents/meetings/submission-records/sub-by-dg-memo/submission-details/submission-details.component';
 import {ForInformationListComponent} from './contents/dg-memo/for-information-list/for-information-list.component';
 import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
 import {ActionListDetailsComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-list-details/action-list-details.component';
