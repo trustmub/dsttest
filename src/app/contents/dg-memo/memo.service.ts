@@ -1,8 +1,6 @@
-import {Category, DgMemoModel, InfoModel} from './memo.model';
+import {Category, DgMemoModel} from './memo.model';
 import {Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {MeetingModel} from '../../shared/meetings.model';
-import {LinkStatus} from '../submission-records/submission-record.service';
 
 @Injectable({
   providedIn: 'root'

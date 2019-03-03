@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
-import {MembersModel} from '../../../../../shared/members.model';
-import {MembersService} from '../../../../../shared/members.service';
-import {RecipientsService} from '../../../../../shared/recipients.service';
+import {MembersModel} from '../members.model';
+import {MembersService} from '../members.service';
+import {RecipientsService} from '../recipients.service';
 
 @Component({
   selector: 'app-add-recipient-form',

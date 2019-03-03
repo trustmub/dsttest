@@ -37,7 +37,7 @@ import {EditMemoFormComponent} from './contents/dg-memo/require-submission-list/
 import {ForInfoFormComponent} from './contents/dg-memo/for-information-list/for-info-form/for-info-form.component';
 import {SubmissionRecordsComponent} from './contents/submission-records/submission-records.component';
 import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
-import {AddRecipientFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/add-recipient-form/add-recipient-form.component';
+import {AddRecipientFormComponent} from './shared/add-recipient-form/add-recipient-form.component';
 import {SubByProgramComponent} from './contents/submission-records/sub-by-program/sub-by-program.component';
 import {SubByDgMemoComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
 import {SubByDgMemoFormComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo-form/sub-by-dg-memo-form.component';

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DgMemoModel, InfoModel} from './memo.model';
+import {DgMemoModel} from './memo.model';
 import {MemoCategory, MemoService} from './memo.service';
 
 @Component({

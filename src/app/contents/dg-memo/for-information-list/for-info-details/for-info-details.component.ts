@@ -42,7 +42,7 @@ export class ForInfoDetailsComponent implements OnInit {
         this.infoRecipients = [];
         results.forEach(
           (item) => {
-            this.memoRecord.recipient.push(new RecipientsModel(item));
+            this.memoRecord.recipient.push({name: item});
           }
         );
         this.infoRecipients = this.memoRecord.recipient;
