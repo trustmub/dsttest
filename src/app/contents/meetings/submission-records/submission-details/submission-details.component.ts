@@ -40,6 +40,14 @@ export class SubmissionDetailsComponent implements OnInit {
         this.recipients = this.submissionRecord.recipients;
       }
     );
+
+    this.submissionService.refreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.submissionRecord = this.submissionService.getSubmissionRecord(this.recordId);
+        }
+      }
+    );
   }
 
   handleSubmissionFileInput(file: FileList) {

@@ -132,7 +132,9 @@
           </div>
           <div class="col-lg-9 col-md-9">{{ memoRecord.comment }}</div>
         </div>
-
+      </div>
+      <div class="card-footer modal-footer m-0">
+        <button class="btn btn-outline-primary" type="button">Submit</button>
       </div>
     </div>
   </div>
@@ -140,10 +142,10 @@
 
     <div class="list-group" id="list-tab" role="tablist">
       <!--<a class="list-group-item list-group-item-action" id="list-meeting-list" data-toggle="list"-->
-         <!--href=""-->
-         <!--role="tab" aria-controls="home">Generate DG Memo</a>-->
+      <!--href=""-->
+      <!--role="tab" aria-controls="home">Generate DG Memo</a>-->
       <!--<a class="list-group-item list-group-item-action " id="list-attendee-list" data-toggle="list" href=""-->
-         <!--role="tab" aria-controls="profile">Upload Document</a>-->
+      <!--role="tab" aria-controls="profile">Upload Document</a>-->
       <button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"
               data-target=".bd-generateDGMemo-modal">Generate DG Memo
       </button>
@@ -158,17 +160,29 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">Upload Document</div>
-          <div class="modal-body">
-            <form>
+          <form>
+            <div class="modal-body">
               <div class="form-group">
-                <label for="file">Choose File</label>
+                <label for="fileName">Name</label>
+                <input class="form-control"
+                       type="text"
+                       name="fileName"
+                       id="fileName">
+              </div>
+
+              <div class="form-group">
+                <label for="file">Document Upload</label>
                 <input type="file"
                        id="file"
+                       class="form-control"
                        (change)="handleFileInput($event.target.files)">
               </div>
-              <button type="submit" data-dismiss="modal">Submit</button>
-            </form>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
+              <button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -189,7 +203,6 @@
         </div>
       </div>
     </div>
-
 
 
     <br>

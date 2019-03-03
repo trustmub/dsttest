@@ -36,6 +36,16 @@ export class SubmissionRecordService {
   getSubmissionRecord(id: string) {
     return this.submissionRecord.filter(x => x.submissionRef === id)[0];
   }
+
+  updateSubmissionRecord(promptedByDgMemo: SubmissionRecordModel) {
+    const ref = promptedByDgMemo.submissionRef;
+    const record = this.submissionRecord.filter(x => x.submissionRef === ref)[0];
+    const recordIndex = this.submissionRecord.indexOf(record);
+
+    this.submissionRecord.splice(recordIndex);
+    this.submissionRecord.push(promptedByDgMemo);
+
+  }
 }
 
 export enum LinkStatus {
