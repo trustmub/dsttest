@@ -178,12 +178,12 @@
 
     <br>
     <div class="card border-left-info">
-      <div class="card-header text-primary font-weight-bold">Other Receivers</div>
+      <div class="card-header text-primary font-weight-bold">Copied Recipients</div>
       <div class="card-body">
         <ul *ngFor="let recipient of recipients,">
           <li>{{ recipient.name }}</li>
         </ul>
-        list of users added
+        <p *ngIf="recipients === null || recipients === undefined">recipients list</p>
       </div>
     </div>
   </div>
