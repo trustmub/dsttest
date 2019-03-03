@@ -1,5 +1,5 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">DG Memo Details</h1>
+  <h1 class="h3 mb-0 text-gray-800">Requires DG Memo Details</h1>
   <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
   <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
 </div>
@@ -9,7 +9,7 @@
 
     <div class="card pr-1 pl-1">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6>{{ memoRecord.subject }}</h6>
+        <button class="btn btn-outline-primary btn-sm" (click)="backClicked()"> < Back to DG Memo List </button>
 
         <div class="dropdown no-arrow">
           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -54,6 +54,17 @@
 
 
       <div class="card-body">
+
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 font-weight-bold">
+            Subject
+            <hr>
+          </div>
+          <div class="col-lg-9 col-md-9 font-weight-bold">{{ memoRecord.subject }}</div>
+        </div>
+
+
         <div class="row">
           <div class="col-lg-3 col-md-3 font-weight-bold">
             Category
@@ -87,14 +98,6 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-3 font-weight-bold">
-            Subject
-            <hr>
-          </div>
-          <div class="col-lg-9 col-md-9">{{ memoRecord.subject }}</div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-3 font-weight-bold">
             Description
             <hr>
           </div>
@@ -114,7 +117,7 @@
             Return Date.
             <hr>
           </div>
-          <div class="col-lg-9 col-md-9">{{ memoRecord.returnDate }}</div>
+          <div class="col-lg-9 col-md-9">{{ memoRecord.returnDate | date:"dd MMMM yyyy" }}</div>
         </div>
 
         <div class="row">
@@ -209,7 +212,7 @@
     <div class="card border-left-primary">
       <div class="card-header text-primary font-weight-bold">Attached Documents</div>
       <div class="card-body">
-        list attached documents
+        <a href="">{{ filename }}</a>
       </div>
     </div>
     <br>

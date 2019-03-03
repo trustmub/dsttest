@@ -44,20 +44,20 @@ export class InfoModel {
 }
 
 export class DgMemoModel {
-  category: string;
+  category?: string;
   dgMemoNumber: string;
-  asMemoNumber: string;
+  asMemoNumber?: string;
   classification: string;
   subject: string;
   description: string;
   assignedTo: string;
-  returnDate: string;
-  status: string;
-  health: string;
+  returnDate?: string;
+  status?: string;
+  health?: string;
   comment: string;
-  createDate: string;
+  createDate?: string;
   createdBy: string;
-  recipient?: RecipientsModel[];
+  recipient?: RecipientsModel[] = [];
 
   constructor(
     category: string,

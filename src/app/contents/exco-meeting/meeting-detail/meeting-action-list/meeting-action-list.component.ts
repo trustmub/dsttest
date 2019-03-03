@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';
 import {MembersService} from '../../../../shared/members.service';
-import {MembersModel} from '../../../members/members.model';
+import {MembersModel} from '../../../../shared/members.model';
 
 @Component({
   selector: 'app-meeting-action-list',

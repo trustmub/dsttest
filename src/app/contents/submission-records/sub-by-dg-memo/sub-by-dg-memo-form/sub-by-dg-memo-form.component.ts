@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SubmissionRecordModel} from '../../submission-record.model';
-import {UserService} from '../../../../../shared/user.service';
+import {UserService} from '../../../../shared/user.service';
 import {SubmissionRecordService} from '../../submission-record.service';
 
 @Component({

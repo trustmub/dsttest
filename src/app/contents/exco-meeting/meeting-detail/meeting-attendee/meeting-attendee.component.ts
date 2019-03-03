@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {MembersModel} from '../../../members/members.model';
+import {MembersModel} from '../../../../shared/members.model';
 import {MembersService} from '../../../../shared/members.service';
 import {MeetingModel} from '../../../../shared/meetings.model';
 import {MeetingsService} from '../../../meetings.service';

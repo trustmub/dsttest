@@ -1,0 +1,238 @@
+<form [formGroup]="editSelfInitForm" (ngSubmit)="onSaveSIClicked()">
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="submissionType">Submission Type.</label>
+        <select class="form-control"
+                id="submissionType"
+                formControlName="submissionType"
+                name="submissionType">
+          <option></option>
+          <option *ngFor="let type of ['DG Submission', 'Minister AS Submission']; let i = index">{{ type }}</option>
+        </select>
+        <span *ngIf="!editSelfInitForm.get('submissionType').valid && editSelfInitForm.get('submissionType').touched"
+              class="invalid-feedback">
+          This field is Required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="submissionRef">Submission Record Ref.</label>
+        <input type="text"
+               class="form-control"
+               id="submissionRef"
+               name="submissionRef"
+               formControlName="submissionRef">
+        <span *ngIf="!editSelfInitForm.get('submissionRef').valid && editSelfInitForm.get('submissionRef').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="submissionMode">Mode Of Submission.</label>
+        <select class="form-control"
+                id="submissionMode"
+                formControlName="submissionMode"
+                name="submissionMode">
+          <option></option>
+          <option *ngFor="let type of ['Afresco', 'Other']; let i = index">{{ type }}</option>
+        </select>
+        <span *ngIf="!editSelfInitForm.get('submissionMode').valid && editSelfInitForm.get('submissionMode').touched"
+              class="invalid-feedback">
+          this field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="afrescoRef">Afresco Ref.</label>
+        <input type="text"
+               class="form-control"
+               id="afrescoRef"
+               name="afrescoRef"
+               formControlName="afrescoRef">
+        <span *ngIf="!editSelfInitForm.get('afrescoRef').valid && editSelfInitForm.get('afrescoRef').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9">
+      <div class="form-group">
+        <label for="subject">Subject.</label>
+        <input type="text"
+               class="form-control"
+               id="subject"
+               name="subject"
+               formControlName="subject">
+        <span *ngIf="!editSelfInitForm.get('subject').valid && editSelfInitForm.get('subject').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="incomingDate">Incoming Date.</label>
+        <input type="date"
+               class="form-control"
+               id="incomingDate"
+               name="incomingDate"
+               placeholder="YYYY/MM/DD"
+               formControlName="incomingDate">
+        <span *ngIf="!editSelfInitForm.get('incomingDate').valid && editSelfInitForm.get('incomingDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="submittedBy">Submitted By.</label>
+        <input type="text"
+               class="form-control"
+               id="submittedBy"
+               name="submittedBy"
+               formControlName="submittedBy">
+        <span *ngIf="!editSelfInitForm.get('submittedBy').valid && editSelfInitForm.get('submittedBy').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="sentToDGDate">Date sent to DG.</label>
+        <input type="date"
+               class="form-control"
+               id="sentToDGDate"
+               name="sentToDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="sentToDGDate">
+        <span *ngIf="!editSelfInitForm.get('sentToDGDate').valid && editSelfInitForm.get('sentToDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="fromDGDate">Date Received From DG.</label>
+        <input type="date"
+               class="form-control"
+               id="fromDGDate"
+               name="fromDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="fromDGDate">
+        <span *ngIf="!editSelfInitForm.get('fromDGDate').valid && editSelfInitForm.get('fromDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="status">Status.</label>
+        <select class="form-control"
+                id="status"
+                formControlName="status"
+                name="status">
+          <option
+            *ngFor="let status of ['Created', 'Approved','Rejected','Rework']; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!editSelfInitForm.get('status').valid && editSelfInitForm.get('status').touched"
+              class="invalid-feedback">
+          this field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="approvedDGDate">Date Approved by DG.</label>
+        <input type="date"
+               class="form-control"
+               id="approvedDGDate"
+               name="approvedDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="approvedDGDate">
+        <span *ngIf="!editSelfInitForm.get('approvedDGDate').valid && editSelfInitForm.get('approvedDGDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-9 col-md-9">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!editSelfInitForm.get('comments').valid && editSelfInitForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="sentToProgramDate">Date sent To Program.</label>
+        <input type="date"
+               class="form-control"
+               id="sentToProgramDate"
+               name="sentToProgramDate"
+               placeholder="YYY/MM/DD"
+               formControlName="sentToProgramDate">
+        <span
+          *ngIf="!editSelfInitForm.get('sentToProgramDate').valid && editSelfInitForm.get('sentToProgramDate').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary text-white"
+          data-dismiss="modal"
+          type="submit"
+          [disabled]="!editSelfInitForm.valid">
+    Save
+  </button>
+  <button class="btn btn-secondary text-white ml-3"
+          data-dismiss="modal" t
+          ype="button">
+    Cancel
+  </button>
+
+</form>

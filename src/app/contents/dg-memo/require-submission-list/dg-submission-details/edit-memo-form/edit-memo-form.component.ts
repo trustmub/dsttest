@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category, DgMemoModel} from '../../../memo.model';
-import {MembersModel} from '../../../../members/members.model';
+import {MembersModel} from '../../../../../shared/members.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MembersService} from '../../../../../shared/members.service';
 import {MemoService} from '../../../memo.service';
+import {UserService} from '../../../../../shared/user.service';
 
 @Component({
   selector: 'app-edit-memo-form',
@@ -23,7 +24,8 @@ export class EditMemoFormComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute,
               private memberService: MembersService,
-              private memoService: MemoService) {
+              private memoService: MemoService,
+              private user: UserService) {
     this.categories = this.memoService.getCategories();
     this.recordId = this.activeRoute.snapshot.params['id'];
     this.members = this.memberService.getMembers();
@@ -52,6 +54,8 @@ export class EditMemoFormComponent implements OnInit {
       asMemoNumber: this.memoRecord.asMemoNumber,
       subject: this.memoRecord.subject,
       description: this.memoRecord.description,
+      classification: this.memoRecord.classification,
+      health: this.memoRecord.health,
       assignedTo: this.memoRecord,
       returnDate: this.memoRecord.returnDate,
       memoStatus: this.memoRecord.status,
@@ -60,8 +64,28 @@ export class EditMemoFormComponent implements OnInit {
   }
 
   onUpdateMemoClicked() {
-    // this.memoService.addNewMemo(this.editMemoForm.value);
-    this.memoService.updateMemo(this.editMemoForm.value);
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+
+    const updateRecord: DgMemoModel = {
+      category: this.editMemoForm.value.category,
+      dgMemoNumber: this.editMemoForm.value.dgMemoNumber,
+      asMemoNumber: this.editMemoForm.value.asMemoNumber,
+      subject: this.editMemoForm.value.subject,
+      description: this.editMemoForm.value.description,
+      assignedTo: this.editMemoForm.value.assignedTo,
+      classification: this.editMemoForm.value.classification,
+      health: this.editMemoForm.value.health,
+      returnDate: this.editMemoForm.value.returnDate,
+      status: this.editMemoForm.value.memoStatus,
+      comment: this.editMemoForm.value.comment,
+      createdBy: fullname
+    };
+
+
+    this.memoService.updateMemo(updateRecord);
+
+    this.memoService.refreshMemoObserver.next(true);
+
     this.memoRecord = this.memoService.getMemo(this.recordId);
     console.log('updated form on submit', this.editMemoForm.value);
   }

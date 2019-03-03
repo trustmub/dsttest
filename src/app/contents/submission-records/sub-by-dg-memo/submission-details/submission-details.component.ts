@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {SubmissionRecordService} from '../../submission-record.service';
 import {SubmissionRecordModel} from '../../submission-record.model';
-import {RecipientsModel} from '../../../../dg-memo/memo.model';
-import {RecipientsService} from '../../../../../shared/recipients.service';
+import {RecipientsModel} from '../../../dg-memo/memo.model';
+import {RecipientsService} from '../../../../shared/recipients.service';
 
 @Component({
   selector: 'app-submission-details',

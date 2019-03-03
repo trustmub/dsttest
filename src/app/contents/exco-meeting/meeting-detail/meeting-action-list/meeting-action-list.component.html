@@ -48,7 +48,7 @@
               aria-expanded="false"
               [attr.aria-controls]="'action' + i">
 
-            <td>{{ item.reference | removeWhiteSpace }}</td>
+            <td>{{ item.reference }}</td>
             <td>{{ item.item }}</td>
             <td>{{ item.assignedTo }}</td>
             <td>{{ item.returnDate | date:"dd MMMM yyyy"}}</td>
@@ -77,7 +77,7 @@
                     <div class="col-lg-3 col-md-3">
                       <button class="btn btn-outline-primary btn-block"
                               type="button"
-                              [routerLink]="['/meetings','exco', this.id, item.reference]">More
+                              [routerLink]="['/exco', this.id, item.reference]">More
                       </button>
                     </div>
                   </div>

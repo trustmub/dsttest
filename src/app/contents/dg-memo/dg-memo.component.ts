@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DgMemoModel, InfoModel} from './memo.model';
-import {MemoService} from './memo.service';
+import {MemoCategory, MemoService} from './memo.service';
 
 @Component({
   selector: 'app-dg-meeting',
@@ -9,7 +9,7 @@ import {MemoService} from './memo.service';
 })
 export class DgMemoComponent implements OnInit {
   memoList: DgMemoModel[];
-  infoList: InfoModel[];
+  infoList: DgMemoModel[];
   loading = false;
   loadingError: boolean;
 
@@ -25,8 +25,8 @@ export class DgMemoComponent implements OnInit {
       (result: boolean) => {
         if (result) {
           console.log(result);
-          this.memoList = this.memoService.getMemoList();
-          this.infoList = this.memoService.getInfoList();
+          this.memoList = this.memoService.getMemoList(MemoCategory.MEMO_RS);
+          this.infoList = this.memoService.getMemoList(MemoCategory.MEMO_FI);
 
           this.loading = false;
           console.log(this.memoList);

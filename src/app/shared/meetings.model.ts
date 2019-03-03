@@ -1,4 +1,4 @@
-import {MembersModel} from '../contents/members/members.model';
+import {MembersModel} from './members.model';
 
 
 export class MeetingModel {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
-import {MembersModel} from '../../../../members/members.model';
+import {MembersModel} from '../../../../../shared/members.model';
 import {MembersService} from '../../../../../shared/members.service';
 import {RecipientsService} from '../../../../../shared/recipients.service';
 
@@ -31,7 +31,6 @@ export class AddRecipientFormComponent implements OnInit {
 
   onSubmitRecipients() {
     this.recipientsService.recipientsObserver.next(this.addRecipientForm.value.recipients);
-
     console.log('fields on display', this.addRecipientForm.value.recipients);
   }
 }

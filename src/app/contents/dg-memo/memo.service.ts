@@ -1,6 +1,8 @@
 import {Category, DgMemoModel, InfoModel} from './memo.model';
 import {Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {MeetingModel} from '../../shared/meetings.model';
+import {LinkStatus} from '../submission-records/submission-record.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,10 @@ export class MemoService {
 
   memoList: DgMemoModel[] = [];
   memoRecord: DgMemoModel;
-  infoList: InfoModel[] = [];
+  // infoList: InfoModel[] = [];
 
-  private statusList = ['Created', 'Review', 'Cancelled', 'Assigned', 'In Progress', 'Submission In-route', 'Rejected', 'Rework', 'Completed'];
+  private statusList = ['Created', 'Review', 'Cancelled', 'Assigned', 'In Progress', 'Submission In-route', 'Rejected',
+    'Rework', 'Completed'];
   private classificationList = ['Confidential', 'Secret', 'Top Secret', 'Urgent', 'Official'];
 
   categories: Category[] = [
@@ -33,15 +36,27 @@ export class MemoService {
     return this.categories;
   }
 
-  getMemoList() {
-    for (const memo of this.memoList) {
-       this.memoList.map(
-        (record) => {
-          record.health = this.changeHealthStatus(new Date(record.returnDate));
-        }
-      );
+  getMemoList(memoCategory?: MemoCategory) {
+    if (!(this.memoList === [])) {
+      for (const memo of this.memoList) {
+        this.memoList.map(
+          (record) => {
+            record.health = this.changeHealthStatus(new Date(record.returnDate));
+          }
+        );
+      }
+
+      if (memoCategory === MemoCategory.MEMO_RS) {
+        return this.memoList.filter(x => x.dgMemoNumber.slice(0, 2) === 'RS');
+      } else if (memoCategory === MemoCategory.MEMO_FI) {
+        return this.memoList.filter(x => x.dgMemoNumber.slice(0, 2) === 'FI');
+      } else {
+        return this.memoList;
+      }
+
+    } else {
+      return this.memoList;
     }
-    return this.memoList;
   }
 
   /**
@@ -75,8 +90,10 @@ export class MemoService {
 
   updateMemo(memo: DgMemoModel) {
     const id = memo.dgMemoNumber;
-    const rec = this.memoList.findIndex(r => r.dgMemoNumber === id);
-    const er = this.memoList[rec];
+    const record = this.memoList.filter(r => r.dgMemoNumber === id)[0];
+    const recordIndex = this.memoList.indexOf(record);
+    this.memoList.splice(recordIndex);
+    this.memoList.push(memo);
   }
 
   removeMemo(id: string) {
@@ -105,11 +122,14 @@ export class MemoService {
    * This is the CRUD section on information methods
    *
    */
-  addInfoItem(info: InfoModel) {
-    this.infoList.push(info);
+  addInfoItem(info: DgMemoModel) {
+    this.memoList.push(info);
   }
 
-  getInfoList() {
-    return this.infoList;
-  }
+}
+
+export enum MemoCategory {
+  MEMO_RS,
+  MEMO_FI
+
 }

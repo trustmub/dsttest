@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {SubmissionRecordModel} from '../../submission-record.model';
 import {SubmissionRecordService} from '../../submission-record.service';
-import {RecipientsModel} from '../../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../dg-memo/memo.model';
 
 @Component({
   selector: 'app-self-initiated-details',
@@ -23,6 +23,14 @@ export class SelfInitiatedDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.submissionService.refreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.submissionRecord = this.submissionService.getSubmissionRecord(this.recordID);
+        }
+      }
+    );
   }
 
   backToSubmissionRecords() {

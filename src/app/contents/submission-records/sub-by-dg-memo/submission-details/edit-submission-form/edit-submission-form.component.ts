@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SubmissionRecordModel} from '../../../submission-record.model';
 import {SubmissionRecordService} from '../../../submission-record.service';
-import {UserService} from '../../../../../../shared/user.service';
+import {UserService} from '../../../../../shared/user.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -26,7 +26,7 @@ export class EditSubmissionFormComponent implements OnInit {
 
     this.editSubRecordForm = new FormGroup({
       submissionType: new FormControl(),
-      submissionRef: new FormControl(),
+      submissionRef: new FormControl({value: this.submissionRecord.submissionRef, disabled: true}),
       memoRef: new FormControl(),
       submissionMode: new FormControl(),
       afrescoRef: new FormControl(),

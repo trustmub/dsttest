@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MembersModel} from './members.model';
+import {MembersModel} from '../../../shared/members.model';
 
 @Component({
   selector: 'app-members',

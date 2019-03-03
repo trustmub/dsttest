@@ -48,7 +48,7 @@
             <td>{{ meeting.dgMemoNumber }}</td>
             <td>{{ meeting.subject }}</td>
             <td>{{ meeting.assignedTo }}</td>
-            <td>{{ meeting.returnDate }}</td>
+            <td>{{ meeting.returnDate | date:"dd MMMM yyyy"}}</td>
             <td>{{ meeting.status }}</td>
             <td>
               <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"

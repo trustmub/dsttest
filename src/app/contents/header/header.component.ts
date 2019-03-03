@@ -4,7 +4,7 @@ import {UserService} from '../../shared/user.service';
 import {UserModel} from '../../shared/user.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MembersService} from '../../shared/members.service';
-import {MembersModel} from '../members/members.model';
+import {MembersModel} from '../../shared/members.model';
 
 @Component({
   selector: 'app-header',

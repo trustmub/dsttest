@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DgMemoModel} from '../memo.model';
-import {MemoService} from '../memo.service';
+import {MemoCategory, MemoService} from '../memo.service';
 
 @Component({
   selector: 'app-require-submission-list',
@@ -13,10 +13,18 @@ export class RequireSubmissionListComponent implements OnInit {
   memoList: DgMemoModel[];
 
   constructor(private memoService: MemoService) {
-    this.memoList = this.memoService.getMemoList();
+    this.memoList = this.memoService.getMemoList(MemoCategory.MEMO_RS);
   }
 
   ngOnInit() {
+
+    this.memoService.refreshMemoObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.memoList = this.memoService.getMemoList(MemoCategory.MEMO_RS);
+        }
+      }
+    );
   }
 
   // TODO outsource this from a helper class

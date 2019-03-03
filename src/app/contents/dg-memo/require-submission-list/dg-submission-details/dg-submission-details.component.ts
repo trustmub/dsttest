@@ -15,6 +15,7 @@ export class DgSubmissionDetailsComponent implements OnInit {
   memoId: string;
   recipients: RecipientsModel[] = [];
   fileToUpload: File = null;
+  filename: string;
 
   constructor(private memoService: MemoService,
               private router: Router,
@@ -30,23 +31,40 @@ export class DgSubmissionDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.memoRecord = this.memoService.getMemo(this.memoId);
+
     this.recipientsService.recipientsObserver.subscribe(
       (results: string[]) => {
         this.recipients = [];
         results.forEach(
           (item) => {
-            this.memoRecord.recipient.push(new RecipientsModel(item));
+            console.log('recipients', item);
+            this.memoRecord.recipient.push({name: item});
           }
         );
+        console.log('dgSubmission Details Observer', this.recipients);
         this.recipients = this.memoRecord.recipient;
+      }
+    );
+
+    this.memoService.refreshMemoObserver.subscribe(
+      (status: boolean) => {
+        console.log('refreshMemoObserver', status);
+        if (status) {
+          this.memoRecord = this.memoService.getMemo(this.memoId);
+        }
       }
     );
   }
 
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
+    this.filename = this.fileToUpload.name;
     console.log('File object', this.fileToUpload);
 
+  }
+
+  backClicked() {
+    this.router.navigate(['/dg-memo']);
   }
 
 }

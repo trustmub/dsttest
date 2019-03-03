@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MemoService} from '../../memo.service';
-import {InfoModel} from '../../memo.model';
+import {DgMemoModel, InfoModel} from '../../memo.model';
 import {MembersService} from '../../../../shared/members.service';
-import {MembersModel} from '../../../members/members.model';
+import {MembersModel} from '../../../../shared/members.model';
 import {UserService} from '../../../../shared/user.service';
 
 @Component({
@@ -18,7 +18,10 @@ export class ForInfoFormComponent implements OnInit {
   reference: string;
 
 
-  constructor(private memoService: MemoService, private memberService: MembersService, private userService: UserService) {
+  constructor(private memoService: MemoService,
+              private memberService: MembersService,
+              private userService: UserService) {
+
     this.classifications = this.memoService.getClassificationList();
     this.members = this.memberService.getMembers();
     console.log(this.generateReference());
@@ -38,20 +41,33 @@ export class ForInfoFormComponent implements OnInit {
   }
 
   onSaveInfoClicked() {
-    const newInfo = new InfoModel(
-      this.reference,
-      this.infoForm.value.classification,
-      this.infoForm.value.subject,
-      this.infoForm.value.description,
-      this.infoForm.value.comments,
-      this.infoForm.value.assignedTo,
-      this.userService.getUser().firstName,
-    );
+    const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().surname;
 
-    console.log(newInfo);
+    const newRecord: DgMemoModel = {
+      dgMemoNumber: this.reference,
+      classification: this.infoForm.value.classification,
+      subject: this.infoForm.value.subject,
+      description: this.infoForm.value.description,
+      comment: this.infoForm.value.comments,
+      assignedTo: this.infoForm.value.assignedTo,
+      createdBy: fullname
+    };
+
+    //
+    // const newInfo = new InfoModel(
+    //   this.reference,
+    //   this.infoForm.value.classification,
+    //   this.infoForm.value.subject,
+    //   this.infoForm.value.description,
+    //   this.infoForm.value.comments,
+    //   this.infoForm.value.assignedTo,
+    //   this.userService.getUser().firstName,
+    // );
+
+    console.log(newRecord);
 
     // add info item in the array stack
-    this.memoService.addInfoItem(newInfo);
+    this.memoService.addNewMemo(newRecord);
 
     this.memoService.refreshMemoObserver.next(true);
 

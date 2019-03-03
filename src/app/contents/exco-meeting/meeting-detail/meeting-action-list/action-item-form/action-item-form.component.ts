@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {MembersModel} from '../../../../members/members.model';
+import {MembersModel} from '../../../../../shared/members.model';
 import {MeetingsService} from '../../../../meetings.service';
 import {MembersService} from '../../../../../shared/members.service';
 import {ActionItemModel} from '../../../../../shared/meetings.model';

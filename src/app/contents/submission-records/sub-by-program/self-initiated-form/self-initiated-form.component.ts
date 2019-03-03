@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {SubmissionRecordService} from '../../submission-record.service';
 import {SubmissionRecordModel} from '../../submission-record.model';
-import {UserService} from '../../../../../shared/user.service';
+import {UserService} from '../../../../shared/user.service';
 
 @Component({
   selector: 'app-self-initiated-form',

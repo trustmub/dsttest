@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DgMemoModel, InfoModel} from '../memo.model';
-import {MemoService} from '../memo.service';
+import {MemoCategory, MemoService} from '../memo.service';
 
 @Component({
   selector: 'app-for-information-list',
@@ -10,17 +10,17 @@ import {MemoService} from '../memo.service';
 export class ForInformationListComponent implements OnInit {
 
   actionUpdateStatus = false;
-  infoList: InfoModel[];
+  infoList: DgMemoModel[];
 
   constructor(private memoService: MemoService) {
-    this.infoList = this.memoService.getInfoList();
+    this.infoList = this.memoService.getMemoList(MemoCategory.MEMO_FI);
   }
 
   ngOnInit() {
     this.memoService.refreshMemoObserver.subscribe(
       (result) => {
         if (result) {
-          this.infoList = this.memoService.getInfoList();
+          this.infoList = this.memoService.getMemoList(MemoCategory.MEMO_FI);
           console.log(this.infoList);
         }
       },

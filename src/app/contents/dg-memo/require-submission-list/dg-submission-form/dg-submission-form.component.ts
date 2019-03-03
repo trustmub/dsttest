@@ -3,7 +3,7 @@ import {MemoService} from '../../memo.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category, DgMemoModel} from '../../memo.model';
 import {UserService} from '../../../../shared/user.service';
-import {MembersModel} from '../../../members/members.model';
+import {MembersModel} from '../../../../shared/members.model';
 import {MembersService} from '../../../../shared/members.service';
 
 @Component({
@@ -53,24 +53,25 @@ export class DgSubmissionFormComponent implements OnInit {
   onSaveMemoClicked() {
 
     const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
-    const newMemo = new DgMemoModel(
-      this.memoForm.value.category,
-      this.randomNumber,
-      this.memoForm.value.asMemoNumber,
-      this.memoForm.value.classification,
-      this.memoForm.value.subject,
-      this.memoForm.value.description,
-      this.memoForm.value.assignedTo,
-      new Date(this.memoForm.value.returnDate).toISOString(),
-      this.statusList[0],
-      this.memoForm.value.comment,
-      fullname
-    );
+    const record: DgMemoModel = {
+
+      category: this.memoForm.value.category,
+      dgMemoNumber: this.randomNumber,
+      asMemoNumber: this.memoForm.value.asMemoNumber,
+      classification: this.memoForm.value.classification,
+      subject: this.memoForm.value.subject,
+      description: this.memoForm.value.description,
+      assignedTo: this.memoForm.value.assignedTo,
+      returnDate: new Date(this.memoForm.value.returnDate).toISOString(),
+      status: this.statusList[0],
+      comment: this.memoForm.value.comment,
+      createdBy: fullname
+    };
 
     // this.randomNumber = 'DG' + Math.floor(Math.random() * 3) + 100;
     this.randomNumber = this.generateReference();
 
-    this.memoService.addNewMemo(newMemo);
+    this.memoService.addNewMemo(record);
 
     this.memoForm.reset({dgMemoNumber: this.randomNumber, memoStatus: this.statusList[0]});
     this.memoService.refreshMemoObserver.next(true);
