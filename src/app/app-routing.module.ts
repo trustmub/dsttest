@@ -20,6 +20,7 @@ import {SubmissionDetailsComponent} from './contents/meetings/submission-records
 import {ForInformationListComponent} from './contents/dg-memo/for-information-list/for-information-list.component';
 import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
 import {ActionListDetailsComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-list-details/action-list-details.component';
+import {SelfInitiatedDetailsComponent} from './contents/meetings/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
   {path: 'dg-memo/information/:id', component: ForInfoDetailsComponent},
 
   {path: 'submission-records', component: SubmissionRecordsComponent},
-  {path: 'submission-records/:id', component: SubmissionDetailsComponent},
+  {path: 'submission-records/pbdgm/:id', component: SubmissionDetailsComponent},
+  {path: 'submission-records/si/:id', component: SelfInitiatedDetailsComponent},
 
   {path: 'meetings/cabinet', component: CabinetMeetingComponent},
 

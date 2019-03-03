@@ -54,6 +54,7 @@ import {SelfInitiatedFormComponent} from './contents/meetings/submission-records
 import {SubmissionDetailsComponent} from './contents/meetings/submission-records/sub-by-dg-memo/submission-details/submission-details.component';
 import {ActionListDetailsComponent} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-list-details/action-list-details.component';
 import { EditSubmissionFormComponent } from './contents/meetings/submission-records/sub-by-dg-memo/submission-details/edit-submission-form/edit-submission-form.component';
+import { SelfInitiatedDetailsComponent } from './contents/meetings/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { EditSubmissionFormComponent } from './contents/meetings/submission-reco
     SelfInitiatedFormComponent,
     SubmissionDetailsComponent,
     ActionListDetailsComponent,
-    EditSubmissionFormComponent
+    EditSubmissionFormComponent,
+    SelfInitiatedDetailsComponent
   ],
   imports: [
     BrowserModule,

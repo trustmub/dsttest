@@ -21,19 +21,19 @@ export class SelfInitiatedFormComponent implements OnInit {
 
   ngOnInit() {
     this.selfInitForm = new FormGroup({
-      submissionType: new FormControl(null),
+      submissionType: new FormControl(null, [Validators.required]),
       submissionRef: new FormControl({value: this.reference, disabled: true}, [Validators.required]),
-      submissionMode: new FormControl(null),
+      submissionMode: new FormControl(null, [Validators.required]),
       afrescoRef: new FormControl(null),
-      subject: new FormControl(null),
-      incomingDate: new FormControl(null),
-      submittedBy: new FormControl(null),
-      sentToDGDate: new FormControl(null),
-      fromDGDate: new FormControl(null),
-      status: new FormControl(null),
-      approvedDGDate: new FormControl(null),
-      comments: new FormControl(null),
-      sentToProgramDate: new FormControl(null),
+      subject: new FormControl(null, [Validators.required]),
+      incomingDate: new FormControl(null, [Validators.required]),
+      submittedBy: new FormControl(null, [Validators.required]),
+      sentToDGDate: new FormControl({value: null, disabled: true}),
+      fromDGDate: new FormControl({value: null, disabled: true}),
+      status: new FormControl({value: 'Created', disabled: true}),
+      approvedDGDate: new FormControl({value: null, disabled: true}),
+      comments: new FormControl({value: null, disabled: true}),
+      sentToProgramDate: new FormControl({value: null, disabled: true}),
     });
   }
 
@@ -50,7 +50,7 @@ export class SelfInitiatedFormComponent implements OnInit {
       submittedBy: this.selfInitForm.value.submittedBy,
       sentToDGDate: this.selfInitForm.value.sentToDGDate,
       fromDGDate: this.selfInitForm.value.fromDGDate,
-      status: this.selfInitForm.value.status,
+      status: 'Created',
       approvedDGDate: this.selfInitForm.value.approvedDGDate,
       comments: this.selfInitForm.value.comments,
       sentToProgramDate: this.selfInitForm.value.sentToProgramDate,
@@ -62,7 +62,7 @@ export class SelfInitiatedFormComponent implements OnInit {
     this.reference = this.generateReference();
     this.submissionService.refreshObserver.next(true);
     console.log(selfInitiated);
-    this.selfInitForm.reset({submissionRef: this.reference});
+    this.selfInitForm.reset({submissionRef: this.reference, status: 'Created'});
 
   }
 

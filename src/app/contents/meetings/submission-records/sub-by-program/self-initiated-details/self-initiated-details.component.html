@@ -1,5 +1,5 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Submissions Prompted By DG Memo Details</h1>
+  <h1 class="h3 mb-0 text-gray-800">Self Initiated Submission Details</h1>
   <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
   <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
 </div>
@@ -36,10 +36,7 @@
           <div class="modal-content">
             <div class="modal-header">Edit Record</div>
             <div class="modal-body">
-              <app-self-initiated-form
-                *ngIf="submissionRecord.submissionRef.slice(0, 1) === 'S'"></app-self-initiated-form>
-              <app-edit-submission-form
-                *ngIf="submissionRecord.submissionRef.slice(0, 1) === 'D'"></app-edit-submission-form>
+              <app-self-initiated-form></app-self-initiated-form>
             </div>
           </div>
         </div>
@@ -76,13 +73,6 @@
           <div class="col-lg-9 col-md-9">{{ submissionRecord.submissionType }}</div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-3 col-md-3 font-weight-bold">
-            DG Memo Reference
-            <hr>
-          </div>
-          <div class="col-lg-9 col-md-9">{{ submissionRecord.memoRef }}</div>
-        </div>
 
         <div class="row">
           <div class="col-lg-3 col-md-3 font-weight-bold">
@@ -151,7 +141,7 @@
                 <input type="file"
                        id="file"
                        class="form-control"
-                       (change)="handleSubmissionFileInput($event.target.files)">
+                       (change)="handleSelfInitiatedFileInput($event.target.files)">
               </div>
             </div>
             <div class="modal-footer">
@@ -168,8 +158,8 @@
     <div class="card border-left-info">
       <div class="card-header text-primary font-weight-bold">Attached Documents</div>
       <div class="card-body">
-        <a class="list-inline-item nav-link">{{ documentName }}</a>
-        <p *ngIf="documentName === null || documentName === undefined">Document list</p>
+        <a href="">{{ filename }}</a>
+        <p *ngIf="filename === null || filename === undefined">Document list</p>
       </div>
     </div>
   </div>

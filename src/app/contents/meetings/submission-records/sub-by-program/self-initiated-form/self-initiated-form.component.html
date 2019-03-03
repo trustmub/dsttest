@@ -176,7 +176,6 @@
                 id="status"
                 formControlName="status"
                 name="status">
-          <option></option>
           <option
             *ngFor="let status of ['Created', 'Approved','Rejected','Rework']; let i = index">{{ status }}</option>
         </select>
@@ -204,24 +203,6 @@
     </div>
 
   </div>
-
-  <!--<div class="row">-->
-
-  <!--<div class="col-lg-12 col-md-12">-->
-  <!--<div class="form-group">-->
-  <!--<label for="description">Description.</label>-->
-  <!--<input type="text"-->
-  <!--class="form-control"-->
-  <!--id="description"-->
-  <!--name="description"-->
-  <!--formControlName="description">-->
-  <!--<span *ngIf="!subRecordForm.get('description').valid && subRecordForm.get('description').touched"-->
-  <!--class="invalid-feedback">-->
-  <!--This field is required.-->
-  <!--</span>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
 
   <div class="row">
 
