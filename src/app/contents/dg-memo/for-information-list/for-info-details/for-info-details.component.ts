@@ -59,7 +59,7 @@ export class ForInfoDetailsComponent implements OnInit {
   }
 
   onBackClicked() {
-    this.router.navigate(['/gd-memo']);
+    this.router.navigate(['/dg-memo',]);
   }
 
   handleFileInput(file: FileList) {

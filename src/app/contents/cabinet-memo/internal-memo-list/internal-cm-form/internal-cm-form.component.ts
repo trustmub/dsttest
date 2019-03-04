@@ -20,6 +20,14 @@ export class InternalCmFormComponent implements OnInit {
     {name: 'Steering the NSI'},
     {name: 'Mandatory Cabinet Memos'},
   ];
+  programmeList = [
+    'Programme 1A',
+    'Programme 1B',
+    'Programme 2',
+    'Programme 3',
+    'Programme 4',
+    'Programme 5',
+  ];
   statusList: string[] = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
   reference: string;
 
@@ -32,7 +40,7 @@ export class InternalCmFormComponent implements OnInit {
     this.internalCMForm = new FormGroup({
       reference: new FormControl({value: this.reference, disabled: true}, [Validators.required]),
       programme: new FormControl(null, [Validators.required]),
-      category: new FormControl({value: null, disabled: true, type: 'hidden'}),
+      category: new FormControl({value: null, disabled: true}),
       cabMemoSubject: new FormControl({value: null, disabled: true}),
       strategicObjective: new FormControl({value: null, disabled: true}),
       cabinetCommittee: new FormControl({value: null, disabled: true}),

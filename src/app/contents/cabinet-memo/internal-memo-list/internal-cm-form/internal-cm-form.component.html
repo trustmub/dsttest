@@ -19,11 +19,13 @@
     <div class="col-lg-4 col-md-4">
       <div class="form-group">
         <label for="programme">Programme.</label>
-        <input type="text"
-               class="form-control"
-               id="programme"
-               name="programme"
-               formControlName="programme">
+        <select class="form-control"
+                id="programme"
+                name="programme"
+                formControlName="programme">
+          <option></option>
+          <option *ngFor="let programme of programmeList; let i = index">{{ programme }}</option>
+        </select>
         <span *ngIf="!internalCMForm.get('programme').valid && internalCMForm.get('programme').touched"
               class="invalid-feedback">
           This field is required.
