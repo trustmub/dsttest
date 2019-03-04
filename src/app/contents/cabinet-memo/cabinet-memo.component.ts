@@ -17,6 +17,13 @@ export class CabinetMemoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cabinetService.cmRefreshObserver.subscribe(
+      (result: boolean) => {
+        if (result) {
+          this.recordNumber = this.cabinetService.getCabinetMemoList().length;
+        }
+      }
+    );
   }
 
 

@@ -33,10 +33,12 @@
           <thead>
           <tr class="text-sm-center">
             <th>Ref No</th>
-            <th>Programme</th>
-            <th>Cab Memo Subject</th>
+            <th>Date Received</th>
+            <th>Department</th>
+            <th>Subject</th>
             <th>Cabinet Committee</th>
-            <th>Meeting Date</th>
+            <th>Committee Meeting Date</th>
+            <th>Addressed To</th>
             <th>Status</th>
             <th>health</th>
           </tr>
@@ -45,10 +47,12 @@
           <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#external' + i"
               aria-expanded="false" [attr.aria-controls]="'external' + i">
             <td>{{ memo.reference }}</td>
-            <td>{{ memo.programme }}</td>
+            <td>{{ memo.receivedDate | date:"dd MMMM yyyy" }} - {{ memo.receivedTime }}</td>
+            <td>{{ memo.department }}</td>
             <td>{{ memo.subject }}</td>
             <td>{{ memo.cabinetCommittee }}</td>
             <td>{{ memo.meetingDate | date:"dd MMMM yyyy" }}</td>
+            <td>{{ memo.addressTo }}</td>
             <td>{{ memo.status }}</td>
             <td>
               <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"
@@ -58,7 +62,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="7">
+            <td colspan="9">
               <div class="collapse" [attr.id]="'external' + i">
                 <div class="card card-body pt-1">
                   <div class="row">
