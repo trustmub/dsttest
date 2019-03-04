@@ -28,12 +28,13 @@ export class InternalCmFormComponent implements OnInit {
     'Programme 4',
     'Programme 5',
   ];
-  statusList: string[] = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
+  statusList: string[] = [];
   reference: string;
 
   constructor(private cabinetService: CabinetMemoService,
               private user: UserService) {
     this.reference = this.generateReference();
+    this.statusList = this.cabinetService.getStatusList();
   }
 
   ngOnInit() {
@@ -41,7 +42,7 @@ export class InternalCmFormComponent implements OnInit {
       reference: new FormControl({value: this.reference, disabled: true}, [Validators.required]),
       programme: new FormControl(null, [Validators.required]),
       category: new FormControl({value: null, disabled: true}),
-      cabMemoSubject: new FormControl({value: null, disabled: true}),
+      subject: new FormControl({value: null, disabled: true}),
       strategicObjective: new FormControl({value: null, disabled: true}),
       cabinetCommittee: new FormControl({value: null, disabled: true}),
       meetingDate: new FormControl({value: null, disabled: true}),
@@ -57,7 +58,7 @@ export class InternalCmFormComponent implements OnInit {
       reference: this.reference,
       programme: this.internalCMForm.value.programme,
       category: this.internalCMForm.value.category,
-      cabMemoSubject: this.internalCMForm.value.cabMemoSubject,
+      subject: this.internalCMForm.value.subject,
       strategicObjective: this.internalCMForm.value.strategicObjective,
       cabinetCommittee: this.internalCMForm.value.cabinetCommittee,
       meetingDate: this.internalCMForm.value.meetingDate,

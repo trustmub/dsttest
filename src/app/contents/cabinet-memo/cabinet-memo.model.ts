@@ -3,39 +3,51 @@ export class CabinetMemoModel {
   reference: string;
   programme: string;
   category: string;
-  cabMemoSubject: string;
+  subject: string;
   strategicObjective: string;
   cabinetCommittee: string;
   meetingDate: string;
   status: string;
-  programFeedback: string;
+  programFeedback?: string;
   comments: string;
   createdBy: string;
   health?: string;
+  receivedDate?: string;
+  receivedTime?: string;
+  department?: string;
+  addressTo?: string;
+  dateToProgramme?: string;
+  timeSendToProgram?: string;
+  dueDate?: string;
+  programmeReturnDate?: string;
+  programmeReturnTime?: string;
+  odgReturnDate?: string;
+  odgReturnTime?: string;
+
   createDate?: string;
 
-  // i.	REF NO.
-  // ii.	PROGRAMME
-  // iii.	CATEGORY
-  // •	Legislation
-  // •	Profiling the work of the DST
-  // •	Deriving value from Research and Development
-  // •	Building the NSI Infrastructure
-  // •	Steering the NSI
-  // •	Mandatory Cabinet Memos
-  // iv.	CAB MEMO SUBJECT
-  // v.	STRATEGIC OBJECTIVE
-  // vi.	CABINET COMMITTEE
-  // vii.	MEETING DATE
-  // viii.	STATUS
-  // ix.	PROGRAMME FEEDBACK
-  // x.	COMMENTS
-  // health
+// i.	CAB MEMO NO.
+// ii.	DATE RECEIVED
+// iii.	TIME RECEIVED
+// iv.	DEPARTMENT
+// v.	SUBJECT
+// vi.	CABINET COMMITTEE
+// vii.	COMMITTEE MEETING DATE
+// viii.	ADDRESSED TO
+// ix.	DATE TO PROGRAMME
+// x.	TIME SENT TO PROGRAMME
+// xi.	DUE DATE
+// xii.	PROGRAMME RUTURN DATE
+// xiii.	PROGRAMME RETURN TIME
+// xiv.	STATUS
+// xv.	ODG RETURN DATE
+// xvi.	ODG RETURN TIME
+// xvii.	COMMENTS
 
   constructor(reference: string,
               programme: string,
               category: string,
-              cabMemoSubject: string,
+              subject: string,
               strategicObjective: string,
               cabinetCommittee: string,
               meetingDate: string,
@@ -44,12 +56,23 @@ export class CabinetMemoModel {
               comments: string,
               createdBy: string,
               health: string,
+              receivedDate: string,
+              receivedTime: string,
+              department: string,
+              addressTo: string,
+              dateToProgramme: string,
+              timeSendToProgram: string,
+              dueDate: string,
+              programmeReturnDate: string,
+              programmeReturnTime: string,
+              odgReturnDate: string,
+              odgReturnTime: string,
               createDate: string = new Date().toISOString()) {
 
     this.reference = reference;
     this.programme = programme;
     this.category = category;
-    this.cabMemoSubject = cabMemoSubject;
+    this.subject = subject;
     this.strategicObjective = strategicObjective;
     this.cabinetCommittee = cabinetCommittee;
     this.meetingDate = meetingDate;
@@ -58,6 +81,17 @@ export class CabinetMemoModel {
     this.comments = comments;
     this.createdBy = createdBy;
     this.health = health;
+    this.receivedDate = receivedDate;
+    this.receivedTime = receivedTime;
+    this.department = department;
+    this.addressTo = addressTo;
+    this.dateToProgramme = dateToProgramme;
+    this.timeSendToProgram = timeSendToProgram;
+    this.dueDate = dueDate;
+    this.programmeReturnDate = programmeReturnDate;
+    this.programmeReturnTime = programmeReturnTime;
+    this.odgReturnDate = odgReturnDate;
+    this.odgReturnTime = odgReturnTime;
     this.createDate = createDate;
   }
 }

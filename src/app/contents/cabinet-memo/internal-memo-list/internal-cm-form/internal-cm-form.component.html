@@ -55,13 +55,13 @@
   <div class="row">
     <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <label for="cabMemoSubject">Cab Memo Subject.</label>
+        <label for="subject">Cab Memo Subject.</label>
         <input type="text"
                class="form-control"
-               id="cabMemoSubject"
-               name="cabMemoSubject"
-               formControlName="cabMemoSubject">
-        <span *ngIf="!internalCMForm.get('cabMemoSubject').valid && internalCMForm.get('cabMemoSubject').touched"
+               id="subject"
+               name="subject"
+               formControlName="subject">
+        <span *ngIf="!internalCMForm.get('subject').valid && internalCMForm.get('subject').touched"
               class="invalid-feedback">
           This field is required.
         </span>

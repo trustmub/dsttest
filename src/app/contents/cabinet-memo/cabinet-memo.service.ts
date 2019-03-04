@@ -9,6 +9,51 @@ export class CabinetMemoService {
 
   cmRefreshObserver = new Subject();
 
+  private departments = [
+    'Agriculture, Forestry and Fisheries',
+    'Arts and Culture',
+    'Communications',
+    'Cooperative Governance',
+    'Correctional Services',
+    'Defence',
+    'Education',
+    'Energy',
+    'Environmental Affairs',
+    'Government Communications and Information System (GCIS)',
+    'Health',
+    'Home Affairs',
+    'Human Settlements',
+    'Independent Complaints Directorate',
+    'International Relations and Cooperation (Foreign Affairs)',
+    'Justice & Constitutional Development',
+    'Labour',
+    'Mineral Resources',
+    'National Intelligence Agency',
+    'National Treasury',
+    'Police',
+    'Public Administration Leadership and Management Academy',
+    'Public Enterprises',
+    'Public Service & Administration',
+    'Public Service Commission',
+    'Public Works',
+    'Rural Development & Land Reform',
+    'Science & Technology',
+    'Social Development',
+    'South African Police Service',
+    'South African Revenue Service',
+    'South African Secret Service',
+    'Sport & Recreation South Africa',
+    'Statistics South Africa',
+    'The Presidency',
+    'Tourism',
+    'Trade & Industry',
+    'Traditional Affairs',
+    'Transport',
+    'Water Affairs',
+    'Women, Children & People with Disabilities',
+  ];
+  private statusList: string[] = ['Created', 'Assigned', 'In Progress', 'Pending', 'Reassigned', 'Completed'];
+
   cabinetMemoList: CabinetMemoModel[] = [];
 
   constructor() {
@@ -31,6 +76,14 @@ export class CabinetMemoService {
 
   addCabinetMemoList(newICMemo: CabinetMemoModel) {
     this.cabinetMemoList.push(newICMemo);
+  }
+
+  getDepartments() {
+    return this.departments;
+  }
+
+  getStatusList() {
+    return this.statusList;
   }
 }
 
