@@ -1,0 +1,177 @@
+<form [formGroup]="internalCMForm" (ngSubmit)="onSaveICMClicked()">
+  <div class="row">
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="reference">Reference.</label>
+        <input type="text"
+               class="form-control"
+               id="reference"
+               name="reference"
+               formControlName="reference">
+        <span *ngIf="!internalCMForm.get('reference').valid && internalCMForm.get('reference').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="programme">Programme.</label>
+        <input type="text"
+               class="form-control"
+               id="programme"
+               name="programme"
+               formControlName="programme">
+        <span *ngIf="!internalCMForm.get('programme').valid && internalCMForm.get('programme').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-5">
+      <div class="form-group">
+        <label for="category">Category.</label>
+        <select class="form-control"
+                id="category"
+                formControlName="category"
+                name="category">
+          <option></option>
+          <option *ngFor="let category of categories; let i = index">{{ category.name }}</option>
+        </select>
+        <span *ngIf="!internalCMForm.get('category').valid && internalCMForm.get('category').touched"
+              class="invalid-feedback">
+          Please choose a Category.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="cabMemoSubject">Cab Memo Subject.</label>
+        <input type="text"
+               class="form-control"
+               id="cabMemoSubject"
+               name="cabMemoSubject"
+               formControlName="cabMemoSubject">
+        <span *ngIf="!internalCMForm.get('cabMemoSubject').valid && internalCMForm.get('cabMemoSubject').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="strategicObjective">Strategic Objective.</label>
+        <input type="text"
+               class="form-control"
+               id="strategicObjective"
+               name="strategicObjective"
+               formControlName="strategicObjective">
+        <span
+          *ngIf="!internalCMForm.get('strategicObjective').valid && internalCMForm.get('strategicObjective').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="cabinetCommittee">Cabinet Committee.</label>
+        <input type="text"
+               class="form-control"
+               id="cabinetCommittee"
+               name="cabinetCommittee"
+               formControlName="cabinetCommittee">
+        <span *ngIf="!internalCMForm.get('cabinetCommittee').valid && internalCMForm.get('cabinetCommittee').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="meetingDate">Meeting Date.</label>
+        <input type="date"
+               class="form-control"
+               id="meetingDate"
+               name="meetingDate"
+               formControlName="meetingDate">
+        <span *ngIf="!internalCMForm.get('meetingDate').valid && internalCMForm.get('meetingDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="status">Status.</label>
+        <select class="form-control"
+                id="status"
+                formControlName="status"
+                name="status">
+          <option *ngFor="let status of statusList; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!internalCMForm.get('category').valid && internalCMForm.get('category').touched"
+              class="invalid-feedback">
+          Please choose a Category.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="programFeedback">Programme Feedback.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="programFeedback"
+                  name="programFeedback"
+                  formControlName="programFeedback"></textarea>
+        <span *ngIf="!internalCMForm.get('programFeedback').valid && internalCMForm.get('programFeedback').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!internalCMForm.get('comments').valid && internalCMForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer m-0 p-0">
+    <button class="btn btn-primary text-white" type="submit" [disabled]="!internalCMForm.valid">Save</button>
+    <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="button">Cancel</button>
+  </div>
+</form>

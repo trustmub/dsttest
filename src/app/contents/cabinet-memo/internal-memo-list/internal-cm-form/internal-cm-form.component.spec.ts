@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CabinetMeetingComponent } from './cabinet-meeting.component';
+import { InternalCmFormComponent } from './internal-cm-form.component';
 
-describe('CabinetMeetingComponent', () => {
-  let component: CabinetMeetingComponent;
-  let fixture: ComponentFixture<CabinetMeetingComponent>;
+describe('InternalCmFormComponent', () => {
+  let component: InternalCmFormComponent;
+  let fixture: ComponentFixture<InternalCmFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CabinetMeetingComponent ]
+      declarations: [ InternalCmFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CabinetMeetingComponent);
+    fixture = TestBed.createComponent(InternalCmFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

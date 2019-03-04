@@ -25,7 +25,7 @@ import {UserRegisterComponent} from './authentication/user-register/user-registe
 import {UserResetComponent} from './authentication/user-reset/user-reset.component';
 import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
-import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
+import {CabinetMemoComponent} from './contents/cabinet-memo/cabinet-memo.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pipe';
 import {AuthInterceptor} from './shared/auth.interceptor';
 import {DateSelectorDirective} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
@@ -48,6 +48,9 @@ import {SelfInitiatedDetailsComponent} from './contents/submission-records/sub-b
 import {EditSiFormComponent} from './contents/submission-records/sub-by-program/self-initiated-details/edit-si-form/edit-si-form.component';
 import {ExcoMeetingModule} from './contents/exco-meeting/exco-meeting.module';
 import {EditInfoFormComponent} from './contents/dg-memo/for-information-list/for-info-details/edit-info-form/edit-info-form.component';
+import { InternalMemoListComponent } from './contents/cabinet-memo/internal-memo-list/internal-memo-list.component';
+import { ExternalMemoListComponent } from './contents/cabinet-memo/external-memo-list/external-memo-list.component';
+import { InternalCmFormComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-form/internal-cm-form.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,7 @@ import {EditInfoFormComponent} from './contents/dg-memo/for-information-list/for
     UserResetComponent,
     MeetingsComponent,
     DgMemoComponent,
-    CabinetMeetingComponent,
+    CabinetMemoComponent,
     RemoveWhiteSpace,
     DateSelectorDirective,
     DgSubmissionFormComponent,
@@ -90,7 +93,10 @@ import {EditInfoFormComponent} from './contents/dg-memo/for-information-list/for
     EditSubmissionFormComponent,
     SelfInitiatedDetailsComponent,
     EditSiFormComponent,
-    EditInfoFormComponent
+    EditInfoFormComponent,
+    InternalMemoListComponent,
+    ExternalMemoListComponent,
+    InternalCmFormComponent
   ],
   imports: [
     BrowserModule,

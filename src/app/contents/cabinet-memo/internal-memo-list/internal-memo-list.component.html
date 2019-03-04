@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="actionUpdateStatus">Saved to database</h6>
+        <h6 class="m-0 font-weight-bold text-primary m-0 p-0" *ngIf="!actionUpdateStatus">Record Not Saved</h6>
+
+        <button class="d-none d-sm-inline-block btn btn-sm btn-primary btn-shadow-sm text-white m-0"
+                data-toggle="modal" data-target=".bd-internalCM-modal-lg">
+          <i class="fas fa-plus fa-sm text-white-50"></i>
+          Add New
+        </button>
+
+      </div>
+      <!-- Extra large modal for new internal Cabinet Memo-->
+      <div class="modal fade bd-internalCM-modal-lg" tabindex="-1" role="dialog" aria-labelledby="submissionItemForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">Add Internal Cabinet Memo</div>
+
+            <div class="modal-body">
+              <app-internal-cm-form></app-internal-cm-form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Of Extra large modal for new internal Cabinet Memo-->
+
+      <!-- card body for Internal CM table -->
+      <div class="card-body pr-1 pl-1 pt-0">
+        <table class="table table-bordered table-sm">
+          <thead>
+          <tr class="text-sm-center">
+            <th>Ref No</th>
+            <th>Programme</th>
+            <th>Cab Memo Subject</th>
+            <th>Cabinet Committee</th>
+            <th>Meeting Date</th>
+            <th>Status</th>
+            <th>health</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let memo of internalMemoList; let i = index">
+          <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#internal' + i"
+              aria-expanded="false" [attr.aria-controls]="'internal' + i">
+            <td>{{ memo.reference }}</td>
+            <td>{{ memo.program }}</td>
+            <td>{{ memo.cabMemoSubject }}</td>
+            <td>{{ memo.cabinetCommittee }}</td>
+            <td>{{ memo.meetingDate | date:"dd MMMM yyyy" }}</td>
+            <td>{{ memo.status }}</td>
+            <td>
+              <a class="btn btn-circle btn-sm text-white font-weight-bold align-content-center"
+                 [ngClass]="getHealthClasses(memo.health)">
+                <i class="fab ">{{ memo.health| slice :0:1 | uppercase }}</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7">
+              <div class="collapse" [attr.id]="'internal' + i">
+                <div class="card card-body pt-1">
+                  <div class="row">
+                    <div class="col-lg-10 col-md-10">
+
+                      <div class="media">
+                        <p class="align-self-start mr-3">Date Created : </p>
+                        <div class="media-body">
+                          <p>{{ memo.createDate }}</p>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <p class="align-self-start mr-3">Comments : </p>
+                        <div class="media-body">
+                          <p>{{ memo.comments }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                      <button class="btn btn-outline-primary btn-block"
+                              type="button"
+                              [routerLink]="['/cabinet-memo', memo.reference]">More
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End of card body for Internal CM table -->
+    </div>
+
+
+  </div>
+</div>

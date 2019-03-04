@@ -9,7 +9,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './authentication/auth-guard.service';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
-import {CabinetMeetingComponent} from './contents/meetings/cabinet-meeting/cabinet-meeting.component';
+import {CabinetMemoComponent} from './contents/cabinet-memo/cabinet-memo.component';
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
 import {SubmissionRecordsComponent} from './contents/submission-records/submission-records.component';
@@ -40,7 +40,8 @@ const appRoutes: Routes = [
   {path: 'submission-records/pbdgm/:id', component: SubmissionDetailsComponent},
   {path: 'submission-records/si/:id', component: SelfInitiatedDetailsComponent},
 
-  {path: 'meetings/cabinet', component: CabinetMeetingComponent},
+  {path: 'cabinet-memo', component: CabinetMemoComponent},
+  {path: 'cabinet-memo/:id', component: CabinetMemoComponent}, // TODO create a detail component for internal cabinet memo
 
   {path: 'not-found', component: PageNotFoundComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: '/not-found'}
