@@ -59,7 +59,7 @@ export class CabinetMemoService {
   constructor() {
   }
 
-  getCabinetMemoList(type: CabMemoType) {
+  getCabinetMemoList(type?: CabMemoType) {
 
     if (this.cabinetMemoList !== []) {
       if (type === CabMemoType.INTERNAL) {

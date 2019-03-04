@@ -1,15 +1,15 @@
 export class CabinetMemoModel {
 
   reference: string;
-  programme: string;
-  category: string;
+  programme?: string;
+  category?: string;
   subject: string;
-  strategicObjective: string;
+  strategicObjective?: string;
   cabinetCommittee: string;
   meetingDate: string;
   status: string;
   programFeedback?: string;
-  comments: string;
+  comments?: string;
   createdBy: string;
   health?: string;
   receivedDate?: string;

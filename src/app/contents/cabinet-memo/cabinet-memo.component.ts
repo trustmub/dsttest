@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CabinetMemoService} from './cabinet-memo.service';
 
 @Component({
   selector: 'app-cabinet-meeting',
@@ -9,8 +10,10 @@ export class CabinetMemoComponent implements OnInit {
 
   loading = false;
   loadingError = false;
+  recordNumber: number;
 
-  constructor() {
+  constructor(private cabinetService: CabinetMemoService) {
+    this.recordNumber = this.cabinetService.getCabinetMemoList().length;
   }
 
   ngOnInit() {

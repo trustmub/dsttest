@@ -1,5 +1,6 @@
 import {AuthTokenModel, UserModel} from './user.model';
 import {Injectable} from '@angular/core';
+import {first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class UserService {
 
   getUser(): UserModel {
     return this.user;
+  }
+
+  getFullname() {
+    return this.user.firstName + ' ' + this.user.surname;
   }
 
   setUserToken(token: string) {
