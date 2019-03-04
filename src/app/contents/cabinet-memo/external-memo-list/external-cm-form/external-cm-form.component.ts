@@ -55,8 +55,8 @@ export class ExternalCmFormComponent implements OnInit {
       cabinetCommittee: this.externalCMForm.value.cabinetCommittee,
       meetingDate: this.externalCMForm.value.meetingDate,
       addressTo: this.externalCMForm.value.addressTo,
-      dateToProgramme: this.externalCMForm.value.dateToProgramme,
-      timeSendToProgram: this.externalCMForm.value.timeSendToProgram,
+      dateToProgramme: this.externalCMForm.value.dateToProgramme, // TODO this date mst be generated automatically upon submission
+      timeSendToProgram: this.externalCMForm.value.timeSendToProgram, // TODO this date mst be generated automatically upon submission
       dueDate: this.externalCMForm.value.dueDate,
       status: 'Created',
       createdBy: fullname,
