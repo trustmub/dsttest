@@ -53,7 +53,7 @@ export class InternalCmFormComponent implements OnInit {
       strategicObjective: this.internalCMForm.value.strategicObjective,
       cabinetCommittee: this.internalCMForm.value.cabinetCommittee,
       meetingDate: this.internalCMForm.value.meetingDate,
-      status: this.internalCMForm.value.status,
+      status: 'Created',
       programFeedback: this.internalCMForm.value.programFeedback,
       comments: this.internalCMForm.value.comments,
       createdBy: fullname
