@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 import {MembersModel} from '../members.model';
 import {MembersService} from '../members.service';
@@ -12,16 +12,20 @@ import {RecipientsService} from '../recipients.service';
 })
 export class AddRecipientFormComponent implements OnInit {
   addRecipientForm: FormGroup;
+  formArray: FormArray;
   members: MembersModel[];
 
-  constructor(private membersService: MembersService, private recipientsService: RecipientsService) {
+  constructor(private membersService: MembersService, private recipientsService: RecipientsService, private  fb: FormBuilder) {
     this.members = this.membersService.getMembers();
   }
 
   ngOnInit() {
+    this.formArray = new FormArray([]);
+
     this.addRecipientForm = new FormGroup({
-      recipients: new FormArray([]),
+      recipients: this.formArray,
     });
+
   }
 
   onAddRecipient() {
