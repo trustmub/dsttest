@@ -74,6 +74,10 @@ export class CabinetMemoService {
     }
   }
 
+  getCabinetMemo(recordId: string) {
+    return this.cabinetMemoList.filter(x => x.reference === recordId)[0];
+  }
+
   addCabinetMemoList(newICMemo: CabinetMemoModel) {
     this.cabinetMemoList.push(newICMemo);
   }
@@ -85,6 +89,7 @@ export class CabinetMemoService {
   getStatusList() {
     return this.statusList;
   }
+
 }
 
 export enum CabMemoType {

@@ -19,6 +19,8 @@ import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/f
 import {SelfInitiatedDetailsComponent} from './contents/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
 import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {ExcoMeetingRoutingModule} from './contents/exco-meeting/exco-meeting-routing.module';
+import {InternalCmDetailsComponent} from './contents/cabinet-memo/internal-memo-list/internal-cm-details/internal-cm-details.component';
+import {ExternalCmDetailsComponent} from './contents/cabinet-memo/external-memo-list/external-cm-details/external-cm-details.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
   {path: 'submission-records/si/:id', component: SelfInitiatedDetailsComponent},
 
   {path: 'cabinet-memo', component: CabinetMemoComponent},
-  {path: 'cabinet-memo/:id', component: CabinetMemoComponent}, // TODO create a detail component for internal cabinet memo
+  {path: 'cabinet-memo/internal/:id', component: InternalCmDetailsComponent}, // TODO create a detail component for internal cabinet memo
+  {path: 'cabinet-memo/external/:id', component: ExternalCmDetailsComponent}, // TODO create a detail component for internal cabinet memo
 
   {path: 'not-found', component: PageNotFoundComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: '/not-found'}

@@ -1,3 +1,5 @@
+import {RecipientsModel} from '../dg-memo/memo.model';
+
 export class CabinetMemoModel {
 
   reference: string;
@@ -23,7 +25,7 @@ export class CabinetMemoModel {
   programmeReturnTime?: string;
   odgReturnDate?: string;
   odgReturnTime?: string;
-
+  recipient?: RecipientsModel[];
   createDate?: string;
 
 // i.	CAB MEMO NO.
@@ -67,6 +69,7 @@ export class CabinetMemoModel {
               programmeReturnTime: string,
               odgReturnDate: string,
               odgReturnTime: string,
+              recipient: RecipientsModel[],
               createDate: string = new Date().toISOString()) {
 
     this.reference = reference;
@@ -92,6 +95,7 @@ export class CabinetMemoModel {
     this.programmeReturnTime = programmeReturnTime;
     this.odgReturnDate = odgReturnDate;
     this.odgReturnTime = odgReturnTime;
+    this.recipient = recipient;
     this.createDate = createDate;
   }
 }
