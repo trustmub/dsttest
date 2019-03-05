@@ -62,6 +62,14 @@ export class CabinetMemoService {
   getCabinetMemoList(type?: CabMemoType) {
 
     if (this.cabinetMemoList !== []) {
+      for (const meeting of this.cabinetMemoList) {
+        this.cabinetMemoList.map(
+          (rec) => {
+            rec.health = this.changeHealthStatus(new Date(rec.meetingDate));
+          }
+        );
+      }
+
       if (type === CabMemoType.INTERNAL) {
         return this.cabinetMemoList.filter(x => x.reference.slice(0, 3) === 'ICB');
       } else if (type === CabMemoType.EXTERNAL) {
@@ -74,8 +82,16 @@ export class CabinetMemoService {
     }
   }
 
+
   getCabinetMemo(recordId: string) {
     return this.cabinetMemoList.filter(x => x.reference === recordId)[0];
+  }
+
+  updateCabinetMemo(externalCMRecord: CabinetMemoModel) {
+    const id = externalCMRecord.reference;
+    const recIndex = this.cabinetMemoList.findIndex(x => x.reference === id);
+    this.cabinetMemoList.splice(recIndex);
+    this.cabinetMemoList.push(externalCMRecord);
   }
 
   addCabinetMemoList(newICMemo: CabinetMemoModel) {
@@ -89,6 +105,24 @@ export class CabinetMemoService {
   getStatusList() {
     return this.statusList;
   }
+
+  private changeHealthStatus(returnDate: Date) {
+
+    const today = new Date();
+    const daysBetween = Math.round((returnDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    if (daysBetween > 8) {
+      return 'green';
+    }
+    if (daysBetween <= 8 && daysBetween > 0) {
+      return 'amber';
+    }
+
+    if (daysBetween <= 0) {
+      return 'red';
+    }
+  }
+
 
 }
 

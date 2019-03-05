@@ -77,13 +77,15 @@
             <p class="mt-0 border-left-primary">{{ externalRecord.addressTo }}.</p>
 
             <h6 class="mb-0 font-weight-bold">Received Datetime</h6>
-            <p class="mt-0 border-left-info">{{ externalRecord.receivedDate }} {{ externalRecord.receivedTime}}.</p>
+            <p
+              class="mt-0 border-left-info">{{ externalRecord.receivedDate | date:"dd MMMM yyyy"}} {{ externalRecord.receivedTime}}
+              .</p>
 
             <h6 class="mb-0 font-weight-bold">Meeting Date</h6>
-            <p class="mt-0 border-left-info">{{ externalRecord.meetingDate }}.</p>
+            <p class="mt-0 border-left-info">{{ externalRecord.meetingDate | date:"dd MMMM yyyy"}}.</p>
 
             <h6 class="mb-0 font-weight-bold">Due Date</h6>
-            <p class="mt-0 border-left-info">{{ externalRecord.dueDate }}.</p>
+            <p class="mt-0 border-left-info">{{ externalRecord.dueDate | date:"dd MMMM yyyy" }}.</p>
 
           </div>
           <div class="col-lg-9 col-md-9">
@@ -93,6 +95,10 @@
 
             <h6 class="mb-0 font-weight-bold">Cabinet Committee</h6>
             <p class="mt-0 border-left-info">{{ externalRecord.cabinetCommittee }}.</p>
+
+            <h6 class="mb-0 font-weight-bold">ODG Return Date & Time</h6>
+            <p class="mt-0 border-left-info">
+              {{ externalRecord.odgReturnDate | date:"dd MMMM yyyy" }} - {{ externalRecord.odgReturnTime }}.</p>
 
             <h6 class="mb-0 font-weight-bold">Comments</h6>
             <p class="mt-0 border-left-info">{{ externalRecord.comments }}.</p>
@@ -109,9 +115,10 @@
         </div>
 
         <div class="col-lg-4 col-md-4 ">
-          <h6 class="card-title font-weight-bold">Health</h6>
+          <h6 class="card-title font-weight-bold mb-0">Health</h6>
           <p
-            class="card-text btn btn-success btn-circle btn-circle font-weight-bold">{{ externalRecord.health | slice:0:1 | uppercase}}</p>
+            class="card-text btn btn-circle btn-circle font-weight-bold mb-2 mt-0"
+            [ngClass]="getHealthClasses(externalRecord.health)">{{ externalRecord.health | slice:0:1 | uppercase}}</p>
         </div>
 
         <div class="col-lg-4 col-md-4 ">
@@ -121,7 +128,7 @@
 
         <div class="col-lg-4 col-md-4">
           <h6 class="card-title font-weight-bold mb-0">Create Date</h6>
-          <p class="card-text">{{ externalRecord.createDate}}</p>
+          <p class="card-text">{{ externalRecord.createDate | date:"dd MMMM yyyy"}}</p>
         </div>
 
       </div>

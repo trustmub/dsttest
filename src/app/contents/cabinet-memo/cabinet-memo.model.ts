@@ -13,6 +13,7 @@ export class CabinetMemoModel {
   programFeedback?: string;
   comments?: string;
   createdBy: string;
+  amendedBy?: string;
   health?: string;
   receivedDate?: string;
   receivedTime?: string;
@@ -25,8 +26,8 @@ export class CabinetMemoModel {
   programmeReturnTime?: string;
   odgReturnDate?: string;
   odgReturnTime?: string;
-  recipient?: RecipientsModel[];
   createDate?: string;
+  recipient?: RecipientsModel[];
 
 // i.	CAB MEMO NO.
 // ii.	DATE RECEIVED
@@ -57,6 +58,7 @@ export class CabinetMemoModel {
               programFeedback: string,
               comments: string,
               createdBy: string,
+              amendedBy: string,
               health: string,
               receivedDate: string,
               receivedTime: string,
@@ -69,8 +71,8 @@ export class CabinetMemoModel {
               programmeReturnTime: string,
               odgReturnDate: string,
               odgReturnTime: string,
-              recipient: RecipientsModel[],
-              createDate: string = new Date().toISOString()) {
+              createDate: string = new Date().toISOString(),
+              recipient: RecipientsModel[] = []) {
 
     this.reference = reference;
     this.programme = programme;
@@ -83,6 +85,7 @@ export class CabinetMemoModel {
     this.programFeedback = programFeedback;
     this.comments = comments;
     this.createdBy = createdBy;
+    this.amendedBy = amendedBy;
     this.health = health;
     this.receivedDate = receivedDate;
     this.receivedTime = receivedTime;

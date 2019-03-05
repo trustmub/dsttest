@@ -1,6 +1,265 @@
-<p>
-  edit-ecm-form works!
-</p>
+<form [formGroup]="externalCMForm" (ngSubmit)="onSaveECMClicked()">
+  <div class="row">
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="reference">Reference.</label>
+        <input type="text"
+               class="form-control"
+               id="reference"
+               name="reference"
+               formControlName="reference">
+        <span *ngIf="!externalCMForm.get('reference').valid && externalCMForm.get('reference').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="receivedDate">Date Received.</label>
+        <input type="date"
+               class="form-control"
+               id="receivedDate"
+               name="receivedDate"
+               formControlName="receivedDate">
+        <span *ngIf="!externalCMForm.get('receivedDate').valid && externalCMForm.get('receivedDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="receivedTime">Time Received.</label>
+        <input type="time"
+               class="form-control"
+               id="receivedTime"
+               name="receivedTime"
+               formControlName="receivedTime">
+        <span *ngIf="!externalCMForm.get('receivedTime').valid && externalCMForm.get('receivedTime').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-5 col-md-5">
+      <div class="form-group">
+        <label for="department">Department.</label>
+        <select class="form-control"
+                type="text"
+                id="department"
+                name="department"
+                formControlName="department">
+          <option></option>
+          <option *ngFor="let dpt of departmentList; let i = index">{{ dpt }}</option>
+        </select>
+        <span *ngIf="!externalCMForm.get('department').valid && externalCMForm.get('department').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-7 col-md-7">
+      <div class="form-group">
+        <label for="subject">Subject.</label>
+        <input type="text"
+               class="form-control"
+               id="subject"
+               name="subject"
+               formControlName="subject">
+        <span *ngIf="!externalCMForm.get('subject').valid && externalCMForm.get('subject').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5 col-md-5">
+      <div class="form-group">
+        <label for="cabinetCommittee">Cabinet Committee.</label>
+        <input type="text"
+               class="form-control"
+               id="cabinetCommittee"
+               name="cabinetCommittee"
+               formControlName="cabinetCommittee">
+        <span *ngIf="!externalCMForm.get('cabinetCommittee').valid && externalCMForm.get('cabinetCommittee').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="meetingDate">Meeting Date.</label>
+        <input type="date"
+               class="form-control"
+               id="meetingDate"
+               name="meetingDate"
+               formControlName="meetingDate">
+        <span *ngIf="!externalCMForm.get('meetingDate').valid && externalCMForm.get('meetingDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="addressTo">Address To.</label>
+        <select class="form-control"
+                type="text"
+                id="addressTo"
+                name="addressTo"
+                formControlName="addressTo">
+          <option></option>
+          <option *ngFor="let member of members; let i = index">{{ member.fullname }}</option>
+        </select>
+        <span *ngIf="!externalCMForm.get('addressTo').valid && externalCMForm.get('addressTo').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="dateToProgramme">Date To Programme.</label>
+        <input type="date"
+               class="form-control"
+               id="dateToProgramme"
+               name="dateToProgramme"
+               formControlName="dateToProgramme">
+        <span *ngIf="!externalCMForm.get('dateToProgramme').valid && externalCMForm.get('dateToProgramme').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="timeSendToProgram">Time To Programme.</label>
+        <input type="time"
+               class="form-control"
+               id="timeSendToProgram"
+               name="timeSendToProgram"
+               formControlName="timeSendToProgram">
+        <span *ngIf="!externalCMForm.get('timeSendToProgram').valid && externalCMForm.get('timeSendToProgram').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="dueDate">Due Date.</label>
+        <input type="date"
+               class="form-control"
+               id="dueDate"
+               name="dueDate"
+               formControlName="dueDate">
+        <span *ngIf="!externalCMForm.get('dueDate').valid && externalCMForm.get('dueDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="status">Status.</label>
+        <select class="form-control"
+                type="text"
+                id="status"
+                name="status"
+                formControlName="status">
+          <option *ngFor="let status of statusList; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!externalCMForm.get('status').valid && externalCMForm.get('status').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="odgReturnDate">ODG Return Date.</label>
+        <input type="date"
+               class="form-control"
+               id="odgReturnDate"
+               name="odgReturnDate"
+               formControlName="odgReturnDate">
+        <span *ngIf="!externalCMForm.get('odgReturnDate').valid && externalCMForm.get('odgReturnDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="odgReturnTime">ODG Return Time.</label>
+        <input type="time"
+               class="form-control"
+               id="odgReturnTime"
+               name="odgReturnTime"
+               formControlName="odgReturnTime">
+        <span *ngIf="!externalCMForm.get('odgReturnTime').valid && externalCMForm.get('odgReturnTime').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-12">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="4"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!externalCMForm.get('comments').valid && externalCMForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="modal-footer m-0 p-0">
+    <button class="btn btn-primary text-white" type="submit" [disabled]="!externalCMForm.valid">Save</button>
+    <button class="btn btn-secondary text-white ml-3" data-dismiss="modal" type="button">Cancel</button>
+  </div>
+</form>
 
 
 <!--i.	CAB MEMO NO.-->

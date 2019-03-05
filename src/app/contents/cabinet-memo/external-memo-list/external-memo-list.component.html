@@ -32,7 +32,7 @@
         <table class="table table-bordered table-sm">
           <thead>
           <tr class="text-sm-center">
-            <th>Ref No</th>
+            <th class="text-nowrap">Ref No</th>
             <th>Date Received</th>
             <th>Department</th>
             <th>Subject</th>
@@ -46,7 +46,7 @@
           <tbody *ngFor="let memo of externalMemoList; let i = index">
           <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#external' + i"
               aria-expanded="false" [attr.aria-controls]="'external' + i">
-            <td>{{ memo.reference }}</td>
+            <td class="text-nowrap">{{ memo.reference }}</td>
             <td>{{ memo.receivedDate | date:"dd MMMM yyyy" }} - {{ memo.receivedTime }}</td>
             <td>{{ memo.department }}</td>
             <td>{{ memo.subject }}</td>
@@ -71,7 +71,7 @@
                       <div class="media">
                         <p class="align-self-start mr-3">Date Created : </p>
                         <div class="media-body">
-                          <p>{{ memo.createDate }}</p>
+                          <p>{{ memo.createDate | date:"dd MMMM yyyy" }}</p>
                         </div>
                       </div>
 

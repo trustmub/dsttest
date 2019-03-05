@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CabinetMemoModel} from '../../cabinet-memo.model';
 import {CabinetMemoService} from '../../cabinet-memo.service';
 import {RecipientsService} from '../../../../shared/recipients.service';
+import {RecipientsModel} from '../../../dg-memo/memo.model';
 
 @Component({
   selector: 'app-external-cm-details',
@@ -14,7 +15,7 @@ export class ExternalCmDetailsComponent implements OnInit {
   externalRecord: CabinetMemoModel;
   recordId: string;
   filename: string;
-  recipients = [];
+  recipients: RecipientsModel[] = [];
   fileToUpload: File;
 
   constructor(private router: Router,
@@ -23,9 +24,13 @@ export class ExternalCmDetailsComponent implements OnInit {
               private recipientsService: RecipientsService) {
     this.recordId = this.route.snapshot.params.id;
     this.externalRecord = this.cabinetService.getCabinetMemo(this.recordId);
+    // this.recipients = this.externalRecord.recipient;
   }
 
   ngOnInit() {
+
+    this.externalRecord = this.cabinetService.getCabinetMemo(this.recordId);
+    console.log('Cabinet Record', this.externalRecord);
 
     this.recipientsService.recipientsObserver.subscribe(
       (results: string[]) => {
@@ -38,6 +43,7 @@ export class ExternalCmDetailsComponent implements OnInit {
         );
         console.log('dgSubmission Details Observer', this.recipients);
         this.recipients = this.externalRecord.recipient;
+
       }
     );
 
@@ -58,5 +64,13 @@ export class ExternalCmDetailsComponent implements OnInit {
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
     this.filename = this.fileToUpload.name;
+  }
+
+  getHealthClasses(health: string) {
+    return {
+      'btn-success': health === 'green',
+      'btn-danger': health === 'red',
+      'btn-warning': health === 'amber'
+    };
   }
 }

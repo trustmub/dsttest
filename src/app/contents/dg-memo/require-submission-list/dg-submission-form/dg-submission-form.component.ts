@@ -66,7 +66,8 @@ export class DgSubmissionFormComponent implements OnInit {
       status: this.statusList[0],
       comment: this.memoForm.value.comment,
       createdBy: fullname,
-      recipient: [{name: fullname}]
+      recipient: [],
+      createDate: new Date().toISOString()
     };
 
     // this.randomNumber = 'DG' + Math.floor(Math.random() * 3) + 100;

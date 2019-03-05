@@ -46,20 +46,27 @@ export class ExternalCmFormComponent implements OnInit {
 
   onSaveECMClicked() {
     const fullname = this.user.getFullname();
+
     const externalCMRecord: CabinetMemoModel = {
       reference: this.reference,
-      receivedDate: this.externalCMForm.value.receivedDate,
+      receivedDate: new Date(this.externalCMForm.value.receivedDate).toISOString(),
       receivedTime: this.externalCMForm.value.receivedTime,
       department: this.externalCMForm.value.department,
       subject: this.externalCMForm.value.subject,
       cabinetCommittee: this.externalCMForm.value.cabinetCommittee,
-      meetingDate: this.externalCMForm.value.meetingDate,
+      meetingDate: new Date(this.externalCMForm.value.meetingDate).toISOString(),
       addressTo: this.externalCMForm.value.addressTo,
-      dateToProgramme: this.externalCMForm.value.dateToProgramme, // TODO this date mst be generated automatically upon submission
+      // TODO this date mst be generated automatically upon submission
+      dateToProgramme: new Date(this.externalCMForm.value.dateToProgramme).toISOString(),
       timeSendToProgram: this.externalCMForm.value.timeSendToProgram, // TODO this date mst be generated automatically upon submission
-      dueDate: this.externalCMForm.value.dueDate,
+      dueDate: new Date(this.externalCMForm.value.dueDate).toISOString(),
       status: 'Created',
       createdBy: fullname,
+      recipient: [],
+      odgReturnDate: '',
+      odgReturnTime: '',
+      comments: '',
+      createDate: new Date().toISOString()
     };
 
 
