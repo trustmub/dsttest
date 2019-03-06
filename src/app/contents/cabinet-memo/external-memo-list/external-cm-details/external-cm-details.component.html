@@ -113,20 +113,24 @@
         <div class="col-12">
           <hr>
         </div>
+        <div class="col-lg-3 col-md-3 ">
+          <h6 class="card-title font-weight-bold mb-0">Status</h6>
+          <p class="card-text">{{ externalRecord.status }}</p>
+        </div>
 
-        <div class="col-lg-4 col-md-4 ">
+        <div class="col-lg-3 col-md-3 ">
           <h6 class="card-title font-weight-bold mb-0">Health</h6>
           <p
             class="card-text btn btn-circle btn-circle font-weight-bold mb-2 mt-0"
             [ngClass]="getHealthClasses(externalRecord.health)">{{ externalRecord.health | slice:0:1 | uppercase}}</p>
         </div>
 
-        <div class="col-lg-4 col-md-4 ">
+        <div class="col-lg-3 col-md-3 ">
           <h6 class="card-title font-weight-bold mb-0">Created By</h6>
           <p class="card-text">{{ externalRecord.createdBy }}</p>
         </div>
 
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-3">
           <h6 class="card-title font-weight-bold mb-0">Create Date</h6>
           <p class="card-text">{{ externalRecord.createDate | date:"dd MMMM yyyy"}}</p>
         </div>
@@ -148,7 +152,7 @@
       <!--<a class="list-group-item list-group-item-action " id="list-attendee-list" data-toggle="list" href=""-->
       <!--role="tab" aria-controls="profile">Upload Document</a>-->
       <!--<button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"-->
-              <!--data-target=".bd-generateDGMemo-modal">Generate DG Memo-->
+      <!--data-target=".bd-generateDGMemo-modal">Generate DG Memo-->
       <!--</button>-->
       <button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"
               data-target=".bd-uploadFile-modal-lg">Upload Document
@@ -190,19 +194,19 @@
 
     <!-- Small modal for uploading a file -->
     <!--<div class="modal fade bd-generateDGMemo-modal" tabindex="-1" role="dialog" aria-labelledby="generateDGMemo"-->
-         <!--aria-hidden="true">-->
-      <!--<div class="modal-dialog modal-lg">-->
-        <!--<div class="modal-content">-->
-          <!--<div class="modal-header">Generate DG Memo</div>-->
-          <!--<div class="modal-body">-->
-            <!--<editor apiKey="7vv6nyeeh35obk4gt8uww8w7zh6cjwuvlg05xkf8f4ipwwv0" [init]="{plugins: 'link'}"></editor>-->
-          <!--</div>-->
-          <!--<div class="modal-footer">-->
-            <!--<button class="btn btn-outline-primary" data-dismiss="modal" type="submit">Save</button>-->
-            <!--<button class="btn btn-outline-secondary ml-3" data-dismiss="modal" type="submit">Cancel</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
+    <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-lg">-->
+    <!--<div class="modal-content">-->
+    <!--<div class="modal-header">Generate DG Memo</div>-->
+    <!--<div class="modal-body">-->
+    <!--<editor apiKey="7vv6nyeeh35obk4gt8uww8w7zh6cjwuvlg05xkf8f4ipwwv0" [init]="{plugins: 'link'}"></editor>-->
+    <!--</div>-->
+    <!--<div class="modal-footer">-->
+    <!--<button class="btn btn-outline-primary" data-dismiss="modal" type="submit">Save</button>-->
+    <!--<button class="btn btn-outline-secondary ml-3" data-dismiss="modal" type="submit">Cancel</button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--</div>-->
 
     <br>

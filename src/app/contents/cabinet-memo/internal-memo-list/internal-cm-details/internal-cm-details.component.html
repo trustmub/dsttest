@@ -1,3 +1,205 @@
-<p>
-  internal-cm-details works!
-</p>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Internal Cabinet Memo Details</h1>
+  <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
+  <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+</div>
+
+<div class="row">
+  <div class="col-lg-9 col-md-9">
+
+    <div class="card">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <button class="btn btn-outline-primary btn-sm" (click)="backClicked()"> < Back Cabinet Memo List</button>
+
+        <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="true">Actions
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+               aria-labelledby="dropdownMenuLink" x-placement="top-end"
+               style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-156px, -155px, 0px);">
+            <a class="dropdown-item " data-toggle="modal" data-target=".bd-editInternal-modal-lg">Edit</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-toggle="modal" data-target=".bd-addRecipient-modal-lg">Add Recipients</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra large modal for editing Action Item-->
+      <div class="modal fade bd-editInternal-modal-lg" tabindex="-1" role="dialog" aria-labelledby="editInternalForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">Edit Record</div>
+            <div class="modal-body">
+              <app-edit-icm-form></app-edit-icm-form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra large modal for adding Recipients Action Item-->
+      <div class="modal fade bd-addRecipient-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addRecipientForm"
+           aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">Add Recipients</div>
+            <div class="modal-body">
+              <app-add-recipient-form></app-add-recipient-form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 small">
+            Reference: {{ internalRecord.reference }}
+            <hr class="p-0 mt-0">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h5 class="mb-0">Subject</h5>
+            <p class="mt-0 border-left-info">{{ internalRecord.subject }}</p>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3">
+            <h6 class="mb-0 font-weight-bold">Addressed To</h6>
+            <p class="mt-0 border-left-primary">{{ internalRecord.addressTo }}.</p>
+
+            <h6 class="mb-0 font-weight-bold">Received Datetime</h6>
+            <p
+              class="mt-0 border-left-info">{{ internalRecord.receivedDate | date:"dd MMMM yyyy"}} {{ internalRecord.receivedTime}}
+              .</p>
+
+            <h6 class="mb-0 font-weight-bold">Meeting Date</h6>
+            <p class="mt-0 border-left-info">{{ internalRecord.meetingDate | date:"dd MMMM yyyy"}}.</p>
+
+            <h6 class="mb-0 font-weight-bold">Due Date</h6>
+            <p class="mt-0 border-left-info">{{ internalRecord.dueDate | date:"dd MMMM yyyy" }}.</p>
+
+          </div>
+          <div class="col-lg-9 col-md-9">
+
+            <h6 class="mb-0 font-weight-bold">Department</h6>
+            <p class="mt-0 border-left-info">{{ internalRecord.department }}</p>
+
+            <h6 class="mb-0 font-weight-bold">Cabinet Committee</h6>
+            <p class="mt-0 border-left-info">{{ internalRecord.cabinetCommittee }}.</p>
+
+            <h6 class="mb-0 font-weight-bold">ODG Return Date & Time</h6>
+            <p class="mt-0 border-left-info">
+              {{ internalRecord.odgReturnDate | date:"dd MMMM yyyy" }} - {{ internalRecord.odgReturnTime }}.</p>
+
+            <h6 class="mb-0 font-weight-bold">Comments</h6>
+            <p class="mt-0 border-left-info">{{ internalRecord.comments }}.</p>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row text-center">
+
+        <div class="col-12">
+          <hr>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+          <h6 class="card-title font-weight-bold mb-0">Status</h6>
+          <p class="card-text">{{ internalRecord.status }}</p>
+        </div>
+
+        <div class="col-lg-3 col-md-3 ">
+          <h6 class="card-title font-weight-bold mb-0">Health</h6>
+          <p
+            class="card-text btn btn-circle btn-circle font-weight-bold mb-2 mt-0"
+            [ngClass]="getHealthClasses(internalRecord.health)">{{ internalRecord.health | slice:0:1 | uppercase}}</p>
+        </div>
+
+        <div class="col-lg-3 col-md-3 ">
+          <h6 class="card-title font-weight-bold mb-0">Created By</h6>
+          <p class="card-text">{{ internalRecord.createdBy }}</p>
+        </div>
+
+        <div class="col-lg-3 col-md-3">
+          <h6 class="card-title font-weight-bold mb-0">Create Date</h6>
+          <p class="card-text">{{ internalRecord.createDate | date:"dd MMMM yyyy"}}</p>
+        </div>
+
+      </div>
+
+
+      <div class="card-footer modal-footer m-0">
+        <button class="btn btn-outline-primary" type="button">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3">
+
+    <div class="list-group" id="list-tab" role="tablist">
+      <button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"
+              data-target=".bd-uploadFile-modal">Upload Document
+      </button>
+    </div>
+
+    <!-- Small modal for uploading a file -->
+    <div class="modal fade bd-uploadFile-modal" tabindex="-1" role="dialog" aria-labelledby="uploadForm"
+         aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">Upload Document</div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="fileName">Name</label>
+                <input class="form-control"
+                       type="text"
+                       name="fileName"
+                       id="fileName">
+              </div>
+
+              <div class="form-group">
+                <label for="file">Document Upload</label>
+                <input type="file"
+                       id="file"
+                       class="form-control"
+                       (change)="handleFileInput($event.target.files)">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
+              <button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="card border-left-primary">
+      <div class="card-header text-primary font-weight-bold">Attached Documents</div>
+      <div class="card-body">
+        <a href="">{{ filename }}</a>
+      </div>
+    </div>
+    <br>
+    <div class="card border-left-info">
+      <div class="card-header text-primary font-weight-bold">Other Receivers</div>
+      <div class="card-body">
+        <ul *ngFor="let recipient of recipients,">
+          <li>{{ recipient.name }}</li>
+        </ul>
+        list of users added
+      </div>
+    </div>
+  </div>
+</div>

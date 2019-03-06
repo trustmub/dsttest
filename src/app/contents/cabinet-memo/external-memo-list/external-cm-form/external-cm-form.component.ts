@@ -39,13 +39,15 @@ export class ExternalCmFormComponent implements OnInit {
       addressTo: new FormControl(null, [Validators.required]),
       dateToProgramme: new FormControl(null, [Validators.required]),
       timeSendToProgram: new FormControl(null, [Validators.required]),
-      dueDate: new FormControl(null, [Validators.required]),
+      // dueDate: new FormControl(null, [Validators.required]),
       status: new FormControl({value: 'Created', disabled: true}, [Validators.required]),
     });
   }
 
   onSaveECMClicked() {
     const fullname = this.user.getFullname();
+    const meetingDate = new Date(this.externalCMForm.value.meetingDate).toISOString();
+    const dueDate = this.getDueDate(meetingDate);
 
     const externalCMRecord: CabinetMemoModel = {
       reference: this.reference,
@@ -59,7 +61,7 @@ export class ExternalCmFormComponent implements OnInit {
       // TODO this date mst be generated automatically upon submission
       dateToProgramme: new Date(this.externalCMForm.value.dateToProgramme).toISOString(),
       timeSendToProgram: this.externalCMForm.value.timeSendToProgram, // TODO this date mst be generated automatically upon submission
-      dueDate: new Date(this.externalCMForm.value.dueDate).toISOString(),
+      dueDate: dueDate.toISOString(),
       status: 'Created',
       createdBy: fullname,
       recipient: [],
@@ -81,6 +83,14 @@ export class ExternalCmFormComponent implements OnInit {
   private generateReference(): string {
     const year = new Date().getFullYear();
     return 'ECB-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
+  }
+
+  private getDueDate(meetingDate: string) {
+    // const daysBetween = Math.round((returnDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    const currentDate = new Date(meetingDate);
+    currentDate.setDate(currentDate.getDate() - 1);
+    return currentDate;
   }
 
 }
