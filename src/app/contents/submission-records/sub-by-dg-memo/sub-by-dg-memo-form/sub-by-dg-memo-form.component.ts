@@ -37,7 +37,7 @@ export class SubByDgMemoFormComponent implements OnInit {
   }
 
   onSaveSubmissionClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getFullname();
 
     const promptedByDgMemo: SubmissionRecordModel = {
       submissionType: this.subRecordForm.value.submissionType,

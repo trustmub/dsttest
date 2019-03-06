@@ -14,11 +14,14 @@ import {MembersModel} from '../../shared/members.model';
 export class HeaderComponent implements OnInit {
   userDetails: UserModel;
   searchForm: FormGroup;
-  members: MembersModel[]
+  members: MembersModel[];
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private membersService: MembersService) {
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService,
+              private membersService: MembersService) {
+
     this.userDetails = userService.getUser();
-    this.members = this.membersService.getMembers()
+    this.members = this.membersService.getMembers();
   }
 
   ngOnInit() {
@@ -29,8 +32,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogoutClicked() {
-    localStorage.setItem('authenticated', '');
-    localStorage.setItem('token', '');
+    // localStorage.setItem('authenticated', '');
+    // localStorage.setItem('token', '');
+    localStorage.clear();
     this.authenticationService.isAuthenticated.emit(false);
   }
 

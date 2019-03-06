@@ -61,7 +61,7 @@ export class EditSubmissionFormComponent implements OnInit {
 
 
   onUpdateSubmissionClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
     const promptedByDgMemo: SubmissionRecordModel = {
       submissionType: this.editSubRecordForm.value.submissionType,

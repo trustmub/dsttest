@@ -38,7 +38,7 @@ export class SelfInitiatedFormComponent implements OnInit {
   }
 
   onSaveSelfInitiatedClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
     const selfInitiated: SubmissionRecordModel = {
       submissionType: this.selfInitForm.value.submissionType,

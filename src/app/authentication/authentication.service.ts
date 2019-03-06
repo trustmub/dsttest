@@ -35,6 +35,10 @@ export class AuthenticationService {
       credentials, {observe: 'response', responseType: 'json'});
   }
 
+  getUserDetails(email: string) {
+    return this.httpClient.get('api/user/findbyemail/' + email + '/');
+  }
+
   setAuthentication(auth: boolean) {
     localStorage.setItem('authenticated', auth + '');
     this.isAuthenticated.emit(auth);

@@ -58,7 +58,7 @@ export class EditSiFormComponent implements OnInit {
   }
 
   onSaveSIClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
     const selfInitiated: SubmissionRecordModel = {
       submissionType: this.editSelfInitForm.value.submissionType,

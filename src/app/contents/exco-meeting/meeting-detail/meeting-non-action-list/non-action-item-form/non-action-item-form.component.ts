@@ -30,7 +30,7 @@ export class NonActionItemFormComponent implements OnInit {
   }
 
   onSubmitActionItem() {
-    const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().surname;
+    const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().lastName;
     const obj = {
       reference: 'EM 200',
       item: this.nonActionItemForm.value.nonActionItem,

@@ -73,7 +73,7 @@ export class ActionItemFormComponent implements OnInit {
       this.actionItemForm.value.actionStatus,
       'G',
       this.actionItemForm.value.actionFeedback,
-      this.userService.getUser().surname,
+      this.userService.getUser().lastName,
       new Date().toISOString());
 
     console.log(JSON.stringify(newItem));

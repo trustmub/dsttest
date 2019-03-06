@@ -64,7 +64,7 @@ export class EditMemoFormComponent implements OnInit {
   }
 
   onUpdateMemoClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
     const updateRecord: DgMemoModel = {
       category: this.editMemoForm.value.category,

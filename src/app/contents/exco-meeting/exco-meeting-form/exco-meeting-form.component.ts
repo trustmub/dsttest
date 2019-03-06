@@ -13,7 +13,7 @@ export class ExcoMeetingFormComponent implements OnInit {
   user: string;
 
   constructor(private meetingService: MeetingsService, private userService: UserService) {
-    this.user = this.userService.getUser().firstName + ' ' + this.userService.getUser().surname;
+    this.user = this.userService.getFullname();
   }
 
   ngOnInit() {

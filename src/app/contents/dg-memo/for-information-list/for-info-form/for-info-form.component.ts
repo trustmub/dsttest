@@ -41,7 +41,7 @@ export class ForInfoFormComponent implements OnInit {
   }
 
   onSaveInfoClicked() {
-    const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().surname;
+    const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().lastName;
 
     const newRecord: DgMemoModel = {
       dgMemoNumber: this.reference,

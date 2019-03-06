@@ -1,23 +1,33 @@
 import {AuthTokenModel, UserModel} from './user.model';
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user = new UserModel('Tembelihle', 'Hlatshwayo', 'super', '/assets/I80W1Q0.png');
+  private user: UserModel = {firstName: 'Tembelihle', lastName: 'Hlatshwayo', userRoles: ['super'], imageString: '/assets/I80W1Q0.png'};
   private token: AuthTokenModel;
 
   constructor() {
+
+  }
+
+  setUser(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
   }
 
   getUser(): UserModel {
+    if (localStorage.getItem('user') !== null) {
+      this.user = JSON.parse(localStorage.getItem('user').toString());
+      return this.user;
+    }
     return this.user;
   }
 
   getFullname() {
-    return this.user.firstName + ' ' + this.user.surname;
+    return this.user.firstName + ' ' + this.user.lastName;
   }
 
   setUserToken(token: string) {

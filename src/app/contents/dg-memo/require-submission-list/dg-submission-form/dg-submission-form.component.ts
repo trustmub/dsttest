@@ -52,7 +52,7 @@ export class DgSubmissionFormComponent implements OnInit {
 
   onSaveMemoClicked() {
 
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().surname;
+    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
     const record: DgMemoModel = {
 
       category: this.memoForm.value.category,
