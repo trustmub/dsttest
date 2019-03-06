@@ -27,25 +27,23 @@ export class ForInfoDetailsComponent implements OnInit {
 
     this.recordId = this.route.snapshot.params.id;
     this.memoRecord = this.memoService.getMemo(this.recordId);
-    if (this.memoRecord.recipient === undefined) {
-      this.memoRecord.recipient = [];
-    } else {
-      this.infoRecipients = this.memoRecord.recipient;
-    }
+    this.infoRecipients = this.memoRecord.recipient;
   }
 
   ngOnInit() {
     this.memoRecord = this.memoService.getMemo(this.recordId);
 
     this.recipientService.recipientsObserver.subscribe(
-      (results: string[]) => {
+      (results: { data: string[], tag: string }) => {
         this.infoRecipients = [];
-        results.forEach(
-          (item) => {
-            this.memoRecord.recipient.push({name: item});
-          }
-        );
-        this.infoRecipients = this.memoRecord.recipient;
+        if (results.tag === 'app-for-info-details') {
+          results.data.forEach(
+            (item) => {
+              this.memoRecord.recipient.push({name: item});
+            }
+          );
+          this.infoRecipients = this.memoRecord.recipient;
+        }
       }
     );
 

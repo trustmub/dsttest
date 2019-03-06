@@ -47,7 +47,7 @@
           <div class="modal-content">
             <div class="modal-header">Add Recipients</div>
             <div class="modal-body">
-              <app-add-recipient-form></app-add-recipient-form>
+              <app-add-recipient-form [recipientTag]="'app-for-info-details'"></app-add-recipient-form>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@
     <br>
     <div class="card border-left-info">
       <div class="card-header text-primary font-weight-bold">Other Receivers</div>
-      <div class="card-body" *ngIf="infoRecipients === undefined">
+      <div class="card-body" *ngIf="infoRecipients !== undefined">
         <ul *ngFor="let recipient of infoRecipients">
           <li>{{ recipient.name }}</li>
         </ul>

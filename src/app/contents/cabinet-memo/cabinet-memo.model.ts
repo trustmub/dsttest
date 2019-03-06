@@ -12,7 +12,7 @@ export class CabinetMemoModel {
   status: string;
   programFeedback?: string;
   comments?: string;
-  createdBy: string;
+  createdBy?: string;
   amendedBy?: string;
   health?: string;
   receivedDate?: string;

@@ -17,6 +17,7 @@ export class ExternalCmFormComponent implements OnInit {
   members = [];
   statusList = [];
   reference: string;
+  recipientTag = 'app-external-cm-form';
 
   constructor(private cabinetService: CabinetMemoService,
               private memberService: MembersService,
@@ -39,7 +40,6 @@ export class ExternalCmFormComponent implements OnInit {
       addressTo: new FormControl(null, [Validators.required]),
       dateToProgramme: new FormControl(null, [Validators.required]),
       timeSendToProgram: new FormControl(null, [Validators.required]),
-      // dueDate: new FormControl(null, [Validators.required]),
       status: new FormControl({value: 'Created', disabled: true}, [Validators.required]),
     });
   }
@@ -71,6 +71,7 @@ export class ExternalCmFormComponent implements OnInit {
       createDate: new Date().toISOString()
     };
 
+    console.log(externalCMRecord);
 
     this.cabinetService.addCabinetMemoList(externalCMRecord);
     this.cabinetService.cmRefreshObserver.next(true);

@@ -12,27 +12,16 @@ import {UserService} from '../../../../shared/user.service';
 })
 export class InternalCmFormComponent implements OnInit {
   internalCMForm: FormGroup;
-  categories: Category[] = [
-    {name: 'Legislation'},
-    {name: 'Profiling the work of the DST'},
-    {name: 'Deriving value from Research and Development'},
-    {name: 'Building the NSI Infrastructure'},
-    {name: 'Steering the NSI'},
-    {name: 'Mandatory Cabinet Memos'},
-  ];
-  programmeList = [
-    'Programme 1A',
-    'Programme 1B',
-    'Programme 2',
-    'Programme 3',
-    'Programme 4',
-    'Programme 5',
-  ];
+  categories: Category[];
+  programmeList = [];
   statusList: string[] = [];
   reference: string;
 
   constructor(private cabinetService: CabinetMemoService,
               private user: UserService) {
+
+    this.categories = this.cabinetService.getCategories();
+    this.programmeList = this.cabinetService.getProgramList();
     this.reference = this.generateReference();
     this.statusList = this.cabinetService.getStatusList();
   }
@@ -53,20 +42,23 @@ export class InternalCmFormComponent implements OnInit {
   }
 
   onSaveICMClicked() {
-    const fullname = this.user.getUser().firstName + ' ' + this.user.getUser();
+    const fullname = this.user.getFullname();
     const newICMemo: CabinetMemoModel = {
       reference: this.reference,
       programme: this.internalCMForm.value.programme,
-      category: this.internalCMForm.value.category,
-      subject: this.internalCMForm.value.subject,
-      strategicObjective: this.internalCMForm.value.strategicObjective,
-      cabinetCommittee: this.internalCMForm.value.cabinetCommittee,
-      meetingDate: this.internalCMForm.value.meetingDate,
+      category: '',
+      subject: '',
+      strategicObjective: '',
+      cabinetCommittee: '',
+      meetingDate: '',
       status: 'Created',
-      programFeedback: this.internalCMForm.value.programFeedback,
-      comments: this.internalCMForm.value.comments,
-      createdBy: fullname
+      programFeedback: '',
+      comments: '',
+      recipient: [],
+      createdBy: fullname,
+      createDate: new Date().toISOString()
     };
+    console.log(newICMemo);
 
     this.reference = this.generateReference();
     this.cabinetService.addCabinetMemoList(newICMemo);

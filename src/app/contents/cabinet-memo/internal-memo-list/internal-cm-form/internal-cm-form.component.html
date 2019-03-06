@@ -41,7 +41,7 @@
                 formControlName="category"
                 name="category">
           <option></option>
-          <option *ngFor="let category of categories; let i = index">{{ category.name }}</option>
+          <option *ngFor="let cat of categories; let i = index">{{ cat.name }}</option>
         </select>
         <span *ngIf="!internalCMForm.get('category').valid && internalCMForm.get('category').touched"
               class="invalid-feedback">
@@ -69,14 +69,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12 col-md-12">
+
+    <div class="col-lg-6 col-md-6">
       <div class="form-group">
         <label for="strategicObjective">Strategic Objective.</label>
-        <input type="text"
-               class="form-control"
-               id="strategicObjective"
-               name="strategicObjective"
-               formControlName="strategicObjective">
+        <textarea type="text"
+                  rows="2"
+                  class="form-control"
+                  id="strategicObjective"
+                  name="strategicObjective"
+                  formControlName="strategicObjective"></textarea>
         <span
           *ngIf="!internalCMForm.get('strategicObjective').valid && internalCMForm.get('strategicObjective').touched"
           class="invalid-feedback">
@@ -84,17 +86,16 @@
         </span>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-6 col-md-6">
       <div class="form-group">
         <label for="cabinetCommittee">Cabinet Committee.</label>
-        <input type="text"
-               class="form-control"
-               id="cabinetCommittee"
-               name="cabinetCommittee"
-               formControlName="cabinetCommittee">
+        <textarea type="text"
+                  rows="2"
+                  class="form-control"
+                  id="cabinetCommittee"
+                  name="cabinetCommittee"
+                  formControlName="cabinetCommittee"></textarea>
         <span *ngIf="!internalCMForm.get('cabinetCommittee').valid && internalCMForm.get('cabinetCommittee').touched"
               class="invalid-feedback">
           This field is required.
@@ -129,20 +130,20 @@
                 name="status">
           <option *ngFor="let status of statusList; let i = index">{{ status }}</option>
         </select>
-        <span *ngIf="!internalCMForm.get('category').valid && internalCMForm.get('category').touched"
+        <span *ngIf="!internalCMForm.get('status').valid && internalCMForm.get('status').touched"
               class="invalid-feedback">
-          Please choose a Category.
+          Please choose a Status.
         </span>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-6 col-md-6">
       <div class="form-group">
         <label for="programFeedback">Programme Feedback.</label>
         <textarea type="text"
-                  rows="4"
+                  rows="3"
                   class="form-control"
                   id="programFeedback"
                   name="programFeedback"
@@ -153,14 +154,12 @@
         </span>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-6 col-md-6">
       <div class="form-group">
         <label for="comments">Comments.</label>
         <textarea type="text"
-                  rows="4"
+                  rows="3"
                   class="form-control"
                   id="comments"
                   name="comments"

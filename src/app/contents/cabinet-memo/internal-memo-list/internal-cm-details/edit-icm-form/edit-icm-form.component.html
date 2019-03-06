@@ -1,3 +1,187 @@
-<p>
-  edit-icm-form works!
-</p>
+<form [formGroup]="internalEditCMForm" (ngSubmit)="onSaveEditICMClicked()">
+  <div class="row">
+
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <label for="reference">Reference.</label>
+        <input type="text"
+               class="form-control"
+               id="reference"
+               name="reference"
+               formControlName="reference">
+        <span *ngIf="!internalEditCMForm.get('reference').valid && internalEditCMForm.get('reference').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="form-group">
+        <label for="programme">Programme.</label>
+        <select class="form-control"
+                id="programme"
+                name="programme"
+                formControlName="programme">
+          <option></option>
+          <option *ngFor="let programme of programmeList; let i = index">{{ programme }}</option>
+        </select>
+        <span *ngIf="!internalEditCMForm.get('programme').valid && internalEditCMForm.get('programme').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-5">
+      <div class="form-group">
+        <label for="category">Category.</label>
+        <select class="form-control"
+                id="category"
+                name="category"
+                formControlName="category">
+          <option></option>
+          <option *ngFor="let cat of categories; let i = index">{{ cat.name }}</option>
+        </select>
+        <span *ngIf="!internalEditCMForm.get('category').valid && internalEditCMForm.get('category').touched"
+              class="invalid-feedback">
+          Please choose a Category.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="subject">Cab Memo Subject.</label>
+        <input type="text"
+               class="form-control"
+               id="subject"
+               name="subject"
+               formControlName="subject">
+        <span *ngIf="!internalEditCMForm.get('subject').valid && internalEditCMForm.get('subject').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="strategicObjective">Strategic Objective.</label>
+        <textarea type="text"
+                  rows="2"
+                  class="form-control"
+                  id="strategicObjective"
+                  name="strategicObjective"
+                  formControlName="strategicObjective"></textarea>
+        <span
+          *ngIf="!internalEditCMForm.get('strategicObjective').valid && internalEditCMForm.get('strategicObjective').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="cabinetCommittee">Cabinet Committee.</label>
+        <textarea type="text"
+                  rows="2"
+                  class="form-control"
+                  id="cabinetCommittee"
+                  name="cabinetCommittee"
+                  formControlName="cabinetCommittee"></textarea>
+        <span
+          *ngIf="!internalEditCMForm.get('cabinetCommittee').valid && internalEditCMForm.get('cabinetCommittee').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="meetingDate">Meeting Date.</label>
+        <input type="date"
+               class="form-control"
+               id="meetingDate"
+               name="meetingDate"
+               formControlName="meetingDate">
+        <span *ngIf="!internalEditCMForm.get('meetingDate').valid && internalEditCMForm.get('meetingDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="status">Status.</label>
+        <select class="form-control"
+                id="status"
+                formControlName="status"
+                name="status">
+          <option *ngFor="let status of statusList; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!internalEditCMForm.get('status').valid && internalEditCMForm.get('status').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="programFeedback">Programme Feedback.</label>
+        <textarea type="text"
+                  rows="3"
+                  class="form-control"
+                  id="programFeedback"
+                  name="programFeedback"
+                  formControlName="programFeedback"></textarea>
+        <span
+          *ngIf="!internalEditCMForm.get('programFeedback').valid && internalEditCMForm.get('programFeedback').touched"
+          class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <label for="comments">Comments.</label>
+        <textarea type="text"
+                  rows="3"
+                  class="form-control"
+                  id="comments"
+                  name="comments"
+                  formControlName="comments"></textarea>
+        <span *ngIf="!internalEditCMForm.get('comments').valid && internalEditCMForm.get('comments').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer m-0 p-0">
+    <button class="btn btn-primary text-white"
+            type="submit" [disabled]="!internalEditCMForm.valid">
+      Save
+    </button>
+    <button class="btn btn-secondary text-white ml-3"
+            data-dismiss="modal"
+            type="button">Cancel
+    </button>
+  </div>
+</form>

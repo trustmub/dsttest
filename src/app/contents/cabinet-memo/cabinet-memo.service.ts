@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CabinetMemoModel} from './cabinet-memo.model';
 import {Subject} from 'rxjs';
+import {Category} from '../dg-memo/memo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,23 @@ import {Subject} from 'rxjs';
 export class CabinetMemoService {
 
   cmRefreshObserver = new Subject();
+  private categories: Category[] = [
+    {name: 'Legislation'},
+    {name: 'Profiling the work of the DST'},
+    {name: 'Deriving value from Research and Development'},
+    {name: 'Building the NSI Infrastructure'},
+    {name: 'Steering the NSI'},
+    {name: 'Mandatory Cabinet Memos'},
+  ];
 
+  private programmeList: string[] = [
+    'Programme 1A',
+    'Programme 1B',
+    'Programme 2',
+    'Programme 3',
+    'Programme 4',
+    'Programme 5',
+  ];
   private departments = [
     'Agriculture, Forestry and Fisheries',
     'Arts and Culture',
@@ -124,6 +141,13 @@ export class CabinetMemoService {
   }
 
 
+  getProgramList() {
+    return this.programmeList;
+  }
+
+  getCategories() {
+    return this.categories;
+  }
 }
 
 export enum CabMemoType {

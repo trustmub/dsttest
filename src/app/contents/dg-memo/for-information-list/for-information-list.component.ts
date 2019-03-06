@@ -17,6 +17,9 @@ export class ForInformationListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+
     this.memoService.refreshMemoObserver.subscribe(
       (result) => {
         if (result) {

@@ -50,6 +50,7 @@ export class ForInfoFormComponent implements OnInit {
       description: this.infoForm.value.description,
       comment: this.infoForm.value.comments,
       assignedTo: this.infoForm.value.assignedTo,
+      recipient: [],
       createdBy: fullname
     };
 

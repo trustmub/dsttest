@@ -33,22 +33,21 @@ export class DgSubmissionDetailsComponent implements OnInit {
     this.memoRecord = this.memoService.getMemo(this.memoId);
 
     this.recipientsService.recipientsObserver.subscribe(
-      (results: string[]) => {
+      (results: { data: string[], tag: string }) => {
         this.recipients = [];
-        results.forEach(
-          (item) => {
-            console.log('recipients', item);
-            this.memoRecord.recipient.push({name: item});
-          }
-        );
-        console.log('dgSubmission Details Observer', this.recipients);
-        this.recipients = this.memoRecord.recipient;
+        if (results.tag === 'app-dg-meeting-details') {
+          results.data.forEach(
+            (item) => {
+              this.memoRecord.recipient.push({name: item});
+            }
+          );
+          this.recipients = this.memoRecord.recipient;
+        }
       }
     );
 
     this.memoService.refreshMemoObserver.subscribe(
       (status: boolean) => {
-        console.log('refreshMemoObserver', status);
         if (status) {
           this.memoRecord = this.memoService.getMemo(this.memoId);
         }

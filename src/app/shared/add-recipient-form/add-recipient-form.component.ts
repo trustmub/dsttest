@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 import {MembersModel} from '../members.model';
@@ -11,6 +11,7 @@ import {RecipientsService} from '../recipients.service';
   styleUrls: ['./add-recipient-form.component.css']
 })
 export class AddRecipientFormComponent implements OnInit {
+  @Input() recipientTag: string;
   addRecipientForm: FormGroup;
   formArray: FormArray;
   members: MembersModel[];
@@ -34,7 +35,7 @@ export class AddRecipientFormComponent implements OnInit {
   }
 
   onSubmitRecipients() {
-    this.recipientsService.recipientsObserver.next(this.addRecipientForm.value.recipients);
+    this.recipientsService.recipientsObserver.next({data: this.addRecipientForm.value.recipients, tag: this.recipientTag});
     console.log('fields on display', this.addRecipientForm.value.recipients);
   }
 }

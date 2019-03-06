@@ -24,25 +24,24 @@ export class ExternalCmDetailsComponent implements OnInit {
               private recipientsService: RecipientsService) {
     this.recordId = this.route.snapshot.params.id;
     this.externalRecord = this.cabinetService.getCabinetMemo(this.recordId);
-    // this.recipients = this.externalRecord.recipient;
+    this.recipients = this.externalRecord.recipient;
   }
 
   ngOnInit() {
 
     this.externalRecord = this.cabinetService.getCabinetMemo(this.recordId);
-    console.log('Cabinet Record', this.externalRecord);
 
     this.recipientsService.recipientsObserver.subscribe(
-      (results: string[]) => {
+      (results: { data: string[], tag: string }) => {
         this.recipients = [];
-        results.forEach(
-          (item) => {
-            console.log('recipients', item);
-            this.externalRecord.recipient.push({name: item});
-          }
-        );
-        console.log('dgSubmission Details Observer', this.recipients);
-        this.recipients = this.externalRecord.recipient;
+        if (results.tag === 'app-external-cm-details') {
+          results.data.forEach(
+            (item) => {
+              this.externalRecord.recipient.push({name: item});
+            }
+          );
+          this.recipients = this.externalRecord.recipient;
+        }
 
       }
     );

@@ -15,7 +15,7 @@ export class InternalCmDetailsComponent implements OnInit {
   recipients: RecipientsModel[] = [];
   internalRecord: CabinetMemoModel;
   filename: string;
-  fileToUPload: File;
+  fileToUpload: File;
   id: string;
 
   constructor(private router: Router,
@@ -25,22 +25,35 @@ export class InternalCmDetailsComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
     this.internalRecord = this.cabinetService.getCabinetMemo(this.id);
+    this.recipients = this.internalRecord.recipient;
+    console.log(this.internalRecord);
 
   }
 
   ngOnInit() {
 
-    this.recipientsService.recipientsObserver.subscribe(
-      (results: string[]) => {
-        this.recipients = [];
-        results.forEach(
-          (item) => {
-            this.internalRecord.recipient.push({name: item});
-          }
-        );
-        this.recipients = this.internalRecord.recipient;
+    this.cabinetService.cmRefreshObserver.subscribe(
+      (result: boolean) => {
+        if (result) {
+          this.internalRecord = this.cabinetService.getCabinetMemo(this.id);
+        }
       }
     );
+
+    this.recipientsService.recipientsObserver.subscribe(
+      (results: { data: string[], tag: string }) => {
+        this.recipients = [];
+        if (results.tag === 'app-internal-cm-details') {
+          results.data.forEach(
+            (item) => {
+              this.internalRecord.recipient.push({name: item});
+            }
+          );
+          this.recipients = this.internalRecord.recipient;
+        }
+      }
+    );
+
   }
 
   backClicked() {
@@ -48,8 +61,8 @@ export class InternalCmDetailsComponent implements OnInit {
   }
 
   handleFileInput(file: FileList) {
-    this.fileToUPload = file.item(0);
-    this.filename = this.fileToUPload.name;
+    this.fileToUpload = file.item(0);
+    this.filename = this.fileToUpload.name;
   }
 
   getHealthClasses(health: string) {
