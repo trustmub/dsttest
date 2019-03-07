@@ -16,7 +16,7 @@ export class MeetingActionListComponent implements OnInit {
   meetingItemRecord: MeetingModel;
   members: MembersModel[];
   id: string;
-  actionUpdateStatus: boolean;
+  actionUpdateStatus = false;
 
   constructor(private router: ActivatedRoute, private meetingService: MeetingsService, private membersService: MembersService) {
     this.id = this.router.snapshot.params['id'];
