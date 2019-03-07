@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DgReferralsModel} from './dg-referrals.model';
+import {DgReferralsService} from './dg-referrals.service';
 
 @Component({
   selector: 'app-dg-referrals',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DgReferralsComponent implements OnInit {
 
-  constructor() { }
+  referralRecord: DgReferralsModel[];
+  loadingError = false;
+  loading = false;
+
+  constructor(private referralService: DgReferralsService) {
+
+    this.referralRecord = this.referralService.getReferralRecords();
+  }
 
   ngOnInit() {
+
+    this.referralService.referralRefreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.referralRecord = this.referralService.getReferralRecords();
+        }
+      }
+    );
+  }
+
+  onMemoReloadPageClicked() {
+    this.ngOnInit();
   }
 
 }

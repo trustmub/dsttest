@@ -19,3 +19,34 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header bg-white d-sm-flex align-items-center justify-content-between">
+            There are a total of {{ referralRecord.length }} Referrals
+            <div *ngIf="loading">
+              <strong>Loading... </strong>
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <div *ngIf="loadingError">
+              <button class="btn btn-outline-primary btn-sm" (click)="onMemoReloadPageClicked()">Reload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-dg-referrals-list></app-dg-referrals-list>
+      </div>
+    </div>
+
+  </div>
+</div>

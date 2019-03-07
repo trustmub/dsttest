@@ -58,6 +58,8 @@ import { EditEcmFormComponent } from './contents/cabinet-memo/external-memo-list
 import { EditIcmFormComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-details/edit-icm-form/edit-icm-form.component';
 import { DgReferralsComponent } from './contents/dg-referrals/dg-referrals.component';
 import { DgReferralsFormComponent } from './contents/dg-referrals/dg-referrals-form/dg-referrals-form.component';
+import { DgReferralsDetailsComponent } from './contents/dg-referrals/dg-referrals-details/dg-referrals-details.component';
+import { DgReferralsListComponent } from './contents/dg-referrals/dg-referrals-list/dg-referrals-list.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +112,9 @@ import { DgReferralsFormComponent } from './contents/dg-referrals/dg-referrals-f
     EditEcmFormComponent,
     EditIcmFormComponent,
     DgReferralsComponent,
-    DgReferralsFormComponent
+    DgReferralsFormComponent,
+    DgReferralsDetailsComponent,
+    DgReferralsListComponent
   ],
   imports: [
     BrowserModule,

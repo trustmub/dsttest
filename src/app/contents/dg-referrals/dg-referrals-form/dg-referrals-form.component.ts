@@ -50,11 +50,14 @@ export class DgReferralsFormComponent implements OnInit {
       assignedTo: this.referralsForm.value.assignedTo,
       status: this.referralsForm.value.status,
       createdBy: this.user.getFullname(),
+      recipients: [],
       createDate: new Date().toISOString()
     };
 
     this.referralService.addReferral(newReferral);
+    this.referralService.referralRefreshObserver.next(true);
     this.ref = this.generateReference();
+    this.referralsForm.reset({reference: this.ref});
   }
 
 

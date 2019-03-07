@@ -1,3 +1,5 @@
+import {RecipientsModel} from '../dg-memo/memo.model';
+
 export class DgReferralsModel {
 
   public reference: string;
@@ -12,6 +14,7 @@ export class DgReferralsModel {
   public createdBy: string;
   public amendedBy?: string;
   public createDate: string;
+  public recipients?: RecipientsModel[];
   public amendedDate?: string;
 
   constructor(reference: string,
@@ -26,6 +29,7 @@ export class DgReferralsModel {
               createdBy: string,
               amendedBy: string,
               amendedDate: string,
+              recipients: RecipientsModel[] = [],
               createDate: string = new Date().toISOString()) {
 
     this.reference = reference;
@@ -40,6 +44,7 @@ export class DgReferralsModel {
     this.createdBy = createdBy;
     this.amendedBy = amendedBy;
     this.createDate = createDate;
+    this.recipients = recipients;
     this.amendedDate = amendedDate;
 
   }
