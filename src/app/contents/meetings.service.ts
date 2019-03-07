@@ -12,17 +12,17 @@ import {UserModel} from '../shared/user.model';
 export class MeetingsService {
   refreshObserver = new Subject();
   actionItemSavedObserver = new Subject();
-  meetinRec: MeetingModel = {
-    meetingName: 'sample Meeting',
-    meetingStartDate: '09:00',
-    meetingEndTime: '10:00',
-    meetingEndDate: '',
-    meetingLocation: 'board Room',
-    meetingStartTime: '90:99',
-    createdBy: 'me',
-    createdDate: '456789',
-    decisions: new DecisionModel([],[])
-  };
+  // meetinRec: MeetingModel = {
+  //   meetingName: 'sample Meeting',
+  //   meetingStartDate: '09:00',
+  //   meetingEndTime: '10:00',
+  //   meetingEndDate: '',
+  //   meetingLocation: 'board Room',
+  //   meetingStartTime: '90:99',
+  //   createdBy: 'me',
+  //   createdDate: '456789',
+  //   decisions: new DecisionModel([],[])
+  // };
 
   private user: UserModel;
   private actionItems: ActionItemModel[];
@@ -86,7 +86,6 @@ export class MeetingsService {
   }
 
   getAllMeetings() {
-    this.upcoming.push(this.meetinRec);
 
     if (this.upcoming === undefined || this.upcoming === []) {
       this.fetchMeetings().subscribe(
