@@ -22,7 +22,6 @@ export class MeetingActionListComponent implements OnInit {
     this.id = this.router.snapshot.params['id'];
     this.meetingItemRecord = meetingService.getMeeting(this.id);
     this.members = this.membersService.getMembers();
-    console.log(JSON.stringify(this.meetingItemRecord));
   }
 
   ngOnInit() {

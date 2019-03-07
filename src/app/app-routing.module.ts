@@ -21,6 +21,7 @@ import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {ExcoMeetingRoutingModule} from './contents/exco-meeting/exco-meeting-routing.module';
 import {InternalCmDetailsComponent} from './contents/cabinet-memo/internal-memo-list/internal-cm-details/internal-cm-details.component';
 import {ExternalCmDetailsComponent} from './contents/cabinet-memo/external-memo-list/external-cm-details/external-cm-details.component';
+import {DgReferralsComponent} from './contents/dg-referrals/dg-referrals.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -37,6 +38,8 @@ const appRoutes: Routes = [
   {path: 'dg-memo/submission/:id', component: DgSubmissionDetailsComponent},
   {path: 'dg-memo/information', component: ForInformationListComponent},
   {path: 'dg-memo/information/:id', component: ForInfoDetailsComponent},
+
+  {path: 'dg-referrals', component: DgReferralsComponent},
 
   {path: 'submission-records', component: SubmissionRecordsComponent},
   {path: 'submission-records/pbdgm/:id', component: SubmissionDetailsComponent},

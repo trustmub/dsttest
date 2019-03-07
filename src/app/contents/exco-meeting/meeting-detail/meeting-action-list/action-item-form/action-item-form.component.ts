@@ -14,8 +14,7 @@ import {UserService} from '../../../../../shared/user.service';
   styleUrls: ['./action-item-form.component.css']
 })
 export class ActionItemFormComponent implements OnInit {
-  // @ViewChild('f') actionItemForm: NgForm;
-  todayDate = new Date();
+
   actionItemForm: FormGroup;
   meetingId: string;
   recordUpdated: { recordName: string, updated: boolean };
@@ -50,41 +49,25 @@ export class ActionItemFormComponent implements OnInit {
 
   onSubmitActionItem() {
     const returnDate = new Date(this.actionItemForm.value.actionReturnDate);
-    // TODO: to use this object for new action item @ newItemObject
-    const newItemObject = {
-      reference: '',
-      item: '',
-      description: '',
-      assignedTo: '',
-      returnDate: '',
-      status: '',
-      health: '',
-      feedback: '',
-      createdBy: '',
-      createDate: ''
+
+    const newItem: ActionItemModel = {
+      reference: this.reference,
+      item: this.actionItemForm.value.actionItem,
+      description: this.actionItemForm.value.actionDescription,
+      assignedTo: this.actionItemForm.value.actionAssignTo,
+      returnDate: returnDate.toISOString(),
+      status: this.actionItemForm.value.actionStatus,
+      health: 'G',
+      feedback: this.actionItemForm.value.actionFeedback,
+      createdBy: this.userService.getFullname(),
+      createdDate: new Date().toISOString()
     };
-
-    const newItem = new ActionItemModel(
-      this.reference,
-      this.actionItemForm.value.actionItem,
-      this.actionItemForm.value.actionDescription,
-      this.actionItemForm.value.actionAssignTo,
-      returnDate.toISOString(),
-      this.actionItemForm.value.actionStatus,
-      'G',
-      this.actionItemForm.value.actionFeedback,
-      this.userService.getUser().lastName,
-      new Date().toISOString());
-
-    console.log(JSON.stringify(newItem));
 
     // get meeting record
     const meetingRec = this.meetingService.getMeeting(this.meetingId);
 
     // push the new action item
     meetingRec.decisions.actionItems.push(newItem);
-
-    console.log(this.meetingService.getMeeting(this.meetingId));
 
     this.reference = this.generateReference();
     // update to back end
@@ -98,13 +81,11 @@ export class ActionItemFormComponent implements OnInit {
   updateToBackend(meetingRec) {
     this.meetingService.updateMeeting(meetingRec).subscribe(
       (response) => {
-        console.log(response);
         this.recordUpdated = {recordName: 'actionItem', updated: true};
         // emits a status object to be subscribed to by the action item list
         this.meetingService.actionItemSavedObserver.next(this.recordUpdated);
       },
       (error) => {
-        console.log(error);
         this.recordUpdated = {recordName: 'actionItem', updated: false};
         // emits a status object to be subscribed to by the action item list
         this.meetingService.actionItemSavedObserver.next(this.recordUpdated);

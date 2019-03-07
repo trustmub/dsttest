@@ -36,6 +36,5 @@ export class AddRecipientFormComponent implements OnInit {
 
   onSubmitRecipients() {
     this.recipientsService.recipientsObserver.next({data: this.addRecipientForm.value.recipients, tag: this.recipientTag});
-    console.log('fields on display', this.addRecipientForm.value.recipients);
   }
 }

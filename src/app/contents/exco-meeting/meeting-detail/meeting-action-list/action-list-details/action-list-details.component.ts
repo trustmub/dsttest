@@ -21,7 +21,6 @@ export class ActionListDetailsComponent implements OnInit {
     this.meetingRecord = this.meetingService.getMeeting(this.meetingId);
 
     this.actionItemRecord = this.meetingRecord.decisions.actionItems.filter(x => x.reference === this.actionId)[0];
-    console.log(this.actionItemRecord);
   }
 
   ngOnInit() {

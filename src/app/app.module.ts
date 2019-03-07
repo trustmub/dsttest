@@ -56,6 +56,8 @@ import { ExternalCmDetailsComponent } from './contents/cabinet-memo/external-mem
 import { InternalCmDetailsComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-details/internal-cm-details.component';
 import { EditEcmFormComponent } from './contents/cabinet-memo/external-memo-list/external-cm-details/edit-ecm-form/edit-ecm-form.component';
 import { EditIcmFormComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-details/edit-icm-form/edit-icm-form.component';
+import { DgReferralsComponent } from './contents/dg-referrals/dg-referrals.component';
+import { DgReferralsFormComponent } from './contents/dg-referrals/dg-referrals-form/dg-referrals-form.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +108,9 @@ import { EditIcmFormComponent } from './contents/cabinet-memo/internal-memo-list
     ExternalCmDetailsComponent,
     InternalCmDetailsComponent,
     EditEcmFormComponent,
-    EditIcmFormComponent
+    EditIcmFormComponent,
+    DgReferralsComponent,
+    DgReferralsFormComponent
   ],
   imports: [
     BrowserModule,

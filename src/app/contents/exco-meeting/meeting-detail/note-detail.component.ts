@@ -26,10 +26,7 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
     this.paramSubscription = this.route.params
       .subscribe(
         (params: Params) => {
-          console.log('Param from the observer' + params['id']);
-          this.meetingRecord = this.meetingService.getMeeting(params['id']);
-          console.log('The Meeting object' + this.meetingRecord);
-
+          this.meetingRecord = this.meetingService.getMeeting(params.id);
         }
       );
     this.meetingService.getAllMeetings();
@@ -43,9 +40,8 @@ export class NoteDetailComponent implements OnInit, OnDestroy {
         this.deleteResult = outcome;
         console.log(this.deleteResult);
         if (this.deleteResult.status === 200) {
-
           this.loading = false;
-          this.router.navigate(['meetings/exco']);
+          this.router.navigate(['/exco']);
         } else {
           this.loading = false;
         }
