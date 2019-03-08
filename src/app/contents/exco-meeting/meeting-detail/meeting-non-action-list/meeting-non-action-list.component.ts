@@ -11,11 +11,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class MeetingNonActionListComponent implements OnInit {
   meetingItemRecord: MeetingModel;
-  private readonly meetingId: string;
+  meetingId: string;
 
 
   constructor(private route: ActivatedRoute, private  meetingService: MeetingsService) {
-    this.meetingId = route.snapshot.params['id'];
+    this.meetingId = route.snapshot.params.id;
     this.meetingItemRecord = this.meetingService.getMeeting(this.meetingId);
   }
 

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MeetingsService} from '../../../../meetings.service';
 import {ActionItemModel, MeetingModel} from '../../../../../shared/meetings.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {RecipientsModel} from '../../../../dg-memo/memo.model';
 
 @Component({
   selector: 'app-action-list-details',
@@ -12,10 +13,16 @@ export class ActionListDetailsComponent implements OnInit {
 
   meetingRecord: MeetingModel;
   actionItemRecord: ActionItemModel;
+  recipients: RecipientsModel[] = [];
+
+  fileToUpload: File;
+  filename: string;
   meetingId: string;
   actionId: string;
 
-  constructor(private route: ActivatedRoute, private meetingService: MeetingsService) {
+  constructor(private route: ActivatedRoute,
+              private meetingService: MeetingsService,
+              private router: Router) {
     this.meetingId = this.route.snapshot.params.id;
     this.actionId = this.route.snapshot.params.itemId;
     this.meetingRecord = this.meetingService.getMeeting(this.meetingId);
@@ -24,6 +31,23 @@ export class ActionListDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    this.filename = this.fileToUpload.name;
+  }
+
+  backClicked() {
+    this.router.navigate(['/exco', this.meetingId]);
+  }
+
+  getHealthClasses(health: string) {
+    return {
+      'btn-success': health === 'green',
+      'btn-danger': health === 'red',
+      'btn-warning': health === 'amber'
+    };
   }
 
 }

@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EditorModule} from '@tinymce/tinymce-angular';
+
 
 import {ExcoMeetingComponent} from './exco-meeting.component';
 import {ExcoMeetingFormComponent} from './exco-meeting-form/exco-meeting-form.component';
@@ -13,7 +15,7 @@ import {ActionListDetailsComponent} from './meeting-detail/meeting-action-list/a
 import {ActionItemFormComponent} from './meeting-detail/meeting-action-list/action-item-form/action-item-form.component';
 import {ExcoMeetingRoutingModule} from './exco-meeting-routing.module';
 import {MembersComponent} from './members/members.component';
-import {EditorModule} from '@tinymce/tinymce-angular';
+import {NonActionListDetailsComponent} from './meeting-detail/meeting-non-action-list/non-action-list-details/non-action-list-details.component';
 
 
 @NgModule({
@@ -28,10 +30,12 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     ActionListDetailsComponent,
     ActionItemFormComponent,
     MembersComponent,
+    NonActionListDetailsComponent,
   ],
   imports: [
     CommonModule,
     ExcoMeetingRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     EditorModule,
   ]

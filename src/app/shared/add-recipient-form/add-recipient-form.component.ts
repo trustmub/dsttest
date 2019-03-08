@@ -12,6 +12,7 @@ import {RecipientsService} from '../recipients.service';
 })
 export class AddRecipientFormComponent implements OnInit {
   @Input() recipientTag: string;
+
   addRecipientForm: FormGroup;
   formArray: FormArray;
   members: MembersModel[];

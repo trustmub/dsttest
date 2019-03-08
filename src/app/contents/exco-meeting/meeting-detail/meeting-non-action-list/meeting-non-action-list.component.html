@@ -11,7 +11,8 @@
         </button>
       </div>
       <!-- Extra large modal for adding Action Item-->
-      <div class="modal fade decisionNonActionItemForm" tabindex="-1" role="dialog" aria-labelledby="decisionNonActionItemForm"
+      <div class="modal fade decisionNonActionItemForm" tabindex="-1" role="dialog"
+           aria-labelledby="decisionNonActionItemForm"
            aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -49,14 +50,26 @@
             </td>
           </tr>
           <tr class="text-xs">
-            <td colspan="8">
+            <td colspan="7">
               <div class="collapse" [attr.id]="'non-action' + i">
                 <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                      <p>Description: {{ item.description}}</p>
+                      <p>Created By: {{ item.createdBy}}</p>
+                      <p>Date Created: {{ item.createDate | date:"dd MMMM yyyy HH:mm:ss"}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                      <button class="btn btn-outline-primary btn-block"
+                              type="button"
+                              [routerLink]="['/exco','non-action', this.meetingId, item.reference]">More
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </td>
+
           </tr>
           </tbody>
         </table>

@@ -16,14 +16,19 @@ export class NonActionItemFormComponent implements OnInit {
   nonActionItemForm: FormGroup;
   meetingRecord: MeetingModel;
   meetingId: string;
+  nonActionRef: string;
 
-  constructor(private meetingService: MeetingsService, private route: ActivatedRoute, private userService: UserService) {
-    this.meetingId = this.route.snapshot.params['id'];
+  constructor(private meetingService: MeetingsService,
+              private route: ActivatedRoute,
+              private userService: UserService) {
+    this.nonActionRef = this.generateReference();
+    this.meetingId = this.route.snapshot.params.id;
     this.meetingRecord = meetingService.getMeeting(this.meetingId);
   }
 
   ngOnInit() {
     this.nonActionItemForm = new FormGroup({
+      reference: new FormControl({value: this.nonActionRef, disabled: true}),
       nonActionItem: new FormControl(null, Validators.required),
       nonActionDescription: new FormControl(null, Validators.required)
     });
@@ -32,11 +37,11 @@ export class NonActionItemFormComponent implements OnInit {
   onSubmitActionItem() {
     const fullname = this.userService.getUser().firstName + ' ' + this.userService.getUser().lastName;
     const obj = {
-      reference: 'EM 200',
+      reference: this.nonActionRef,
       item: this.nonActionItemForm.value.nonActionItem,
       description: this.nonActionItemForm.value.nonActionDescription,
       createdBy: fullname,
-      createDate: (new Date().toISOString())
+      createDate: new Date().toISOString()
     };
 
     console.log(JSON.stringify(obj));
@@ -52,7 +57,8 @@ export class NonActionItemFormComponent implements OnInit {
       }
     );
 
-    this.nonActionItemForm.reset();
+    this.nonActionRef = this.generateReference();
+    this.nonActionItemForm.reset({reference: this.nonActionRef});
 
 
     // const nonActionRecord = new NonActionItemModel(
@@ -64,6 +70,11 @@ export class NonActionItemFormComponent implements OnInit {
     // this.nonActionItemForm.reset();
 
     // this.meetingRecord.decisions.nonActionItems.push(nonActionRecord);
+  }
+
+  private generateReference(): string {
+    const year = new Date().getFullYear();
+    return 'EM-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
   }
 
 }
