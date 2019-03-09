@@ -44,6 +44,7 @@ import {DgReferralsListComponent} from './contents/dg-referrals/dg-referrals-lis
 import {SharedModule} from './shared/shared.module';
 import {CabinetMemoModule} from './contents/cabinet-memo/cabinet-memo.module';
 import {DgMemoModule} from './contents/dg-memo/dg-memo.module';
+import {DgReferralsModule} from './contents/dg-referrals/dg-referrals.module';
 
 @NgModule({
   declarations: [
@@ -76,10 +77,6 @@ import {DgMemoModule} from './contents/dg-memo/dg-memo.module';
     EditSubmissionFormComponent,
     SelfInitiatedDetailsComponent,
     EditSiFormComponent,
-    DgReferralsComponent,
-    DgReferralsFormComponent,
-    DgReferralsDetailsComponent,
-    DgReferralsListComponent,
 
   ],
   imports: [
@@ -93,6 +90,7 @@ import {DgMemoModule} from './contents/dg-memo/dg-memo.module';
     ExcoMeetingModule,
     CabinetMemoModule,
     DgMemoModule,
+    DgReferralsModule,
     SharedModule,
   ],
   providers: [

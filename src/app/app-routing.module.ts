@@ -22,6 +22,7 @@ import {DgReferralsComponent} from './contents/dg-referrals/dg-referrals.compone
 import {DgReferralsDetailsComponent} from './contents/dg-referrals/dg-referrals-details/dg-referrals-details.component';
 import {CabinetMemoRoutingModule} from './contents/cabinet-memo/cabinet-memo-routing.module';
 import {DgMemoRoutingModule} from './contents/dg-memo/dg-memo-routing.module';
+import {DgReferralsRoutingModule} from './contents/dg-referrals/dg-referrals-routing.module';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -32,9 +33,6 @@ const appRoutes: Routes = [
   {path: 'notification', component: NotificationComponent, canActivate: [AuthGuardService]},
 
   {path: 'meetings', component: MeetingsComponent},
-
-  {path: 'dg-referrals', component: DgReferralsComponent},
-  {path: 'dg-referrals/:id', component: DgReferralsDetailsComponent},
 
   {path: 'submission-records', component: SubmissionRecordsComponent},
   {path: 'submission-records/pbdgm/:id', component: SubmissionDetailsComponent},
@@ -51,7 +49,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [RouterModule, ExcoMeetingRoutingModule, CabinetMemoRoutingModule, DgMemoRoutingModule]
+  exports: [RouterModule, ExcoMeetingRoutingModule, CabinetMemoRoutingModule, DgMemoRoutingModule, DgReferralsRoutingModule]
 })
 export class AppRoutingModule {
 }
