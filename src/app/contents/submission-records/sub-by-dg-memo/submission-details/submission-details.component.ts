@@ -34,6 +34,7 @@ export class SubmissionDetailsComponent implements OnInit {
       (status: boolean) => {
         if (status) {
           this.submissionRecord = this.submissionService.getSubmissionRecord(this.recordId);
+          console.log(this.submissionRecord);
         }
       }
     );
@@ -42,6 +43,10 @@ export class SubmissionDetailsComponent implements OnInit {
   handleSubmissionFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
     this.documentName = this.fileToUpload.name;
+    this.submissionRecord.fileUpload = this.fileToUpload;
+    this.submissionRecord.filename = this.documentName;
+    this.submissionService.updateSubmissionRecord(this.submissionRecord);
+    this.submissionService.refreshObserver.next(true);
     console.log('File object', this.fileToUpload);
   }
 

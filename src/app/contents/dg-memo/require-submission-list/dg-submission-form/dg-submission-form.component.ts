@@ -7,7 +7,7 @@ import {MembersModel} from '../../../../shared/members.model';
 import {MembersService} from '../../../../shared/members.service';
 
 @Component({
-  selector: 'app-dg-meeting-form',
+  selector: 'app-dg-submission-form',
   templateUrl: './dg-submission-form.component.html',
   styleUrls: ['./dg-submission-form.component.css']
 })

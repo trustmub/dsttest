@@ -16,6 +16,7 @@ import {ActionItemFormComponent} from './meeting-detail/meeting-action-list/acti
 import {ExcoMeetingRoutingModule} from './exco-meeting-routing.module';
 import {MembersComponent} from './members/members.component';
 import {NonActionListDetailsComponent} from './meeting-detail/meeting-non-action-list/non-action-list-details/non-action-list-details.component';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {NonActionListDetailsComponent} from './meeting-detail/meeting-non-action
     FormsModule,
     ReactiveFormsModule,
     EditorModule,
+    SharedModule
   ]
 })
 export class ExcoMeetingModule {

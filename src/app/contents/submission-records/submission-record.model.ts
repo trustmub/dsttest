@@ -16,6 +16,8 @@ export class SubmissionRecordModel {
   approvedDGDate: string; // 11
   comments: string; // 12
   sentToProgramDate: string; // 13
+  filename?: string;
+  fileUpload?: File;
   createdBy: string;
   createDate?: string;
   recipients?: RecipientsModel[];
@@ -36,6 +38,8 @@ export class SubmissionRecordModel {
     approvedDGDate: string,
     comments: string,
     sentToProgramDate: string,
+    filename: string,
+    fileUpload: File,
     createdBy: string,
     createDate: string = new Date().toISOString(),
     recipients: RecipientsModel[] = []) {
@@ -53,6 +57,8 @@ export class SubmissionRecordModel {
     this.approvedDGDate = approvedDGDate;
     this.comments = comments;
     this.sentToProgramDate = sentToProgramDate;
+    this.filename = filename;
+    this.fileUpload = fileUpload;
     this.createdBy = createdBy;
     this.createDate = createDate;
     this.recipients = recipients;

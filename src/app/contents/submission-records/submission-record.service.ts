@@ -8,7 +8,7 @@ import {Subject} from 'rxjs';
 export class SubmissionRecordService {
 
   refreshObserver = new Subject();
-  submissionRecord: SubmissionRecordModel[] = [];
+  private submissionRecord: SubmissionRecordModel[] = [];
 
   constructor() {
 
@@ -37,12 +37,18 @@ export class SubmissionRecordService {
   }
 
   updateSubmissionRecord(promptedByDgMemo: SubmissionRecordModel) {
+
     const ref = promptedByDgMemo.submissionRef;
     const record = this.submissionRecord.filter(x => x.submissionRef === ref)[0];
+    console.log('RecordTo be removed', record);
     const recordIndex = this.submissionRecord.indexOf(record);
 
+
     this.submissionRecord.splice(recordIndex);
+    console.log('List after record removed', this.submissionRecord);
     this.submissionRecord.push(promptedByDgMemo);
+    console.log('List after record replaced', this.submissionRecord);
+
 
   }
 }

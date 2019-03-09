@@ -2,7 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 
-import {ActionItemModel, AttendeesModel, DecisionModel, MeetingModel, NonActionItemModel} from '../shared/meetings.model';
+import {
+  ActionItemModel,
+  AttendeesModel,
+  DecisionModel,
+  MeetingModel,
+  NonActionItemModel
+} from '../shared/meetings.model';
+
 import {UserService} from '../shared/user.service';
 import {UserModel} from '../shared/user.model';
 

@@ -3,7 +3,7 @@ import {DgMemoModel} from './memo.model';
 import {MemoCategory, MemoService} from './memo.service';
 
 @Component({
-  selector: 'app-dg-meeting',
+  selector: 'app-dg-memo',
   templateUrl: './dg-memo.component.html',
   styleUrls: ['./dg-memo.component.css']
 })

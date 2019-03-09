@@ -5,7 +5,7 @@ import {DgMemoModel, RecipientsModel} from '../../memo.model';
 import {RecipientsService} from '../../../../shared/recipients.service';
 
 @Component({
-  selector: 'app-dg-meeting-details',
+  selector: 'app-dg-submission-details',
   templateUrl: './dg-submission-details.component.html',
   styleUrls: ['./dg-submission-details.component.css']
 })
@@ -35,7 +35,7 @@ export class DgSubmissionDetailsComponent implements OnInit {
     this.recipientsService.recipientsObserver.subscribe(
       (results: { data: string[], tag: string }) => {
         this.recipients = [];
-        if (results.tag === 'app-dg-meeting-details') {
+        if (results.tag === 'app-dg-submission-details') {
           results.data.forEach(
             (item) => {
               this.memoRecord.recipient.push({name: item});

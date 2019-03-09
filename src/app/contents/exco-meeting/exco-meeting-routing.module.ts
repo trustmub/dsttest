@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MeetingsComponent} from '../meetings/meetings.component';
 import {ExcoMeetingComponent} from './exco-meeting.component';
 import {NoteDetailComponent} from './meeting-detail/note-detail.component';
 import {AuthGuardService} from '../../authentication/auth-guard.service';

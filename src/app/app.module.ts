@@ -24,20 +24,10 @@ import {UserLoginComponent} from './authentication/user-login/user-login.compone
 import {UserRegisterComponent} from './authentication/user-register/user-register.component';
 import {UserResetComponent} from './authentication/user-reset/user-reset.component';
 import {MeetingsComponent} from './contents/meetings/meetings.component';
-import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
-import {CabinetMemoComponent} from './contents/cabinet-memo/cabinet-memo.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pipe';
 import {AuthInterceptor} from './shared/auth.interceptor';
 import {DateSelectorDirective} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
-import {DgSubmissionFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-form/dg-submission-form.component';
-import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
-import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
-import {ForInformationListComponent} from './contents/dg-memo/for-information-list/for-information-list.component';
-import {EditMemoFormComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/edit-memo-form/edit-memo-form.component';
-import {ForInfoFormComponent} from './contents/dg-memo/for-information-list/for-info-form/for-info-form.component';
 import {SubmissionRecordsComponent} from './contents/submission-records/submission-records.component';
-import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
-import {AddRecipientFormComponent} from './shared/add-recipient-form/add-recipient-form.component';
 import {SubByProgramComponent} from './contents/submission-records/sub-by-program/sub-by-program.component';
 import {SubByDgMemoComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
 import {SubByDgMemoFormComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo-form/sub-by-dg-memo-form.component';
@@ -47,19 +37,13 @@ import {EditSubmissionFormComponent} from './contents/submission-records/sub-by-
 import {SelfInitiatedDetailsComponent} from './contents/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
 import {EditSiFormComponent} from './contents/submission-records/sub-by-program/self-initiated-details/edit-si-form/edit-si-form.component';
 import {ExcoMeetingModule} from './contents/exco-meeting/exco-meeting.module';
-import {EditInfoFormComponent} from './contents/dg-memo/for-information-list/for-info-details/edit-info-form/edit-info-form.component';
-import { InternalMemoListComponent } from './contents/cabinet-memo/internal-memo-list/internal-memo-list.component';
-import { ExternalMemoListComponent } from './contents/cabinet-memo/external-memo-list/external-memo-list.component';
-import { InternalCmFormComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-form/internal-cm-form.component';
-import { ExternalCmFormComponent } from './contents/cabinet-memo/external-memo-list/external-cm-form/external-cm-form.component';
-import { ExternalCmDetailsComponent } from './contents/cabinet-memo/external-memo-list/external-cm-details/external-cm-details.component';
-import { InternalCmDetailsComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-details/internal-cm-details.component';
-import { EditEcmFormComponent } from './contents/cabinet-memo/external-memo-list/external-cm-details/edit-ecm-form/edit-ecm-form.component';
-import { EditIcmFormComponent } from './contents/cabinet-memo/internal-memo-list/internal-cm-details/edit-icm-form/edit-icm-form.component';
-import { DgReferralsComponent } from './contents/dg-referrals/dg-referrals.component';
-import { DgReferralsFormComponent } from './contents/dg-referrals/dg-referrals-form/dg-referrals-form.component';
-import { DgReferralsDetailsComponent } from './contents/dg-referrals/dg-referrals-details/dg-referrals-details.component';
-import { DgReferralsListComponent } from './contents/dg-referrals/dg-referrals-list/dg-referrals-list.component';
+import {DgReferralsComponent} from './contents/dg-referrals/dg-referrals.component';
+import {DgReferralsFormComponent} from './contents/dg-referrals/dg-referrals-form/dg-referrals-form.component';
+import {DgReferralsDetailsComponent} from './contents/dg-referrals/dg-referrals-details/dg-referrals-details.component';
+import {DgReferralsListComponent} from './contents/dg-referrals/dg-referrals-list/dg-referrals-list.component';
+import {SharedModule} from './shared/shared.module';
+import {CabinetMemoModule} from './contents/cabinet-memo/cabinet-memo.module';
+import {DgMemoModule} from './contents/dg-memo/dg-memo.module';
 
 @NgModule({
   declarations: [
@@ -81,19 +65,9 @@ import { DgReferralsListComponent } from './contents/dg-referrals/dg-referrals-l
     UserRegisterComponent,
     UserResetComponent,
     MeetingsComponent,
-    DgMemoComponent,
-    CabinetMemoComponent,
     RemoveWhiteSpace,
     DateSelectorDirective,
-    DgSubmissionFormComponent,
-    DgSubmissionDetailsComponent,
-    RequireSubmissionListComponent,
-    ForInformationListComponent,
-    EditMemoFormComponent,
-    ForInfoFormComponent,
     SubmissionRecordsComponent,
-    ForInfoDetailsComponent,
-    AddRecipientFormComponent,
     SubByProgramComponent,
     SubByDgMemoComponent,
     SubByDgMemoFormComponent,
@@ -102,19 +76,11 @@ import { DgReferralsListComponent } from './contents/dg-referrals/dg-referrals-l
     EditSubmissionFormComponent,
     SelfInitiatedDetailsComponent,
     EditSiFormComponent,
-    EditInfoFormComponent,
-    InternalMemoListComponent,
-    ExternalMemoListComponent,
-    InternalCmFormComponent,
-    ExternalCmFormComponent,
-    ExternalCmDetailsComponent,
-    InternalCmDetailsComponent,
-    EditEcmFormComponent,
-    EditIcmFormComponent,
     DgReferralsComponent,
     DgReferralsFormComponent,
     DgReferralsDetailsComponent,
-    DgReferralsListComponent
+    DgReferralsListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -125,6 +91,9 @@ import { DgReferralsListComponent } from './contents/dg-referrals/dg-referrals-l
     ChartsModule,
     EditorModule,
     ExcoMeetingModule,
+    CabinetMemoModule,
+    DgMemoModule,
+    SharedModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

@@ -37,7 +37,7 @@ export class EditSubmissionFormComponent implements OnInit {
       fromDGDate: new FormControl(),
       status: new FormControl(),
       approvedDGDate: new FormControl(),
-      comments: new FormControl(),
+      comments: new FormControl(null, [Validators.required]),
       sentToProgramDate: new FormControl(),
     });
 
@@ -65,7 +65,7 @@ export class EditSubmissionFormComponent implements OnInit {
 
     const promptedByDgMemo: SubmissionRecordModel = {
       submissionType: this.editSubRecordForm.value.submissionType,
-      submissionRef: this.editSubRecordForm.value.submissionRef,
+      submissionRef: this.recordID,
       memoRef: this.editSubRecordForm.value.memoRef,
       submissionMode: this.editSubRecordForm.value.submissionMode,
       afrescoRef: this.editSubRecordForm.value.afrescoRef,
@@ -83,8 +83,14 @@ export class EditSubmissionFormComponent implements OnInit {
 
     this.submissionService.updateSubmissionRecord(promptedByDgMemo);
     this.submissionService.refreshObserver.next(true);
-    this.editSubRecordForm.reset({submissionRef: this.reference});
+    this.editSubRecordForm.reset({submissionRef: this.recordID});
   }
 
+
+  // TODO outsource this from a helper class
+  private generateReference(): string {
+    const year = new Date().getFullYear();
+    return 'D-' + Math.floor(Math.random() * 999) + 1 + '-' + year;
+  }
 
 }
