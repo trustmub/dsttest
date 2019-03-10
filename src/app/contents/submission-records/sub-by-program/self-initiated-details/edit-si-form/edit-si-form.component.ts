@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SubmissionRecordService} from '../../../submission-record.service';
+import {SubmissionRecordsService} from '../../../submission-records.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SubmissionRecordModel} from '../../../submission-record.model';
+import {SubmissionRecordsModel} from '../../../submission-records.model';
 import {UserService} from '../../../../../shared/user.service';
 
 @Component({
@@ -13,10 +13,10 @@ import {UserService} from '../../../../../shared/user.service';
 export class EditSiFormComponent implements OnInit {
 
   editSelfInitForm: FormGroup;
-  record: SubmissionRecordModel;
+  record: SubmissionRecordsModel;
   id: string;
 
-  constructor(private submissionService: SubmissionRecordService,
+  constructor(private submissionService: SubmissionRecordsService,
               private route: ActivatedRoute,
               private user: UserService) {
     this.id = this.route.snapshot.params.id;
@@ -60,7 +60,7 @@ export class EditSiFormComponent implements OnInit {
   onSaveSIClicked() {
     const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
-    const selfInitiated: SubmissionRecordModel = {
+    const selfInitiated: SubmissionRecordsModel = {
       submissionType: this.editSelfInitForm.value.submissionType,
       submissionRef: this.editSelfInitForm.value.submissionRef,
       submissionMode: this.editSelfInitForm.value.submissionMode,

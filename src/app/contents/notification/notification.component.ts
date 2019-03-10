@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MeetingsService} from '../meetings.service';
-import {MeetingModel} from '../../shared/meetings.model';
+import {ExcoMeetingService} from '../exco-meeting/exco-meeting.service';
+import {MeetingModel} from '../exco-meeting/exco-meeting.model';
 
 @Component({
   selector: 'app-notification',
@@ -11,7 +11,7 @@ export class NotificationComponent implements OnInit {
 
   meetingList: MeetingModel[];
 
-  constructor(private meetingService: MeetingsService) {
+  constructor(private meetingService: ExcoMeetingService) {
     this.meetingList = this.meetingService.getAllMeetings();
   }
 

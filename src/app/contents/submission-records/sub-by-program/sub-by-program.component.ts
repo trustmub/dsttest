@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LinkStatus, SubmissionRecordService} from '../submission-record.service';
-import {SubmissionRecordModel} from '../submission-record.model';
+import {LinkStatus, SubmissionRecordsService} from '../submission-records.service';
+import {SubmissionRecordsModel} from '../submission-records.model';
 
 @Component({
   selector: 'app-sub-by-program',
@@ -10,9 +10,9 @@ import {SubmissionRecordModel} from '../submission-record.model';
 export class SubByProgramComponent implements OnInit {
 
   updateStatus = false;
-  submissionsByProgram: SubmissionRecordModel[];
+  submissionsByProgram: SubmissionRecordsModel[];
 
-  constructor(private submissionService: SubmissionRecordService) {
+  constructor(private submissionService: SubmissionRecordsService) {
     this.submissionsByProgram = this.submissionService.getSubmissions(LinkStatus.PROGRAM);
   }
 

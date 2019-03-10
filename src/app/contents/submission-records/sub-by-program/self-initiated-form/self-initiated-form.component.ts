@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {SubmissionRecordService} from '../../submission-record.service';
-import {SubmissionRecordModel} from '../../submission-record.model';
+import {SubmissionRecordsService} from '../../submission-records.service';
+import {SubmissionRecordsModel} from '../../submission-records.model';
 import {UserService} from '../../../../shared/user.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class SelfInitiatedFormComponent implements OnInit {
   selfInitForm: FormGroup;
   reference: string;
 
-  constructor(private submissionService: SubmissionRecordService, private user: UserService) {
+  constructor(private submissionService: SubmissionRecordsService, private user: UserService) {
     this.reference = this.generateReference();
   }
 
@@ -40,7 +40,7 @@ export class SelfInitiatedFormComponent implements OnInit {
   onSaveSelfInitiatedClicked() {
     const fullname = this.user.getUser().firstName + ' ' + this.user.getUser().lastName;
 
-    const selfInitiated: SubmissionRecordModel = {
+    const selfInitiated: SubmissionRecordsModel = {
       submissionType: this.selfInitForm.value.submissionType,
       submissionRef: this.reference,
       submissionMode: this.selfInitForm.value.submissionMode,

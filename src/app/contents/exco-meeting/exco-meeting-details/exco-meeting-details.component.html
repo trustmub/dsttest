@@ -1,0 +1,244 @@
+<div class="row">
+  <div class="col-lg-9 col-md-9">
+
+    <!-- Nav tab content for Meeting details, attendees and Discussion -->
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-meeting" role="tabpanel" aria-labelledby="list-home-list">
+
+        <!-- Meetings Details card -->
+
+        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
+          <div class="card-body m-1 p-1">
+            <div class="row">
+
+              <div class="col-8">
+                <div class="row no-gutters align-items-center">
+                  <div class="col-md-4 col-xl-4 m-0 p-0">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white align-items-center justify-content-between pt-2 pb-1 m-0">
+                        <h6 class="text-xs text-center">{{ meetingRecord.meetingStartDate | date:'MMMM' }}</h6>
+                      </div>
+
+                      <div class="card-body align-items-lg-stretch justify-content-between pt-2 pb-1 m-0">
+                        <h6 class="h3 text-center">{{ meetingRecord.meetingStartDate | date:'dd'}}</h6>
+                        <h6
+                          class="text-sm text-center text-primary">{{ meetingRecord.meetingStartDate | date:'EEEE' }}</h6>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-calender fa-2x text-black-300"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xl-8 pl-2">
+                    <p
+                      class="text-md-center font-weight-bold text-primary text-uppercase mb-1">{{ meetingRecord.meetingName}}</p>
+                    <hr class="m-0 p-0">
+                    <p class="fas fa-fw fa-clock p-0 m-0"></p><span> {{ meetingRecord.meetingStartTime }}
+                    - {{ meetingRecord.meetingEndTime }}</span>
+                    <hr class="m-0 p-0">
+                    <p class="fas fa-fw fa-map-marker-alt"></p><span> {{ meetingRecord.meetingLocation }}</span>
+                    <!--<p class="">{{ meeting.meetingLocation }}</p>-->
+                    <hr class="m-5">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <h6 class="mb-0 font-weight-bold">Created By</h6>
+                <p class="mt-0 border-left-info">{{ meetingRecord.createdBy }}.</p>
+
+                <h6 class="mb-0 font-weight-bold">Create Date</h6>
+                <p class="mt-0 border-left-info">{{ meetingRecord.createdDate | date:"dd MMMM yyyy" }}.</p>
+
+                <button class="btn btn-outline-primary btn-block"
+                        data-toggle="modal"
+                        data-target=".bd-editMeeting-modal"
+                        type="button">Edit Meeting
+                </button>
+
+              </div>
+              <!-- Extra large modal for adding Recipients Action Item-->
+              <div class="modal fade bd-editMeeting-modal" tabindex="-1" role="dialog" aria-labelledby="editMeetingForm"
+                   aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">Edit Meeting details</div>
+                    <div class="modal-body">
+                      <app-edit-exco-meeting-form></app-edit-exco-meeting-form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+          <div class="card-footer d-sm-flex align-items-center justify-content-between">
+            <div>
+              <small *ngIf="!loading && deleteResult.status === 0 ">...</small>
+              <div *ngIf="loading">
+                <small>Deleting Meeting...</small>
+                <div class="spinner-grow" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+
+              <div *ngIf="!loading && deleteResult.status !== 0 && deleteResult.status !== 200">
+                <small>Deletion status: {{ deleteResult.message }}</small>
+              </div>
+            </div>
+            <div class="">
+              <a class="btn btn-danger text-white" (click)="onDeleteMeetingClicked()">Delete meeting</a>
+            </div>
+          </div>
+
+        </div>
+        <!-- end of Meetings details card -->
+
+        <!-- Nav Tabs for Agenda, Meeting Minutes and Attending register -->
+        <ul class="nav nav-tabs border-info" id="meeting-detail-tab-list" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="agenda-tab" data-toggle="tab" href="#agenda" role="tab"
+               aria-controls="agenda-tab" aria-selected="true">Agenda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="meeting-minutes-tab" data-toggle="tab" href="#minutes" role="tab"
+               aria-controls="meeting-minutes-tab" aria-selected="true">Meeting Minutes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="attending-register-tab" data-toggle="tab" href="#attending-register" role="tab"
+               aria-controls="attending-register-tab" aria-selected="true">Attending Register</a>
+          </li>
+        </ul>
+        <!-- End of Nav Tabs for Agenda, Meeting Minutes and Attending register -->
+
+        <!-- Nav tab contents for Agenda, Meeting Minutes and Attending register -->
+        <div class="tab-content" id="meeting-detail-content">
+          <div class="tab-pane fade show active" id="agenda" role="tabpanel" aria-labelledby="agenda-tab">
+
+            <!-- for to upload file-->
+            <div class="row">
+              <div class="col-7">
+                <form>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="fileName">Name</label>
+                      <input class="form-control"
+                             type="text"
+                             name="fileName"
+                             id="fileName">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="file">Document Upload</label>
+                      <input type="file"
+                             id="file"
+                             class="form-control"
+                             (change)="handleSubmissionFileInput($event.target.files)">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
+                    <button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-5">
+                <div class="card card-header">Attached File</div>
+                <div class="card card card-body">
+                  <div *ngIf="filename !== undefined">
+                    <a>{{ filename }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="minutes" role="tabpanel" aria-labelledby="meeting-minutes-tab">
+
+          </div>
+          <div class="tab-pane fade" id="attending-register" role="tabpanel" aria-labelledby="attending-register-tab">
+            upload register
+          </div>
+        </div>
+        <!-- End Nav tab contents for Agenda, Meeting Minutes and Attending register-->
+      </div>
+      <!-- -->
+      <div class="tab-pane fade" id="list-attendee" role="tabpanel" aria-labelledby="list-attendee-list">
+        <app-meeting-attendee></app-meeting-attendee>
+      </div>
+
+      <!-- Discussion tab details -->
+      <div class="tab-pane fade" id="list-decisions" role="tabpanel" aria-labelledby="list-decisions-list">
+
+        <ul class="nav nav-tabs" id="decisionsTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="actions-tab" data-toggle="tab" href="#actions" role="tab"
+               aria-controls="actions"
+               aria-selected="true">Actions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="non-actions-tab" data-toggle="tab" href="#non-actions" role="tab"
+               aria-controls="non-actions"
+               aria-selected="false">Non-Actions</a>
+          </li>
+        </ul>
+
+        <!-- Decisions tabs Contents Action and Non-Action item-->
+        <div class="tab-content" id="decisionsTabContent">
+          <div class="tab-pane fade show active" id="actions" role="tabpanel" aria-labelledby="action-tab">
+            <app-meeting-action-list></app-meeting-action-list>
+          </div>
+          <div class="tab-pane fade" id="non-actions" role="tabpanel" aria-labelledby="non-actions-tab">
+            <app-meeting-non-action-list></app-meeting-non-action-list>
+          </div>
+        </div>
+        <!-- End of Discussion tabs Contents Action and Non Action item-->
+
+      </div>
+      <!-- Discussion tab details -->
+
+    </div>
+  </div>
+  <!--End of Nav tab content for Meeting details, attendees and Discussion -->
+
+  <!-- Side Nav tabs for Meeting details, attendees and Discussion-->
+  <div class="col-lg-3 col-md-3">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-meeting-list" data-toggle="list"
+         href="#list-meeting"
+         role="tab" aria-controls="home">Meeting</a>
+      <a class="list-group-item list-group-item-action" id="list-attendee-list" data-toggle="list" href="#list-attendee"
+         role="tab" aria-controls="profile">Attendees</a>
+      <a class="list-group-item list-group-item-action" id="list-decisions-list" data-toggle="list"
+         href="#list-decisions">Decisions</a>
+      <hr>
+      <a class="btn list-group-item list-group-item-action" data-toggle="modal" data-target=".bd-authorAgenda-modal">Author
+        Agenda</a>
+    </div>
+  </div>
+  <!-- End of Side Nav tabs for Meeting details, attendees and Discussion-->
+
+  <!-- Extra large modal for adding Action Item-->
+  <div class="modal fade bd-authorAgenda-modal" tabindex="-1" role="dialog" aria-labelledby="decisionActionItemForm"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">Create an Agenda</div>
+        <div class="modal-body">
+          <form [formGroup]="agendaEditorForm" (ngSubmit)="onSubmitAgenda()">
+            <editor
+              formControlName="agendaEditor"
+              apiKey="7vv6nyeeh35obk4gt8uww8w7zh6cjwuvlg05xkf8f4ipwwv0"
+              [init]="{plugins: 'link'}"
+            ></editor>
+            <button class="btn btn-outline-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

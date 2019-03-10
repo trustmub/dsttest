@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LinkStatus, SubmissionRecordService} from '../submission-record.service';
-import {SubmissionRecordModel} from '../submission-record.model';
+import {LinkStatus, SubmissionRecordsService} from '../submission-records.service';
+import {SubmissionRecordsModel} from '../submission-records.model';
 
 @Component({
   selector: 'app-sub-by-dg-memo',
@@ -9,9 +9,9 @@ import {SubmissionRecordModel} from '../submission-record.model';
 })
 export class SubByDgMemoComponent implements OnInit {
   actionUpdateStatus = true;
-  submissionsByMemo: SubmissionRecordModel[];
+  submissionsByMemo: SubmissionRecordsModel[];
 
-  constructor(private submissionService: SubmissionRecordService) {
+  constructor(private submissionService: SubmissionRecordsService) {
     this.submissionsByMemo = this.submissionService.getSubmissions(LinkStatus.DG_MEMO);
   }
 

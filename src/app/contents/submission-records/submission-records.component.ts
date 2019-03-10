@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SubmissionRecordService} from './submission-record.service';
+import {SubmissionRecordsService} from './submission-records.service';
 
 @Component({
   selector: 'app-submission-records',
@@ -11,7 +11,7 @@ export class SubmissionRecordsComponent implements OnInit {
   loadingError = false;
   recordCount: number;
 
-  constructor(private submissionService: SubmissionRecordService) {
+  constructor(private submissionService: SubmissionRecordsService) {
     this.recordCount = this.submissionService.getSubmissions().length;
   }
 

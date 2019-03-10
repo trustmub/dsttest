@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {SubmissionRecordModel} from '../../submission-record.model';
-import {SubmissionRecordService} from '../../submission-record.service';
+import {SubmissionRecordsModel} from '../../submission-records.model';
+import {SubmissionRecordsService} from '../../submission-records.service';
 import {RecipientsModel} from '../../../dg-memo/memo.model';
 
 @Component({
@@ -12,12 +12,12 @@ import {RecipientsModel} from '../../../dg-memo/memo.model';
 })
 export class SelfInitiatedDetailsComponent implements OnInit {
 
-  submissionRecord: SubmissionRecordModel;
+  submissionRecord: SubmissionRecordsModel;
   recordID: string;
   filename: string = null;
   fileToUpload: File;
 
-  constructor(private route: ActivatedRoute, private router: Router, private submissionService: SubmissionRecordService) {
+  constructor(private route: ActivatedRoute, private router: Router, private submissionService: SubmissionRecordsService) {
     this.recordID = this.route.snapshot.params.id;
     this.submissionRecord = this.submissionService.getSubmissionRecord(this.recordID);
   }

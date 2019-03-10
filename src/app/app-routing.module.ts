@@ -12,7 +12,7 @@ import {DgMemoComponent} from './contents/dg-memo/dg-memo.component';
 import {DgSubmissionDetailsComponent} from './contents/dg-memo/require-submission-list/dg-submission-details/dg-submission-details.component';
 import {RequireSubmissionListComponent} from './contents/dg-memo/require-submission-list/require-submission-list.component';
 import {SubmissionRecordsComponent} from './contents/submission-records/submission-records.component';
-import {SubmissionDetailsComponent} from './contents/submission-records/sub-by-dg-memo/submission-details/submission-details.component';
+import {SubByDgMemoDetailsComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo-details/sub-by-dg-memo-details.component';
 import {ForInformationListComponent} from './contents/dg-memo/for-information-list/for-information-list.component';
 import {ForInfoDetailsComponent} from './contents/dg-memo/for-information-list/for-info-details/for-info-details.component';
 import {SelfInitiatedDetailsComponent} from './contents/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
@@ -23,6 +23,7 @@ import {DgReferralsDetailsComponent} from './contents/dg-referrals/dg-referrals-
 import {CabinetMemoRoutingModule} from './contents/cabinet-memo/cabinet-memo-routing.module';
 import {DgMemoRoutingModule} from './contents/dg-memo/dg-memo-routing.module';
 import {DgReferralsRoutingModule} from './contents/dg-referrals/dg-referrals-routing.module';
+import {SubmissionRecordsRoutingModule} from './contents/submission-records/submission-records-routing.module';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuardService],},
@@ -34,9 +35,6 @@ const appRoutes: Routes = [
 
   {path: 'meetings', component: MeetingsComponent},
 
-  {path: 'submission-records', component: SubmissionRecordsComponent},
-  {path: 'submission-records/pbdgm/:id', component: SubmissionDetailsComponent},
-  {path: 'submission-records/si/:id', component: SelfInitiatedDetailsComponent},
 
   // {path: 'cabinet-memo', loadChildren: './contents/cabinet-memo/cabinet-memo.module#CabinetMemoModule'}, // Todo Lazy loading on module
 
@@ -49,7 +47,14 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [RouterModule, ExcoMeetingRoutingModule, CabinetMemoRoutingModule, DgMemoRoutingModule, DgReferralsRoutingModule]
+  exports: [
+    RouterModule,
+    ExcoMeetingRoutingModule,
+    CabinetMemoRoutingModule,
+    DgMemoRoutingModule,
+    DgReferralsRoutingModule,
+    SubmissionRecordsRoutingModule
+  ]
 })
 export class AppRoutingModule {
 }

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MeetingsService} from '../meetings.service';
-import {MeetingModel} from '../../shared/meetings.model';
+import {ExcoMeetingService} from './exco-meeting.service';
+import {MeetingModel} from './exco-meeting.model';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class ExcoMeetingComponent implements OnInit {
   loadingError = false;
 
 
-  constructor(private meetingService: MeetingsService, private router: Router) {
+  constructor(private meetingService: ExcoMeetingService, private router: Router) {
     this.meetingList = this.meetingService.getAllMeetings();
 
   }

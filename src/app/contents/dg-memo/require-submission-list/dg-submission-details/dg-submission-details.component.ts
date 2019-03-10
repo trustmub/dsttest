@@ -35,7 +35,7 @@ export class DgSubmissionDetailsComponent implements OnInit {
     this.recipientsService.recipientsObserver.subscribe(
       (results: { data: string[], tag: string }) => {
         this.recipients = [];
-        if (results.tag === 'app-dg-submission-details') {
+        if (results.tag === 'app-dg-sub-by-dg-memo-details') {
           results.data.forEach(
             (item) => {
               this.memoRecord.recipient.push({name: item});

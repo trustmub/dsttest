@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MeetingsService} from '../../meetings.service';
+import {ExcoMeetingService} from '../exco-meeting.service';
 import {UserService} from '../../../shared/user.service';
+import {MeetingModel} from '../exco-meeting.model';
 
 @Component({
   selector: 'app-exco-meeting-form',
@@ -12,7 +13,7 @@ export class ExcoMeetingFormComponent implements OnInit {
   excoMeetingForm: FormGroup;
   user: string;
 
-  constructor(private meetingService: MeetingsService, private userService: UserService) {
+  constructor(private meetingService: ExcoMeetingService, private userService: UserService) {
     this.user = this.userService.getFullname();
   }
 
@@ -28,7 +29,7 @@ export class ExcoMeetingFormComponent implements OnInit {
   }
 
   onSubmitMeeting() {
-    const obj = {
+    const obj: MeetingModel = {
       meetingName: this.excoMeetingForm.value.meetingName,
       meetingStartTime: this.excoMeetingForm.value.meetingStartTime,
       meetingEndTime: this.excoMeetingForm.value.meetingEndTime,
@@ -36,7 +37,7 @@ export class ExcoMeetingFormComponent implements OnInit {
       meetingStartDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),
       meetingEndDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),
       createdBy: this.user,
-      createdDate: (new Date().toISOString()),
+      createdDate: new Date().toISOString(),
       attendees: [],
       decisions: {actionItems: [], nonActionItems: []}
     };

@@ -26,25 +26,13 @@ import {UserResetComponent} from './authentication/user-reset/user-reset.compone
 import {MeetingsComponent} from './contents/meetings/meetings.component';
 import {RemoveWhiteSpace} from './shared/whitespace.pipe';
 import {AuthInterceptor} from './shared/auth.interceptor';
-import {DateSelectorDirective} from './contents/exco-meeting/meeting-detail/meeting-action-list/action-item-form/date-selector.directive';
-import {SubmissionRecordsComponent} from './contents/submission-records/submission-records.component';
-import {SubByProgramComponent} from './contents/submission-records/sub-by-program/sub-by-program.component';
-import {SubByDgMemoComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo.component';
-import {SubByDgMemoFormComponent} from './contents/submission-records/sub-by-dg-memo/sub-by-dg-memo-form/sub-by-dg-memo-form.component';
-import {SelfInitiatedFormComponent} from './contents/submission-records/sub-by-program/self-initiated-form/self-initiated-form.component';
-import {SubmissionDetailsComponent} from './contents/submission-records/sub-by-dg-memo/submission-details/submission-details.component';
-import {EditSubmissionFormComponent} from './contents/submission-records/sub-by-dg-memo/submission-details/edit-submission-form/edit-submission-form.component';
-import {SelfInitiatedDetailsComponent} from './contents/submission-records/sub-by-program/self-initiated-details/self-initiated-details.component';
-import {EditSiFormComponent} from './contents/submission-records/sub-by-program/self-initiated-details/edit-si-form/edit-si-form.component';
+import {DateSelectorDirective} from './contents/exco-meeting/exco-meeting-details/meeting-action-list/action-item-form/date-selector.directive';
 import {ExcoMeetingModule} from './contents/exco-meeting/exco-meeting.module';
-import {DgReferralsComponent} from './contents/dg-referrals/dg-referrals.component';
-import {DgReferralsFormComponent} from './contents/dg-referrals/dg-referrals-form/dg-referrals-form.component';
-import {DgReferralsDetailsComponent} from './contents/dg-referrals/dg-referrals-details/dg-referrals-details.component';
-import {DgReferralsListComponent} from './contents/dg-referrals/dg-referrals-list/dg-referrals-list.component';
 import {SharedModule} from './shared/shared.module';
 import {CabinetMemoModule} from './contents/cabinet-memo/cabinet-memo.module';
 import {DgMemoModule} from './contents/dg-memo/dg-memo.module';
 import {DgReferralsModule} from './contents/dg-referrals/dg-referrals.module';
+import {SubmissionRecordsModule} from './contents/submission-records/submission-records.module';
 
 @NgModule({
   declarations: [
@@ -68,15 +56,6 @@ import {DgReferralsModule} from './contents/dg-referrals/dg-referrals.module';
     MeetingsComponent,
     RemoveWhiteSpace,
     DateSelectorDirective,
-    SubmissionRecordsComponent,
-    SubByProgramComponent,
-    SubByDgMemoComponent,
-    SubByDgMemoFormComponent,
-    SelfInitiatedFormComponent,
-    SubmissionDetailsComponent,
-    EditSubmissionFormComponent,
-    SelfInitiatedDetailsComponent,
-    EditSiFormComponent,
 
   ],
   imports: [
@@ -91,6 +70,7 @@ import {DgReferralsModule} from './contents/dg-referrals/dg-referrals.module';
     CabinetMemoModule,
     DgMemoModule,
     DgReferralsModule,
+    SubmissionRecordsModule,
     SharedModule,
   ],
   providers: [

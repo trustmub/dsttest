@@ -1,0 +1,111 @@
+<form [formGroup]="editMeetingForm" (ngSubmit)="onSubmitMeeting()">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="meetingName">Meeting Name</label>
+        <input type="text"
+               class="form-control"
+               id="meetingName"
+               name="meetingName"
+               formControlName="meetingName">
+        <span *ngIf="!editMeetingForm.get('meetingName').valid && editMeetingForm.get('meetingName').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="form-group">
+        <label for="meetingVenue">Meeting Venue.</label>
+        <input type="text"
+               class="form-control"
+               id="meetingVenue"
+               name="meetingVenue"
+               formControlName="meetingVenue">
+        <span *ngIf="!editMeetingForm.get('meetingVenue').valid && editMeetingForm.get('meetingVenue').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="meetingStartDate">Meeting Start Date.</label>
+        <input type="date"
+               class="form-control"
+               id="meetingStartDate"
+               name="meetingStartDate"
+               formControlName="meetingStartDate"
+               placeholder="yyyy/mm/dd">
+        <span *ngIf="!editMeetingForm.get('meetingStartDate').valid && editMeetingForm.get('meetingStartDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="meetingEndDate">Meeting End Date.</label>
+        <input type="date"
+               class="form-control"
+               name="meetingEndDate"
+               id="meetingEndDate"
+               formControlName="meetingEndDate"
+               placeholder="yyyy/mm/dd">
+        <span *ngIf="!editMeetingForm.get('meetingEndDate').valid && editMeetingForm.get('meetingEndDate').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+
+        <label for="meetingStartTime">Meeting Start Date.</label>
+        <input type="time"
+               class="form-control"
+               id="meetingStartTime"
+               name="meetingStartTime"
+               formControlName="meetingStartTime"
+               placeholder="hh:mm">
+        <span *ngIf="!editMeetingForm.get('meetingStartTime').valid && editMeetingForm.get('meetingStartTime').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="meetingEndTime">Meeting End Date.</label>
+        <input type="time"
+               class="form-control"
+               id="meetingEndTime"
+               name="meetingEndTime"
+               formControlName="meetingEndTime"
+               placeholder="hh:mm">
+        <span *ngIf="!editMeetingForm.get('meetingEndTime').valid && editMeetingForm.get('meetingEndTime').touched"
+              class="invalid-feedback">
+          This field is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary text-white" *ngIf="!recordUpdated" type="submit">
+    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+    Save
+  </button>
+  <button class="btn btn-dark text-white ml-3" *ngIf="recordUpdated" data-dismiss="modal" [routerLink]="['/exco', this.recordId]">
+    Cancel
+  </button>
+
+</form>
+
+

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MeetingsService} from '../../meetings.service';
-import {MeetingModel} from '../../../shared/meetings.model';
+import {ExcoMeetingService} from '../../exco-meeting/exco-meeting.service';
+import {MeetingModel} from '../../exco-meeting/exco-meeting.model';
 
 @Component({
   selector: 'app-coming-task',
@@ -11,7 +11,7 @@ export class ComingTaskComponent implements OnInit, OnDestroy {
 
   upcoming: MeetingModel[] = [];
 
-  constructor(private meetingService: MeetingsService) {
+  constructor(private meetingService: ExcoMeetingService) {
   }
 
   ngOnInit() {

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SubmissionRecordModel} from '../../submission-record.model';
+import {SubmissionRecordsModel} from '../../submission-records.model';
 import {UserService} from '../../../../shared/user.service';
-import {SubmissionRecordService} from '../../submission-record.service';
+import {SubmissionRecordsService} from '../../submission-records.service';
 
 @Component({
   selector: 'app-submission-record-form',
@@ -13,7 +13,7 @@ export class SubByDgMemoFormComponent implements OnInit {
   subRecordForm: FormGroup;
   reference: string;
 
-  constructor(private user: UserService, private submissionService: SubmissionRecordService) {
+  constructor(private user: UserService, private submissionService: SubmissionRecordsService) {
     this.reference = this.generateReference();
   }
 
@@ -39,7 +39,7 @@ export class SubByDgMemoFormComponent implements OnInit {
   onSaveSubmissionClicked() {
     const fullname = this.user.getFullname();
 
-    const promptedByDgMemo: SubmissionRecordModel = {
+    const promptedByDgMemo: SubmissionRecordsModel = {
       submissionType: this.subRecordForm.value.submissionType,
       submissionRef: this.reference,
       memoRef: this.subRecordForm.value.memoRef,
