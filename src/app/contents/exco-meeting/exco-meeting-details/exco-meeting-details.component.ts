@@ -67,13 +67,16 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
     this.fileToUpload = files.item(0);
     this.meetingRecord.agendaFile = this.fileToUpload;
     this.filename = this.fileToUpload.name;
-
   }
 
   onSubmitAgenda() {
     this.meetingRecord.agendaEditor = this.agendaEditorForm.value.agendaEditor;
     console.log(this.meetingRecord);
     this.meetingService.updateMeeting(this.meetingRecord);
+  }
+
+  backClicked() {
+    this.router.navigate(['/exco']);
   }
 
 }

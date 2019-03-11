@@ -29,10 +29,14 @@ export class ExcoMeetingFormComponent implements OnInit {
   }
 
   onSubmitMeeting() {
+    const startTime = this.excoMeetingForm.value.meetingStartTime;
+    const endTime = this.excoMeetingForm.value.meetingEndTime;
+
+    console.log('Time Picker result',);
     const obj: MeetingModel = {
       meetingName: this.excoMeetingForm.value.meetingName,
-      meetingStartTime: this.excoMeetingForm.value.meetingStartTime,
-      meetingEndTime: this.excoMeetingForm.value.meetingEndTime,
+      meetingStartTime: startTime.hour + ':' + startTime.minute,
+      meetingEndTime: endTime.hour + ':' + endTime.minute,
       meetingLocation: this.excoMeetingForm.value.meetingVenue,
       meetingStartDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),
       meetingEndDate: new Date(this.excoMeetingForm.value.meetingStartDate).toISOString(),

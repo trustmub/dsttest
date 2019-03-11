@@ -89,6 +89,7 @@ export class ExcoMeetingService {
   }
 
   updateMeeting(meeting: MeetingModel) {
+    console.log(JSON.stringify(meeting));
     return this.http.put('api/meeting', meeting, {observe: 'response'});
   }
 
