@@ -135,16 +135,17 @@
 
     <div class="col-lg-4 col-md-4">
       <div class="form-group">
-        <label for="sentToDGDate">Date sent to DG.</label>
-        <input type="date"
-               class="form-control"
-               id="sentToDGDate"
-               name="sentToDGDate"
-               placeholder="YYY/MM/DD"
-               formControlName="sentToDGDate">
-        <span *ngIf="!subRecordForm.get('sentToDGDate').valid && subRecordForm.get('sentToDGDate').touched"
+        <label for="status">Status.</label>
+        <select class="form-control"
+                id="status"
+                formControlName="status"
+                name="status">
+          <option
+            *ngFor="let status of ['Created', 'Approved','Rejected','Rework']; let i = index">{{ status }}</option>
+        </select>
+        <span *ngIf="!subRecordForm.get('status').valid && subRecordForm.get('status').touched"
               class="invalid-feedback">
-          This field is required.
+          this field is required.
         </span>
       </div>
     </div>
@@ -171,17 +172,16 @@
 
     <div class="col-lg-4 col-md-4">
       <div class="form-group">
-        <label for="status">Status.</label>
-        <select class="form-control"
-                id="status"
-                formControlName="status"
-                name="status">
-          <option
-            *ngFor="let status of ['Created', 'Approved','Rejected','Rework']; let i = index">{{ status }}</option>
-        </select>
-        <span *ngIf="!subRecordForm.get('status').valid && subRecordForm.get('status').touched"
+        <label for="sentToDGDate">Date sent to DG.</label>
+        <input type="date"
+               class="form-control"
+               id="sentToDGDate"
+               name="sentToDGDate"
+               placeholder="YYY/MM/DD"
+               formControlName="sentToDGDate">
+        <span *ngIf="!subRecordForm.get('sentToDGDate').valid && subRecordForm.get('sentToDGDate').touched"
               class="invalid-feedback">
-          this field is required.
+          This field is required.
         </span>
       </div>
     </div>
@@ -246,21 +246,21 @@
 
 <!--<div class="row">-->
 
-  <!--<div class="col-lg-4 col-md-4">-->
-    <!--<div class="form-group">-->
-      <!--<label for="linkedToMemo">Linked To Memo.</label>-->
-      <!--<select class="form-control"-->
-              <!--id="linkedToMemo"-->
-              <!--formControlName="linkedToMemo"-->
-              <!--name="linkedToMemo">-->
-        <!--<option></option>-->
-        <!--<option *ngFor="let response of ['Yes', 'No']; let i = index">{{ response }}</option>-->
-      <!--</select>-->
-      <!--<span *ngIf="!subRecordForm.get('linkedToMemo').valid && subRecordForm.get('linkedToMemo').touched"-->
-            <!--class="invalid-feedback">-->
-          <!--this field is required.-->
-        <!--</span>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!---->
+<!--<div class="col-lg-4 col-md-4">-->
+<!--<div class="form-group">-->
+<!--<label for="linkedToMemo">Linked To Memo.</label>-->
+<!--<select class="form-control"-->
+<!--id="linkedToMemo"-->
+<!--formControlName="linkedToMemo"-->
+<!--name="linkedToMemo">-->
+<!--<option></option>-->
+<!--<option *ngFor="let response of ['Yes', 'No']; let i = index">{{ response }}</option>-->
+<!--</select>-->
+<!--<span *ngIf="!subRecordForm.get('linkedToMemo').valid && subRecordForm.get('linkedToMemo').touched"-->
+<!--class="invalid-feedback">-->
+<!--this field is required.-->
+<!--</span>-->
+<!--</div>-->
+<!--</div>-->
+<!---->
 <!--</div>-->

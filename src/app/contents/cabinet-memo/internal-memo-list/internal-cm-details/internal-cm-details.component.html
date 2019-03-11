@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-9 col-md-9">
+  <div class="col-12">
 
     <div class="card">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -138,66 +138,66 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-3">
+  <!--<div class="col-lg-3 col-md-3">-->
 
-    <div class="list-group" id="list-tab" role="tablist">
-      <button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"
-              data-target=".bd-uploadFile-modal">Upload Document
-      </button>
-    </div>
+    <!--<div class="list-group" id="list-tab" role="tablist">-->
+      <!--<button class="btn btn-outline-info list-group-item list-group-item-action" data-toggle="modal"-->
+              <!--data-target=".bd-uploadFile-modal">Upload Document-->
+      <!--</button>-->
+    <!--</div>-->
 
-    <!-- Small modal for uploading a file -->
-    <div class="modal fade bd-uploadFile-modal" tabindex="-1" role="dialog" aria-labelledby="uploadForm"
-         aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">Upload Document</div>
-          <form>
+    <!--&lt;!&ndash; Small modal for uploading a file &ndash;&gt;-->
+    <!--<div class="modal fade bd-uploadFile-modal" tabindex="-1" role="dialog" aria-labelledby="uploadForm"-->
+         <!--aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="modal-header">Upload Document</div>-->
+          <!--<form>-->
 
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="fileName">Name</label>
-                <input class="form-control"
-                       type="text"
-                       name="fileName"
-                       id="fileName">
-              </div>
+            <!--<div class="modal-body">-->
+              <!--<div class="form-group">-->
+                <!--<label for="fileName">Name</label>-->
+                <!--<input class="form-control"-->
+                       <!--type="text"-->
+                       <!--name="fileName"-->
+                       <!--id="fileName">-->
+              <!--</div>-->
 
-              <div class="form-group">
-                <label for="file">Document Upload</label>
-                <input type="file"
-                       id="file"
-                       class="form-control"
-                       (change)="handleFileInput($event.target.files)">
-              </div>
-            </div>
+              <!--<div class="form-group">-->
+                <!--<label for="file">Document Upload</label>-->
+                <!--<input type="file"-->
+                       <!--id="file"-->
+                       <!--class="form-control"-->
+                       <!--(change)="handleFileInput($event.target.files)">-->
+              <!--</div>-->
+            <!--</div>-->
 
-            <div class="modal-footer">
-              <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
-              <button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>
-            </div>
+            <!--<div class="modal-footer">-->
+              <!--<button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>-->
+              <!--<button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>-->
+            <!--</div>-->
 
-          </form>
-        </div>
-      </div>
-    </div>
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <br>
-    <div class="card border-left-primary">
-      <div class="card-header text-primary font-weight-bold">Attached Documents</div>
-      <div class="card-body">
-        <a href="">{{ filename }}</a>
-      </div>
-    </div>
-    <br>
-    <div class="card border-left-info">
-      <div class="card-header text-primary font-weight-bold">Other Receivers</div>
-      <div class="card-body">
-        <ul *ngFor="let recipient of recipients,">
-          <li>{{ recipient.name }}</li>
-        </ul>
-        list of users added
-      </div>
-    </div>
-  </div>
+    <!--<br>-->
+    <!--<div class="card border-left-primary">-->
+      <!--<div class="card-header text-primary font-weight-bold">Attached Documents</div>-->
+      <!--<div class="card-body">-->
+        <!--<a href="">{{ filename }}</a>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<br>-->
+    <!--<div class="card border-left-info">-->
+      <!--<div class="card-header text-primary font-weight-bold">Other Receivers</div>-->
+      <!--<div class="card-body">-->
+        <!--<ul *ngFor="let recipient of recipients,">-->
+          <!--<li>{{ recipient.name }}</li>-->
+        <!--</ul>-->
+        <!--list of users added-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </div>

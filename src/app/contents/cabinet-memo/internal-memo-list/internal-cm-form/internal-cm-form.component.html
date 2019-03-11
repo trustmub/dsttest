@@ -3,7 +3,7 @@
 
     <div class="col-lg-3 col-md-3">
       <div class="form-group">
-        <label for="reference">Reference.</label>
+        <label for="reference">Int CabMemo No.</label>
         <input type="text"
                class="form-control"
                id="reference"
@@ -55,7 +55,7 @@
   <div class="row">
     <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <label for="subject">Cab Memo Subject.</label>
+        <label for="subject">Subject.</label>
         <input type="text"
                class="form-control"
                id="subject"
@@ -90,12 +90,11 @@
     <div class="col-lg-6 col-md-6">
       <div class="form-group">
         <label for="cabinetCommittee">Cabinet Committee.</label>
-        <textarea type="text"
-                  rows="2"
+        <input type="text"
                   class="form-control"
                   id="cabinetCommittee"
                   name="cabinetCommittee"
-                  formControlName="cabinetCommittee"></textarea>
+                  formControlName="cabinetCommittee">
         <span *ngIf="!internalCMForm.get('cabinetCommittee').valid && internalCMForm.get('cabinetCommittee').touched"
               class="invalid-feedback">
           This field is required.
