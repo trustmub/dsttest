@@ -31,6 +31,17 @@ export class ActionListDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.meetingService.refreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.meetingRecord = this.meetingService.getMeeting(this.meetingId);
+        }
+        if (!status) {
+
+        }
+      }
+    );
   }
 
   handleFileInput(files: FileList) {

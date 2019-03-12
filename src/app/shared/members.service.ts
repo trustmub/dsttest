@@ -1,5 +1,6 @@
 import {MembersModel} from './members.model';
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,14 @@ export class MembersService {
     new MembersModel('Thabo Dibe', 'Director ODG', '/assets/I80W1Q0.png')];
 
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   getMembers(): MembersModel[] {
     return this.members;
+  }
+
+  getUserList() {
+    return this.http.get('api/user/list');
   }
 }

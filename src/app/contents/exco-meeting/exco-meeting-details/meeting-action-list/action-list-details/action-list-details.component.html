@@ -27,26 +27,28 @@
       </div>
 
       <!-- Extra large modal for editing Action Item-->
-      <div class="modal fade bd-editActionItem-modal-lg" tabindex="-1" role="dialog" aria-labelledby="editActionItemForm"
+      <div class="modal fade bd-editActionItem-modal-lg" tabindex="-1" role="dialog"
+           aria-labelledby="editActionItemForm"
            aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">Edit Record</div>
             <div class="modal-body">
-              <!--<app-edit-ecm-form></app-edit-ecm-form>-->
+              <app-edit-action-item-form></app-edit-action-item-form>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Extra large modal for adding Recipients Action Item-->
-      <div class="modal fade bd-addAIRecipient-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addAIRecipientForm"
+      <div class="modal fade bd-addAIRecipient-modal-lg" tabindex="-1" role="dialog"
+           aria-labelledby="addAIRecipientForm"
            aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">Add Recipients</div>
             <div class="modal-body">
-              <!--<app-add-recipient-form [recipientTag]="'app-action-list-details'"></app-add-recipient-form>-->
+              <app-add-recipient-form [recipientTag]="'app-action-list-details'"></app-add-recipient-form>
             </div>
           </div>
         </div>

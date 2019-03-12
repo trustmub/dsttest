@@ -1,6 +1,5 @@
 import {AuthTokenModel, UserModel} from './user.model';
-import {Injectable, OnInit} from '@angular/core';
-import {first} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

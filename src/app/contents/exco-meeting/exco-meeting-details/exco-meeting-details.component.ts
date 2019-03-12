@@ -16,7 +16,9 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
   meetingRecord: MeetingModel;
   paramSubscription: Subscription;
   fileToUpload: File;
-  filename: string;
+  agendaFilename: string;
+  minutesFileName: string;
+  registerFileName: string;
   id: string;
   loading = false;
   deleteResult: any = {result: '', message: '', status: 0};
@@ -24,7 +26,7 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private meetingService: ExcoMeetingService, private router: Router) {
     this.id = this.route.snapshot.params.id;
     this.meetingRecord = this.meetingService.getMeeting(this.id);
-    this.filename = (this.meetingRecord.agendaFile === undefined) ? '' : this.meetingRecord.agendaFile.name;
+    this.agendaFilename = (this.meetingRecord.agendaFile === undefined) ? '' : this.meetingRecord.agendaFile.name;
   }
 
   ngOnInit() {
@@ -63,10 +65,15 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
     this.paramSubscription.unsubscribe();
   }
 
-  handleSubmissionFileInput(files: FileList) {
+  handleSubmissionFileInput(type: string, files: FileList) {
+
     this.fileToUpload = files.item(0);
+    console.log(files.item.length);
     this.meetingRecord.agendaFile = this.fileToUpload;
-    this.filename = this.fileToUpload.name;
+
+    this.agendaFilename = (type === 'agenda') ? this.fileToUpload.name : '';
+    this.minutesFileName = (type === 'minutes') ? this.fileToUpload.name : '';
+    this.registerFileName = (type === 'register') ? this.fileToUpload.name : '';
   }
 
   onSubmitAgenda() {
@@ -77,6 +84,14 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
 
   backClicked() {
     this.router.navigate(['/exco']);
+  }
+
+  getHealthClasses(health: string) {
+    return {
+      'btn-success': health === 'green',
+      'btn-danger': health === 'red',
+      'btn-warning': health === 'amber'
+    };
   }
 
 }

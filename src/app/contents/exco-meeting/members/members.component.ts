@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MembersModel} from '../../../shared/members.model';
+import {MembersService} from '../../../shared/members.service';
 
 @Component({
   selector: 'app-members',
@@ -17,10 +18,15 @@ export class MembersComponent implements OnInit {
     new MembersModel('Denzil Filli', 'Chief Director', '/assets/I80W1Q0.png'),
     new MembersModel('Thabo Dibe', 'Director ODG', '/assets/I80W1Q0.png')];
 
-  constructor() {
+  constructor(private memberService: MembersService) {
   }
 
   ngOnInit() {
+    this.memberService.getUserList().subscribe(
+      (result) => {
+        console.log('User List', result);
+      }
+    );
   }
 
 }

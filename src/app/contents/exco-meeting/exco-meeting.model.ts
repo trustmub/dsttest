@@ -11,6 +11,7 @@ export class MeetingModel {
   public meetingEndDate: string;
   public createdBy: string;
   public createdDate: string;
+  public health?: string;
   public attendees?: AttendeesModel[];
   public decisions?: DecisionModel;
   public agendaFile?: File;
@@ -24,6 +25,7 @@ export class MeetingModel {
               createdBy: string,
               meetingStartDate: string,
               meetingEndDate: string,
+              health: string,
               attendees?: AttendeesModel[],
               decisions?: DecisionModel,
               agendaFile?: File,
@@ -37,6 +39,7 @@ export class MeetingModel {
     this.createdBy = createdBy;
     this.attendees = attendees;
     this.decisions = decisions;
+    this.health = health;
     this.meetingStartDate = meetingStartDate;
     this.meetingEndDate = meetingEndDate;
     this.agendaFile = agendaFile;

@@ -62,6 +62,7 @@ export class ExcoMeetingService {
 
   getMeeting(id: string) {
     const record = this.upcoming.filter(x => x.id === id)[0];
+    record.health = this.changeHealthStatus(new Date(record.meetingStartDate));
     record.decisions.actionItems.map(
       (action) => {
         action.health = this.changeHealthStatus(new Date(action.returnDate));

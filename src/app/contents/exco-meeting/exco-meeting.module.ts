@@ -19,6 +19,7 @@ import {NonActionListDetailsComponent} from './exco-meeting-details/meeting-non-
 import {SharedModule} from '../../shared/shared.module';
 import { EditExcoMeetingFormComponent } from './exco-meeting-details/edit-exco-meeting-form/edit-exco-meeting-form.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {EditActionItemFormComponent} from './exco-meeting-details/meeting-action-list/action-list-details/edit-action-item-form/edit-action-item-form.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MembersComponent,
     NonActionListDetailsComponent,
     EditExcoMeetingFormComponent,
+    EditActionItemFormComponent,
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,9 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Exco Meeting Details</h1>
+  <!--<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-white" (click)="onReportClicked()"><i-->
+  <!--class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+</div>
+
 <div class="row">
   <div class="col-lg-9 col-md-9">
 
@@ -7,14 +13,16 @@
 
         <!-- Meetings Details card -->
         <div class="card card-header flex-row align-items-center justify-content-between">
-          <button class="btn btn-outline-primary btn-sm" type="button" (click)="backClicked()"> < Back to Exco Meeting List </button>
+          <button class="btn btn-outline-primary btn-sm" type="button" (click)="backClicked()"> < Back to Exco Meeting
+            List
+          </button>
           ...
         </div>
         <div class="card border-left-primary shadow mh-100 mb-3 p-1">
           <div class="card-body m-1 p-1">
             <div class="row">
 
-              <div class="col-8">
+              <div class="col-6">
                 <div class="row no-gutters align-items-center">
                   <div class="col-md-4 col-xl-4 m-0 p-0">
                     <div class="card">
@@ -47,7 +55,22 @@
                 </div>
               </div>
 
+              <!--<div class="col-2 text-center">-->
+              <!--<h6 class="mb-0 font-weight-bold">Health</h6>-->
+              <!--<p class="mt-0">{{ meetingRecord.health }}.</p>-->
+              <!--</div>-->
+
+              <div class="col-2 text-center">
+
+                <h6 class="card-title font-weight-bold mb-0">Health</h6>
+                <p
+                  class="card-text btn btn-circle btn-circle font-weight-bold mb-2 mt-2"
+                  [ngClass]="getHealthClasses(meetingRecord.health)">{{ meetingRecord.health | slice:0:1 | uppercase}}</p>
+              </div>
+
+
               <div class="col-4">
+
                 <h6 class="mb-0 font-weight-bold">Created By</h6>
                 <p class="mt-0 border-left-info">{{ meetingRecord.createdBy }}.</p>
 
@@ -122,37 +145,38 @@
           <div class="tab-pane fade show active" id="agenda" role="tabpanel" aria-labelledby="agenda-tab">
 
             <!-- for to upload file-->
+            <br>
             <div class="row">
               <div class="col-7">
                 <form>
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="fileName">Name</label>
+                      <label for="agendaFileName">Name</label>
                       <input class="form-control"
                              type="text"
-                             name="fileName"
-                             id="fileName">
+                             name="agendaFileName"
+                             id="agendaFileName">
                     </div>
 
                     <div class="form-group">
-                      <label for="file">Document Upload</label>
+                      <label for="agendaFile">Document Upload</label>
                       <input type="file"
-                             id="file"
+                             id="agendaFile"
                              class="form-control"
-                             (change)="handleSubmissionFileInput($event.target.files)">
+                             (change)="handleSubmissionFileInput('agenda', $event.target.files)">
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
-                    <button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>
+                    <!--<button class="btn btn-outline-secondary ml-3" type="submit" data-dismiss="modal">Cancel</button>-->
                   </div>
                 </form>
               </div>
               <div class="col-5">
-                <div class="card card-header">Attached File</div>
+                <div class="card card-header">Attached Agenda File</div>
                 <div class="card card card-body">
-                  <div *ngIf="filename !== undefined">
-                    <a>{{ filename }}</a>
+                  <div *ngIf="agendaFilename !== undefined">
+                    <a>{{ agendaFilename }}</a>
                   </div>
                 </div>
               </div>
@@ -161,9 +185,83 @@
           </div>
           <div class="tab-pane fade" id="minutes" role="tabpanel" aria-labelledby="meeting-minutes-tab">
 
+            <!-- Minutes file uploading file-->
+            <br>
+            <div class="row">
+              <div class="col-7">
+                <form>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="minutesFileName">Name</label>
+                      <input class="form-control"
+                             type="text"
+                             name="minutesFileName"
+                             id="minutesFileName">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="minutesFile">Document Upload</label>
+                      <input type="file"
+                             id="minutesFile"
+                             class="form-control"
+                             (change)="handleSubmissionFileInput('minutes', $event.target.files)">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-5">
+                <div class="card card-header">Attached Minutes File</div>
+                <div class="card card card-body">
+                  <div *ngIf="minutesFileName !== undefined">
+                    <a>{{ minutesFileName }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
           <div class="tab-pane fade" id="attending-register" role="tabpanel" aria-labelledby="attending-register-tab">
-            upload register
+            <br>
+
+            <div class="row">
+              <div class="col-7">
+                <form>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="registerFileName">Name</label>
+                      <input class="form-control"
+                             type="text"
+                             name="registerFileName"
+                             id="registerFileName">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="registerFile">Document Upload</label>
+                      <input type="file"
+                             id="registerFile"
+                             class="form-control"
+                             (change)="handleSubmissionFileInput('register', $event.target.files)">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-primary" type="submit" data-dismiss="modal">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-5">
+                <div class="card card-header">Attached Register File</div>
+                <div class="card card card-body">
+                  <div *ngIf="registerFileName !== undefined">
+                    <a>{{ registerFileName }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <!-- End Nav tab contents for Agenda, Meeting Minutes and Attending register-->
@@ -216,7 +314,7 @@
       <a class="list-group-item list-group-item-action" id="list-attendee-list" data-toggle="list" href="#list-attendee"
          role="tab" aria-controls="profile">Attendees</a>
       <a class="list-group-item list-group-item-action" id="list-decisions-list" data-toggle="list"
-         href="#list-decisions">Decisions</a>
+         href="#list-decisions">Exco Decisions</a>
       <hr>
       <a class="btn list-group-item list-group-item-action" data-toggle="modal" data-target=".bd-authorAgenda-modal">Author
         Agenda</a>
