@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category, DgMemoModel} from '../../../memo.model';
+import {Category, DgMemoModel} from '../../../dg-memo.model';
 import {MembersModel} from '../../../../../shared/members.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MembersService} from '../../../../../shared/members.service';
-import {MemoService} from '../../../memo.service';
+import {DgMemoService} from '../../../dg-memo.service';
 import {UserService} from '../../../../../shared/user.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class EditMemoFormComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute,
               private memberService: MembersService,
-              private memoService: MemoService,
+              private memoService: DgMemoService,
               private user: UserService) {
     this.categories = this.memoService.getCategories();
     this.recordId = this.activeRoute.snapshot.params['id'];

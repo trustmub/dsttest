@@ -41,8 +41,8 @@ export class ActionItemFormComponent implements OnInit {
       actionDescription: new FormControl(null, [Validators.required]),
       actionAssignTo: new FormControl(null, [Validators.required]),
       actionReturnDate: new FormControl(null, [Validators.required]),
-      actionStatus: new FormControl('Created'),
-      actionFeedback: new FormControl(null)
+      actionStatus: new FormControl({value: 'Created', disabled: true}),
+      actionFeedback: new FormControl({value: null, disabled: true})
     });
 
   }
@@ -56,7 +56,7 @@ export class ActionItemFormComponent implements OnInit {
       description: this.actionItemForm.value.actionDescription,
       assignedTo: this.actionItemForm.value.actionAssignTo,
       returnDate: returnDate.toISOString(),
-      status: this.actionItemForm.value.actionStatus,
+      status: 'Created',
       health: 'G',
       feedback: this.actionItemForm.value.actionFeedback,
       createdBy: this.userService.getFullname(),

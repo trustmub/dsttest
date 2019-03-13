@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DgReferralsService} from '../dg-referrals.service';
 import {DgReferralsModel} from '../dg-referrals.model';
 import {RecipientsService} from '../../../shared/recipients.service';
-import {RecipientsModel} from '../../dg-memo/memo.model';
+import {RecipientsModel} from '../../dg-memo/dg-memo.model';
 
 @Component({
   selector: 'app-dg-referrals-details',

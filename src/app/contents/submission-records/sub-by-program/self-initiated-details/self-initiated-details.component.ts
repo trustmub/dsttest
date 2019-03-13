@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {SubmissionRecordsModel} from '../../submission-records.model';
 import {SubmissionRecordsService} from '../../submission-records.service';
-import {RecipientsModel} from '../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../dg-memo/dg-memo.model';
 
 @Component({
   selector: 'app-self-initiated-details',

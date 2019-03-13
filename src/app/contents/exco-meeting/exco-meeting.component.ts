@@ -14,9 +14,13 @@ export class ExcoMeetingComponent implements OnInit {
   loading = true;
   loadingError = false;
 
+  constructor(private meetingService: ExcoMeetingService,
+              private router: Router) {
 
-  constructor(private meetingService: ExcoMeetingService, private router: Router) {
-    this.meetingList = this.meetingService.getAllMeetings();
+    this.meetingList = this.meetingService.getAllMeetings()
+      .sort((a, b) => new Date(a.meetingStartDate).getTime() - new Date(b.meetingStartDate).getTime());
+
+    console.log(this.meetingList);
 
   }
 
@@ -27,7 +31,13 @@ export class ExcoMeetingComponent implements OnInit {
     this.meetingService.fetchMeetings().subscribe(
       (response) => {
         this.meetingList = response.body;
+        this.meetingList.sort((a, b) => new Date(a.meetingStartDate).getTime() - new Date(b.meetingStartDate).getTime());
         this.meetingService.setMeetings(this.meetingList);
+        this.meetingList.map(
+          (rec) => {
+            rec.health = this.meetingService.changeHealthStatus(new Date(rec.meetingStartDate));
+          }
+        );
         this.loading = false;
       },
       (error) => {
@@ -51,6 +61,14 @@ export class ExcoMeetingComponent implements OnInit {
     // TODO: check if this is the best practice
     this.ngOnInit();
     // this.router.navigateByUrl('/meetings' );
+  }
+
+  getMeetingHealthClasses(health: string) {
+    return {
+      'border-left-success': health === 'green',
+      'border-left-danger': health === 'red',
+      'border-left-warning': health === 'amber'
+    };
   }
 
 }

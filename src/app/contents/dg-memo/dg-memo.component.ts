@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DgMemoModel} from './memo.model';
-import {MemoCategory, MemoService} from './memo.service';
+import {DgMemoModel} from './dg-memo.model';
+import {MemoCategory, DgMemoService} from './dg-memo.service';
 
 @Component({
   selector: 'app-dg-memo',
@@ -13,7 +13,7 @@ export class DgMemoComponent implements OnInit {
   loading = false;
   loadingError: boolean;
 
-  constructor(private memoService: MemoService) {
+  constructor(private memoService: DgMemoService) {
     this.memoList = this.memoService.getMemoList();
 
   }

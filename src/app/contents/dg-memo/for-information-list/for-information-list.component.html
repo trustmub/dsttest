@@ -41,7 +41,7 @@
           <tbody *ngFor="let meeting of infoList; let i = index">
           <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#information' + i"
               aria-expanded="false" [attr.aria-controls]="'information' + i">
-            <td>{{ meeting.dgMemoNumber }}</td>
+            <td class="text-nowrap">{{ meeting.dgMemoNumber }}</td>
             <td>{{ meeting.subject }}</td>
             <td>{{ meeting.assignedTo }}</td>
           </tr>

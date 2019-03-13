@@ -1,4 +1,4 @@
-import {RecipientsModel} from '../dg-memo/memo.model';
+import {RecipientsModel} from '../dg-memo/dg-memo.model';
 
 export class SubmissionRecordsModel {
 

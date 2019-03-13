@@ -20,6 +20,7 @@ import {SharedModule} from '../../shared/shared.module';
 import { EditExcoMeetingFormComponent } from './exco-meeting-details/edit-exco-meeting-form/edit-exco-meeting-form.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EditActionItemFormComponent} from './exco-meeting-details/meeting-action-list/action-list-details/edit-action-item-form/edit-action-item-form.component';
+import { EditNonActionItemFormComponent } from './exco-meeting-details/meeting-non-action-list/non-action-list-details/edit-non-action-item-form/edit-non-action-item-form.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {EditActionItemFormComponent} from './exco-meeting-details/meeting-action
     NonActionListDetailsComponent,
     EditExcoMeetingFormComponent,
     EditActionItemFormComponent,
+    EditNonActionItemFormComponent,
   ],
   imports: [
     CommonModule,

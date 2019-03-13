@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CabinetMemoModel} from './cabinet-memo.model';
 import {Subject} from 'rxjs';
-import {Category} from '../dg-memo/memo.model';
+import {Category} from '../dg-memo/dg-memo.model';
 
 @Injectable({
   providedIn: 'root'

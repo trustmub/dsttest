@@ -19,6 +19,13 @@ export class MeetingNonActionListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.meetingService.refreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.meetingItemRecord = this.meetingService.getMeeting(this.meetingId);
+        }
+      }
+    );
   }
 
 }

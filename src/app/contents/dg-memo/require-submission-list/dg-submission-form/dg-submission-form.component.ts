@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MemoService} from '../../memo.service';
+import {DgMemoService} from '../../dg-memo.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category, DgMemoModel} from '../../memo.model';
+import {Category, DgMemoModel} from '../../dg-memo.model';
 import {UserService} from '../../../../shared/user.service';
 import {MembersModel} from '../../../../shared/members.model';
 import {MembersService} from '../../../../shared/members.service';
@@ -21,7 +21,7 @@ export class DgSubmissionFormComponent implements OnInit {
   private randomNumber: string;
 
 
-  constructor(private memoService: MemoService, private user: UserService, private membersService: MembersService) {
+  constructor(private memoService: DgMemoService, private user: UserService, private membersService: MembersService) {
     this.statusList = this.memoService.getStatusList();
     this.classificationList = this.memoService.getClassificationList();
 

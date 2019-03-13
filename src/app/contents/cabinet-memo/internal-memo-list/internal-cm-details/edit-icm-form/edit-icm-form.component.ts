@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CabinetMemoService} from '../../../cabinet-memo.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Category} from '../../../../dg-memo/memo.model';
+import {Category} from '../../../../dg-memo/dg-memo.model';
 import {CabinetMemoModel} from '../../../cabinet-memo.model';
 import {UserService} from '../../../../../shared/user.service';
 

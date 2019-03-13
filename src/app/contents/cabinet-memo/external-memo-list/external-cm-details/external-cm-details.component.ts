@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CabinetMemoModel} from '../../cabinet-memo.model';
 import {CabinetMemoService} from '../../cabinet-memo.service';
 import {RecipientsService} from '../../../../shared/recipients.service';
-import {RecipientsModel} from '../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../dg-memo/dg-memo.model';
 
 @Component({
   selector: 'app-external-cm-details',

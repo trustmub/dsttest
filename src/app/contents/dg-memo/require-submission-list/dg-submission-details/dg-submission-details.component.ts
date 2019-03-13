@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MemoService} from '../../memo.service';
-import {DgMemoModel, RecipientsModel} from '../../memo.model';
+import {DgMemoService} from '../../dg-memo.service';
+import {DgMemoModel, RecipientsModel} from '../../dg-memo.model';
 import {RecipientsService} from '../../../../shared/recipients.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DgSubmissionDetailsComponent implements OnInit {
   fileToUpload: File = null;
   filename: string;
 
-  constructor(private memoService: MemoService,
+  constructor(private memoService: DgMemoService,
               private router: Router,
               private  route: ActivatedRoute,
               private recipientsService: RecipientsService) {

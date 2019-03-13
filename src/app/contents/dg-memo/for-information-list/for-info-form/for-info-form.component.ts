@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MemoService} from '../../memo.service';
-import {DgMemoModel} from '../../memo.model';
+import {DgMemoService} from '../../dg-memo.service';
+import {DgMemoModel} from '../../dg-memo.model';
 import {MembersService} from '../../../../shared/members.service';
 import {MembersModel} from '../../../../shared/members.model';
 import {UserService} from '../../../../shared/user.service';
@@ -18,7 +18,7 @@ export class ForInfoFormComponent implements OnInit {
   reference: string;
 
 
-  constructor(private memoService: MemoService,
+  constructor(private memoService: DgMemoService,
               private memberService: MembersService,
               private userService: UserService) {
 

@@ -16,13 +16,18 @@
              aria-haspopup="true" aria-expanded="true">Actions
             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
+
           <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                aria-labelledby="dropdownMenuLink" x-placement="top-end"
                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-156px, -155px, 0px);">
             <a class="dropdown-item " data-toggle="modal" data-target=".bd-editActionItem-modal-lg">Edit</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-toggle="modal" data-target=".bd-addAIRecipient-modal-lg">Add Recipients</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="deleteActionItem(actionItemRecord.reference)">Delete</a>
           </div>
+
+
         </div>
       </div>
 

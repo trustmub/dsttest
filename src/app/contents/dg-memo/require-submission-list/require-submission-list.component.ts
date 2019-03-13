@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DgMemoModel} from '../memo.model';
-import {MemoCategory, MemoService} from '../memo.service';
+import {DgMemoModel} from '../dg-memo.model';
+import {MemoCategory, DgMemoService} from '../dg-memo.service';
 
 @Component({
   selector: 'app-require-submission-list',
@@ -12,7 +12,7 @@ export class RequireSubmissionListComponent implements OnInit {
   actionUpdateStatus = false;
   memoList: DgMemoModel[];
 
-  constructor(private memoService: MemoService) {
+  constructor(private memoService: DgMemoService) {
     this.memoList = this.memoService.getMemoList(MemoCategory.MEMO_RS);
   }
 

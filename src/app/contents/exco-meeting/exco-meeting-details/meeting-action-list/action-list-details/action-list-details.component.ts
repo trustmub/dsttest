@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ExcoMeetingService} from '../../../exco-meeting.service';
 import {ActionItemModel, MeetingModel} from '../../../exco-meeting.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RecipientsModel} from '../../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../../dg-memo/dg-memo.model';
 
 @Component({
   selector: 'app-action-list-details',
@@ -37,9 +37,6 @@ export class ActionListDetailsComponent implements OnInit {
         if (status) {
           this.meetingRecord = this.meetingService.getMeeting(this.meetingId);
         }
-        if (!status) {
-
-        }
       }
     );
   }
@@ -51,6 +48,19 @@ export class ActionListDetailsComponent implements OnInit {
 
   backClicked() {
     this.router.navigate(['/exco', this.meetingId]);
+  }
+
+  deleteActionItem(id: string) {
+    const rec = this.meetingRecord.decisions.actionItems.filter(x => x.reference === id)[0];
+    const recIndex = this.meetingRecord.decisions.actionItems.indexOf(rec);
+    this.meetingRecord.decisions.actionItems.splice(recIndex);
+    this.meetingService.updateMeeting(this.meetingRecord).subscribe(
+      (result) => {
+        this.meetingService.refreshObserver.next(true);
+        this.backClicked();
+      }
+    );
+
   }
 
   getHealthClasses(health: string) {

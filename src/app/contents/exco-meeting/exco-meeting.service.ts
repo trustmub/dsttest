@@ -89,20 +89,30 @@ export class ExcoMeetingService {
     );
   }
 
+  addActionItem(record: ActionItemModel, meetingId: string) {
+    return this.http.put('api/decision/actionitem/' + meetingId, record);
+  }
+
+  addNonActionItem(record: NonActionItemModel, meetingId) {
+    return this.http.put('api/decision/actionitem/' + meetingId, record);
+
+
+  }
+
   updateMeeting(meeting: MeetingModel) {
     console.log(JSON.stringify(meeting));
     return this.http.put('api/meeting', meeting, {observe: 'response'});
   }
 
   getAllMeetings() {
-
     if (this.upcoming === undefined || this.upcoming === []) {
       this.fetchMeetings().subscribe(
         (response) => {
           this.upcoming = response.body;
-          for (const meeting of this.upcoming) {
+          for (const meeting of response.body) {
             this.upcoming.map(
               (rec) => {
+
                 rec.decisions.actionItems.map(
                   (act) => {
                     act.health = this.changeHealthStatus(new Date(act.returnDate));
@@ -111,7 +121,11 @@ export class ExcoMeetingService {
               }
             );
           }
-          return this.upcoming;
+          return this.upcoming.map(
+            (rec) => {
+              rec.health = this.changeHealthStatus(new Date(rec.meetingStartDate));
+            }
+          );
         },
         (error) => {
           return this.upcoming;
@@ -122,7 +136,7 @@ export class ExcoMeetingService {
     return this.upcoming;
   }
 
-  private changeHealthStatus(returnDate: Date) {
+  changeHealthStatus(returnDate: Date) {
 
     const today = new Date();
     const daysBetween = Math.round((returnDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));

@@ -17,7 +17,9 @@ export class ComingTaskComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const loaded = this.meetingService.getAllMeetings();
     if (loaded.length > 0) {
-      this.upcoming = this.meetingService.getAllMeetings().filter((item, index) => index < 2);
+      this.upcoming = this.meetingService.getAllMeetings()
+        .sort((a, b) => new Date(a.meetingStartDate).getTime() - new Date(b.meetingStartDate).getTime())
+        .filter((item, index) => index < 2);
     }
 
     this.meetingService.fetchMeetings().subscribe(
@@ -31,7 +33,9 @@ export class ComingTaskComponent implements OnInit, OnDestroy {
           const r = this.meetingService.updateMeetingList(record);
           console.log(response.body[i]);
         }
-        this.upcoming = this.meetingService.getAllMeetings().filter((item, index) => index < 2);
+        this.upcoming = this.meetingService.getAllMeetings()
+          .sort((a, b) => new Date(a.meetingStartDate).getTime() - new Date(b.meetingStartDate).getTime())
+          .filter((item, index) => index < 2);
       },
       (error) => {
         console.log(error);

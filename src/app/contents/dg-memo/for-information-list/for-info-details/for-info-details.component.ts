@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {DgMemoModel, RecipientsModel} from '../../memo.model';
-import {MemoService} from '../../memo.service';
+import {DgMemoModel, RecipientsModel} from '../../dg-memo.model';
+import {DgMemoService} from '../../dg-memo.service';
 import {RecipientsService} from '../../../../shared/recipients.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class ForInfoDetailsComponent implements OnInit {
 
 
   constructor(
-    private memoService: MemoService,
+    private memoService: DgMemoService,
     private router: Router,
     private route: ActivatedRoute,
     private recipientService: RecipientsService) {

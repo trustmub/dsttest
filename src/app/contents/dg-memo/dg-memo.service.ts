@@ -1,11 +1,11 @@
-import {Category, DgMemoModel} from './memo.model';
+import {Category, DgMemoModel} from './dg-memo.model';
 import {Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MemoService {
+export class DgMemoService {
 
   refreshMemoObserver = new Subject();
 
@@ -18,6 +18,7 @@ export class MemoService {
   private classificationList = ['Confidential', 'Secret', 'Top Secret', 'Urgent', 'Official'];
 
   categories: Category[] = [
+
     new Category('Briefing Notes'),
     new Category('Parliamentary Questions'),
     new Category('AS Memo'),

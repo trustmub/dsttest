@@ -16,6 +16,7 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
   meetingRecord: MeetingModel;
   paramSubscription: Subscription;
   fileToUpload: File;
+  listOfFiles: FileList;
   agendaFilename: string;
   minutesFileName: string;
   registerFileName: string;
@@ -30,6 +31,14 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.meetingService.refreshObserver.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.meetingRecord = this.meetingService.getMeeting(this.id);
+        }
+      }
+    );
 
     this.agendaEditorForm = new FormGroup({
       agendaEditor: new FormControl(null)
@@ -65,15 +74,21 @@ export class ExcoMeetingDetailsComponent implements OnInit, OnDestroy {
     this.paramSubscription.unsubscribe();
   }
 
-  handleSubmissionFileInput(type: string, files: FileList) {
+  handleSubmissionFileInput(type: string, files: File) {
 
-    this.fileToUpload = files.item(0);
-    console.log(files.item.length);
+    this.fileToUpload = files;
+    this.listOfFiles.item.apply(this.fileToUpload);
+
+    console.log(this.listOfFiles.length);
     this.meetingRecord.agendaFile = this.fileToUpload;
 
     this.agendaFilename = (type === 'agenda') ? this.fileToUpload.name : '';
     this.minutesFileName = (type === 'minutes') ? this.fileToUpload.name : '';
     this.registerFileName = (type === 'register') ? this.fileToUpload.name : '';
+  }
+
+  openFileWindow(fileName: string) {
+
   }
 
   onSubmitAgenda() {

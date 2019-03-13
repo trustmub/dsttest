@@ -43,7 +43,7 @@
       </div>
       <div class="col-xl-6 col-md-6" *ngFor="let meeting of meetingList">
 
-        <div class="card border-left-primary shadow mh-100 mb-3 p-1">
+        <div class="card shadow mh-100 mb-3 p-1" [ngClass]="getMeetingHealthClasses(meeting.health)">
           <!--<div class="card-header card-head">header</div>-->
           <div class="card-body m-1 p-1">
             <div class="row no-gutters align-items-center">

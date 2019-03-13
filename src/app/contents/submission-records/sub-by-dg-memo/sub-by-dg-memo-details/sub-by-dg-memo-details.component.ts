@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {SubmissionRecordsService} from '../../submission-records.service';
 import {SubmissionRecordsModel} from '../../submission-records.model';
-import {RecipientsModel} from '../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../dg-memo/dg-memo.model';
 import {RecipientsService} from '../../../../shared/recipients.service';
 
 @Component({

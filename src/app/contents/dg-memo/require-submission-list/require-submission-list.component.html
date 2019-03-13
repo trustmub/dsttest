@@ -45,7 +45,7 @@
           <tbody *ngFor="let meeting of memoList; let i = index">
           <tr class="text-xs o-hidden m-0 p-0" data-toggle="collapse" [attr.data-target]="'#submission' + i"
               aria-expanded="false" [attr.aria-controls]="'submission' + i">
-            <td>{{ meeting.dgMemoNumber }}</td>
+            <td class="text-nowrap">{{ meeting.dgMemoNumber }}</td>
             <td>{{ meeting.subject }}</td>
             <td>{{ meeting.assignedTo }}</td>
             <td>{{ meeting.returnDate | date:"dd MMMM yyyy"}}</td>

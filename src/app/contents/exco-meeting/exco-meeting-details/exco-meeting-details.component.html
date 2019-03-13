@@ -135,7 +135,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" id="attending-register-tab" data-toggle="tab" href="#attending-register" role="tab"
-               aria-controls="attending-register-tab" aria-selected="true">Attending Register</a>
+               aria-controls="attending-register-tab" aria-selected="true">Attendance Register</a>
           </li>
         </ul>
         <!-- End of Nav Tabs for Agenda, Meeting Minutes and Attending register -->
@@ -216,7 +216,7 @@
                 <div class="card card-header">Attached Minutes File</div>
                 <div class="card card card-body">
                   <div *ngIf="minutesFileName !== undefined">
-                    <a>{{ minutesFileName }}</a>
+                    <a (click)="openFileWindow(minutesFileName)">{{ minutesFileName }}</a>
                   </div>
                 </div>
               </div>

@@ -19,7 +19,7 @@ export class MeetingActionListComponent implements OnInit {
   actionUpdateStatus = false;
 
   constructor(private router: ActivatedRoute, private meetingService: ExcoMeetingService, private membersService: MembersService) {
-    this.id = this.router.snapshot.params['id'];
+    this.id = this.router.snapshot.params.id;
     this.meetingItemRecord = meetingService.getMeeting(this.id);
     this.members = this.membersService.getMembers();
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RecipientsService} from '../../../../shared/recipients.service';
-import {RecipientsModel} from '../../../dg-memo/memo.model';
+import {RecipientsModel} from '../../../dg-memo/dg-memo.model';
 import {CabinetMemoModel} from '../../cabinet-memo.model';
 import {CabinetMemoService} from '../../cabinet-memo.service';
 

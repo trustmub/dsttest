@@ -36,8 +36,8 @@ export class EditActionItemFormComponent implements OnInit {
   ngOnInit() {
 
     this.editActionItemForm = new FormGroup({
-      // feedback: new FormControl(null),
-      actionReferenceNumber: new FormControl(null),
+      feedback: new FormControl(null),
+      actionReferenceNumber: new FormControl({value: null, disabled: true}),
       actionItem: new FormControl(null),
       actionDescription: new FormControl(null),
       actionAssignTo: new FormControl(null),
@@ -46,7 +46,7 @@ export class EditActionItemFormComponent implements OnInit {
     });
 
     this.editActionItemForm.setValue({
-      // feedback: this.actionItemRecord.feedback,
+      feedback: (this.actionItemRecord.feedback === undefined) ? '' : this.actionItemRecord.feedback,
       actionReferenceNumber: this.actionItemRecord.reference,
       actionItem: this.actionItemRecord.item,
       actionDescription: this.actionItemRecord.description,
@@ -63,19 +63,19 @@ export class EditActionItemFormComponent implements OnInit {
     this.actionItemRecord.assignedTo = this.editActionItemForm.value.actionAssignTo;
     this.actionItemRecord.returnDate = this.editActionItemForm.value.actionReturnDate;
     this.actionItemRecord.status = this.editActionItemForm.value.actionStatus;
-    // this.actionItemRecord.feedback = this.editActionItemForm.value.actionFeedback;
+    this.actionItemRecord.feedback = this.editActionItemForm.value.actionFeedback;
 
     this.meetingService.updateMeeting(this.meetingRecord).subscribe(
       (response) => {
         this.meetingService.refreshObserver.next(true);
         alert('record saved to Database');
+        this.ngOnInit();
       },
       (error) => {
         this.meetingService.refreshObserver.next(false);
       }
     );
     this.editActionItemForm.reset();
-
   }
 
 }
